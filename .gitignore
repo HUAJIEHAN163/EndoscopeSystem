@@ -1,0 +1,8 @@
+build/
+build_arm/
+*.o
+*.user
+captures/
+videos/
+test_data/*.mp4
+test_data/*.avi
