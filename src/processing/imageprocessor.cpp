@@ -131,7 +131,9 @@ void ImageProcessor::applySharpen(const cv::Mat &src, cv::Mat &dst,
 void ImageProcessor::applyDenoise(const cv::Mat &src, cv::Mat &dst,
                                   int d, double sigmaColor,
                                   double sigmaSpace) {
-    cv::bilateralFilter(src, dst, d, sigmaColor, sigmaSpace);
+    cv::Mat tmp;
+    cv::bilateralFilter(src, tmp, d, sigmaColor, sigmaSpace);
+    dst = tmp;
 }
 
 // === 保留的经典算法 ===
