@@ -1,0 +1,17 @@
+{
+    "name": "支气管镜模式",
+    "whiteBalance": true,
+    "clahe": true,
+    "claheClipLimit": 2.5,
+    "undistort": false,
+    "dehaze": true,
+    "dehazeOmega": 0.90,
+    "dehazeRadius": 5,
+    "sharpen": false,
+    "sharpenAmount": 1.5,
+    "denoise": true,
+    "denoiseD": 9,
+    "edgeDetect": false,
+    "threshold": false,
+    "thresholdValue": 128
+}

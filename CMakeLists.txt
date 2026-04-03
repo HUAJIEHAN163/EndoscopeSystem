@@ -17,6 +17,7 @@ option(ENABLE_V4L2 "Enable V4L2 camera capture (Linux only)" ON)
 set(SOURCES
     src/main.cpp
     src/ui/mainwindow.cpp
+    src/ui/presetmanager.cpp
     src/capture/filecapture.cpp
     src/processing/imageprocessor.cpp
     src/utils/imageconvert.cpp
@@ -25,6 +26,7 @@ set(HEADERS
     src/capture/videosource.h
     src/capture/filecapture.h
     src/ui/mainwindow.h
+    src/ui/presetmanager.h
     src/processing/imageprocessor.h
     src/utils/imageconvert.h
 )

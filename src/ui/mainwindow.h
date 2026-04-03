@@ -8,7 +8,10 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QElapsedTimer>
+#include <QStackedWidget>
+#include <QComboBox>
 #include <opencv2/videoio.hpp>
+#include <deque>
 
 #include "capture/videosource.h"
 #include "processing/imageprocessor.h"
@@ -30,11 +33,19 @@ private slots:
     void onToggleFreeze();
     void onRotateImage();
     void updateFps();
+    void onSwitchMode();          // 切换调试/临床模式
+    void onPresetSelected(int index);  // 选择预设
+    void onExportPreset();        // 导出当前参数为预设
 
 private:
     void setupUi();
     void setupVideoSource();
+    void loadPresets();           // 加载预设文件
+    void applyConfig(const ImageProcessor::Config &cfg);  // 将 Config 同步到界面控件
     QImage processFrame(const QImage &input);
+
+    // 模式: true=临床模式, false=调试模式
+    bool m_clinicalMode;
 
     // 视频源 (V4L2 或文件)
     VideoSource *m_source;
@@ -64,6 +75,18 @@ private:
     QPushButton *m_btnFreeze;
     QPushButton *m_btnRotate;
 
+    // 模式切换
+    QPushButton *m_btnSwitchMode;     // 调试/临床 切换按钮
+    QStackedWidget *m_ctrlStack;      // 右侧面板切换容器
+    QWidget *m_debugPanel;            // 调试模式面板（现有控件）
+    QWidget *m_clinicalPanel;         // 临床模式面板（预设选择）
+    QComboBox *m_cboPreset;           // 预设下拉框
+    QPushButton *m_btnExportPreset;   // 导出预设按钮
+
+    // 预设数据
+    QStringList m_presetNames;
+    QList<ImageProcessor::Config> m_presetConfigs;
+
     // 状态
     QLabel *m_lblStatus;
     QLabel *m_lblFps;
@@ -73,6 +96,10 @@ private:
     int m_rotateAngle;
     bool m_recording;
     cv::VideoWriter m_videoWriter;
+
+    // 帧缓存（用于冻结时选最清晰帧）
+    static const int FRAME_BUFFER_SIZE = 8;  // 缓存最近 8 帧
+    std::deque<QImage> m_frameBuffer;
 
     // FPS
     int m_frameCount;

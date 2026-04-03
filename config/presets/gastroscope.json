@@ -1,0 +1,17 @@
+{
+    "name": "胃镜模式",
+    "whiteBalance": true,
+    "clahe": true,
+    "claheClipLimit": 3.0,
+    "undistort": false,
+    "dehaze": true,
+    "dehazeOmega": 0.85,
+    "dehazeRadius": 7,
+    "sharpen": true,
+    "sharpenAmount": 1.2,
+    "denoise": true,
+    "denoiseD": 5,
+    "edgeDetect": false,
+    "threshold": false,
+    "thresholdValue": 128
+}

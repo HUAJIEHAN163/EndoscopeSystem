@@ -59,50 +59,52 @@ void ImageProcessor::initUndistortMap(const cv::Mat &cameraMatrix,
                                 map1, map2);
 }
 
+// 去雾（暗通道先验简化版）
+// 优化：CV_32F 代替 CV_64F，减少一次 split/merge
 void ImageProcessor::applyDehaze(const cv::Mat &src, cv::Mat &dst,
                                  double omega, int radius) {
     cv::Mat srcFloat;
-    src.convertTo(srcFloat, CV_64FC3, 1.0 / 255.0);
+    src.convertTo(srcFloat, CV_32FC3, 1.0f / 255.0f);
 
-    // 暗通道
+    // 暗通道：取三通道最小值再腐蚀
     std::vector<cv::Mat> channels;
     cv::split(srcFloat, channels);
-    cv::Mat darkChannel = cv::min(cv::min(channels[0], channels[1]), channels[2]);
+    cv::Mat darkChannel;
+    cv::min(channels[0], channels[1], darkChannel);
+    cv::min(darkChannel, channels[2], darkChannel);
 
     cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT,
                                                cv::Size(radius, radius));
     cv::erode(darkChannel, darkChannel, kernel);
 
-    // 大气光估计
+    // 大气光估计：取暗通道最亮区域的均值
     double maxVal;
     cv::minMaxLoc(darkChannel, nullptr, &maxVal);
-    cv::Scalar A = cv::mean(srcFloat, darkChannel > maxVal * 0.9);
+    cv::Scalar A = cv::mean(srcFloat, darkChannel > maxVal * 0.9f);
 
-    // 透射率
-    std::vector<cv::Mat> normChannels;
-    cv::split(srcFloat, normChannels);
+    // 透射率估计
+    cv::Mat normMin;
+    cv::Mat c0, c1, c2;
+    cv::divide(channels[0], A[0] + 1e-6, c0);
+    cv::divide(channels[1], A[1] + 1e-6, c1);
+    cv::divide(channels[2], A[2] + 1e-6, c2);
+    cv::min(c0, c1, normMin);
+    cv::min(normMin, c2, normMin);
+    cv::erode(normMin, normMin, kernel);
+
+    cv::Mat transmission = 1.0f - static_cast<float>(omega) * normMin;
+    cv::max(transmission, 0.1f, transmission);
+
+    // 恢复场景
     for (int i = 0; i < 3; i++)
-        normChannels[i] /= (A[i] + 1e-6);
-
-    cv::Mat normImg;
-    cv::merge(normChannels, normImg);
-    cv::split(normImg, normChannels);
-
-    cv::Mat transmission = cv::min(cv::min(normChannels[0], normChannels[1]),
-                                   normChannels[2]);
-    cv::erode(transmission, transmission, kernel);
-    transmission = 1.0 - omega * transmission;
-    cv::max(transmission, 0.1, transmission);
-
-    // 恢复
-    cv::split(srcFloat, channels);
-    for (int i = 0; i < 3; i++)
-        channels[i] = (channels[i] - A[i]) / transmission + A[i];
+        channels[i] = (channels[i] - static_cast<float>(A[i])) / transmission
+                       + static_cast<float>(A[i]);
     cv::merge(channels, dst);
 
     dst.convertTo(dst, CV_8UC3, 255.0);
 }
 
+// 白平衡（灰度世界法）
 void ImageProcessor::applyWhiteBalance(const cv::Mat &src, cv::Mat &dst) {
     std::vector<cv::Mat> channels;
     cv::split(src, channels);
@@ -121,6 +123,7 @@ void ImageProcessor::applyWhiteBalance(const cv::Mat &src, cv::Mat &dst) {
 
 // === 通用增强算法 ===
 
+// USM 锐化
 void ImageProcessor::applySharpen(const cv::Mat &src, cv::Mat &dst,
                                   double sigma, double amount) {
     cv::Mat blurred;
@@ -128,16 +131,19 @@ void ImageProcessor::applySharpen(const cv::Mat &src, cv::Mat &dst,
     cv::addWeighted(src, 1.0 + amount, blurred, -amount, 0, dst);
 }
 
+// 降噪：缩小后做双边滤波再放大，速度提升约 4 倍
 void ImageProcessor::applyDenoise(const cv::Mat &src, cv::Mat &dst,
                                   int d, double sigmaColor,
                                   double sigmaSpace) {
-    cv::Mat tmp;
-    cv::bilateralFilter(src, tmp, d, sigmaColor, sigmaSpace);
-    dst = tmp;
+    cv::Mat small, tmp;
+    cv::resize(src, small, cv::Size(), 0.5, 0.5, cv::INTER_LINEAR);
+    cv::bilateralFilter(small, tmp, d, sigmaColor, sigmaSpace);
+    cv::resize(tmp, dst, src.size(), 0, 0, cv::INTER_LINEAR);
 }
 
 // === 保留的经典算法 ===
 
+// Canny 边缘检测
 void ImageProcessor::applyEdgeDetect(const cv::Mat &src, cv::Mat &dst) {
     cv::Mat gray, edge;
     cv::cvtColor(src, gray, cv::COLOR_BGR2GRAY);
@@ -146,10 +152,24 @@ void ImageProcessor::applyEdgeDetect(const cv::Mat &src, cv::Mat &dst) {
     cv::cvtColor(edge, dst, cv::COLOR_GRAY2BGR);
 }
 
+// 阈值分割
 void ImageProcessor::applyThreshold(const cv::Mat &src, cv::Mat &dst,
                                     int threshValue) {
     cv::Mat gray;
     cv::cvtColor(src, gray, cv::COLOR_BGR2GRAY);
     cv::threshold(gray, gray, threshValue, 255, cv::THRESH_BINARY);
     cv::cvtColor(gray, dst, cv::COLOR_GRAY2BGR);
+}
+
+// 清晰度评估：用拉普拉斯算子计算图像方差，值越大越清晰
+double ImageProcessor::calcSharpness(const cv::Mat &src) {
+    cv::Mat gray, lap;
+    if (src.channels() == 3)
+        cv::cvtColor(src, gray, cv::COLOR_BGR2GRAY);
+    else
+        gray = src;
+    cv::Laplacian(gray, lap, CV_64F);
+    cv::Scalar mu, sigma;
+    cv::meanStdDev(lap, mu, sigma);
+    return sigma.val[0] * sigma.val[0];  // 方差 = 标准差的平方
 }

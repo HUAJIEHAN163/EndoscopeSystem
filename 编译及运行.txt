@@ -1,0 +1,3 @@
+cd /mnt/hgfs/VM_Share/project/EndoscopeSystem
+bash scripts/build_local.sh
+./build/endoscope

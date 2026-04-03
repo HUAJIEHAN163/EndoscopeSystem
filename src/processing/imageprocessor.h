@@ -76,6 +76,9 @@ public:
     // 阈值分割
     static void applyThreshold(const cv::Mat &src, cv::Mat &dst,
                                int threshValue = 128);
+
+    // 清晰度评估（拉普拉斯方差，值越大越清晰）
+    static double calcSharpness(const cv::Mat &src);
 };
 
 #endif // IMAGEPROCESSOR_H
