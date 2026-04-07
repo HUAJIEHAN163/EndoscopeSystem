@@ -26,7 +26,7 @@
 // ===================== 构造函数 =====================
 // 程序启动时 main.cpp 中 MainWindow window; 会调用这里
 // 初始化列表：先初始化所有成员变量的默认值
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QWidget *parent)         //parent = nullptr 表示这个窗口没有父窗口，它就是顶层窗口。
     : QMainWindow(parent), m_source(nullptr),   // 视频源指针，初始为空
       m_frozen(false), m_rotateAngle(0),         // 画面未冻结，旋转角度 0
       m_recording(false), m_frameCount(0),       // 未在录像，帧计数归零
@@ -85,78 +85,105 @@ MainWindow::~MainWindow() {
 // │                  │ 临床面板    │
 // └──────────────────┴────────────┘
 void MainWindow::setupUi() {
-    setFixedSize(960, 560);
+    // 固定窗口大小 960x560，不允许用户拖拽缩放
+    // setFixedSize 继承自 QWidget → QMainWindow → MainWindow
+    setFixedSize(960, 660);
 
+    // QMainWindow 要求必须有一个 centralWidget 作为内容容器
+    // central 本身不可见（透明），所有控件都放在它上面
+    // parent 设为 this（MainWindow），窗口销毁时自动释放 central
     QWidget *central = new QWidget(this);
     setCentralWidget(central);
 
+    // 主布局：水平排列，绑定到 central
+    // central 上的所有控件都通过这个布局来排列
     QHBoxLayout *mainLayout = new QHBoxLayout(central);
-    mainLayout->setContentsMargins(4, 4, 4, 4);
-    mainLayout->setSpacing(4);
+    mainLayout->setContentsMargins(4, 4, 4, 4);  // 上下左右边距各 4px
+    mainLayout->setSpacing(4);                     // 控件之间间距 4px
 
-    // ---- 左侧: 视频显示区域 ----
+    // ==============================================================
+    // 左侧: 视频显示区域
+    // 这个 QWidget 只是占位用，实际画面在 paintEvent 中绘制
+    // addWidget 会自动把 central 设为 videoArea 的 parent
+    // ==============================================================
     QWidget *videoArea = new QWidget;
-    videoArea->setMinimumSize(640, 480);
-    videoArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    mainLayout->addWidget(videoArea, 1);
-    m_videoRect = QRect(4, 4, 640, 480);
+    videoArea->setMinimumSize(640, 480);  // 最小尺寸，防止被压缩
+    videoArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);  // 允许拉伸
+    videoArea->setStyleSheet("");  // 不设样式，背景在 paintEvent 中绘制
+    mainLayout->addWidget(videoArea, 1);  // 拉伸因子 1，优先占据剩余空间
+    m_videoRect = QRect(4, 4, 640, 480);  // 记录视频绘制区域坐标，paintEvent 中用
 
-    // ---- 右侧: 整体垂直布局 ----
+    // ==============================================================
+    // 右侧: 控制面板（垂直排列）
+    // 从上到下：模式切换按钮 → 调试/临床面板 → 操作按钮 → 状态信息
+    // ==============================================================
     QVBoxLayout *rightLayout = new QVBoxLayout;
     rightLayout->setSpacing(4);
 
-    // 模式切换按钮（顶部）
+    // --- 模式切换按钮（最顶部）---
     m_btnSwitchMode = new QPushButton("切换到临床模式");
+    // 点击按钮 → 触发 onSwitchMode 槽函数
     connect(m_btnSwitchMode, &QPushButton::clicked, this, &MainWindow::onSwitchMode);
     rightLayout->addWidget(m_btnSwitchMode);
 
-    // ---- QStackedWidget: 两个面板叠放，切换显示 ----
+    // --- QStackedWidget: 面板切换容器 ---
+    // 两个面板叠放在同一位置，同一时间只显示一个
+    // index 0 = 调试面板，index 1 = 临床面板
     m_ctrlStack = new QStackedWidget;
 
-    // ======== 调试面板（index 0）========
+    // ==============================================================
+    // 调试面板（index 0）— 工程师用，所有参数可调
+    // 父子关系：m_debugPanel → debugLayout → endoGroup/generalGroup → 各控件
+    // ==============================================================
     m_debugPanel = new QWidget;
-    QVBoxLayout *debugLayout = new QVBoxLayout(m_debugPanel);
+    QVBoxLayout *debugLayout = new QVBoxLayout(m_debugPanel);  // 布局绑定到 m_debugPanel
     debugLayout->setSpacing(4);
-    debugLayout->setContentsMargins(0, 0, 0, 0);
+    debugLayout->setContentsMargins(0, 0, 0, 0);  // 无额外边距
 
-    // -- 内窥镜算法分组 --
+    // -- 内窥镜算法分组框 --
+    // QGroupBox 显示为带标题的边框，视觉上把相关控件归为一组
     QGroupBox *endoGroup = new QGroupBox("内窥镜算法");
-    QVBoxLayout *endoLayout = new QVBoxLayout(endoGroup);
+    QVBoxLayout *endoLayout = new QVBoxLayout(endoGroup);  // endoGroup 内部垂直排列
     endoLayout->setSpacing(2);
 
+    // 四个复选框：勾选后对应算法在 processFrame 中生效
     m_chkWhiteBalance = new QCheckBox("白平衡校正");
     m_chkClahe = new QCheckBox("CLAHE增强");
     m_chkUndistort = new QCheckBox("畸变校正");
     m_chkDehaze = new QCheckBox("去雾");
 
+    // addWidget 把控件加入布局，同时自动设置 parent 为 endoGroup
     endoLayout->addWidget(m_chkWhiteBalance);
     endoLayout->addWidget(m_chkClahe);
 
-    m_sliderClaheClip = new QSlider(Qt::Horizontal);
+    // CLAHE 参数滑块：整数 10~80，processFrame 中除以 10 得到实际值 1.0~8.0
+    m_sliderClaheClip = new QSlider(Qt::Horizontal);  // 水平滑块
     m_sliderClaheClip->setRange(10, 80);
-    m_sliderClaheClip->setValue(30);
+    m_sliderClaheClip->setValue(30);  // 默认 3.0
     endoLayout->addWidget(m_sliderClaheClip);
 
     endoLayout->addWidget(m_chkUndistort);
     endoLayout->addWidget(m_chkDehaze);
-    debugLayout->addWidget(endoGroup);
+    debugLayout->addWidget(endoGroup);  // 把整个分组框加入调试面板布局
 
-    // -- 通用算法分组 --
+    // -- 通用算法分组框 --
     QGroupBox *generalGroup = new QGroupBox("通用算法");
     QVBoxLayout *generalLayout = new QVBoxLayout(generalGroup);
     generalLayout->setSpacing(2);
 
     m_chkSharpen = new QCheckBox("锐化");
+    // 锐化强度滑块：整数 5~30 → 实际值 0.5~3.0
     m_sliderSharpen = new QSlider(Qt::Horizontal);
     m_sliderSharpen->setRange(5, 30);
-    m_sliderSharpen->setValue(15);
+    m_sliderSharpen->setValue(15);  // 默认 1.5
 
     m_chkDenoise = new QCheckBox("降噪");
     m_chkEdgeDetect = new QCheckBox("边缘检测");
     m_chkThreshold = new QCheckBox("阈值分割");
+    // 阈值滑块：0~255，直接对应灰度阈值
     m_sliderThreshold = new QSlider(Qt::Horizontal);
     m_sliderThreshold->setRange(0, 255);
-    m_sliderThreshold->setValue(128);
+    m_sliderThreshold->setValue(128);  // 默认中间值
 
     generalLayout->addWidget(m_chkSharpen);
     generalLayout->addWidget(m_sliderSharpen);
@@ -166,44 +193,61 @@ void MainWindow::setupUi() {
     generalLayout->addWidget(m_sliderThreshold);
     debugLayout->addWidget(generalGroup);
 
-    // 导出预设按钮（调试模式专用）
+    // 导出预设按钮：把当前调好的参数保存为 JSON 文件
     m_btnExportPreset = new QPushButton("导出为预设");
     connect(m_btnExportPreset, &QPushButton::clicked, this, &MainWindow::onExportPreset);
     debugLayout->addWidget(m_btnExportPreset);
 
+    // addStretch 添加弹簧，把上面的控件推到顶部，下面留空
     debugLayout->addStretch();
-    m_ctrlStack->addWidget(m_debugPanel);  // index 0
+    // 把调试面板加入 QStackedWidget，index = 0
+    m_ctrlStack->addWidget(m_debugPanel);
 
-    // ======== 临床面板（index 1）========
+    // ==============================================================
+    // 临床面板（index 1）— 医生用，只有预设选择
+    // ==============================================================
     m_clinicalPanel = new QWidget;
     QVBoxLayout *clinicalLayout = new QVBoxLayout(m_clinicalPanel);
     clinicalLayout->setSpacing(8);
     clinicalLayout->setContentsMargins(0, 0, 0, 0);
 
+    // 提示文字
     QLabel *lblPreset = new QLabel("选择检查模式:");
     clinicalLayout->addWidget(lblPreset);
 
+    // 预设下拉框：选项由 loadPresets() 填充（胃镜/肠镜/支气管镜）
     m_cboPreset = new QComboBox;
-    m_cboPreset->setMinimumHeight(36);
+    m_cboPreset->setMinimumHeight(36);  // 加大高度，方便触屏操作
+    // 下拉框选项变化 → 触发 onPresetSelected，加载对应参数
+    // QOverload 用于区分同名但参数不同的信号（Qt5 的写法）
     connect(m_cboPreset, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &MainWindow::onPresetSelected);
     clinicalLayout->addWidget(m_cboPreset);
 
-    clinicalLayout->addStretch();
-    m_ctrlStack->addWidget(m_clinicalPanel);  // index 1
+    clinicalLayout->addStretch();  // 弹簧，把下拉框推到顶部
+    // 把临床面板加入 QStackedWidget，index = 1
+    m_ctrlStack->addWidget(m_clinicalPanel);
 
+    // 把 QStackedWidget 加入右侧布局
+    // 固定右侧控制面板宽度，防止切换模式时变窄
+    m_ctrlStack->setMinimumHeight(300);
+    m_ctrlStack->setFixedWidth(250);
     rightLayout->addWidget(m_ctrlStack);
 
-    // ---- 操作按钮（两种模式共用）----
+    // ==============================================================
+    // 操作按钮（两种模式共用，放在 QStackedWidget 外面）
+    // ==============================================================
     QGroupBox *opGroup = new QGroupBox("操作");
     QVBoxLayout *opLayout = new QVBoxLayout(opGroup);
     opLayout->setSpacing(2);
 
+    // 四个按钮，括号里是对应的快捷键（在 keyPressEvent 中处理）
     m_btnCapture = new QPushButton("拍照 (C)");
     m_btnRecord = new QPushButton("录像 (R)");
     m_btnFreeze = new QPushButton("冻结 (Space)");
     m_btnRotate = new QPushButton("旋转 (T)");
 
+    // 信号槽连接：按钮点击 → 对应槽函数
     connect(m_btnCapture, &QPushButton::clicked, this, &MainWindow::onCapturePhoto);
     connect(m_btnRecord, &QPushButton::clicked, this, &MainWindow::onToggleRecord);
     connect(m_btnFreeze, &QPushButton::clicked, this, &MainWindow::onToggleFreeze);
@@ -215,20 +259,23 @@ void MainWindow::setupUi() {
     opLayout->addWidget(m_btnRotate);
     rightLayout->addWidget(opGroup);
 
-    // ---- 状态信息 ----
-    m_lblFps = new QLabel("FPS: --");
-    m_lblStatus = new QLabel("就绪");
+    // ==============================================================
+    // 状态信息（底部）
+    // ==============================================================
+    m_lblFps = new QLabel("FPS: --");  // 帧率显示，由 updateFps 每秒更新
+    m_lblStatus = new QLabel("就绪");   // 状态文字，各操作会更新它
     rightLayout->addWidget(m_lblFps);
     rightLayout->addWidget(m_lblStatus);
 
+    // 把右侧整体布局加入主布局
     mainLayout->addLayout(rightLayout);
 
-    // 畸变校正按钮状态
+    // 如果没有标定文件，畸变校正复选框置灰，鼠标悬停显示提示
     m_chkUndistort->setEnabled(m_undistortReady);
     if (!m_undistortReady)
         m_chkUndistort->setToolTip("未找到 camera_calib.yml 标定文件");
 
-    // 默认显示调试面板
+    // 默认显示调试面板（index 0）
     m_ctrlStack->setCurrentIndex(0);
 }
 
@@ -376,9 +423,13 @@ QImage MainWindow::processFrame(const QImage &input) {
 // 这里负责把视频帧画到窗口上，并叠加 OSD（屏幕显示信息）
 void MainWindow::paintEvent(QPaintEvent *event) {
     QMainWindow::paintEvent(event);       // 先调用父类绘制（背景等）
-    if (m_displayImage.isNull()) return;  // 还没有图像时不绘制
 
-    QPainter painter(this);  // 创建画笔，绑定到当前窗口
+    QPainter painter(this);     // 创建画笔，绑定到当前窗口
+
+    // 视频区域黑色背景
+    painter.fillRect(m_videoRect, Qt::black);
+
+    if (m_displayImage.isNull()) return;  // 还没有图像时只画黑色背景
 
     // 计算居中位置（图像可能比显示区域小，需要居中放置）
     int x = m_videoRect.x() + (m_videoRect.width() - m_displayImage.width()) / 2;

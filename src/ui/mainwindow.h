@@ -1,116 +1,198 @@
-#ifndef MAINWINDOW_H
+#ifndef MAINWINDOW_H  // 头文件保护：防止同一个文件被 #include 多次导致重复定义
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QImage>
-#include <QCheckBox>
-#include <QSlider>
-#include <QPushButton>
-#include <QLabel>
-#include <QElapsedTimer>
-#include <QStackedWidget>
-#include <QComboBox>
-#include <opencv2/videoio.hpp>
-#include <deque>
+// === Qt 头文件 ===
+#include <QMainWindow>    // 主窗口基类，提供标题栏、菜单栏等框架
+#include <QImage>         // Qt 图像类，用于显示视频帧
+#include <QCheckBox>      // 复选框控件（算法开关）
+#include <QSlider>        // 滑块控件（参数调节）
+#include <QPushButton>    // 按钮控件（拍照、录像等）
+#include <QLabel>         // 文本标签（FPS、状态显示）
+#include <QElapsedTimer>  // 高精度计时器（FPS 统计）
+#include <QStackedWidget> // 堆叠容器（调试/临床面板切换）
+#include <QComboBox>      // 下拉框（预设选择）
 
-#include "capture/videosource.h"
-#include "processing/imageprocessor.h"
+// === 第三方库 ===
+#include <opencv2/videoio.hpp>  // OpenCV 视频写入（录像功能）
+#include <deque>                // 双端队列（帧缓存，用于冻结选最清晰帧）
 
+// === 项目内部头文件 ===
+#include "capture/videosource.h"        // 视频源抽象基类
+#include "processing/imageprocessor.h"  // 图像处理算法集合
+
+// =====================================================================
+// MainWindow — 主窗口类
+// 继承自 QMainWindow，是整个应用的核心，负责：
+// 1. 界面搭建（setupUi）
+// 2. 视频源管理（setupVideoSource）
+// 3. 帧处理流水线（onFrameReady → processFrame → paintEvent）
+// 4. 用户交互（拍照、录像、冻结、旋转、模式切换、预设管理）
+// =====================================================================
+/*基本结构说明：
 class MainWindow : public QMainWindow {
-    Q_OBJECT
+    Q_OBJECT                          // 1. 必须放最前面
+
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    explicit MainWindow(QWidget *parent = nullptr);  // 2. 构造函数
+    ~MainWindow();                                    //    析构函数
 
 protected:
+    // 3. 重写父类的虚函数
     void paintEvent(QPaintEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
 
+signals:
+    // 4. 自定义信号（本项目没用到，但大项目常见）
+    void someSignal();
+
 private slots:
+    // 5. 槽函数（响应信号的函数）
     void onFrameReady(const QImage &image);
     void onCapturePhoto();
-    void onToggleRecord();
-    void onToggleFreeze();
-    void onRotateImage();
-    void updateFps();
-    void onSwitchMode();          // 切换调试/临床模式
-    void onPresetSelected(int index);  // 选择预设
-    void onExportPreset();        // 导出当前参数为预设
 
 private:
+    // 6. 私有方法
     void setupUi();
     void setupVideoSource();
-    void loadPresets();           // 加载预设文件
-    void applyConfig(const ImageProcessor::Config &cfg);  // 将 Config 同步到界面控件
-    QImage processFrame(const QImage &input);
 
-    // 模式: true=临床模式, false=调试模式
+    // 7. 成员变量
+    VideoSource *m_source;
+    bool m_frozen;
+};
+*/
+class MainWindow : public QMainWindow {
+    // Q_OBJECT 宏：启用 Qt 的信号槽机制和元对象系统
+    // 只要类里用了 signals、slots 或 connect，就必须加这个宏
+    // 编译时 MOC 工具会扫描它，自动生成信号槽所需的额外代码
+    Q_OBJECT
+
+public:
+    // 构造函数：parent 默认为 nullptr，表示顶层窗口
+    // explicit 防止隐式类型转换（Qt 编码规范）
+    explicit MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();  // 析构函数：释放视频源和录像资源
+
+protected:
+    // --- 重写父类虚函数（override 让编译器检查函数签名是否正确）---
+    // 窗口绘制：每次调用 update() 后由 Qt 自动触发，负责画视频帧和 OSD
+    // override 告诉编译器：这个函数是重写父类的虚函数。它的作用是让编译器帮你检查，防止写错：
+    /*调用链：
+    用 update()
+    ↓
+    Qt 事件循环收到重绘请求
+    ↓
+    Qt 内部自动创建 QPaintEvent 对象（包含需要重绘的区域）
+    ↓
+    Qt 自动调用 MainWindow::paintEvent(event)  ← event 是 Qt 传进来的
+    */
+    void paintEvent(QPaintEvent *event) override;
+    // 键盘事件：实现快捷键（Esc/Space/C/R/T）
+    /*调用链
+    用户按下键盘
+    ↓
+    操作系统通知 Qt
+    ↓
+    Qt 自动创建 QKeyEvent 对象（包含按了哪个键）
+    ↓
+    Qt 自动调用 MainWindow::keyPressEvent(event)
+    */
+    void keyPressEvent(QKeyEvent *event) override;
+
+private slots:
+    //slots 在编译时会被替换为空，对 C++ 编译器来说就是普通的 private:。
+    //但 MOC 工具会识别它，知道下面的函数是槽函数，需要生成信号槽连接的代码。
+    // --- 槽函数：响应信号的回调函数，命名以 on 开头 ---
+
+    void onFrameReady(const QImage &image);  // 视频源每产出一帧触发
+    void onCapturePhoto();                    // 拍照
+    void onToggleRecord();                    // 开始/停止录像
+    void onToggleFreeze();                    // 冻结/继续画面（选最清晰帧）
+    void onRotateImage();                     // 旋转 90°
+    void updateFps();                         // 每秒刷新帧率显示
+    void onSwitchMode();                      // 切换调试/临床模式
+    void onPresetSelected(int index);         // 临床模式下选择预设
+    void onExportPreset();                    // 调试模式下导出当前参数为预设
+
+private:
+    // --- 私有方法 ---
+
+    void setupUi();            // 创建界面控件和布局
+    void setupVideoSource();   // 初始化视频源（V4L2 或文件）
+    void loadPresets();        // 从 config/presets/ 加载所有预设文件
+    void applyConfig(const ImageProcessor::Config &cfg);  // 将 Config 同步到界面控件
+    QImage processFrame(const QImage &input);  // 对单帧执行图像处理算法
+
+    // --- 成员变量（m_ 前缀区分局部变量）---
+
+    // 模式标志：true=临床模式（医生用），false=调试模式（工程师用）
     bool m_clinicalMode;
 
-    // 视频源 (V4L2 或文件)
+    // 视频源：指向 V4l2Capture 或 FileCapture（多态，基类指针）
     VideoSource *m_source;
 
-    // 显示
-    QImage m_displayImage;
-    QRect m_videoRect;
+    // 显示相关
+    QImage m_displayImage;  // 当前显示的图像（缩放后）
+    QRect m_videoRect;      // 视频绘制区域的坐标和大小
 
-    // 图像处理开关
-    QCheckBox *m_chkWhiteBalance;
-    QCheckBox *m_chkClahe;
-    QCheckBox *m_chkUndistort;
-    QCheckBox *m_chkDehaze;
-    QCheckBox *m_chkSharpen;
-    QCheckBox *m_chkDenoise;
-    QCheckBox *m_chkEdgeDetect;
-    QCheckBox *m_chkThreshold;
+    // --- 调试模式控件：算法开关（复选框）---
+    QCheckBox *m_chkWhiteBalance;  // 白平衡
+    QCheckBox *m_chkClahe;         // CLAHE 增强
+    QCheckBox *m_chkUndistort;     // 畸变校正
+    QCheckBox *m_chkDehaze;        // 去雾
+    QCheckBox *m_chkSharpen;       // 锐化
+    QCheckBox *m_chkDenoise;       // 降噪
+    QCheckBox *m_chkEdgeDetect;    // 边缘检测
+    QCheckBox *m_chkThreshold;     // 阈值分割
 
-    // 参数滑块
-    QSlider *m_sliderClaheClip;
-    QSlider *m_sliderSharpen;
-    QSlider *m_sliderThreshold;
+    // --- 调试模式控件：参数滑块 ---
+    QSlider *m_sliderClaheClip;    // CLAHE 对比度限制（10~80 → 1.0~8.0）
+    QSlider *m_sliderSharpen;      // 锐化强度（5~30 → 0.5~3.0）
+    QSlider *m_sliderThreshold;    // 阈值（0~255）
 
-    // 操作按钮
-    QPushButton *m_btnCapture;
-    QPushButton *m_btnRecord;
-    QPushButton *m_btnFreeze;
-    QPushButton *m_btnRotate;
+    // --- 操作按钮（两种模式共用）---
+    QPushButton *m_btnCapture;     // 拍照
+    QPushButton *m_btnRecord;      // 录像
+    QPushButton *m_btnFreeze;      // 冻结
+    QPushButton *m_btnRotate;      // 旋转
 
-    // 模式切换
-    QPushButton *m_btnSwitchMode;     // 调试/临床 切换按钮
-    QStackedWidget *m_ctrlStack;      // 右侧面板切换容器
-    QWidget *m_debugPanel;            // 调试模式面板（现有控件）
-    QWidget *m_clinicalPanel;         // 临床模式面板（预设选择）
-    QComboBox *m_cboPreset;           // 预设下拉框
-    QPushButton *m_btnExportPreset;   // 导出预设按钮
+    // --- 模式切换相关控件 ---
+    QPushButton *m_btnSwitchMode;     // "切换到临床模式"/"切换到调试模式"按钮
+    QStackedWidget *m_ctrlStack;      // 面板容器：index 0=调试面板，index 1=临床面板
+    QWidget *m_debugPanel;            // 调试面板（复选框+滑块+导出按钮）
+    QWidget *m_clinicalPanel;         // 临床面板（预设下拉框）
+    QComboBox *m_cboPreset;           // 预设下拉框（胃镜/肠镜/支气管镜）
+    QPushButton *m_btnExportPreset;   // "导出为预设"按钮
 
-    // 预设数据
-    QStringList m_presetNames;
-    QList<ImageProcessor::Config> m_presetConfigs;
+    // --- 预设数据 ---
+    QStringList m_presetNames;                  // 预设名称列表
+    QList<ImageProcessor::Config> m_presetConfigs;  // 预设参数列表（与名称一一对应）
 
-    // 状态
-    QLabel *m_lblStatus;
-    QLabel *m_lblFps;
+    // --- 状态显示 ---
+    QLabel *m_lblStatus;  // 底部状态文字（"就绪"/"录像中..."/"预设: 胃镜模式"等）
+    QLabel *m_lblFps;     // FPS 显示
 
-    // 状态标志
-    bool m_frozen;
-    int m_rotateAngle;
-    bool m_recording;
-    cv::VideoWriter m_videoWriter;
+    // --- 状态标志 ---
+    bool m_frozen;              // 画面是否冻结
+    int m_rotateAngle;          // 旋转角度（0/90/180/270）
+    bool m_recording;           // 是否正在录像
+    cv::VideoWriter m_videoWriter;  // OpenCV 视频写入器
 
-    // 帧缓存（用于冻结时选最清晰帧）
-    static const int FRAME_BUFFER_SIZE = 8;  // 缓存最近 8 帧
-    std::deque<QImage> m_frameBuffer;
+    // --- 帧缓存（冻结时选最清晰帧）---
+    static const int FRAME_BUFFER_SIZE = 8;  // 缓存最近 8 帧（约 0.27 秒 @30fps）
+    std::deque<QImage> m_frameBuffer;        // 双端队列，新帧从尾部进，超出容量从头部丢弃
 
-    // FPS
-    int m_frameCount;
-    QElapsedTimer m_fpsTimer;
+    // --- FPS 统计 ---
+    int m_frameCount;           // 当前秒内的帧计数
+    QElapsedTimer m_fpsTimer;   // 计时器，每秒重置一次
 
-    // 畸变校正 (标定后加载)
-    cv::Mat m_undistortMap1;
-    cv::Mat m_undistortMap2;
-    bool m_undistortReady;
+    // --- 畸变校正（需要 camera_calib.yml 标定文件）---
+    cv::Mat m_undistortMap1;    // 畸变校正映射表 X（预计算，每帧查表）
+    cv::Mat m_undistortMap2;    // 畸变校正映射表 Y
+    bool m_undistortReady;      // 标定文件是否加载成功
 
-    // 算法配置
+    // --- 算法配置 ---
+    // 调试模式：每帧从界面控件读取
+    // 临床模式：由 onPresetSelected 一次性设置
     ImageProcessor::Config m_procConfig;
 };
 
