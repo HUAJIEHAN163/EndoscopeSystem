@@ -1,35 +1,70 @@
+// 条件编译：只有定义了 ENABLE_V4L2 才编译这个文件
+// CMakeLists.txt 中 add_definitions(-DENABLE_V4L2) 控制
 #ifdef ENABLE_V4L2
 
 #include "capture/v4l2capture.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
-#include <sys/mman.h>
-#include <sys/select.h>
-#include <cstring>
-#include <QDebug>
-#include <opencv2/imgproc.hpp>
 
+// === Linux 系统头文件 ===
+#include <fcntl.h>        // open() 的标志位（O_RDWR、O_NONBLOCK）
+#include <unistd.h>       // close()、read()、write()
+#include <sys/ioctl.h>    // ioctl() — 设备控制的核心系统调用
+#include <sys/mman.h>     // mmap() / munmap() — 内存映射
+#include <sys/select.h>   // select() — 等待设备数据就绪
+#include <cstring>        // memset()、strerror()
+
+// === Qt / OpenCV ===
+#include <QDebug>             // qDebug 调试输出
+#include <opencv2/imgproc.hpp> // cvtColor 颜色空间转换
+
+// =====================================================================
+// xioctl — ioctl 的安全封装
+// ioctl 可能被系统信号中断（返回 -1，errno == EINTR），需要重试
+// 所有 V4L2 操作都通过这个函数调用 ioctl
+// =====================================================================
 int V4l2Capture::xioctl(int fd, int request, void *arg) {
     int r;
     do { r = ioctl(fd, request, arg); }
-    while (r == -1 && errno == EINTR);
+    while (r == -1 && errno == EINTR);  // 被信号中断就重试
     return r;
 }
 
+// =====================================================================
+// 构造函数
+// 只保存参数，不做任何硬件操作（硬件操作在 open() 中）
+// =====================================================================
 V4l2Capture::V4l2Capture(const std::string &device, int width, int height,
                          int fps, int bufferCount, QObject *parent)
-    : VideoSource(parent), m_device(device), m_fd(-1),
-      m_width(width), m_height(height), m_fps(fps),
-      m_bufferCount(bufferCount), m_pixelFormat(V4L2_PIX_FMT_YUYV) {}
+    : VideoSource(parent),          // 调用父类构造函数（设置 parent，m_running = false）
+      m_device(device),             // 设备路径，如 "/dev/video0"
+      m_fd(-1),                     // 文件描述符，-1 表示未打开
+      m_width(width),               // 期望宽度
+      m_height(height),             // 期望高度
+      m_fps(fps),                   // 期望帧率
+      m_bufferCount(bufferCount),   // 缓冲区数量（通常 4 个）
+      m_pixelFormat(V4L2_PIX_FMT_YUYV) {} // 默认像素格式 YUYV
 
+// =====================================================================
+// 析构函数
+// 确保线程停止、资源释放
+// =====================================================================
 V4l2Capture::~V4l2Capture() {
-    stop();
-    wait();
-    close();
+    stop();   // m_running = false，通知 run() 循环退出
+    wait();   // 等待线程真正结束（QThread::wait）
+    close();  // 关闭设备、释放 mmap 缓冲区
 }
 
+// =====================================================================
+// open — 打开设备并完成初始化
+//
+// 完整流程：
+//   open 设备 → 查询能力 → 枚举格式 → 设置格式 → 设置帧率 → 申请缓冲区
+//
+// 这是 V4L2 的标准初始化流程，几乎所有 V4L2 程序都是这个顺序
+// =====================================================================
 bool V4l2Capture::open() {
+    // 打开设备文件
+    // O_RDWR：可读可写（采集需要读，控制参数需要写）
+    // O_NONBLOCK：非阻塞模式（配合 select 使用，避免 read 卡死）
     m_fd = ::open(m_device.c_str(), O_RDWR | O_NONBLOCK);
     if (m_fd < 0) {
         emit errorOccurred(QString("无法打开设备: %1 (%2)")
@@ -37,45 +72,57 @@ bool V4l2Capture::open() {
         return false;
     }
 
-    if (!queryCapability()) return false;
-    enumFormats(); // 仅打印信息，不影响流程
-    if (!tryAndSetFormat()) return false;
-    if (!setFrameRate()) return false;
-    if (!requestBuffers()) return false;
+    // 按顺序执行初始化步骤，任何一步失败都返回 false
+    if (!queryCapability()) return false;  // 1. 查询设备能力
+    enumFormats();                          // 2. 枚举支持的格式（仅打印，不影响流程）
+    if (!tryAndSetFormat()) return false;   // 3. 设置像素格式和分辨率
+    if (!setFrameRate()) return false;      // 4. 设置帧率
+    if (!requestBuffers()) return false;    // 5. 申请缓冲区并 mmap 映射
 
     qDebug() << QString("V4L2 就绪: %1x%2 @ %3fps, %4 buffers")
                 .arg(m_width).arg(m_height).arg(m_fps).arg(m_bufferCount);
     return true;
 }
 
+// =====================================================================
+// close — 关闭设备，释放所有资源
+// =====================================================================
 void V4l2Capture::close() {
     if (m_fd >= 0) {
-        stopStreaming();
-        releaseBuffers();
-        ::close(m_fd);
+        stopStreaming();    // 停止视频流
+        releaseBuffers();   // 解除 mmap 映射
+        ::close(m_fd);      // 关闭文件描述符（:: 表示调用全局的 close，不是类的 close）
         m_fd = -1;
     }
 }
 
-// === V4L2 初始化流程 ===
+// =====================================================================
+// V4L2 初始化流程 — 逐步详解
+// =====================================================================
 
+// --- 第 1 步：查询设备能力 ---
+// 确认设备支持视频采集和 streaming I/O
 bool V4l2Capture::queryCapability() {
-    struct v4l2_capability cap;
-    memset(&cap, 0, sizeof(cap));
+    struct v4l2_capability cap;     // V4L2 能力结构体
+    memset(&cap, 0, sizeof(cap));   // 清零（V4L2 要求结构体先清零）
 
+    // VIDIOC_QUERYCAP：查询设备能力
     if (xioctl(m_fd, VIDIOC_QUERYCAP, &cap) < 0) {
         emit errorOccurred("VIDIOC_QUERYCAP 失败");
         return false;
     }
 
-    qDebug() << "Driver:" << (char*)cap.driver
-             << "Card:" << (char*)cap.card
-             << "Bus:" << (char*)cap.bus_info;
+    // 打印设备信息（调试用）
+    qDebug() << "Driver:" << (char*)cap.driver      // 驱动名，如 "ov5640"
+             << "Card:" << (char*)cap.card           // 设备名
+             << "Bus:" << (char*)cap.bus_info;       // 总线信息
 
+    // 检查是否支持视频采集
     if (!(cap.capabilities & V4L2_CAP_VIDEO_CAPTURE)) {
         emit errorOccurred("设备不支持视频采集");
         return false;
     }
+    // 检查是否支持 streaming I/O（mmap 方式需要）
     if (!(cap.capabilities & V4L2_CAP_STREAMING)) {
         emit errorOccurred("设备不支持 streaming I/O");
         return false;
@@ -83,79 +130,99 @@ bool V4l2Capture::queryCapability() {
     return true;
 }
 
+// --- 第 2 步：枚举支持的像素格式 ---
+// 仅打印信息，不影响流程，帮助开发者了解设备支持什么格式
 bool V4l2Capture::enumFormats() {
     struct v4l2_fmtdesc fmt;
     memset(&fmt, 0, sizeof(fmt));
     fmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
 
     qDebug() << "支持的像素格式:";
+    // VIDIOC_ENUM_FMT：枚举格式，index 从 0 开始递增，直到返回失败
     while (xioctl(m_fd, VIDIOC_ENUM_FMT, &fmt) == 0) {
         qDebug() << QString("  [%1] %2 (0x%3)")
                     .arg(fmt.index)
-                    .arg((char*)fmt.description)
+                    .arg((char*)fmt.description)     // 格式描述，如 "YUYV 4:2:2"
                     .arg(fmt.pixelformat, 8, 16, QChar('0'));
         fmt.index++;
     }
     return true;
 }
 
+// --- 第 3 步：设置像素格式和分辨率 ---
 bool V4l2Capture::tryAndSetFormat() {
     struct v4l2_format fmt;
     memset(&fmt, 0, sizeof(fmt));
     fmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-    fmt.fmt.pix.width = m_width;
-    fmt.fmt.pix.height = m_height;
-    fmt.fmt.pix.pixelformat = V4L2_PIX_FMT_YUYV;
-    fmt.fmt.pix.field = V4L2_FIELD_NONE;
+    fmt.fmt.pix.width = m_width;              // 期望宽度
+    fmt.fmt.pix.height = m_height;            // 期望高度
+    fmt.fmt.pix.pixelformat = V4L2_PIX_FMT_YUYV;  // YUYV 格式（内窥镜常用）
+    fmt.fmt.pix.field = V4L2_FIELD_NONE;      // 逐行扫描（非隔行）
 
-    // 先 TRY，让驱动调整到最接近的参数
+    // VIDIOC_TRY_FMT：试探性设置，驱动会调整到最接近的支持参数
+    // 不会真正生效，只是让驱动告诉你它能支持什么
     if (xioctl(m_fd, VIDIOC_TRY_FMT, &fmt) < 0) {
         qDebug() << "TRY_FMT 失败，尝试直接设置";
     }
 
-    // 驱动可能调整了分辨率
+    // 驱动可能调整了分辨率（比如请求 640x480，驱动只支持 320x240）
     if ((int)fmt.fmt.pix.width != m_width || (int)fmt.fmt.pix.height != m_height) {
         qDebug() << QString("分辨率被调整: %1x%2 -> %3x%4")
                     .arg(m_width).arg(m_height)
                     .arg(fmt.fmt.pix.width).arg(fmt.fmt.pix.height);
-        m_width = fmt.fmt.pix.width;
+        m_width = fmt.fmt.pix.width;    // 更新为实际分辨率
         m_height = fmt.fmt.pix.height;
     }
 
+    // VIDIOC_S_FMT：正式设置格式
     if (xioctl(m_fd, VIDIOC_S_FMT, &fmt) < 0) {
         emit errorOccurred("VIDIOC_S_FMT 失败");
         return false;
     }
 
-    m_pixelFormat = fmt.fmt.pix.pixelformat;
+    m_pixelFormat = fmt.fmt.pix.pixelformat;  // 记录实际使用的格式
     return true;
 }
 
+// --- 第 4 步：设置帧率 ---
 bool V4l2Capture::setFrameRate() {
     struct v4l2_streamparm parm;
     memset(&parm, 0, sizeof(parm));
     parm.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    // 帧率 = denominator / numerator，如 30/1 = 30fps
     parm.parm.capture.timeperframe.numerator = 1;
     parm.parm.capture.timeperframe.denominator = m_fps;
 
+    // 帧率设置失败不致命，使用驱动默认帧率
     if (xioctl(m_fd, VIDIOC_S_PARM, &parm) < 0) {
         qDebug() << "设置帧率失败，使用默认帧率";
     }
     return true;
 }
 
+// --- 第 5 步：申请缓冲区并 mmap 映射 ---
+// 这是 V4L2 最核心的部分：在内核中分配缓冲区，然后映射到用户空间
+//
+// 流程：
+//   REQBUFS（申请 N 个缓冲区）
+//     → QUERYBUF（查询每个缓冲区的地址和大小）
+//       → mmap（映射到用户空间，用户可以直接读取像素数据）
+//         → QBUF（把缓冲区放入采集队列，等待驱动填充数据）
 bool V4l2Capture::requestBuffers() {
+    // 1. 申请缓冲区
     struct v4l2_requestbuffers req;
     memset(&req, 0, sizeof(req));
-    req.count = m_bufferCount;
+    req.count = m_bufferCount;                // 请求的缓冲区数量（通常 4 个）
     req.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-    req.memory = V4L2_MEMORY_MMAP;
+    req.memory = V4L2_MEMORY_MMAP;            // 使用 mmap 方式（零拷贝）
 
+    // VIDIOC_REQBUFS：让内核分配缓冲区
     if (xioctl(m_fd, VIDIOC_REQBUFS, &req) < 0) {
         emit errorOccurred("VIDIOC_REQBUFS 失败");
         return false;
     }
 
+    // 2. 逐个查询并映射缓冲区
     m_buffers.resize(req.count);
     for (unsigned i = 0; i < req.count; i++) {
         struct v4l2_buffer buf;
@@ -164,11 +231,16 @@ bool V4l2Capture::requestBuffers() {
         buf.memory = V4L2_MEMORY_MMAP;
         buf.index = i;
 
+        // VIDIOC_QUERYBUF：查询缓冲区的偏移量和大小
         if (xioctl(m_fd, VIDIOC_QUERYBUF, &buf) < 0) {
             emit errorOccurred("VIDIOC_QUERYBUF 失败");
             return false;
         }
 
+        // mmap：把内核缓冲区映射到用户空间
+        // 映射后 m_buffers[i].start 直接指向像素数据，不需要 copy
+        // PROT_READ | PROT_WRITE：可读可写
+        // MAP_SHARED：与内核共享（驱动写入的数据用户立刻能看到）
         m_buffers[i].length = buf.length;
         m_buffers[i].start = mmap(NULL, buf.length,
                                   PROT_READ | PROT_WRITE,
@@ -178,6 +250,8 @@ bool V4l2Capture::requestBuffers() {
             return false;
         }
 
+        // VIDIOC_QBUF：把缓冲区放入采集队列
+        // 驱动会从队列中取出空缓冲区，填充摄像头数据
         if (xioctl(m_fd, VIDIOC_QBUF, &buf) < 0) {
             emit errorOccurred("VIDIOC_QBUF 初始入队失败");
             return false;
@@ -186,8 +260,11 @@ bool V4l2Capture::requestBuffers() {
     return true;
 }
 
+// --- 开始/停止视频流 ---
+
 bool V4l2Capture::startStreaming() {
     enum v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    // VIDIOC_STREAMON：开始采集，驱动开始往缓冲区填数据
     if (xioctl(m_fd, VIDIOC_STREAMON, &type) < 0) {
         emit errorOccurred("VIDIOC_STREAMON 失败");
         return false;
@@ -197,29 +274,46 @@ bool V4l2Capture::startStreaming() {
 
 bool V4l2Capture::stopStreaming() {
     enum v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    // VIDIOC_STREAMOFF：停止采集
     return xioctl(m_fd, VIDIOC_STREAMOFF, &type) == 0;
 }
 
+// --- 释放 mmap 映射 ---
 void V4l2Capture::releaseBuffers() {
     for (auto &b : m_buffers) {
         if (b.start && b.start != MAP_FAILED)
-            munmap(b.start, b.length);
+            munmap(b.start, b.length);  // 解除映射
     }
     m_buffers.clear();
 }
 
+// =====================================================================
+// grabFrame — 采集一帧
+//
+// 流程：
+//   select 等待数据就绪 → DQBUF 取出填好的缓冲区 → 读取数据 → QBUF 归还缓冲区
+//
+// 缓冲区轮转机制（以 4 个 buffer 为例）：
+//   初始：[队列: buf0, buf1, buf2, buf3]  全部在队列中等待填充
+//   驱动填充 buf0 → DQBUF 取出 buf0 → 用户读取 → QBUF 归还 buf0
+//   驱动填充 buf1 → DQBUF 取出 buf1 → 用户读取 → QBUF 归还 buf1
+//   ...循环往复，保证始终有 buffer 在队列中等待驱动填充
+// =====================================================================
 bool V4l2Capture::grabFrame(void **data, int *size) {
+    // select：等待设备有数据可读（最多等 2 秒）
+    // 比直接 read 好：不会卡死线程，超时可以检查 m_running 决定是否退出
     fd_set fds;
     FD_ZERO(&fds);
     FD_SET(m_fd, &fds);
 
     struct timeval tv;
-    tv.tv_sec = 2;
+    tv.tv_sec = 2;      // 超时 2 秒
     tv.tv_usec = 0;
 
     int r = select(m_fd + 1, &fds, NULL, NULL, &tv);
-    if (r <= 0) return false;
+    if (r <= 0) return false;  // 超时或出错
 
+    // VIDIOC_DQBUF：从队列中取出一个已填充数据的缓冲区
     struct v4l2_buffer buf;
     memset(&buf, 0, sizeof(buf));
     buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
@@ -227,52 +321,74 @@ bool V4l2Capture::grabFrame(void **data, int *size) {
 
     if (xioctl(m_fd, VIDIOC_DQBUF, &buf) < 0) return false;
 
+    // 通过 mmap 映射的指针直接访问像素数据（零拷贝）
     *data = m_buffers[buf.index].start;
     *size = buf.bytesused;
 
+    // VIDIOC_QBUF：归还缓冲区到队列，让驱动可以再次使用
     if (xioctl(m_fd, VIDIOC_QBUF, &buf) < 0) return false;
 
     return true;
 }
 
-// === 采集线程主循环 ===
-
+// =====================================================================
+// run — 采集线程主循环（在独立线程中执行）
+//
+// 数据流：
+//   摄像头 → YUYV 原始数据 → BGR → RGB → QImage → emit frameReady → 主线程
+//
+// 为什么要两次颜色转换：
+//   YUYV → BGR：OpenCV 默认使用 BGR 格式（所有算法基于 BGR）
+//   BGR → RGB：QImage 使用 RGB 格式（Qt 显示需要 RGB）
+// =====================================================================
 void V4l2Capture::run() {
-    if (!startStreaming()) return;
-    m_running = true;
+    if (!startStreaming()) return;  // 开始视频流
+    m_running = true;               // 设置运行标志（atomic，主线程可安全读取）
 
-    while (m_running) {
+    while (m_running) {             // 主线程调 stop() 设为 false 时退出
         void *data = nullptr;
         int size = 0;
 
         if (!grabFrame(&data, &size)) {
-            if (m_running)
+            if (m_running)          // 排除正常停止的情况
                 qDebug() << "采集帧超时";
-            continue;
+            continue;               // 超时不退出，继续尝试
         }
 
-        // YUYV → BGR → QImage
+        // YUYV → BGR（OpenCV 格式）
+        // CV_8UC2：每个像素 2 字节（YUYV 格式，两个像素共享 UV）
+        // data 指向 mmap 缓冲区，不需要拷贝
         cv::Mat yuyv(m_height, m_width, CV_8UC2, data);
         cv::Mat bgr;
         cv::cvtColor(yuyv, bgr, cv::COLOR_YUV2BGR_YUYV);
 
-        // BGR → RGB → QImage (深拷贝，因为 data 指向 mmap 缓冲区)
+        // BGR → RGB → QImage
         cv::Mat rgb;
         cv::cvtColor(bgr, rgb, cv::COLOR_BGR2RGB);
         QImage image(rgb.data, rgb.cols, rgb.rows,
                      rgb.step, QImage::Format_RGB888);
+
+        // image.copy()：深拷贝！
+        // 因为 rgb.data 指向的内存在下一帧会被覆盖
+        // 必须拷贝一份独立的数据，通过信号传给主线程
         emit frameReady(image.copy());
     }
 
-    stopStreaming();
+    stopStreaming();  // 循环结束，停止视频流
 }
 
-// === V4L2 Controls ===
+// =====================================================================
+// V4L2 Controls — 硬件参数控制
+//
+// 通过 ioctl + VIDIOC_S_CTRL / VIDIOC_G_CTRL 控制摄像头硬件参数
+// 这些参数由 Sensor（OV5640）的驱动提供，不同 Sensor 支持的参数不同
+// =====================================================================
 
+// 通用的设置/获取控制参数方法
 bool V4l2Capture::setControl(uint32_t id, int value) {
     struct v4l2_control ctrl;
-    ctrl.id = id;
-    ctrl.value = value;
+    ctrl.id = id;        // 参数 ID（如 V4L2_CID_GAIN）
+    ctrl.value = value;  // 要设置的值
     return xioctl(m_fd, VIDIOC_S_CTRL, &ctrl) == 0;
 }
 
@@ -283,6 +399,7 @@ int V4l2Capture::getControl(uint32_t id) {
     return ctrl.value;
 }
 
+// 各参数的快捷方法（内部都调用 setControl）
 bool V4l2Capture::setExposure(int value)        { return setControl(V4L2_CID_EXPOSURE, value); }
 bool V4l2Capture::setAutoExposure(bool enable)  { return setControl(V4L2_CID_EXPOSURE_AUTO, enable ? 0 : 1); }
 bool V4l2Capture::setGain(int value)            { return setControl(V4L2_CID_GAIN, value); }
