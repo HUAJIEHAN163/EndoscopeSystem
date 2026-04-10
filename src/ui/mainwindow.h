@@ -113,22 +113,31 @@ private slots:
     void onRotateImage();                     // 旋转 90°
     void updateFps();                         // 每秒刷新帧率显示
     void onSwitchMode();                      // 切换调试/临床模式
+    void onEnterEditMode();                    // 进入图像编辑模式
+    void onSelectImage();                      // 打开图像选择弹窗
+    void onSaveEditedImage();                  // 保存编辑后的图像
+    void onDeleteImage();                      // 删除当前图像
+    void onEditParamChanged();                 // 编辑参数变化时实时预览
     void onPresetSelected(int index);         // 临床模式下选择预设
     void onExportPreset();                    // 调试模式下导出当前参数为预设
 
 private:
     // --- 私有方法 ---
 
-    void setupUi();            // 创建界面控件和布局
-    void setupVideoSource();   // 初始化视频源（V4L2 或文件）
-    void loadPresets();        // 从 config/presets/ 加载所有预设文件
-    void applyConfig(const ImageProcessor::Config &cfg);  // 将 Config 同步到界面控件
-    QImage processFrame(const QImage &input);  // 对单帧执行图像处理算法
+    void setupUi();
+    void setupVideoSource();
+    void loadPresets();
+    void applyConfig(const ImageProcessor::Config &cfg);
+    QImage processFrame(const QImage &input);
+    void switchToMode(int mode);  // 0=调试, 1=临床, 2=图像编辑
 
     // --- 成员变量（m_ 前缀区分局部变量）---
 
     // 模式标志：true=临床模式（医生用），false=调试模式（工程师用）
     bool m_clinicalMode;
+
+    // --- 当前模式：0=调试, 1=临床, 2=图像编辑 ---
+    int m_currentMode;
 
     // 视频源：指向 V4l2Capture 或 FileCapture（多态，基类指针）
     VideoSource *m_source;
@@ -148,15 +157,19 @@ private:
     QCheckBox *m_chkClahe;         // CLAHE 增强
     QCheckBox *m_chkUndistort;     // 畸变校正
     QCheckBox *m_chkDehaze;        // 去雾
-    QCheckBox *m_chkSharpen;       // 锐化
-    QCheckBox *m_chkDenoise;       // 降噪
-    QCheckBox *m_chkEdgeDetect;    // 边缘检测
-    QCheckBox *m_chkThreshold;     // 阈值分割
+    QCheckBox *m_chkSharpen;       // 锐化（待移至图像编辑页）
+    QCheckBox *m_chkDenoise;       // 降噪（待移至图像编辑页）
+    QCheckBox *m_chkEdgeDetect;    // 边缘检测（待移至图像编辑页）
+    QCheckBox *m_chkThreshold;     // 阈值分割（待移至图像编辑页）
 
     // --- 调试模式控件：参数滑块 ---
     QSlider *m_sliderClaheClip;    // CLAHE 对比度限制（10~80 → 1.0~8.0）
-    QSlider *m_sliderSharpen;      // 锐化强度（5~30 → 0.5~3.0）
-    QSlider *m_sliderThreshold;    // 阈值（0~255）
+    QSlider *m_sliderSharpen;      // 锐化强度（待移至图像编辑页）
+    QSlider *m_sliderThreshold;    // 阈值（待移至图像编辑页）
+
+    // --- 拍照用原始帧缓存 ---
+    QImage m_latestRawFrame;       // 最新原始帧（全分辨率，未经软件处理）
+    QString m_savePath;             // 存储路径（开发板: /mnt/nfs，虚拟机: .）
 
     // --- 操作按钮（两种模式共用）---
     QPushButton *m_btnCapture;     // 拍照
@@ -166,9 +179,28 @@ private:
 
     // --- 模式切换相关控件 ---
     QPushButton *m_btnSwitchMode;     // "切换到临床模式"/"切换到调试模式"按钮
-    QStackedWidget *m_ctrlStack;      // 面板容器：index 0=调试面板，index 1=临床面板
-    QWidget *m_debugPanel;            // 调试面板（复选框+滑块+导出按钮）
-    QWidget *m_clinicalPanel;         // 临床面板（预设下拉框）
+    QStackedWidget *m_ctrlStack;      // 面板容器：index 0=调试, 1=临床, 2=图像编辑
+    QWidget *m_debugPanel;            // 调试面板
+    QWidget *m_clinicalPanel;         // 临床面板
+    QWidget *m_editPanel;             // 图像编辑面板
+
+    // --- 模式切换按钮（三个固定按钮）---
+    QPushButton *m_btnModeDebug;
+    QPushButton *m_btnModeClinical;
+    QPushButton *m_btnModeEdit;
+
+    // --- 图像编辑模式控件 ---
+    QPushButton *m_btnSelectImage;    // 图像选择
+    QPushButton *m_btnSaveEdit;       // 保存
+    QPushButton *m_btnDeleteImage;    // 删除
+    QCheckBox *m_chkEditSharpen;      // 锐化
+    QSlider *m_sliderEditSharpen;     // 锐化强度
+    QCheckBox *m_chkEditDenoise;      // 降噪
+    QCheckBox *m_chkEditEdge;         // 边缘检测
+    QCheckBox *m_chkEditThreshold;    // 阈值分割
+    QSlider *m_sliderEditThreshold;   // 阈值
+    QImage m_editSourceImage;         // 编辑源图（原始全分辨率）
+    QString m_editImagePath;          // 当前编辑图像的文件路径
     QComboBox *m_cboPreset;           // 预设下拉框（胃镜/肠镜/支气管镜）
     QPushButton *m_btnExportPreset;   // "导出为预设"按钮
 
