@@ -1,27 +1,24 @@
-// === 项目内部头文件 ===
 #include "ui/mainwindow.h"      // 主窗口类声明
 #include "ui/presetmanager.h"   // 预设管理器
 #include "capture/filecapture.h" // 文件视频源（虚拟机测试用）
 #include "utils/imageconvert.h"  // QImage ↔ cv::Mat 转换工具
 
-// 条件编译：只有在 Linux 且开启 V4L2 时才引入摄像头采集
 #ifdef ENABLE_V4L2
 #include "capture/v4l2capture.h"
 #endif
 
-// === Qt 头文件 ===
-#include <QPainter>     // 绘图（在窗口上画视频帧和 OSD）
-#include <QVBoxLayout>  // 垂直布局管理器
-#include <QHBoxLayout>  // 水平布局管理器
-#include <QGroupBox>    // 分组框（界面上的"内窥镜算法""通用算法"等框）
-#include <QDateTime>    // 日期时间（拍照/录像文件名、OSD 时间戳）
-#include <QKeyEvent>    // 键盘事件（快捷键）
-#include <QDir>         // 目录操作（创建 captures/videos 文件夹）
-#include <QTimer>       // 定时器（每秒刷新 FPS）
-#include <QSettings>    // 配置文件读取（endoscope.conf）
-#include <QDebug>       // 调试输出（qDebug）
-#include <QFileInfo>    // 文件信息（判断设备/视频文件是否存在）
-#include <QInputDialog> // 输入对话框（导出预设时输入名称）
+#include <QPainter>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QGroupBox>
+#include <QDateTime>
+#include <QKeyEvent>
+#include <QDir>
+#include <QTimer>
+#include <QSettings>
+#include <QDebug>
+#include <QFileInfo>
+#include <QInputDialog>
 
 // ===================== 构造函数 =====================
 // 程序启动时 main.cpp 中 MainWindow window; 会调用这里
@@ -124,7 +121,7 @@ void MainWindow::setupUi() {
     // ==============================================================
     QWidget *videoArea = new QWidget;
 #ifdef __arm__
-    videoArea->setMinimumSize(480, 360);
+    videoArea->setMinimumSize(460, 360);
 #else
     videoArea->setMinimumSize(640, 480);
 #endif
@@ -132,7 +129,7 @@ void MainWindow::setupUi() {
     videoArea->setStyleSheet("");  // 不设样式，背景在 paintEvent 中绘制
     mainLayout->addWidget(videoArea, 1);  // 拉伸因子 1，优先占据剩余空间
 #ifdef __arm__
-    m_videoRect = QRect(4, 4, 480, 360);
+    m_videoRect = QRect(4, 4, 460, 360);
 #else
     m_videoRect = QRect(4, 4, 640, 480);
 #endif
@@ -157,38 +154,68 @@ void MainWindow::setupUi() {
 
     // ==============================================================
     // 调试面板（index 0）— 工程师用，所有参数可调
-    // 父子关系：m_debugPanel → debugLayout → endoGroup/generalGroup → 各控件
+    // 分组框可折叠：点击标题展开/收起，节省 800x480 小屏空间
     // ==============================================================
     m_debugPanel = new QWidget;
-    QVBoxLayout *debugLayout = new QVBoxLayout(m_debugPanel);  // 布局绑定到 m_debugPanel
-    debugLayout->setSpacing(4);
-    debugLayout->setContentsMargins(0, 0, 0, 0);  // 无额外边距
+    QVBoxLayout *debugLayout = new QVBoxLayout(m_debugPanel);
+    debugLayout->setSpacing(2);
+    debugLayout->setContentsMargins(0, 0, 0, 0);
+
+    // 折叠辅助函数：点击标题时显示/隐藏内容
+    auto makeCollapsible = [](QGroupBox *group, bool expanded) {
+        group->setCheckable(true);
+        group->setChecked(expanded);
+        // 勾选 = 展开，取消 = 收起（隐藏内部控件）
+        QObject::connect(group, &QGroupBox::toggled, [group](bool checked) {
+            for (auto *child : group->findChildren<QWidget*>(QString(), Qt::FindDirectChildrenOnly))
+                child->setVisible(checked);
+        });
+        // 初始状态
+        if (!expanded) {
+            for (auto *child : group->findChildren<QWidget*>(QString(), Qt::FindDirectChildrenOnly))
+                child->setVisible(false);
+        }
+    };
+
+    // -- 硬件参数分组框（OV5640）--
+    m_hwGroup = new QGroupBox("硬件参数 (OV5640)");
+    QGridLayout *hwLayout = new QGridLayout(m_hwGroup);
+    hwLayout->setSpacing(2);
+
+    m_chkAutoWhiteBalance = new QCheckBox("自动白平衡");
+    m_chkAutoWhiteBalance->setChecked(true);
+    m_chkAutoExposure = new QCheckBox("自动曝光");
+    m_chkAutoExposure->setChecked(true);
+    m_chkHFlip = new QCheckBox("水平翻转");
+    m_chkVFlip = new QCheckBox("垂直翻转");
+
+    hwLayout->addWidget(m_chkAutoWhiteBalance, 0, 0);
+    hwLayout->addWidget(m_chkAutoExposure,     0, 1);
+    hwLayout->addWidget(m_chkHFlip,            1, 0);
+    hwLayout->addWidget(m_chkVFlip,            1, 1);
+    makeCollapsible(m_hwGroup, false);  // 默认收起
+    debugLayout->addWidget(m_hwGroup);
 
     // -- 内窥镜算法分组框 --
-    // QGroupBox 显示为带标题的边框，视觉上把相关控件归为一组
     QGroupBox *endoGroup = new QGroupBox("内窥镜算法");
-    QVBoxLayout *endoLayout = new QVBoxLayout(endoGroup);  // endoGroup 内部垂直排列
+    QVBoxLayout *endoLayout = new QVBoxLayout(endoGroup);
     endoLayout->setSpacing(2);
 
-    // 四个复选框：勾选后对应算法在 processFrame 中生效
-    m_chkWhiteBalance = new QCheckBox("白平衡校正");
     m_chkClahe = new QCheckBox("CLAHE增强");
     m_chkUndistort = new QCheckBox("畸变校正");
     m_chkDehaze = new QCheckBox("去雾");
 
-    // addWidget 把控件加入布局，同时自动设置 parent 为 endoGroup
-    endoLayout->addWidget(m_chkWhiteBalance);
     endoLayout->addWidget(m_chkClahe);
 
-    // CLAHE 参数滑块：整数 10~80，processFrame 中除以 10 得到实际值 1.0~8.0
-    m_sliderClaheClip = new QSlider(Qt::Horizontal);  // 水平滑块
+    m_sliderClaheClip = new QSlider(Qt::Horizontal);
     m_sliderClaheClip->setRange(10, 80);
-    m_sliderClaheClip->setValue(30);  // 默认 3.0
+    m_sliderClaheClip->setValue(30);
     endoLayout->addWidget(m_sliderClaheClip);
 
     endoLayout->addWidget(m_chkUndistort);
     endoLayout->addWidget(m_chkDehaze);
-    debugLayout->addWidget(endoGroup);  // 把整个分组框加入调试面板布局
+    makeCollapsible(endoGroup, true);  // 默认展开
+    debugLayout->addWidget(endoGroup);
 
     // -- 通用算法分组框 --
     QGroupBox *generalGroup = new QGroupBox("通用算法");
@@ -196,18 +223,16 @@ void MainWindow::setupUi() {
     generalLayout->setSpacing(2);
 
     m_chkSharpen = new QCheckBox("锐化");
-    // 锐化强度滑块：整数 5~30 → 实际值 0.5~3.0
     m_sliderSharpen = new QSlider(Qt::Horizontal);
     m_sliderSharpen->setRange(5, 30);
-    m_sliderSharpen->setValue(15);  // 默认 1.5
+    m_sliderSharpen->setValue(15);
 
     m_chkDenoise = new QCheckBox("降噪");
     m_chkEdgeDetect = new QCheckBox("边缘检测");
     m_chkThreshold = new QCheckBox("阈值分割");
-    // 阈值滑块：0~255，直接对应灰度阈值
     m_sliderThreshold = new QSlider(Qt::Horizontal);
     m_sliderThreshold->setRange(0, 255);
-    m_sliderThreshold->setValue(128);  // 默认中间值
+    m_sliderThreshold->setValue(128);
 
     generalLayout->addWidget(m_chkSharpen);
     generalLayout->addWidget(m_sliderSharpen);
@@ -215,17 +240,26 @@ void MainWindow::setupUi() {
     generalLayout->addWidget(m_chkEdgeDetect);
     generalLayout->addWidget(m_chkThreshold);
     generalLayout->addWidget(m_sliderThreshold);
+    makeCollapsible(generalGroup, false);  // 默认收起
     debugLayout->addWidget(generalGroup);
 
-    // 导出预设按钮：把当前调好的参数保存为 JSON 文件
+    // 导出预设按钮
     m_btnExportPreset = new QPushButton("导出为预设");
     connect(m_btnExportPreset, &QPushButton::clicked, this, &MainWindow::onExportPreset);
     debugLayout->addWidget(m_btnExportPreset);
 
-    // addStretch 添加弹簧，把上面的控件推到顶部，下面留空
     debugLayout->addStretch();
-    // 把调试面板加入 QStackedWidget，index = 0
-    m_ctrlStack->addWidget(m_debugPanel);
+
+    // 用 QScrollArea 包裹调试面板，内容超出时可滚动
+    QScrollArea *debugScroll = new QScrollArea;
+    debugScroll->setWidget(m_debugPanel);
+    debugScroll->setWidgetResizable(true);
+    debugScroll->setFrameShape(QFrame::NoFrame);
+    debugScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);  // 禁用水平滚动条
+    debugScroll->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);     // 垂直滚动条按需显示
+    // 触屏滑动：手指拖动即可滚动，不需要点击滚动条
+    QScroller::grabGesture(debugScroll->viewport(), QScroller::LeftMouseButtonGesture);
+    m_ctrlStack->addWidget(debugScroll);
 
     // ==============================================================
     // 临床面板（index 1）— 医生用，只有预设选择
@@ -255,7 +289,11 @@ void MainWindow::setupUi() {
     // 把 QStackedWidget 加入右侧布局
     // 固定右侧控制面板宽度，防止切换模式时变窄
     m_ctrlStack->setMinimumHeight(300);
+#ifdef __arm__
+    m_ctrlStack->setFixedWidth(300);  // 开发板加宽，避免文字截断
+#else
     m_ctrlStack->setFixedWidth(250);
+#endif
     rightLayout->addWidget(m_ctrlStack);
 
     // 把右侧整体布局加入上方水平布局
@@ -366,6 +404,39 @@ void MainWindow::setupVideoSource() {
     });
 
     m_source->start();  // 启动采集线程，开始产出视频帧
+
+    // 硬件参数区：只有 V4L2 摄像头时才可用
+#ifdef ENABLE_V4L2
+    bool hasHardware = (dynamic_cast<V4l2Capture*>(m_source) != nullptr);
+#else
+    bool hasHardware = false;
+#endif
+    m_hwGroup->setEnabled(hasHardware);
+    if (!hasHardware)
+        m_hwGroup->setToolTip("仅开发板摄像头可用");
+
+    // 开发板上默认开启硬件白平衡和自动曝光
+#ifdef ENABLE_V4L2
+    if (hasHardware) {
+        auto *v4l2 = dynamic_cast<V4l2Capture*>(m_source);
+        v4l2->setAutoWhiteBalance(true);
+        v4l2->setAutoExposure(true);
+
+        // 连接硬件参数控件信号槽
+        connect(m_chkAutoWhiteBalance, &QCheckBox::toggled, [v4l2](bool checked) {
+            v4l2->setAutoWhiteBalance(checked);
+        });
+        connect(m_chkAutoExposure, &QCheckBox::toggled, [v4l2](bool checked) {
+            v4l2->setAutoExposure(checked);
+        });
+        connect(m_chkHFlip, &QCheckBox::toggled, [v4l2](bool checked) {
+            v4l2->setHFlip(checked);
+        });
+        connect(m_chkVFlip, &QCheckBox::toggled, [v4l2](bool checked) {
+            v4l2->setVFlip(checked);
+        });
+    }
+#endif
 }
 
 // ===================== 帧到达回调 =====================
@@ -391,6 +462,8 @@ void MainWindow::onFrameReady(const QImage &image) {
         QTransform transform;
         transform.rotate(m_rotateAngle);
         processed = processed.transformed(transform, Qt::FastTransformation);
+        // 旋转后图像尺寸变化（如 640x480 → 480x640），重新缩放到显示区域
+        processed = processed.scaled(m_videoRect.size(), Qt::KeepAspectRatio, Qt::FastTransformation);
     }
 
     // 4. 录像
@@ -412,8 +485,7 @@ void MainWindow::onFrameReady(const QImage &image) {
 QImage MainWindow::processFrame(const QImage &input) {
     // 从界面控件读取当前算法配置
     if (!m_clinicalMode) {
-        // 调试模式：从界面控件读取参数
-        m_procConfig.whiteBalance = m_chkWhiteBalance->isChecked();
+        m_procConfig.whiteBalance = false;  // 白平衡已由硬件处理
         m_procConfig.clahe = m_chkClahe->isChecked();
         m_procConfig.claheClipLimit = m_sliderClaheClip->value() / 10.0;
         m_procConfig.undistort = m_chkUndistort->isChecked() && m_undistortReady;
@@ -428,7 +500,7 @@ QImage MainWindow::processFrame(const QImage &input) {
     // 临床模式：m_procConfig 已在 onPresetSelected 中设置好，直接使用
 
     // 没有任何算法启用时，跳过处理直接返回原图（省 CPU）
-    bool anyEnabled = m_procConfig.whiteBalance || m_procConfig.clahe ||
+    bool anyEnabled = m_procConfig.clahe ||
                       m_procConfig.undistort || m_procConfig.dehaze ||
                       m_procConfig.sharpen || m_procConfig.denoise ||
                       m_procConfig.edgeDetect || m_procConfig.threshold;
@@ -512,9 +584,9 @@ void MainWindow::onCapturePhoto() {
 // 切换录像状态：未录像 → 开始录像，已录像 → 停止并保存
 void MainWindow::onToggleRecord() {
     if (!m_recording) {
-        // 开始录像：创建视频文件
-        int w = m_source ? m_source->getWidth() : 640;
-        int h = m_source ? m_source->getHeight() : 480;
+        // 开始录像：创建视频文件，尺寸与显示区域一致
+        int w = m_videoRect.width();
+        int h = m_videoRect.height();
         QString filename = QString("./videos/%1.avi")
             .arg(QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss"));
         // MJPG 编码，25fps，适合嵌入式设备（CPU 占用低）
@@ -658,7 +730,7 @@ void MainWindow::onExportPreset() {
 
     // 从当前界面控件读取参数
     ImageProcessor::Config cfg;
-    cfg.whiteBalance   = m_chkWhiteBalance->isChecked();
+    cfg.whiteBalance   = false;  // 白平衡已由硬件处理
     cfg.clahe          = m_chkClahe->isChecked();
     cfg.claheClipLimit = m_sliderClaheClip->value() / 10.0;
     cfg.undistort      = m_chkUndistort->isChecked();
@@ -686,7 +758,6 @@ void MainWindow::onExportPreset() {
 // ===================== 同步 Config 到界面控件 =====================
 // 切换预设或加载参数时，把 Config 的值反映到界面上
 void MainWindow::applyConfig(const ImageProcessor::Config &cfg) {
-    m_chkWhiteBalance->setChecked(cfg.whiteBalance);
     m_chkClahe->setChecked(cfg.clahe);
     m_sliderClaheClip->setValue(static_cast<int>(cfg.claheClipLimit * 10));
     m_chkUndistort->setChecked(cfg.undistort && m_undistortReady);

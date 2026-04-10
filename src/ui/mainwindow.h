@@ -11,6 +11,9 @@
 #include <QElapsedTimer>  // 高精度计时器（FPS 统计）
 #include <QStackedWidget> // 堆叠容器（调试/临床面板切换）
 #include <QComboBox>      // 下拉框（预设选择）
+#include <QGroupBox>      // 分组框（硬件参数区）
+#include <QScrollArea>    // 滚动区域（参数面板）
+#include <QScroller>      // 触屏滑动手势
 
 // === 第三方库 ===
 #include <opencv2/videoio.hpp>  // OpenCV 视频写入（录像功能）
@@ -134,8 +137,14 @@ private:
     QImage m_displayImage;  // 当前显示的图像（缩放后）
     QRect m_videoRect;      // 视频绘制区域的坐标和大小
 
+    // --- 硬件参数控件（OV5640，仅开发板可用）---
+    QGroupBox *m_hwGroup;              // 硬件参数分组框（虚拟机时置灰）
+    QCheckBox *m_chkAutoWhiteBalance;  // 自动白平衡
+    QCheckBox *m_chkAutoExposure;      // 自动曝光
+    QCheckBox *m_chkHFlip;             // 水平翻转
+    QCheckBox *m_chkVFlip;             // 垂直翻转
+
     // --- 调试模式控件：算法开关（复选框）---
-    QCheckBox *m_chkWhiteBalance;  // 白平衡
     QCheckBox *m_chkClahe;         // CLAHE 增强
     QCheckBox *m_chkUndistort;     // 畸变校正
     QCheckBox *m_chkDehaze;        // 去雾

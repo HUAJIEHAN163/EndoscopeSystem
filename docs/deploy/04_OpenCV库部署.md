@@ -40,6 +40,23 @@ cp /mnt/nfs/libopencv_*.so* /usr/lib/
 libopencv_core.so → libopencv_core.so.3.4 → libopencv_core.so.3.4.16
 ```
 
+**实际上不需要手动创建**。上一步的 `cp /mnt/nfs/libopencv_*.so* /usr/lib/` 中 `*.so*` 通配符会匹配三种文件：
+- `libopencv_core.so.3.4.16`（真实文件）
+- `libopencv_core.so.3.4`（符号链接）
+- `libopencv_core.so`（符号链接）
+
+`cp` 会把符号链接一并复制过去，无需额外操作。
+
+如果需要手动创建（例如符号链接丢失），在开发板 `/usr/lib/` 目录下执行：
+
+```bash
+cd /usr/lib
+ln -s libopencv_core.so.3.4.16 libopencv_core.so.3.4
+ln -s libopencv_core.so.3.4    libopencv_core.so
+```
+
+`ln -s A B` 的含义：创建名为 B 的符号链接，指向 A。
+
 ### 刷新库缓存
 
 ```bash
