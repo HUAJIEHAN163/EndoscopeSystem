@@ -59,7 +59,8 @@ private:
     void releaseBuffers();
 
     // 帧采集
-    bool grabFrame(void **data, int *size);
+    bool grabFrame(void **data, int *size, int *bufIndex);
+    bool returnBuffer(int bufIndex);
 
     // ioctl 封装 (处理 EINTR)
     static int xioctl(int fd, int request, void *arg);

@@ -48,7 +48,10 @@ void FileCapture::run() {
         }
 
         QImage image = ImageConvert::matToQImage(frame);
-        emit frameReady(image);
+        if (m_pendingFrames.load() < 2) {
+            m_pendingFrames.fetch_add(1);
+            emit frameReady(image);
+        }
 
         QThread::msleep(delayMs);
     }

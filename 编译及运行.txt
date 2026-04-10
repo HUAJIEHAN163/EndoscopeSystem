@@ -1,3 +1,29 @@
 cd /mnt/hgfs/VM_Share/project/EndoscopeSystem
 bash scripts/build_local.sh
 ./build/endoscope
+
+
+
+重新编译部署：
+第一次编译或 修改 CMakeLists.txt 时先进行cmake，生成makefile：
+cd /home/chris/build_arm
+cmake /mnt/hgfs/VM_Share/project/EndoscopeSystem \
+      -DCMAKE_TOOLCHAIN_FILE=../EndoscopeSystem/scripts/arm_toolchain.cmake \
+      -DQt5_DIR=/opt/qt5.15.2_arm/lib/cmake/Qt5 \
+      -DOpenCV_DIR=/opt/opencv4.5.5_arm/lib/cmake/opencv4
+make -j$(nproc)
+
+# 虚拟机上
+cd /home/chris/build_arm
+make -j$(nproc)
+cp /home/chris/build_arm/endoscope /home/chris/nfs_share/
+开发板上重新挂载：
+umount /mnt/nfs
+mount -t nfs 192.168.0.130:/home/chris/nfs_share /mnt/nfs -o nolock
+# 复制到本地执行
+cp /mnt/nfs/endoscope /tmp/endoscope
+chmod +x /tmp/endoscope
+kill $(pidof App) 2>/dev/null
+sleep 0.5
+/tmp/endoscope -platform linuxfb
+

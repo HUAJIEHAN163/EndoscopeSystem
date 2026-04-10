@@ -1,9 +1,9 @@
 #ifndef VIDEOSOURCE_H  // 头文件保护，防止重复包含
 #define VIDEOSOURCE_H
 
-#include <QThread>  // Qt 线程基类，VideoSource 继承它实现独立采集线程
-#include <QImage>   // Qt 图像类，用于传递视频帧
-#include <atomic>   // C++ 原子操作，线程安全的变量
+#include <QThread>  // Qt 线程基类
+#include <QImage>   // Qt 图像类
+#include <atomic>   // C++ 原子操作
 
 // =====================================================================
 // VideoSource — 视频源抽象基类
@@ -97,6 +97,11 @@ protected:
     //       }
     //   }
     std::atomic<bool> m_running;
+
+public:
+    // 信号队列计数器：限制队列中最多 2 个帧，避免 OOM
+    // 采集线程 emit 时 +1，主线程处理完 -1
+    std::atomic<int> m_pendingFrames{0};
 };
 
 #endif // VIDEOSOURCE_H

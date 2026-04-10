@@ -5,31 +5,36 @@
 void ImageProcessor::process(const cv::Mat &src, cv::Mat &dst,
                              const Config &cfg,
                              const cv::Mat &map1, const cv::Mat &map2) {
-    dst = src.clone();
+    // 缩小到半分辨率处理
+    cv::Mat work;
+    cv::resize(src, work, cv::Size(), 0.5, 0.5, cv::INTER_LINEAR);
 
     if (cfg.whiteBalance)
-        applyWhiteBalance(dst, dst);
+        applyWhiteBalance(work, work);
 
     if (cfg.clahe)
-        applyCLAHE(dst, dst, cfg.claheClipLimit);
+        applyCLAHE(work, work, cfg.claheClipLimit);
 
     if (cfg.undistort && !map1.empty() && !map2.empty())
-        cv::remap(dst, dst, map1, map2, cv::INTER_LINEAR);
+        cv::remap(work, work, map1, map2, cv::INTER_LINEAR);
 
     if (cfg.dehaze)
-        applyDehaze(dst, dst, cfg.dehazeOmega, cfg.dehazeRadius);
+        applyDehaze(work, work, cfg.dehazeOmega, cfg.dehazeRadius);
 
     if (cfg.sharpen)
-        applySharpen(dst, dst, 3.0, cfg.sharpenAmount);
+        applySharpen(work, work, 3.0, cfg.sharpenAmount);
 
     if (cfg.denoise)
-        applyDenoise(dst, dst, cfg.denoiseD);
+        applyDenoise(work, work, cfg.denoiseD);
 
     if (cfg.edgeDetect)
-        applyEdgeDetect(dst, dst);
+        applyEdgeDetect(work, work);
 
     if (cfg.threshold)
-        applyThreshold(dst, dst, cfg.thresholdValue);
+        applyThreshold(work, work, cfg.thresholdValue);
+
+    // 直接输出半分辨率结果，由调用方缩放到显示尺寸
+    dst = work;
 }
 
 // === 内窥镜专用算法 ===
@@ -42,7 +47,9 @@ void ImageProcessor::applyCLAHE(const cv::Mat &src, cv::Mat &dst,
     std::vector<cv::Mat> channels;
     cv::split(lab, channels);
 
-    cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(clipLimit, tileSize);
+    static cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE();
+    clahe->setClipLimit(clipLimit);
+    clahe->setTilesGridSize(tileSize);
     clahe->apply(channels[0], channels[0]);
 
     cv::merge(channels, lab);
@@ -127,7 +134,7 @@ void ImageProcessor::applyWhiteBalance(const cv::Mat &src, cv::Mat &dst) {
 void ImageProcessor::applySharpen(const cv::Mat &src, cv::Mat &dst,
                                   double sigma, double amount) {
     cv::Mat blurred;
-    cv::GaussianBlur(src, blurred, cv::Size(0, 0), sigma);
+    cv::GaussianBlur(src, blurred, cv::Size(3, 3), 0);
     cv::addWeighted(src, 1.0 + amount, blurred, -amount, 0, dst);
 }
 

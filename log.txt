@@ -1,1001 +1,995 @@
-chris@chris-VMware-Virtual-Platform:~/board_sysroot/usr/lib/arm-linux-gnueabihf$ cat libc.so
-��i���Jd?��zX=�e	��������|./#���9���{ke-o?�]�\�lŨU_9H��
-   Use the shared library, but some functions are only in     qW������o�9X7�i�uM��1�8��_��lW>��/��Z�ݲĥ�M�|�!�3� (ٜ����condarily.  */
-OUTPUT_FORMAT(elf����������K�c��
-������O��!^3<��������M(#a�W��=�)[z��]z�# C��GF�޳*�����ݪ�����ßa1�����w�@�S@�����Mv�xz����  AS_NEE��o:�����J��Č���׍G�)���[�;��������Y�Q���;;&4��a�k�-���9�����zR��2���3��l��E������5�S�;�C� t.���}�>��~$_�_wW���� P����;�R�jF�Z����z��)>T2���r��#+:�n-�p컌��#�����fe�I�A����^'Q�)e�$O۝|m����݅x!�"+��o�U�n�ͰumTj�ٝ��7G�)�R+��u��wכ|���_�+��S[p������:��|�/(i�&9�Dw����M�0�2�Y��R^��Z|���8]�4�,�yug�VE��������%���`���1��=l�-������m����h���`�"3)k8Ã���w+^�zQ����dmرy�a����6�t�D�9��0�1�R��h�\�null >$깡tI�/៩�dZ�o�_V��҈,7j��tCroot/usr/lib/arm-linux-gnueabihf/librt.so 2>/dev/null
-cat /home/chris/board_sys�!��/usr/lib/arm-linux-gnueabihf/libm.so 2>/dev/null
-ELF(1M4@�4 	(#"p���XX444 �ddd88�`$���TTTDDQ�tdR�td��GNUf=;9���\����WkE��U]GNU�f@                          ���
-    !�                           7" ���d
-��Ah��4�@ ���Q`�@���0D                 �O�mt��]�P6\�;
-�     �Z?w�.�(W�
-$BdA�c@@�V� � �$��(��B��
-�)+(�D���Q�9C��8@�HuP�e �~�-�R�$�@�T`"� j�@$���! �(�*H  ���P�k���� ��.@!  �B��
-fghijkmnopqrstuvwy{|}~�����R����������������������������������������������������v�q����=�������������������������������������
- �
-. ������@`?@ABCDEFGHIKLMNOPQRTUVWYZ\]^_cdefgq�r�\o]�B���ڑ&0n�59!�ٓ�bgIo�	C���Y�]��@M����YJ�Fc�Һ��ry)�>����o��ܷ���GX7Ngs֧�������#��ľ���\
-���0    n�   s��d
-��"&"
-���>	�.
-�M�
-o$��"
-�l�H
-�Y�|"   ���
-^%^�
-���0"
-���<"
-��`     e�
-��      q�
-H�
- ���
-��~
-dEl�"
-��
-��nx"
-M��t
-��\
-�}�&"
-���
-J
-%��0���=��"
-���2�"
-^Ao""
-��|"!�4
-�U��
-��p
-��p$
-�o�D"
-Ѡ�`x
-�
-��      }��
-`M�\"
-A��p"
-���H
-��pP"
+[ 4222.008846] [dhd] sdioh_buffer_tofrom_bus: RX FAILED 166049df, addr=0x08000, pkt_len=128, ERR=-84
+[ 4222.016304] [dhd] dhdsdio_readframes: read 128 data bytes failed: -35
+[ 4222.022914] [dhd] dhdsdio_rxfail: abort command, terminate frame
+^C[ 4375.390265] stm32-dcmi 4c006000.dcmi: Some errors found while streaming: errors=1795 (overrun=1798), buffers=18615
 
-5�
-��
-v9�|"
-�
-0��"    ��
-��
-g��<"   �,
-G�|�"   ݠ
-�!l*"   ��"
-�M�
-��o�"   ��"
-��x�
-I��""
-�
-�%�|"
-�l��"	��"
-���`"   ���
-���H"
-�E��    u�
-`
- M�
-�m
-1�4�
- 9�|"   �
-�
-h�zT"   !��
-f�z|"
-�o
-�U�
-��i8"
-�]�<
-%�`
-_ITM_deregisterTMCloneTable_ITM_registerTMCloneTable__cxa_finalize__getpid__libc_fatal__stack_chk_fail__stack_chk_guard_dl_get_tls_static_info__getrlimit__libc_pthread_init__libc_stack_end_rtld_global_ro_rtld_global__pthread_initialize_minimal__pthread_get_minstack__libpthread_freeres_dl_deallocate_tls__munmapabort__mprotect__clone__assert_fail_dl_make_stack_executablememset__mempcpyfree__ctype_init_setjmp__call_tls_dtors__libc_thread_freeres__getpagesize__madvise__resp__libc_alloca_cutoffmemcpy_dl_allocate_tls_init_dl_allocate_tls_IO_enable_locks__mmapmallocpthread_createpthread_exitpthread_detachpthread_joinpthread_tryjoin_nppthread_timedjoin_nppthread_selfpthread_equalpthread_yieldsched_yieldpthread_getconcurrencypthread_setconcurrency__sched_getscheduler__sched_getparampthread_getschedparam__sched_setschedulerpthread_setschedparampthread_setschedpriosched_setparampthread_attr_initpthread_attr_destroypthread_attr_getdetachstatepthread_attr_setdetachstatepthread_attr_getguardsizepthread_attr_setguardsizepthread_attr_getschedparam__sched_get_priority_min__sched_get_priority_maxpthread_attr_setschedparampthread_attr_getschedpolicypthread_attr_setschedpolicypthread_attr_getinheritschedpthread_attr_setinheritschedpthread_attr_getscopepthread_attr_setscopepthread_attr_getstackaddrpthread_attr_setstackaddrpthread_attr_getstacksizepthread_attr_setstacksizepthread_attr_getstackpthread_attr_setstackpthread_getattr_npreallocfopen__getdelimsscanffclose__pthread_mutex_init__pthread_mutex_destroy__pause_nocancel__pthread_mutex_lock__pthread_mutex_trylock__nanosleep_nocancel__gettimeofdaypthread_mutex_timedlock__pthread_mutex_unlock__pthread_mutexattr_init__pthread_mutexattr_destroypthread_mutexattr_getpsharedpthread_mutexattr_setpsharedpthread_mutexattr_gettypepthread_mutexattr_getkind_nppthread_mutexattr_setkind_np__pthread_mutexattr_settype__pthread_rwlock_init__pthread_rwlock_destroy__pthread_rwlock_rdlockpthread_rwlock_timedrdlock__pthread_rwlock_wrlockpthread_rwlock_timedwrlock__pthread_rwlock_tryrdlock__pthread_rwlock_trywrlock__pthread_rwlock_unlockpthread_rwlockattr_initpthread_rwlockattr_destroypthread_rwlockattr_getpsharedpthread_rwlockattr_setpsharedpthread_rwlockattr_getkind_nppthread_rwlockattr_setkind_nppthread_cond_initpthread_cond_destroy__clock_gettimepthread_cond_waitpthread_cond_timedwaitpthread_cond_signalpthread_cond_broadcastpthread_condattr_initpthread_condattr_destroypthread_condattr_getpsharedpthread_condattr_setpsharedpthread_condattr_getclockpthread_condattr_setclockpthread_spin_initpthread_spin_destroypthread_spin_lockpthread_spin_trylockpthread_spin_unlock__pthread_barrier_initpthread_barrier_destroy__pthread_barrier_waitpthread_barrierattr_initpthread_barrierattr_destroypthread_barrierattr_getpsharedpthread_barrierattr_setpshared__pthread_key_createpthread_key_delete__pthread_getspecificcalloc__pthread_setspecificpthread_sigmaskpthread_killpthread_sigqueuegetuidpthread_cancelpthread_testcancelpthread_setcancelstatepthread_setcanceltype__pthread_oncepthread_getcpuclockid__statfs__setmntent__getmntent_rstrcmpstrlen__endmntent__shm_directorysem_initsem_destroy__fxstat64__tfind__tsearchsem_openstrchr__mktempsem_close__twalk__tdeletesem_unlinksem_getvaluesem_waitsem_trywaitsem_timedwaitsem_post__pthread_register_cancel__pthread_unregister_cancel__pthread_register_cancel_defer__pthread_unregister_cancel_restore_pthread_cleanup_push_pthread_cleanup_pop_pthread_cleanup_push_defer_pthread_cleanup_pop_restore__libc_longjmp__pointer_chk_guard__pthread_unwind__pthread_unwind_nextsiglongjmp__libc_fork__fork__libc_vfork__vfork__libc_fcntl64__fcntl__write__read__closeaccept__connectrecvrecvfrom__sendsendtofsync__lseeklseek64msync__nanosleep__open__open64pausepread__pread64pwrite__pwrite64tcdrain__waitwaitpid__sigtimedwaitsigwaitrecvmsgsendmsgraise__libc_system_IO_flockfile_IO_ftrylockfile_IO_funlockfile__default_sa_restorer__default_rt_sa_restorer__sigaction__h_errno_location__h_errno__res_state__libc_current_sigrtmin__libc_current_sigrtmin_private__libc_current_sigrtmax__libc_current_sigrtmax_private__libc_allocate_rtsig__libc_allocate_rtsig_privatepthread_kill_other_threads_nppthread_getaffinity_nppthread_setaffinity_nppthread_attr_getaffinity_nppthread_attr_setaffinity_nppthread_mutexattr_getrobustpthread_mutexattr_getrobust_nppthread_mutexattr_setrobustpthread_mutexattr_setrobust_nppthread_mutex_consistentpthread_mutex_consistent_np__pthread_cleanup_routine__libc_dlopen_mode__libc_dlsym__libc_dlclosepthread_mutexattr_getprotocolpthread_mutexattr_setprotocolpthread_mutexattr_getprioceilingpthread_mutexattr_setprioceilingpthread_mutex_getprioceilingpthread_mutex_setprioceilingpthread_setname_npsprintf__open64_nocancel__write_nocancel__close_nocancelprctlpthread_getname_np__read_nocancelpthread_setattr_default_nppthread_getattr_default_npthrd_createthrd_detachthrd_exitthrd_joinmtx_destroymtx_initmtx_lockmtx_timedlockmtx_trylockmtx_unlockcall_oncecnd_broadcastcnd_destroycnd_initcnd_signalcnd_timedwaitcnd_waittss_createtss_deletetss_gettss_set__errno_locationlibc.so.6ld-linux-armhf.so.3libpthread.so.0GLIBC_2.4GLIBC_2.11GLIBC_2.12GLIBC_2.18GLIBC_2.28GLIBC_PRIVATE
-		
-              		
-                       		
-                                						
-                                                                              	
-
-
-                                                                              	
-
-�����������P,/
-��$��$%���$0���$;��c	F�0��c	
-                                Qii
-t!x!|!!�!+�!3�!<�!K�!O�!X�!]�!a��������������!�!�!�!�!�!�!hl!	p!
-                                  8    $( 
-, 
-  0 
-    4 8 < @ D H L P T X \ �`  h l p t  x "| #� $� %� &� '� (� )� *� ,� -� .� /� 0� 1� 2� 4� 5� 6� 7� 8� 9� :� ;� =� >� ?� @� A� B� C� D� E� F!G!!I
-                                                                  !J!L!M!N!P !Q$!R(!S,!T0!U4!V8!W<!Y@!ZD![H!\L!^P!_T!`X!b\!c`!dd!@-�����-��������p�Ə�ʌ�p���Ə�ʌ�h���Ə�ʌ�`���Ə�ʌ�X���Ə�ʌ�P���xG�FƏ�ʌ�D���Ə�ʌ�<���Ə�ʌ�4���xG�FƏ�ʌ�(���Ə�ʌ� ���Ə�ʌ����Ə�ʌ����Ə�ʌ���xG�FƏ�ʌ�����Ə�ʌ�����Ə�ʌ�����Ə�ʌ�����Ə�ʌ�����Ə�ʌ�����Ə�ʌ�����Ə�ʌ�����Ə�ʌ����xG�FƏ�ʌ����Ə�ʌ����Ə�ʌ����Ə�ʌ����Ə�ʌ����Ə�ʌ����Ə�ʌ����xG�FƏ�ʌ�t���Ə�ʌ�l���Ə�ʌ�d���Ə�ʌ�\���xG�FƏ�ʌ�P���Ə�ʌ�H���Ə�ʌ�@���Ə�ʌ�8���Ə�ʌ�0���Ə�ʌ�(���Ə�ʌ� ���Ə�ʌ����Ə�ʌ����Ə�ʌ���Ə�ʌ����Ə�ʌ�����Ə�ʌ�����Ə�ʌ�����Ə�ʌ�����Ə�ʌ�����xG�FƏ�ʌ�����Ə�ʌ�����Ə�ʌ����Ə�ʌ����Ə�ʌ����Ə�ʌ����Ə�ʌ����Ə�ʌ����Ə�ʌ����Ə�ʌ����Ə�ʌ�|���Ə�ʌ�t���Ə�ʌ�l���Ə�ʌ�d���Ə�ʌ�\���xG�FƏ�ʌ�P���Ə�ʌ�H���Ə�ʌ�@���Ə�ʌ�8���Ə�ʌ�0���Ə�ʌ�(���Ə�ʌ� ���Ə�ʌ����Ə�ʌ����Ə�ʌ���Ə�ʌ����Ə�ʌ�����Ə�ʌ�����Ə�ʌ�����Ə�ʌ�����Ə�ʌ�����xG�FƏ�ʌ�����Ə�ʌ�����Ə�ʌ����Ə�ʌ����Ə�ʌ����Ə�ʌ����Ə�ʌ����������������HKxDJ{D�BzD�K�X�GpG�����
-                                                                               �H	KxD	J{D�zD���qI�K�X�GpG��������
-K
-J{DzDk�	K�X#K{Dh��������K"{D��z���hJ�Z�����p0
-                                             !O��|
-�E�]��� (�pG8�
-              F�h��x�Bѣh3�p���d��<@���0���P��B�@�%-�ѿ�[��B�
-                                                           FC�
-                                                              �B��8��O��2�� "��hF��*�B�ѫh3��>K{D���h���K!(IJ{Dp����X#h���#h�B@����p��h
-���:K��_��AB{D��!h���p��<B���f���0#�@R��B�B�\���ѿ�[��B��"��*p��"�!#O��
-
-����_7�#KO��2��{Dh�
-                   i�����h3DR�o�B�B�<���ѿ�[���*��H�!#O��
-                                                        xDh0
-�����_�����0��
-              HxD����`�����0������*���t����J�
-��𵩰�M�p?�J���g}D���`O�|�X2h'�
-�L����b��4A�fO��| �����o�Fyg:g
-                              !
-C�-�B���jK"  9F{D�#%�D�D���fK9F"! {D'���%��������{��!F� B�DO�
-                                                             �"C#�
-���YH�YOxD�����D,8h����2#"��0��F�QK!F D{D�`
-����� <`��"�@��Bа��O8�O�@�O�EI'EJkXzDhi"Dc�b�B,��?HbBxD@�P�?+�@�r*�ѿ�[�R�8J#8H�zDxD�`Qa��[�P�/@�1)��*9�1I 1J2KoX�X���'�X���4������'\;���E<(F�e�c��(I%(HyD(JxD����zD%I&H&KyDxD{D��08����'�#K#J1h{DzD�B``
-                                       �)��!"O��
-
-�R���'�����
-��t�������������������
-                      �T�������
-�����
-     ����IJyDK�X{DiD��@p��.��9��=��@	���pG�pG�I@�yD��� ����� K�{D$`��[���J``��[�`]�KpG�|�K-��A{D\h�Beh&���X�FN�D~D�Bkh,FF�h+�� F������0��D"!��`����0����������(���0�B�ؽ��������2�@��
-K@��{D$�`��[�
-F)��i*Mъh�J�:x��"*I���`�:HFO�pb�h��=��xD#F��4�0I���F
-��ib�;x+GРnO��                                   �#p
-              �i
-�;���_Fثh��;x+@Рn�	r��(O�
-
-�(���_F� ����^�n "O�|
-��pB��":p��"�p"P�)�@�&.�ѿ�[���������
-                                    K�p/{D�X��
-                                              Kw"
-                                                 I
-                                                  H{DyDxD��4�	K�"	I
-H{DyDxD��,��F��
-               v�t���d�b�����F��23��#��2���0�8�C�@R��B�B�-�ѿ�[������uo�U�/2�E�1)�ѿ�[���'@�����23��(F�!o�#O��
-
-����_��
-       0
-        (���0B����@��"�p��"�!O��
-
-�����_�����0��HxD��������� F�P+��"�@Q�O�B�A�
-                                            ���ѿ�[��"�p��"�!#O��
-
-F�X�����#h�K� �#h�B+��p�F��d�n!"O�|J{Dp�
-`������P�tKJ{D0���X��h�Ci�B�]���T�_�B�D����ѿ�[���h�B��0��������������t ��8�F$K"{DP�?+�@�!)�ѿ�[�+��`(F������23�IyD���J���2zDQh
-                                             DS`�� �H#��[�x0P�/@�1)��*�8��!"O��
-
-���8��`�����`!������O� p������4�������p�����F��'H#x0P�/*�@�1)�ѿ�[�<� K{DSO�B�M5�$h�BФ�`����(��FH#��[�x0P�/@�1)��*�0Fp�K{Dh�B��M}D�$h�B�Ф�`����(����!"O��
-
-�$���������J�>�<����`K�p/-��O{D�����i�+z�[K{D����h��D
-�E'�WOD��`�E
-            Л��! yh��D2��
-������ ��               D{`*@�����E��� ZE
-         0�`��� K`�� ����d F����AKBI��R{DyD�
-                                            ��"��-Y���"�`��[��`8H!8K$8JxD{DzD``�``�����
-       ��t
-          ��uFO�r
-                 �,&��0�O����1T�0�O�r!��$���a�B�ѡ�#���#L|D"FR����BЁB�H���xD`��q�K��{DJ``��h�"hQh�B?�d��F"F����
-                              a��[��`��KO�^rIH{DyDxD������������� �>����
-�����p�t�v���:���K"-��O{DF��P�?+�@�!)�ѿ�[�@��zN!zKO��2~D!a{D�pV_���g��B`bХ�`�B���.�-h�B��nN~DV�
-               _�Х�`�B����-h�B������gK�DgJ{D
-�
-�
- 3�zDdK�{D����E����&+FEF�F��`�B� F����D-hEE��XK{DS�
-                                                   ��E���
-                                                         +FEF�F��`�B� F��|�D-hEE��"i��O�	@��"i��(F�!#O��
-                               	����_��
-                                       0
-                                        (�	����?HxD����.��=N~DV_�BQХ�`�B����-h�B��6K{D�h6N~D
-                 6�Х�`�B����-h�B�����h���	�j���_F0�! F��j�(H#��[�x0P�/@�1)��*�(F��������
-              ���E�&��"i*��&��!"O��
-                                   	�=�����K{D�h��KAB�O��5{D�P�����(���j���z�T�@�$�������h��/K"p�{DFP�?+�@�!)�ѿ�[�I�'N~DV_�B���D��4"��`��0(D������2!����v�-h�B��~DV�
-        _�B���D��4"��`��0(D��p���2!����\�-h�B��H#��[�x0P�/@�1)��*�p��!"O��
-                                                                          	��p���������~�j�0�ZH#-��Gx0P�/*�@�1)�ѿ�[�@�RK�po���f{DSO�B<���8�O�
-O@���D	�       ��`�B*�T�\<;���\U�?+�E��*�ѿ�[���T�\<+�(F�!"#O��
-                                                               	�\���_��
-                                                                        0
-                                                                         (��8B��4HxD����$hLE��2K{DS�
-                    O�B<�����O�
-O@���D	�
-         	��`�B*�T�\<;���\U�?+�E��*�ѿ�[���T�\<+�(F�!"#O��
-                                                               	����_��
-                                                                       0
-                                                                        (���8B��T�\<+��$hLE��H#��[�x0P�/@�1)��*ܽ������b�!"O��
-                                            	�������������@�&���*K"�{DFP�?+�@�!)�ѿ�[�?�"IyDQ?�B
-                  У�`�B����B��B��`���IyDQ�
-                                          ?�B
-                                             У�`�B�
-����B��`��$�,��H#��[�x0P�/@�1)��*� F��!"O��
-                                           	�� F��d����f�&�"���-��O�p/���j����
-  2�+P�����'��Ns��D#���	�� %��
-                              r� 5���o�V�O,��	���\E��`h(��X�,#hg`�B����0+�ИG���
- 2S��Y����O�r��4@�����%��Mt��.xT�?F�����%`DE��#��
-                                                 2������������0C� R�O�B�B����ѿ�[�����F���(� F��@��9�����2��������K�p��ʰ�L�{D�Jx`F�-p��$1zDh�P��|��p#P�/@�1)��2��[��{h
-     !O��|�p	�����2Y���F�"��D"��yh��"���0*^�{hF��,2��0�G{h�� ������(�����JzDh2+@���{h�3|h��� B�S��B�C�-�ѿ�[�����`����2��
-                                           ���"��@B@�B@�Ӏ���O�Ȁzh��2�B�{h���0[�"#F�F	�Z�����{h�t#FT�/*�D�1)�ѿ�[�n�#��[�T�/D�1)��*[�(F�����"C�-�B�ѽh#E�E!F�`O�
-                                                                               �"�W�!"O��
-         	���_�A��?�=�0?�:�BHxD����AKxh{D��4Zi
-C��r���D"*����k� ��6�xh�	!��@��<xh�iF��DR��B�B�E-�ѿ�[����� F�!"O��
-                                                                         	����� F����{hO��	$O��z&@���{h���0�@�PFIF"F#F�F	����_���
-
-                                                        +���+B��HxD��2�xh����G�zh��2C���AF"��t�0�
-                 KO��r
-                      I
-                       H{DyDxD�����&���t�����V������-��O������J�F����;a���3|D������ 
-    ��5[	{acX5{b�d@�f����
-#xDP�/*�@�1)�ѿ�[�@�"���l��,
-                           �D^F��Ɯ����l.�0F��P���_��##(
-�2FylF����xd��                                         �F (�ƃ�"#�:b��
-#��[�xDP�/@�1)��*��������:F�
-@���P-@����	#xDP�/*�@�1)�ѿ�[�@�x����)#���	zDxDUi��[�P�/@�1)��*�h��0�j����9{D5�	�j���
-             0rB
-�@�B�H�,�&&.@�@���l9{D�c�D�D
-�
-�E��3���X9"��T	�Xx0��H�`P�?+�@�!)�ѿ�[�@�@���0)O�
-
-�
-zDJ�{`h�B�n����$�D�cEКh*����D"�E�أ�`��,�������B8�
-                                                 FcE��,�M����2���G��`;`�FO��3F��2��x����y1�������(���2O�
-                        zDQh��Q`��[�P�/@��+��*����2"������� �`Z���2�g��D"�`)�ӂ
-v�`�i�p_��#s���e��������.�`PF!����,b>i4�����B򺂻hAE�ۂ�F���R�
-                                      �`
-                                        ��$�L�	
-                                                ��FO�	��0b���(b���O�	�����a~i�����x�o�	���d�h��t��p	��p������c��� �i��"�鉦@�����g~D2h*�����x�iyD���PQ�o�B�A�
-"��* ��+ )@���+YF��* F��'�F(@�6���*0+@�#&+`�>ba�&;j+@�{j0F�l�B@��T7�F�����0����@*F���6{D�a�B�����&��zDhEE@�����cO��b!&dF�������&�����`zD���R{D���B���`O��2���QDF��b`��"`��8�(�H���tx0P�?+�@�b*�ѿ�[�@�Y���X&�`zDFV�
-                                                  _��Vi`��[��`��[�P�/@�1)��*����!"O��
-     	�����#;b��
-                  Fg��p#��[�P�/@�1)��*�]��!"O��
-                                               	���U�
-h)�xl��l�Z�a����2h�i��`?���@�L�@
-                                �� ������("� �L� 
-                                                 �� ������$"
-                                                            �``*?����@
-                                                                      �O�
-                                                                         	����� ��(B�@
-           ����� ���	qO�
-                           	����� B� ��� ����L���4�D�� 
-C���+YF��* F&��*`���F���*0+�"���2+��	"��@B��<"�� ��D"S��B�C��(�ѿ�[�����`����+0+@�Ȁ���4{D�hQS��B�C�-�ѿ�[����p#P�/@�1)��2��[��� F��m�
-                                                      .���
-                                                          &������!"O��
-                                                                      	�'����p#��[�x0P�/@�1)��*�I�{h-O�O��1�F��F�"#AF������C�`�,��h+��� $�� 4zD{Dhh�h��D$����d=�IFzhX��(�(@����J��i�h&zD�K��驅h{D���HF&`���`O��2��"`����(�̀�Hx0P�?+�@�b*�ѿ�[�@����I�`8`y1����H#��[�x0P�/@�1)��*�܀�h��8����#+@����s�
-                                                   F��*0+�T��K@�F2�I�H{DyDxD�����U���!"O��
-         �v����K��B{D*?����0F����F(���":b7��8��"7�")F�h����@����RC�K�po{D�X+?�h�AF�h��&�K{D�X.C�
-                .?�
-                   ���cF�!"O��
-                             �6����hzhX��r�(�ЬH#x0P�/*�@�1)�ѿ�[�@�8h��1��H#��[�x0P�/@�1)��*�HF!���������mK�p/{D�X.�ѻi��,2��hK�pO{D�X
-                                                    +@�AF�h����bK{D�X��aK�p/{D�X
-                                                                               +?����KO��r�I�H{DyDxD���XK�p/{D�X��!"O��
-                                      ���������!"O��
-                                                   ������!"O��
-                                                             ����_�w��?�s�0?�p�nHxD��*�mH��[�xDP�/@�1)��*ؿ
-                          &���!"O��
-                                  ���
-                                     &
-                                      �!"O��
-                                           ���x��\�d� F����F(?��AF�h��V�5�XK@�WIXH{DyDxD����VK@�"UIVH{DyDxD������ �SKO�IrRISH{DyDxD����QK@�#2PIQH{DyDxD����OK@�;"NIOH{DyDxD����MK@��LIMH{DyDxD��~�KKO�rJIKH{DyDxD��t���غP�8�"�����tf���������������������L�X�
-����������������0�����������4�����V�l������N�x�֓F���������l����d���P��,�V�В�B����.����p?���a��<C��� �hB�S�O�B�C�
-                               ���ѿ�[���������豃nF+��sS�)�C�,���ѿ�[�����0�����C�#�#���2�B
-FLLFLI��|DgX"F:h�([ЂnF*W���"�BU��p���a�B-���"�B$��rO����ѿ�[��pG�-��O
-R��B�B�����ѿ�[��B:��O��3�f��� 2+` F&�����0F;h�BV�	�������� �<����� "�*�#&����
-%I@FyD����2��F���h���
-��a�YF@F�����&��&��1F�h�1�FHF�O�QF@F���.��������h�!0F
-                                                     FO��
-                                                        ���n��[�*��HF��3��@FF������T��.�t#����p���`pG�@�����@	pG�����K{DhpG6��K {D�`pG pG�$�-��A(VЃn+S��uF�FF#U�/*�E�1)�ѿ�[�F����0� �[���(2'3`��$2��0#��[�U�/E�1)��*1�8F�����n��2���(0/�'���	q�n�������0��Z�Ԡn�����(0�����0'C�@���0��C� ���0��'8F����(F�����(F�!"O��
-                                                                     �������0C�@���0��5K-��A�F4I{D��^X3h�(DЃnF+@��uF#U�/*�E�1)�ѿ�[�4����23�:FAF�n��|�0.���(�O:h���0��$"C�`���0#��[�U�/E�1)��*��@F3h�B!������:h�BĿ�jF����O��(F�}��K�p/{DR����(F�!"O��
-   ������P뎳ʲt2K3J{D-��A���X;h�(:ЃnF+6��uF#�U�/*�E�1)�ѿ�[�)����2S�iF�n��6�0)����0O�C� ��$b���0#��[�U�/E�1)��*�@F;h�B������O��(F�����Bȿ��K�p/{DR����(F�!"O��
-                                                                          �+������꺲�t�$"!F���������` ���i������h �
-                                   `pG)�a��h#��FpG�h!C��FpG!���h 
-                                                                 `pG�` pG�h 
-                                                                            `pG-��CFFhF���0F����F0F��.�(������E��%%�Eȿ%� ����:h �h"`C� �`�����Ch 
-                                                                 `pG)F���h Y` ��B�@�`pG�h ��@
-             `pG)��!؃h)�!C��FpG#��FpG��h ��
-                                          `pG)�)
-                                                �_!FpG�h#��FpG�i 
-FDi�H#xDP�/*�@�1)�ѿ�[��J#HzDxDTi��[�P�/@�1)��*�,` 8��!"O��       `pGF �haB�`pG8�
-                                                         �Q����&��������t����O&�Aa  pG�F ���4
-�W�?+�G�!)�ѿ�[�]���$23`���0��"��(�B���"���C��`���2�`+J����hDA�B��1�`O��zO�
-                                                                          ��
-O�	
-        �FIF(F�F����E��(
-                        �##
-                           �O�I	XFIF����(��XF
-� F��0�B@������8F�|���PIPHyDxD���F(���       $��P��F(n����#��[�W�/G�1)��*Y�
-�                                     � ��n�(N�JI
-� IJ
-��0aX�XC�DFK��u{D�i
-                   F�F	h�F��@�����`�KF
-"YFPF����(X�
-�	�)F���R�(�:h��	�BؚB'�F��@��8F�!"O��
-                                          �P���XF�����&,��F��3��K�p/{D�XHF����hC�`,�x�N�F��b�F�PB�
-                  �@��u�DcFD2a����@�B(��Fra�������K�p/{D�X����u$�������ήv�
-                                                                          �t������DKEJ{D-��A���XFF;h�)J�
-                        h�@в�_?�<M}D*h*I�;�##`c`�`�`#aca3h#��%Z%��@RH�E����E� в�_���
-FA`�`�`aAa���"`����!FO��"`�@O�E�� �`�;h�B-������Y��_ ��`
-                       �����_�&0
-�#+`��������3h���O��3+`����6K/H{DyDxD����Ȭt����؇��hF��i#�O��3 �`pG pG��h-��G�p_F���e�F;��h�3+������������������������������������������������������4444�hSEh�����xO��5O��I�r�HE�(FIF��(@�O��EE�T�?�B�D�r*�ѿ�[��B�E���B
-��h F2F#O��
-           �C�����T�?�B�D�b*�ѿ�[��Bw�T�?�B�D�b*�ѿ�[�F�B��MF����n�#h#�@CSE��T�?+�D��*�ѿ�[�+b�!&��h����� F"#O��
-                             �����_w� � #3s��#����"�"*�	���V�����gh!+�J�T�/*�D�/�ѿ�[�*rѡhO��r���r�B���"b`*oba.g�g#i ��3#a�����h+@���#c`��k@� �����C��g��.�ТhO��s���s�B�ր#c`*o#FC�/C�+g#�g���*��*��ChZ���3 c`��#h��B.B�*��#��BT��B�D� (�ѿ�[�@�΀"o�C��#+oD�?C,g#� �g���F��@,�"�@CSE�*�B�CT��B�D�7/�ѿ�[���! F
-                                                          FO��
-                                                              ���O�A#hX�*��MKO��rMIMH{DyDxD����@J�CT�?�B�D�/�ѿ�[��B�;�"o�C��#+oca.g#� �gR�(FO��1�� K�c`��[�T�/D�1)��*�#� �g<�/�## �g?�6�/�ٮch �gYD�3c`*�! F
-FO��
-    �s���$K@�$I$H{DyDxD����?�B?�� KO��r I H{DyDxD����" Fb`F!O��
-                                                               �Q�� �g��K@�O"IH{DyDxD�����h��+�T�ch�g]��
-                         ��g# ��# ��#h!��
-����Z�`���>�D������p�@��h�|��F�#T�/*�D�1)�ѿ�[�.ѣh+@����p_���e�n#i�`3#a0Fp���p@���++��p_���e�h�n�B�T�/*�D�1)�ѿ�[�
-                                ѣh+j�#c`���h F��������h������ChZ!�3C`��+�<K{D+��#T�/*�D�1)�ѿ�[�ѣh+��3K�"3I3H{DyDxD����
-                                      &���p/+���b�nHуh�B��#&��bi1F2�@d*��d"�B�%�T�)�D�0(�ѿ�[�)F��ci��H�5��ea��Q"	{DyDxD����Ku"I�H{DyDxD����#T�/*�D�1)�ѿ�[����h F���E���K�"IH{DyDxD��������̄j�v�`���d�N��,��Ђ�h@�-��A�p_F���e
-                                                                  @F#+�n�C+|ݳ��#2�T�/*�D�1)�ѿ�[� *� (� +k�+&�+���+��+h�B�"�ɀT�?+�D�!)�ѿ�[���#i ��&3#a�@��B�� ����;+����ghO��q���q��@��B2CT��B�D�,���ѿ�[��B���F��@��#�@C�B�܀T�/*�D�c+�ѿ�[�F*[���C�&��h�B\�F��@+y�0;+���\�#h#�@C�B�'�T�?+�D�b*�ѿ�[�+���C��)�@�" F!O��
-                                                                   �p��
-                                                                       �##��_��#+@�À#hZ�À�hO��s���s�B��*o#FC�/C�+g#�g#i"�` Db`#al�hO��s���s�B@�π�BO�c`���#� �gZ��ch^�3c` �F�
-             C�hh�B��'O��8���w@F)F� �(�3��C�T�/�B�D�(�ѿ�[��Bz���F�B����
-                                                                       �k��B�ݸ���#T�/*�D�1)�ѿ�[��֮#i �`3#a�����h�+���+�ch�g]��3c`��)?�r�_�"o�C��#+oca/g#� �g���[�T�/D�1)��*�p�! F
-FO��
-    ��g� �g��#h#��BT��B�D� (�ѿ�[���"o�C��#+oD�?,g#� �g��h(=�#i"�`Db`#a��g ��(FO��1���j�+oca/g#i"�gD�`#ab`���*�## �g?�*�ͮch �gY��2�# v�" Fb`F!O��
-                                                               �H�� �gj�g# g�	KO��r	I	H{DyDxD��|�KO��rIH{DyDxD��r�N,�~:.���&@�-��OzD���V���h�p����hFRYF��h�F�-h"F@#+	�^� +��+�B�+���;+1��
-�I�V�/*�F�(�ѿ�[�*@����hO��s���s�B���#s`��p0sa��p���x �@��B<�$� F	��B@��
-                                                                              �����s�#V�/*�F�1)�ѿ�[�@��3i$��33a��C+/ݳ��#��V�/*�F�4,�ѿ�[�$���h����F��+�ѳhKE�#�x�V�/*�F�1)�ѿ�[�@�>�#s`��@+��0;+����`�3h#�@CKE��V�?+�F��*�ѿ�[�+�*�!$��h�����0F";FO��
- �I���_@�C��n6� � #3@���#�
-                          �0� ,�F$,�^� �@��)�����2R����A���3O�JA���1�T����1+����!F F��b�(��n$B��C���x0�����4{D+?�@�"V�?+�F�!)�ѿ�[�
-                                                  �F#+�<�qi1�@d)��d!�B�����V�?+�F� (�ѿ�[�@��$ri���3�#(�
-                       F��sa,����hhKE�L����;O��4O�JC���3��9O��J�%�PE� FQF��(@���O��DDV�?�B�F��*�ѿ�[��BW�O�	D����y9��B+�{h[E�!������xhO�A���q;h��[��*����3�R����2+���h0F*F�O��
-                  �C���`�V�?�B�F�R*�ѿ�[��B�V�?CE�F�R*�ѿ�[��	F�B��TF��hKE�#$v�h��
-    �+?����K@�u"�I�H{DyDxD��r�,?����hO��s���s�B��#s`��p 3FC�/C���p0#��x0d��*��*�M�sh\�3s`$�>�
-             $;�3h��B,@�*?􂮥KO��r�I�H{DyDxD��4�c?�&�#F$FO��1����SF$��SFn$����D@���*��#��BV��B�F� (�ѿ�[�@���"o�C��#��p0F�?C��p`#�$��x0��"�@AIE�yhYE?�˭9h)����*�B�AV��B�F�,�ѿ�[��2h�
-F0F@�	;F$O��5O��
-                  �p���_��##n0�#+�Z�2hO�Cq�-�##$��x0?���-��sh$��x@Z?�K�3s`��r`��[�V�?F�!)��+L�#�$��x0u�DBs��h9F0F���O�F(?���g�=�B?���@KO��r@I@H{DyDxD��d�FW�"0Fr`F!O��
-      ���$��x J� o�C����p0sa��p�#�$��x0;��h�)5�)�d�sh��x@Y����!F0F
-FO��
-    �����3h.�+F�#V�/*�F�1)�ѿ�[��ri��H�3��ra$�����KO��rIH{DyDxD��
-                                                                ���x@#$���h9F0F�����F���t�l{N{�z�z�z�yRy4y�w�x�xXw�h�F�;3+�:��������888888888888���888888888888�#��888888888888A4sA�p?���c�h�n�BV�Ch;C`+g�h"�`�i:a!���q�F���[�P�/�B�@�E-�њB��O��r���@R��h"��#O��
-                ����%��O��1���@�.��p?���c�h�n�B�h��*���h�pO���d����"�@B�n[	�B�C�+� ��pO���dh�n#�@C�h�B�Ԁ�B��Ch_G`/� �h�pO���d����#�@G�nm	�B�E�-��F�	Ї��[�P�/�B�@�V.�њB���F��g#o#��B��h"��B����Fh#��BF��;h`�h&hFa�`�i9a�T����!+�%
-�ۢn�B�Ё��O��
-           ��� �g��pO���d�h�n�B�w�Eh=E`-��h���pO���dh�n#�@G�h�BVеB�b�Eh=E`-�r��� �hO��s���so�G�B
-                �F'��g#o#��B�Ci#g��h"��B�H��Fh#��BF��3h`#Ca�`i�#��[�P�/@�1)�њB)� �g�i;a��o�C�B�'�ChO��w���w;C`+�Ѓ �o�G�B��Eh=E`-��O��u���u6�Fi�hh&gR�!O��
-
-F�����F�F��F�F?���@��h+F�|��FF��#�`g�#��[�R�B�0(��) �0F��i;a����@+���ѿ�[�R�B�d,��)����"���O��
-             3F������F���"O��
-��p���a�h�n�B�Sh;S`+�ѳ�+��,  �����+
-                           ��p?���c�h�n�B�h+��&��KV"IH{DyDxD�����\tt4t!���h-��G�p_F���e�F;��h�3+������������������������������������������������������4444�hSEh���O���xO��5O��I��HE�(FIF�#�(@�O��EE�T�?�B�D�b*�ѿ�[��B�E���B
-��h F2F#O��
-           �C�����T�?�B�D�b*�ѿ�[��Bu�T�?�B�D�b*�ѿ�[�F�B��MF����l�#h#�@CSE��J�BT�?+�D�!)�ѿ�[�+^�!&��h����� F"#O��
-                                ����_s� � #3o��#����"�"*����r�����ghJ�G+�T�/*�D�q)�ѿ�[�*tѡhO��r���r�B�"b`*oba.g�g �������h+@���#c`��k@� �����C��g��.�ТhO��s���s�B�Ҁ#c`*o#FC�/C�+g#�g���*��*��ChZ�܀3 c`��#h��B.E�*��#��BT��B�D� (�ѿ�[�@�ʀ"o�C��#*o#FC�/C�+g#i"� �g;#a���F��@+�"�@CSE�*�B�CT��B�D�0(�ѿ�[��F�! F
-                                                             FO��
-                                                                 ���#hZ�*?�}�IKO��rIIIH{DyDxD�� �T�?�B�D�q)�ѿ�[��B�A�"o�C��#+oca.g��(FO��1��� O�c`��[�T�/D�1)��*�#� �g@�/�## �g?�:�/�߮ch �gYD�3c`.�! F
-FO��
-    ����$K@�$I$H{DyDxD����?�B?�� KO��r I H{DyDxD����" Fb`F!O��
-                                                              �u�� �g�K@�O"IH{DyDxD�����h��+�]�ch�g]��
-                       ��g# ��# ��#h%��r@q�o~q�p�nbq�pJn6qXp�np�@��h�|��F¹"T�?D�!)�ѿ�[���h+@����p_���e�n�`0Fp���p@���+$��p_���e�h�n�B
-                                                     �ChZ8�3C`���h F�������"T�?D�!)�ѿ�[�3��h+x�#c`��+$�>K{D+��#T�/*�D�1)�ѿ�[�ѣh+��5K�"5I5H{DyDxD���
-                                                                   &���h�������p/+���b�n,уh�B��#&��bi1F2Rd*��d"�B�%�T�)�D�0(�ѿ�[�)F��ci��H�5��ea���KQ"�I�H{DyDxD����K�"IH{DyDxD����"T�?D�!)�ѿ�[�+���h F���p���Ku"IH{DyDxD�����"p$o�m�o�nRm�o�n\mbodn
-K@�r"�"���!+�p/����Ch�n�3C`��KO�rIH{DyDxD��z�
-H{DyDxD��p�
-           K@�q"
-I
- H{DyDxD��f���n�mn�n�mdn�n�mnF#F`pG� pGh �
-                                          `pG�)�h#�CFpG)�!��h!C�CFpGh@��S��s @
-                                                                              `p�h)O�#��O�q#��
-              C`pG pG��F
-                        Fq� "!F��Z���F �v�"Zv�L|D��n pG�p/���b�i�n�B�π~-��G+Fh���V��B�F�0(�ѿ�[�@�+���� ������V�/�B�F�(�ѿ�[��B�F�*��OO�
-@��hC�*и���3h��[��񙀳hC�*��Or~*��!!�
-                                  �W�/�B�G��(�ѿ�[��B��#��	F8F"O��5O��
-                                                                           �?���_���
-    ����n0R�3h�V�/�B�F�(�ѿ�[��B���F��Կ�[��hC�+����@�	@���B�V�?�B�F�(�ѿ�[��B��F�+��2hW�2hQ��q~#F0F�B�AF9FO��5O��
-                                  �����_���
-                                           ����n0B�#HxD��d�# pG�V�/�B�F�(�ѿ�[��B0�F4�hC�*�[�f�$P�?@�B*�џ��[��%�q~o�B#FO��
-                                         �B�!�!����_���?��0?����n 
-                                                                  �
-                                                                    	���dJh-��OL�����3�B�߀�p/���b�iF�n�B�؀~Fh+���V��B�F�0(�ѿ�[�@�+��À�� ������V�/�B�F�(�ѿ�[��B�ƀF�*�O�	O�
-                  @���hC�*й���3h��[��񤀳hC�*��O�	r~*��!!�
-                                                        �X�/�B�H��(�ѿ�[��B��;h+ہ�
-@F";F$O��5O��
-             ����_���
-                     ����n0U�3h�V�/�B�F�(�ѿ�[��BI�F��Կ�[��hC�+����@���B�V�?�B�F�(�ѿ�[��B
-        ��F�+��2hW��
-                    ��2hQ��q~;h)��!!+ہ0F;F$O��5O��
-                                                  ����_����n0�$HxD��8�n D� ����# ?�V�/�B�F�(�ѿ�[��B-�F)�hC�*�P�[�$P�?@�B*�џ��[����q~o�B#FO��
-                                                            �B�!�!�y���_�
-���0�� F�
-          �`b-��O�p?���k�i��h ���B�F3hC�V��B�F� (�ѿ�[�
-                                                      �''/���@���`\��C�V�/�B�F�(й�<�3h��[��>ճh3�3�O�h3� r~*�O�O�
-                                �!W�/�B�G�(�ѿ�[��B��#8FF��
-"O��5O��
-        �����_���
-                 ����n0ЪHxD��n�#�`��h0 �a������h3�����2~��rh*@�ހ4h���
-                                                                     P�@�2*�ѿ�[�����[�#�V�/�B�F�5-�ѢB�F����`��[��h3�����# �����������1phDQ�_�B�A�L���ѿ�[����
-                                                                            	 @��1�2�C�V��B�F�$,�ѿ�[��B
-FNѸ��1sh\Q�_�B�A�L���ѿ�[���(B��'���qh)4�r~�h*#���!!*"�+
-                                                       �$Y�/�B�I�E-�ѿ�[��B�#��
-FHF"O��5O��
-           �8���_c�3h ���3h���
-                              F�����E=�F\�O�B�L�^���ѿ�[��B��2h��
-Ո��"#O��
-        �
-���_i�a
-       Ո��0Fo�B#O��
-                   �����_T�n ��
-                               P�@�4,��4
-                                        F��[�B�E��[�T��B�D�W/�ёB�
-F)���`��Ո��"���
-               ����n0�ݮ����1F"Q�?���F�B���4$Q��B�A�E-�ѿ�[��B��"���B��3h'C�\����0�а����0�Ъ���`JhL�����3�B��-��O�p?���k�i��h ��FF�B�ڀ3hC�V��B�F� (�ѿ�[�
-                                                                     �""*�АF�@�ŀ���
-   �_��C�V�/�B�F�(�ѿ�[��BM��F�O�
-к�A�3h��[��rճh3�8�O�
-r~*�O��	O�	�
-                 �!X�/�B�H�(�ѿ�[��B��;h+$ۉ��q@F��";F$O��5O��
-                                                            ����_���
-                                                                    ����n0
-                                                                          вHxD����#�`��h0 �a�����3~sh+@�ր4h���
-                              P�@�2*�ѿ�[�����[�#�V�/�B�F�5-�ѢB�F����`��[��h3�����h3��э�
-       Չ��"#O��
-Չ��0Fo�B#O��   ����_�΀a
-            ����_�̀n ����� pG# �������1phDQ�_�B�A�L���ѿ�[����
-
- 1�:�C�V��B�F�$,�ѿ�[��B
-FTѹ��3qhLS�_�B�C�L���ѿ�[���(B��O����qh)X�r~�h*#���!!*'�+
-                                                        �$Z�/�B�J�E-�ѿ�[��B�;h+pہ��qPF��";F$O��5O��
-                   �/���_W�3h ���3h���
-                                      F����
-                                           "P�_@�!)��1��[�C�D��[�Q�/�B�A�G/�њB!�F*���`
-���E=�F\�O�B�L�^���ѿ�[��B�e�2h���?�.�0?�+����7����")��?�/�0?�,����
-                                                                  ����n0�Į��?��2F!R�?���F�B���4$R��B�B�E-�ѿ�[��B��"���B��3hOC�<��]h���~*"�*�P��B�@�,���ѿ�[��B�
-                                                                              F����R���*��
-           �� � �$S�/C�A)�ђ��[���A~o�BFO��
-                                          �B#F�!�!�Z���_������ F��HxD����Y�Fh~Ф���Q�/�B�A�
-          ���ѿ�[��B	�F�C��� ]�KpG��p?���cO�O��`�nX��`]�K�apG�p/���b��F�n�i�BՇ��(Fo�B#O��F�ѠH�D�$���[�U�o�B�E�B*�ѳB����t@c
-            �����_� ��"��[�P�?@�!)�њ��[��Շ��o�B#O��
-                                                   �����_�����0���)O��
-                                                                      �a��'FV�OF�2*�ѿ�[�+~�jh
-�)B�@��[�Q�?�B�A�
-                 ���њB)Ѓ�C�@��[�Q�/�B�A�
-                                        ���њB�F��+h�
-                                                    F��[��""Z@��U��B�E�,���ыB��0�,��0F���"{�#P�/@�1)�ѕ��[��Շ��o�BO��
-                                    �M���_�����0
-�,?�e����?�`�0?�]�HxD����jWF#F��3pG pGCh 
-                                         `pG)��A`  pGh 
-                                                       `pG)��`  pG�0"
-                                                                     F!����l�"hF��AjA�Ab��ZjB�Zb ��-��A�$FrjB�U��B�E�0(�ѿ�[������$ Є��O@���rj��[��(F!F#O��
-                                                                          �����_��
-  0
-   (��8B��HxD��L� ������V0��h�P�O�B�@����ѿ�[���+��h#�P�O�B�@����ѿ�[��т��#o�BO��
-                                                                               ����_�����0��HxD����
-                   V�$8�Cj�R�_�B�B�L���ѿ�[��+�8�F���o�B#O��
-                                                           �d���_�����0��HxD����U� 8���[�j#�R�_�B�B�L���ѿ�[����+�8�F���"#O��
-h*F�B��BO��tH��C��]�E�0�pG�-��O��F�FFT� ?�F �4���_�����0��HxD����NU0�
-��C�T�/�B�D�(�ѿ�[��B7�F��Ї�����O�       �F@�7FF�T��B�D�,���ѿ�[��B��
-                                                                   F(#�B��� F1F#O��
-   �����_/�)j��(��>F_F����
-                          ����O�O�Q	H��x���E%�)j��i�I����EӰ�`O�89F�a(F����O;�
- 0
-  (�	����
-            HxD��
-                 �(��(F9F��*�(F����O�(F9F�� �(F����O�
-Tp�Fh���h�i)F0F������#!i0F�B��r���J�!i�("����#O��
-                                                 �I���_	�0F!i�����h���p@������0��HxD�����dS0�h�P�?�B�@�A)�ѿ�[���,ChB��rO�S�F0�pG3��[��DC�EE`��[�`��[�C`F0�pG��K�J-��O{D��$%F���E�������F�
-F�
-  @��s��$����[�wjS��B�C� (�ѿ�[����O����'����F(@���(O��  ���DS�+0��[�J�zD�љ
-                                                                          �U�/�B�E�(�ѿ�[��B{�F���9F0F������c�� F��B@�Ҁ�������0�X��B�H� (�ѿ�[���,h��[��@��
-                                                                         ��Q�B���(����B���HF����6���7�s������"F#FO��
-                                    �F(F�Q�F��_PF����HF!�j�:FYF0F����*h��[�F��
-                                                                              4���
-  ,�#@����B��:HxD�����
-                     �F@F�������F@��p
-                                     F���E��r��C��F!���E�h�	��F���Q�+@�F��)ԠU��B�E�+�ѿ�[��B�
-                FIF@F�������E��F�YF:F0F��&�@�0F���#�������9F0F��U�;�(F���"#O��
-                                                                              �����_�'��?�#�0?� ���������zt����VQ�K-��O�F�J��{D��@�L���X���5�B
-                                                              ���
-                                                                 �F��p��
-F��@��s��$	����[�zjS��B�C�,�ѿ�[����
-                                        O��
-��O��
-�(@�S���(����S� 0��
-��F�O�JB���2�љ#�V�/�B�F�(�ѿ�[��B�̀F���YF8F�������
-   ���B@�F��������0�Z��B�J� (�ѿ�[���4h��[��@����
-�H      �I�HF�yD        ���7���;����0+d�        ����B��r�����B���
-���&��R�����qCF��O��5"FO��
-
-                          �0F���F��_
-                                    ���s��HF���ZF�8F���2h��[�F��� !F���(@�р��� �R���0X����H���B���3R��2+���
-                           �#F���"O��
-�!F��������8F��#��v�7��              F0F��F��_(Fb��3�HF!���� W�!FHF���ZF8Fn#
-                      (FAF��S�B��r�F�F�����B��#�o�	���4"�FF
-F�����B����S�"@��GԢV�?�B�F�!)�ѿ�[��B:�FAF(F�����E��������
-                                                        �"��n�#HxD����dBHF!�M�n,�M����ZF8F��`����8F��#������
-���HF!�0�x�0F���"#O��
-h*F�B��BO��tH��C��]�E�0�pG�-��O��Ej��FV� ?F��%�C�V�/�B�F�(�ѿ�[��B/�F��Ѕ��	O@���V��B�F�,���ѿ�[��B��
-                       F(#�B���0FIF#O��
-                                       �����_�n�!j��(��! F�����C���F�FT�#���U���D�� �X��B�H����ѿ�[���#DO�i:�a��[�#j#�V��B�F� (�ѿ�[����+�0F���"#O��
-                                                                  �9���_���0@�,�����(����"#O��
-              �!���_�� 	������
-                              	�#jO�
-                                     O�
-                                       �O�Y	���I��y����������
-                                                                 ���0�D���@��r��B�к��hA�S��B�C�
-               ���ѿ�[������[��;hW��B�G�<���ѿ�[�
-                                               �  (���F����	�X�.�;h�F*�C�W��B�G� (�ѿ�[��;h����8FIF#O��
-                          ����_��
-                                 0
-                                  (�#��@��B���;h�F����#��[��C��O��:
-�C
-�h
-�Q��B�A�'/�ѿ�[���*�hpۿ�[�#�`ah��[�
-F#h��[�ahF�B��3�"hH�7#�C'�G����[�T��B�D�
-                                        ���ъBW�"�B��B���7
-                                                         DO��yO�W
-��FJ�#jB��r��
-
-             O��CV�F�0(��K@��[����B�"b��0cD��0+����F��
-                                                      0
-                                                       (
-                                                        ��8B���?��0?��
-HxD����3��[��BC�A�`��[��`��[��`�
-h*F�B��BO��tH��C��]�E�0�pG�-��O��Ej�ր�FV� ?F��%�C�V�/�B�F�(�ѿ�[��B/�F��Ѕ��	O@���V��B�F�,���ѿ�[��B��
-                       F(#�B���0FIF#O��
-                                       �����_�!j��(��! F����o�		�	O��FO�
-H��x�
-�i���([PDh_P�όE�@�~���ѿ�[���#����aO��
-                                     o�B�U���_�c��
-                                                  'jF���\�
-                                                          �����
-                                                               ��0CD@��r��BD�'�����[�#j#�V��B�F� (�ѿ�[����+�0F���"#O��
-                                      ����_���0@�&�����(���o�BO��
-                                                                 �#�����_���0@�� ������(�SD�hB�S��B�C����ѿ�[������[��
-��0X��B�H�0(�ѿ�[����R�
-0�����1���0�F,�C�X��B�H� (�ѿ�[����0����@F�#O��
-                                              ����_��
-                                                     0
-                                                      (�#��@��B���0�F�ѹ���[��O��9	�G	�h	�Q��B�A�,���ѿ�[���*�hvۿ�[�#�B�
-0`h��[�F#h��[�`hF�B��3�"hH�1#�C!�A��
-                                    ��[�T��B�D�ξ��тBg�"�B�B���1D��FI�	O�X#jB��r��CV�F�0(��K@��[���B�"b��0D��p/?����D�h�S��B�C����ѿ�[���#'��0��
-                                                                0
-                                                                 ��8B�v��3��[��BC�A�`��[��`��[��`y��?���0?���HxD��j�F����DF#F`pG� pGh �
-                                                       `pG)F��h  #���
-                                                                     C`pGh ��@
-                                                                              `pG)F��h  #���C�A`pG�F#F`pG� pGK!J{D0����X$h���P�O�B�@�-�ѿ�[����3�� h�B��0��%h+���
-                                                                               hP�O�B�@�\���ѿ�[��
-                 `�+������,��&ltKFp�{DN��%$iF�Y3h��h���
-                                                       hR��B�B�L���ѿ�[�`�(���3h�B��p� ��������ktF#��[�F`pG��O��sT���s�B�i�
-                                          h!�`�B`a��#A`�` ]�KpG`
-                                                                Fa���� ]�KpG�p�FV�+��o�E�hF(F��g��i���#i�V�_�B�F�
-                                 ���ѿ�[��њB��&@���"h���h F#O��
-                                                              ��������_��
-                                                                         0
-                                                                          (���(B��HxD��V� ��[��p���B-��OFo�IO@����[�+h\U�/�B�E�A)�ѿ�[�����o�@QF�����B���,h�B���h"F(F#���O��
-           ����_��
-                  0
-                   (��8B��JHxD���FX�?�F�QF F�����[�g�X�?KE�H�r*��KEFЙF
-�	�B��LE"�OFO�
-                    @��	�oh�B��h:F@F#���O��
-                                           �W���_��
-                                                   0
-                                                    (��
-                                                       ���	��oh�B�ؿ�[��)iKR��B�B�7/�ѿ�[��ѳB��QF F������I	HB�����h@Fo�B#���O��
-                                                    �!���_ؼB�����[��h"(Fj`F*a�����[�O��
-       *`o�B���_�����0��q����0��k��BF#F`pG� pGh 
-                                                `pG)��`  pG�#L|DT�3 ����%�C�3���o��
-   "�UV��B�F�\���ѿ�[���"q``F�pGjj���o�
-                                      K{DS�0 ����QS��B�C����ѿ�[�� pG pGj(F���p?����4CXh@�IhyDQ�2 �B� X`]�KpG���o(� ��T	�F����Pq�h(��������i(-��AF�p_�K{DS�0`�ե��b����!��
-          `_`���� �������o��K{DS�0`���O�P���Mx�� ����b���F)�!  ��j������
-                                                                         ���ti>iK�FH{D��FX#h!�)�h/�Kh��0F*#O�
-                             �
-                              ���_!�#h��@B �B�#����"'�GF�����"���rF�������gt8��nFI{D���n^X,3h!�.ݥ� +�� �F����|"!�F���F�O��3�������&��!F*F�@�k�@F����_��@B�!�3h�B�"����� �� ����N�rft5K6J{D-��A���X+h�(\ЃnF+X��C�/O�����p?D��D���b&���0C�
-                                                                        �B�!�D��
-���p�n "O�|�,���_��@B������� �������et����p/���a���0#�+�pG��<BO��3��� 2hC�R�O�B�B�
-  ���ѿ�[����������)K()J{D𵃰�X+h�1��p/���g��<B���0(
-                                                  �C�#���`�B����FR�ofE�B�N���ѿ�[�����B
-      �$�D
-,
- � �+h�B��� ��3F����n�hC�R��B�B�,�ѿ�[���������dt+K(+J{D𵃰�X+h�1��p/���g��<B���0(
-                                                                               �C�#����@`�B����FR�ofE�B�N���ѿ�[�����B
-                                     �$�D
-,
- � �+h�B��� ��3F�����O��3�� 2hC�R��B�B�,�ѿ�[�������B�
-dt"��O��
-        F`o�B�3���_����0��HxD����J;8K9J{D-��G���XF6N�FO@��#h~D�)h��[���� #h�BS������2hB�U��B�E�,���ѿ�[��BъB�O�
-�
-���(F�!O��
-          �����_��
-                  0
-                   (��8B��HxD��^�F���I*F0FyD����GQF0F�����[�"SF*`(F�!o�BO��
-                                                                           ����_�����0������p� ctj��:%���h��[��� pG{�H��n+��C �C�
-                                                 `pG pG�LKMJ{D-��O���X	�JL)F|D� F������`�*hA��E������S�B��Bg�?L@H|DxD!F����F(c����A��
-��
-���O�sBF�0F����F(8ЧhIF8F����0�.I8FyD����(��)F`h����(��+h[E�SE��dh F����F(��0���J�����K`�"{D��B��H!FxD��$�F(����������at���B�
-B�A�A�A�A*����@8�F
-                  L
-                   I|DyD��0� h�ch+`8�K�p/&!{D�P8���a������JKzD{Dh�B���G�pGX�~@*�)F�O� FO�B��!��D��!]�KpGK�p/!O��0{D�PpG��a pG-��O��iL�����F|D�F�FFT�
-                                                                    �#F:FIF ��0����h�(P�`H#xDP�/*�@�1)�ѿ�[�@��2F#�QF��
- ��������#9n F��#�`OJOIzDyD��(>�h��$2�`JK!��[�{DS�/C�(��.�3�&3��&*Sܦ��n F��0�Bi�t7�F����n$���&&��&F.��.K(F!�p_{D�X����*K{D�P��XF��,�F(��-8�;nQF���2F%a&�`�����`����k"�"J F"IzDyD��0�б K&��[�{DS�/C�a)��*,F���H�!"#xDO��
-                                                       �������g� F$��^���(F���#"!��&�F������`t`�_tҁS�l��*������h�h�B�� pGO��0pG��#0���E���B�(� �O��00�pG100�������K�J{D-��O���X�F� �a�c�����F(��#x/+��?/+�� F����E�-��##�C�+@�/! F����F(@�:jYFS
-                                                                               3��aF������|�*F!F�DF��C�
-                       F�����$ ��F�{n���+�{n�i#�A!�CA�AA������?�Fq�{nZ@�~K�p�{DY38a�#�F;c����{i2"��[~aMFhF|`�F�FF��F�F�BF�!(F�U�C\�_K�p/{D�X+�<𗀳y(F��������0����(��~i-�SK�p/&!{D�P�i0F�k�B@���@7�F���O�pG)F F#BF����p�F�&DK@F{DY�@�%�AK{DI�@!xj������=K�p/&!F{D�P��9K�p/!{D�P���,�F��[�p�~i�F|h�1K{DY�0+0�QF"@F�w�A��(�F&�#"�F���#QF����B��xa�i8i����{i�FQF��
-                              �{n��
-                                   �J8izDhY� *��&��
-                                                   ��8i��K�F~i
-                                                              "{DI� ��)F FBF����F8i�������������@F����^^�]�]�]h]X]8]�\�\�]t�= =Kh{Dih��Z`pG��|��F)H#xDP�/*�@�1)�ѿ�[�/�#N%#L~D#I|D0hyD��u����`hX��h;�`s�H#��[�xDP�/@�1)��*�(F��J1FzD��8�ch!i��|�F`h��J�������!"O��
-                 ����K�p/!O��5{D�P��[�|}�|�����|7���>K?J{D-��A���X�F8F+h{`����(O�#x�F/+��?/+�� F����F�.��##�C�+C�/! F����(=�:hAF�
-�F@F�������2F!F�DF��C�                           3#���
-!{D�P��               F����@F���(�zh+h�B%7�F����K�p/{D�X+��K
-       K�p/&!O��0{D�P�K�p/!O��0{D�P�������Z�Z�Z�Zt�9h [
-                                                      `pG�p��h2F*1��
-                                                                    tQ�_�B�A�C+�ѿ�[�3�.��##*�#ӱhB�P��B�@�4,�ѿ�[���R
-�Ah#O��
-       ��������_�p�h#�P�O�B�@�-�ѿ�[����h���h�����0��HxD��B�v0�����FFh��#O��5���q"��O��
-      F FF����_�8F�4� F��F8F�.��
-                               �+��n�HxD���hB��04K�
-                                                   4J{D𵇰�XF+h��hZQ��B�A�&.�ѿ�[����*I"FyD0F��#h��C���[�T�/�B�D�(�ѓB�F���T�/�B�D�(�ѿ�[��B��'0F!�e� F��0��+h8F�B��� F��|�(�n(�#h����K�p/O��7{D�P��������X�Wtc����F����#h��
-                                                        �T�/�B�D�(�ѿ�[��B� F��@v�����K�p/���ѿ�[��BF
-         !O��0{D�PpG pGX��Fhٹ
-                             FF�1����q#F��"$O��
-                                               F(FO��5���F��_8��S� F��
-                                                                      h+��n ���J��
- �+��n�HxD��.�hB��N.p��h2F*1��
-                              tQ�_�B�A�C+�ѿ�[�3�.��##*�#ӱhB�P��B�@�4,�ѿ�[���R
-�Ah#O��
-       ����q���_�p�h#�P�O�B�@�-�ѿ�[����h���h�����0��HxD����-���4K5J{D�F�X��
-F3h��hZP��B�@�'/�ѿ�[����*I"FyD8F�E�#h��C���[�T�/�B�D�(�њB�F���T�/�B�D�(�ѿ�[��B��%8F!�+� F��`��3h(F�B���)F F���(�n(�#h����K�p/O��5{D�P������$VtUt����Jh8�L�����3�F����#h��
-         �T�/�B�D�(�ѿ�[��B�)F F��8@m� 8�K�p/!O��0{D�P8��U8�o�E��1����[�P�/�B�@�L�F��S��J�pO��0K#zDh�P8��
-Ձ��"#O��
-        �����_� 8�����F��HxD����lU�+�p?���c��!��B���pG��!�p?���c��� pG��p���b0���E���0��BT�D���<A���@��10����pG,F$�Q�_�B�A�<���ѿ�[��B+F�������p?�A���b�����@ٱ����X���<C�A�S��B�C�L���ѿ�[��B����!�)��O��1�� hA�S�O�B�C�
-                                                      ���ѿ�[���������F���p?���c��o���`�g]�KpG��h�p?���c�g���0GpG�p��p_���d���0�oB`�`H���<E�`H��F���@�`�gp�pG
-F"�U��B�E�6.�ѿ�[��B
-                   F�����p��p?�h���b�h�g4�!���0��p@Gp����@�X���<C��D�S�_�B�C�l���ѿ�[��B���@$�,��O��1�� hA�S�O�B�C�-�ѿ�[�������d�,F��-��G�pO���d'O���#D�o�}�   ���
- ����ME�&%Р�
-�h��0�G�E����E�=F����J	��XhS@���B��e� ������|�.��!	���P��g��	���
-                                                                           ����ME�Р��B����Q|�xD�����$1е�pO	K���a&'{DD�g��P2FI��pyD�@���"������������������-��C�p���g��\����R�D���2�oDN�Ja\���� S@[BҎB�F
-����0��K@[B	ҲB���0�G�hb�$�g������P|8��p?���e��<C��� B��B�FS�O�B�C�(�ѿ�[��B F�!�D
-)�8�"F��O��2�� "�hB�S��B�C�,�ѿ�[��������j�����pO���e��<D���0#�T��B�D� (�ѿ�[��B��
-                                                                               +���pG'@�� F�!#O��
-                 �A������� �
-                            +����
-                                 F��
-                                    0
-                                     (���0B��HxD����R'h0�*Fр!#O��
-                                                                 ��%T�?D�R*�ѿ�[�C� F�!"#O��
-           �
-Fс��#O��    ���0��hp�*F
-        ������&T�?D�b*�ѿ�[�C� F)F"#O��
-F(I{D�FjhL�����6S�����B��0�� �3�O�FO�JI���v���9F'T�D�s+�ѿ�[��!������0���[��*����3JD���2+	� F���"�O��
-                           ����n ���0�B��������N�Nt.K/J{D-��G
-                                                             FS��F`hL�����1����0�B�E������>�O�FO�JH���v���8��JF(F!�O��
-                                      �a���_��##n0�#ӹ������!8F�����bh#h��!��)���K0�{D��1+��n ���0�B������ �� �������Mt���KJ{D�XpG�(M�KJ{D�XpG�M��
-     M����]YT�����R��+h�B����0@�pG������LtKp�{DK�O�
-FF��>�)F"FO�                                       �����_F� Fp�F
-�F��g���    F0F�K�p/ABO��4{D�P��J�p@BO��4zDh�P���M�M�nKp�{DK�O�
-FF���)F"FO�                                                    ����_F� Fp�F
-�F��)���   F0F��K�p/ABO��4{D�P��J�p@BO��4zDh�P��dMPMtn�{DK�O�
-                                                             �o���_F� F�F����O�
-                                                                               F�F��s���"F@�0F��K�p/ABO��4{D�P��J�p@BO��4zDh�P���K�m-��AL|D$hT�@�#����_F� F����F�@F��1���9F2F+F@K�p/ABO��4{D�P��K�p/ABO��4{D�P��tK`K�l-��A L|D$hd���EO��|�t���_F�@F������F����+FK�p/ABO��4{D�P��K�p/ABO��4{D�P���J�Jl-��AL|D$hT�@�!�0���_F� F����@F������9F2F+F@K�p/ABO��4{D�P��K�p/ABO��4{D�P��dJPJzk-��A L|D$hd���EO��|�����_F�@F��c���F��=�+FK�p/ABO��4{D�P��K�p/ABO��4{D�P���I�I�j�{DK�O�v
-                                                              ����_F� F�F����O�v
-                                                                               F�F��)���	K�p/ABO��4{D�P��J�p@BO��4zDh�P��dIPIljKO��
-                                                          �{DM���F
-F]Y9FkF.h��g���_�8���#�F���B��+h�B���
-                                     K�p/ABO��0{D�P��K�p/K!O��0{D�P��������H�H�Gtp���MFNkF}�O��
-��p�J�pOCBO��1zDhO��0�P������tH<GtKp�{DK�O�
-FF��P�)F"FO�                               �����_F� Fp�F
-�F��y���    F0F�K�p/ABO��4{D�P��J�p@BO��4zDh�P��H�Gi8�K{DK�O�
-                                                             ����_F� F8�F
-                                                                         F���!FO�
-�F��=���_F      K�p/ABO��4{D�P��J�p@BO��4zDh�P��GxG�h�F/K0H{Dp���X	�+h��@�O�@��@�C�(HxDh��o�cO��|�n���_F$�� F+h�B3����p@�pG
-�
-�0F�����������O��|	��Fo�c�M���_F
-         K�p/ABO��4{D�P��K�p/ABO��4{D�P��������F�F�Et�g�F0K1H{Dp���X
-                                                                    �+h��@�O�@��@�C�)HB�2xDh��o�cO��|����_F$�� F+h�B3����p@�pG
-                                              �
-�0F��r���                                      ������!���K���!O��|�Fo�c�����_F
-         K�p/ABO��4{D�P��K�p/ABO��4{D�P��������E�EEt&g�K�{DK�O�
-                                                               ����_F� F����O�
-                                                                              F��F��3���	K�p/ABO��4{D�P��J�p@BO��4zDh�P��xEdE|f-��CFN�~D3hS�O�
-                                                                     �v���_F� F����F�FF����9FBF#O�
-�HF������         �F0F�a���_F
-K�p/ABO��4{D�P��K�p/ABO��4{D�P����D�Df-��C�{D	�S�O�
-                                                     �2���_F� F�����FFF����9F2F#O�
-�HF�������_F
-K�p/ABO��4{D�P��K�p/ABO��4{D�P���jDVD�e-��CFN�~D3hS�O�
-                                                      �����_F� F����F�FF��@�9FBF#O�
-�HF��h������_F
-K�p/ABO��4{D�P��K�p/ABO��4{D�P����C�C�d-��C�{D	�S�O�
-                                                     ����_F� F�����FFF����9F2F#O�
-�HF��$���_F
-K�p/ABO��4{D�P��K�p/ABO��4{D�P���ZCFCpdK�{Dc�E�	A"O�6
-                                                     �f���_F� F�F����E�	A"O�6
-                                                                             F F�F������	K�p/ABO��4{D�P��J�p@BO��4zDh�P���B�B�c8�K{D�hj�FFO��0O�r
-                                                                        �%���_F� F8�F��z�"!FFO�r
-�(F������       K�p/ABO��4{D�P��K�p/ABO��4{D�P��TB@Blc��K{DK�O�r
-FF��:�)F"F#O�r                                                  �����_F� F��F
-�8F��b���     F0F�����_F
-K�p/ABO��4{D�P��K�p/ABO��4{D�P����A�A�b-��AL|D$h\��O��|����_F�� F����FFFF����9F2�@F�����F F�����K�p/ABO��4{D�P��K�p/ABO��4{D�P��LA8Afb-��AL|D$hT�@�-�b���_F� F��K{D�X(���")F F����(��� ;`!���0�B�"����������|@,?tK�{DS!O�D-��A��S���FF�po��0!��
-                                                         �����_F� F�F��C!O�
-                                                                           F F���F������"FO��|F0K�p/ABO��4{D�P��J�p@BO��4zDh�P���>�>`�ð&L!�&MF|D&I�"FeYyD�,hA�����o�2FO�
-        Fo�@��!#�!�O�
-                     ��O��
-                          F��O�|F:FF����_F�1F #O�
-                                                 ��A� F+h�B
-                                                           �C��K�p/ABO��4{D�P������<>P=t�����8��pO�l���d�k�hB���c�B�F"S�)�C� (�ѿ�[�ѫl�`Zh2Z`8�F������l�p?���c�h�B�!�R�O,�B����ѿ�[�
-                  тl ��]�KpGSh 3S`pG ��lCh;C`�pG�`��[�P�/@�1)��*����!"O��
-                                                                         ���]��-��Cɰ1O�F1KFD�F�X3hG�)C�Q�;��"�#`��
-����0Z,�'JC��c�X��2$�m�!FH#O�
-                             �]���_F*��C��#[�$�(F�"'�@�;������%#��!#G� F3h�B�I�����JC��c�X��2$�-��*F��F*��AF$���K�p/ABO��4{D�P������<�;t���D?,ؠ� +�]�K����K�p/!O��0{D]�K�PpGX<K�p{DDpG�j<K�p/{D�XpG�6<������R����pG�
-                                                    �n���Fo�AO��
-                                                                �����_��@B��F!�� D��^� ���O��
-��i�B        �n�����_��@B ]�����F�iFF
-�i\���T,D��i��B�ѲB)F(�2F��@��i�B(� ��� ����!��&� ��
-F�B���N�p���*F1F��� p����#F��3p�
-                                 p�h ��s
-                                        `pGA�)
-                                              �h!C��CFpGh#��CFpG!���hF�
-                                                                       Ձho�C�B��p?���c �n�`pG pG��h���0GpG-��C!L"M|D}D#h
-                                        �����H!��xD����Fp�IyD����F@��I8FyD�����I8FyD����FбI8FyD���K��L��X�D^@����X@����`�`��[�'`��
-HxD��x�T[B9
-           �L�N�X�b�|V[�K{Dh�"�`��B�pG��ZK0�{DM��}Dc���[�
-                                                         L
-                                                          K,Y{D[h$hc@���0@G������������Zt8|vZK0�{DM��}Dc���[�
-                             L
-                              K,Y{D�h$hc@���0@G�����Z������@Z(8|*Z
-                                                                  K�{D
-                                                                      L��|Dc���[�	J
-K�X{D�hhS@���@G���6�����Y�7|�Yh ��s
-                                   `pG)F��h  #�@S��C�s`pG�0���h��
-                                                                 4D�
-M}D+h�F2�+ȿF 
-             `�0���<�+h�+ȿF��298�FK
-                                   F{D�hF3�K{D3ТB�K{D�h�B���
-                                                            �B�+h #�#�pCC�3+`8���K{D�h�B�� 8��8�8�8�8� ��J�L|D ` ����``��8�J-��OzD�M�p����h������FR���D���2
-                                                                           F��u�� �+�`"F𡀥B̿""�B��"*��p	еB̿""�B��"*��b�Qh���?�ြB�Q`m�r�΀qJh:J`*@�ŀ�B"F��""�B�"*�r�BF�RRhj��F>v�V�)��b�BF�ݼB𠀪�+u"U�)�E� (�ѿ�[�@���� `�X�Vq���$2�B�������(��h����(s�&#��[�U�/E�1)��*��0F��0�B@������r��qJh:J`*�ѴB�ھB�г�qQеB̿""�B��"*l�hx���?����?F�x���R�F(d�j���`9��'q��h����X�2K��� {DPZ�`
-                                         �.�ѕ����0YC� ��� ��&��h������(0���0C�@���0.��{� K{DZ�`��&��B��x��������u��
-                                   &��K{DZ�`.�r�_�(F������R�(F�!"O��
-                                                                    ��n�KW"IH{DyDxD����
-H{DyDxD����V66�5�6t^8l�
-                       R��p��po���d���0�``���$b Ц�+u#U�/*�E�1)�ѿ�[�E����0���[���$b#��[�U�/E�1)��*%�0Fp��n��P���(0-�O��6���'q�n������0ȱZ�Ԡn��<���(0�����0O��6C�@���0��(F�!"O��
-             �.���C� ���0��(F���������0C�@���0����h[E�h  �
-                                                          H�
-                                                            `pG-��O�h[@�PK�FFF{D�F2u�MJzDh2pлBt�JK{D�Bo���
-                          �Bk��p/���b�h�n�h�Be�%hO�
-���z�
-E�
-  T�o�B�D��+�ѿ�[��B*�E�BO��
-                           ��h�C�����T�?�B�D��*�ѿ�[��B�T�o^E�D��+�ѿ�[��
- F�BBFO���IF���!�
-                 ��`A��A!`��[��h�� Fo�B#O��
-                                           �����F��������K{D�� �����B+�A+%h���
-                                                                              9F(F����(�ѹ����P!h����# ����4�4�4�36K7J{D-��C��S��FF��0	�����(��"$,��p����c�B/Тn�*IF FyD��4� F!����BF�,�K{DX�@,
-                               �*F1F8F��0�C�ШB�$$( �8F��F�	� F��0�B�
-                                                                         �����1F ����F(��
-         K{DX�@��	K{DX�@������K{DX�@����2l2`2P2�1t�6K*-��C{D5L��Y��"$;h	�5��p����c�B7��F.I�F�n FyD���� F!����BF�2� K{DY�@,�BF1F(F��>�C��(*�C�\
-*�$�T�@E�"$$4T(F����	� F;h�B�
-                                ����� ��>�F(��
-                                              K{DY�@��	K{DY�@����N�K{DY�@����1�1x1h1�0t�-��G��Eh-�%(�����hF.c����C����2�B�٥h�ѤFnF��7F���O����ǜ���6HxDP�?+�@��*�ѿ�[�\�0K{D�i��K��iSEK�QF��F(KСiRF������&K{D���4F�������"N~DƔ���#��[�HxDP�/@�1)��*�݁!"O��
-       ���(F����F(F��P�(������FE��''�Bȿ'/?�}�����|��iRF�F�����
-                                                              %��������DQ�QjQVQ�P��FH#xDP�/*�@�1)�ѿ�[��M'N}D~D�ĕ�����[�V�?F�r*��+� ��������0F;F�!"O��
-                                                                     �����PP�P�F
-FO��1���
-        ��� �n(
-               � �(������
-                         ��� �n(
-                                � �(��������p���LFM#|D"iFdY%h���,���3`
-�� �n(                                                                ��
-      �  �#h�B��p�(� ������-t��ڸJ{D𵃰�XFlFF F+h����. �.�! F��@�!F8F��(�
-�� �n(                                                                 ��
-      �  �+h�B
-���(� ��! F��!�������L-�����
-                            ��� �n(
-                                   � �(�������
-                                              ��� �n(
-                                                     � �(�������
-                                                                ��� �n(
-                                                                       � �(�����G�
-  ��� �n(
-         � �(�����������
-                        ��� �n(
-                               � �(�������!��p�
-                                               ��� �n(
-                                                      � �(������
-                                                                ��� �n(
-                                                                       � �(�������
-  ��� �n(
-         � �(�����A�
-                    ��� �n(
-                           � �(�����M�
-                                      ��� �n(
-                                             � �(�����`���|�����
-                                                                ��� �n(
-                                                                       � �(�����gF߀�K�p{DDpG�>,��B��D������B��"@��C����zD{D�Xh��
-                                                `G�������@����D�����$M�L��pG��$��B@��B��������������O��F��������B�(����p���B�(���p��A�B�(���Ap���B�(���p���o�B�(����`��o�B�(���`��Ao�B�(���A`��o�B�(���`���_�B�(����P��_�B�(���P��A_�B�(���AP��_�B�(���P���O�B�(����@��O�B�(���@��AO�B�(���A@��O�B�(���@���?�B�(����0��?�B�(���0��A?�B�(���A0��?�B�(���0���/�B�(���� ��/�B�(��� ��A/�B�(���A ��/�B�(��� ����B�(�������B�(�����A�B�(���A���B�(�������B�(�������B�(�����A�B�(���A���B�(���FpG
-                                                                           �  pG������ ��p�O��0��)��-�@������@���pG��O����@-���The futex facility returned an unexpected error code.
-2.28Native POSIX Threads Library
-Copyright (C) 2018 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.
-There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.
-Forced unwind support included.
-�A@��� H@  
-@` �../sysdeps/unix/sysv/linux/createthread.c*stopped_startallocatestack.cl->next->prev == elemfreesize < sizepowerof2 (pagesize_m1 + 1)size > adjerrno == ENOMEMsize != 0mem != NULLpthread_create.cpd->stopped_startadvise_stack_rangecreate_threadallocate_stack__pthread_create_2_1__reclaim_stacksrce/proc/self/maps%x-%xpthread_mutex_init.cINTERNAL_SYSCALL_ERROR_P (ret, err)prio_inherit_missingINTERNAL_SYSCALL_ERRNO (e, __err) != EDEADLK || (kind != PTHREAD_MUTEX_ERRORCHECK_NP && kind != PTHREAD_MUTEX_RECURSIVE_NP)INTERNAL_SYSCALL_ERRNO (e, __err) != ESRCH || !robustrobust || (oldval & FUTEX_OWNER_DIED) == 0mutex->__data.__owner == 0PTHREAD_MUTEX_TYPE (mutex) == PTHREAD_MUTEX_ERRORCHECK_NP__pthread_mutex_lock_full__pthread_mutex_lockpthread_mutex_trylock.crobust__pthread_mutex_trylockpthread_mutex_timedlock.c__pthread_mutex_timedlockpthread_mutex_unlock.ctype == PTHREAD_MUTEX_ERRORCHECK_NP__pthread_mutex_unlock_usercnt../nptl/pthread_mutex_lock.c(mutex_kind & PTHREAD_MUTEX_PRIO_INHERIT_NP) != 0(mutex_kind & PTHREAD_MUTEX_ROBUST_NORMAL_NP) == 0(mutex_kind & PTHREAD_MUTEX_PSHARED_BIT) == 0__pthread_mutex_cond_lock_adjust__pthread_mutex_cond_lock_full__pthread_mutex_cond_lockclock_gettime does not support CLOCK_MONOTONIC
-r/proc/mounts/etc/fstabtmpfsshm/dev/shm/sem.XXXXXXFATAL: exception not rethrown
-��������������������������������������������������������������������������������������������������������������������������������libgcc_s.so.1libgcc_s.so.1 must be installed for pthread_cancel to work
-_Unwind_Resume__gcc_personality_v0_Unwind_ForcedUnwind_Unwind_GetCFAtpp.cnew_prio == -1 || (new_prio >= fifo_min_prio && new_prio <= fifo_max_prio)previous_prio == -1 || (previous_prio >= fifo_min_prio && previous_prio <= fifo_max_prio)__pthread_tpp_change_priority/proc/self/task/%u/comm|/lib/ld-linux-armhf.so.������������������������E�����E���TF�����G���(�J�����0J��f�����,g�xg�����xg��g������g��������������������ԟ��������|������ȡ����\���������������������ȷ����(����T�����D������L��h���������������\�����4������d������������������������������x�������`������
-��@�����D������� ���������������������X������H������`�����������������������$��T��(�� ���������������������������
-                                 ����������!�l���������������������������������� �����\���������hg��GP��)S�����f�
-                                 V?N�=
-                                      F��aEe\�wQJ��GD�.�^rOH��]F'A&u+?ZS���5�%�T@�`(!)5
-       <k&_���
-��7��(��,i���*N��lb��9��yA*X1}� 6��v`e:g�M8�
-���KUz�h���'o�4{�;�3�a���J��,�j�pCM����:4�m	-R���^Q2@Xc��IY�K��Bf��O730�P�I-bV_����>��8�D�L��#UT�d"6$���������sB =��R<�>�/��	1[�|�
-o�o�oAoIo�o�o�o�oq�e�}�!�������l�iEl)mat1s�x=�=���i�ѽ��M��Y��E������!!�Z�T�H��
-
-�����o� %�                                                                    tC
-_
-  ��@�>���oP=���o���o(���o<>���o���o�:���o6��C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�C�x=��!�!�!�!�!��������A2aeabi(7-A
-A
-�"the use of `pthread_attr_getstackaddr' is deprecated, use `pthread_attr_getstack'the use of `pthread_attr_setstackaddr' is deprecated, use `pthread_attr_setstack'3d3b39a2dae85ce71cc6ecd2576b45d5c9555d.debug�kIbxtC
-                                                       �|C
-                                                          ��G
-HG
-5�!DH
-MLID�
-`Y��TdLM�M
-�jj�d��!��A �A	�A�A!������������i
-oAn
-�p(p
-�ttxAA�`t
-> �`���`�<
-�A	�A
-B���     ���
-���`
-����l   �
-�(BBBX�
-���! �
-P$�oN
-�|��t�
-������
- ����
-     ��
-       %^�
-�.�     $B�	��
-                  ;	�o
-�a�	���	���
-                  $
-0��
-O�
-f��
-�$
-��
-  �
-�-M
-�A
-�Q
-�Q�
-�p
--��
-
- �@
-.��L
-:��|
- x�
-   [
-x   ��
- dB
-   ��
-     �
-�     1��
- ��
-�  ���
- lB
-�  ��<
- ��
-
-
-   �
-    =
-     ��
-       a
-o       ��|
-|1��
- ��
-�  �)M
- XB
-�  ��
-��j
-��T
- ��
-p�$
-��>!�l
-  ���
-�o
-%��BD
-   Ae�
-�0�&�
-�� ����
-  /	�
-=l�
-nU�T]�2
-s�0B��
-�p��
-a���X1��
-�����! M��
-   �T�
-����5�G��^
-m(B�z�  ��      ��
-l��D�	��
-V���
-  |�~
-�o�|
-���R
-4`�`��<
-   U��
-W��"  u���hBI��
-   n���4BH�
-           �	�
-T���
-����)pl
-   ����
-������  ���
-\�����
-  y�
-��d�����t�S��A�J
-���R�  ����`
-k��@
-�n44
-+-tC
-)�� ��e�
-x��P��>
-�C����|
-  �C
-    �C
-      �C
-        �C
-          �C
-            �C
-              8D
-                <D
-                  �D
-                    �D
-                      E
-                       E
-                        4E
-                          8E
-                            �E
-                              �E
-                                �F
-                                  �F
-                                    tG
-                                      xG
-                                        Tx�� %�:P=<�>	�@
-tC
-  �C
-������ �!��!!jT"
-sU���"
-��o""
-;Y�0t"
-n�
-��zl�d
-�o!!
-"!��
-~�
-�"Ѡ"e��"�.
-�"h
-~�~��|"
-�" "
-�$%^��H<�"
-%����
-�%��`%���
-&&=&=�  �o
-�'�'���"1s0�
-(\Z1��"
-�(�n$I�8
-)M���|"
-2)[)l
-�)��z"
-�)M� "
-�*M��pP
-�*��B
-b
-�]��+��*
-l,�na,��*
-�,5�Q�`
-���!��" 1s0"
-h.Š�t"�.1��
-�/ �/u� ��"
-�/�/!l
-Ce�
-`��*
-�0Y�&"E��
-�1Z��   ��""
-�1���"
-�o�12ɠ
-D2$d$a$tderegister_tm_clones__do_global_dtors_auxcompleted.10783__do_global_dtors_aux_fini_array_entryframe_dummy__frame_dummy_init_array_entry__nptl_set_robustsigcancel_handlersighandler_setxidpthread_functionsnptl_versionbannerstack_list_delfree_stacksstack_list_addchange_stack_permcreate_threadstart_thread__PRETTY_FUNCTION__.16922setxid_mark_thread.isra.1setxid_unmark_thread.isra.3.part.4setxid_signal_thread__nptl_setxid_error.part.8__PRETTY_FUNCTION__.16605__PRETTY_FUNCTION__.16407__PRETTY_FUNCTION__.17218__PRETTY_FUNCTION__.16416in_flight_stackstack_cache_actsizestack_cache_lock__nptl_threads_eventsstack_cachestack_used__evoke_link_warning_pthread_attr_getstackaddr__evoke_link_warning_pthread_attr_setstackaddr__PRETTY_FUNCTION__.11315tpi_supported.11301__pthread_mutex_lock_full__PRETTY_FUNCTION__.12343__PRETTY_FUNCTION__.12176__PRETTY_FUNCTION__.11076__pthread_mutex_unlock_full__PRETTY_FUNCTION__.11033__pthread_mutex_cond_lock_full__PRETTY_FUNCTION__.12316__PRETTY_FUNCTION__.12167__PRETTY_FUNCTION__.12399default_rwlockattr__condvar_dec_grefs__condvar_confirm_wakeup__condvar_release_lock__condvar_load_64_relaxed.isra.1__condvar_cancel_waiting__condvar_cleanup_waiting__condvar_fetch_add_64_relaxed.constprop.3clear_once_control__pthread_once_slowwhere_is_shmfsdefaultdirmountpointcheck_add_mappingwalkerthe_semrec__sem_wait_32_finish__sem_wait_cleanupdo_futex_wait.constprop.2__new_sem_wait_slow.constprop.1do_futex_wait__new_sem_wait_slowunwind_stopunwind_cleanuplongjmp_compatfork_compat__vfork_ifunc_ifuncfcntl_compatsystem_compatlibgcc_s_handlelibgcc_s_personalitylibgcc_s_forcedunwindlibgcc_s_getcfa__PRETTY_FUNCTION__.10999.udivsi3_skip_div0_testshift__FRAME_END____GI___pthread_keys__pthread_getschedparam__concurrency_level__pthread_attr_setschedparam_thread_db_pthread_eventbuf__pthread_cleanup_pop__pthread_condattr_destroy__pthread_setcanceltype__GI___pthread_testcancelsiglongjmp_alias_thread_db__rtld_global__aeabi_uidiv__pthread_kill_other_threads_np__lll_timedlock_wait__libc_pwrite64__new_sem_getvalue__sigsuspend__xidcmd_thread_db_sizeof_td_thr_events_t_thread_db_td_eventbuf_t_eventdata_thread_db___pthread_keys__pthread_create_2_1gsignal__pthread_cond_init__static_tls_align_m1_thread_db_dtv_slotinfo_list_len__pthread_attr_getscope__libc_pause__pthread_attr_init_2_1_thread_db_const_thread_area__libc_open64__nptl_main__GI___pthread_mutex_init__libc_msgrcv_thread_db_sizeof_pthread_key_struct_thread_db___nptl_initial_report_events__libc_recv__GI___pthread_register_cancel__pthread_cond_destroy__pthread_attr_setdetachstate_thread_db_dtv_slotinfo_gen__libc_pread__attr_list_lock__nptl_stacks_freeres__deallocate_stack__pthread_attr_setstacksize__pwrite__GI___pthread_once__nptl_setxid__libc_read_thread_db_pthread_report_events__GI___pthread_rwlock_unlock__fork_generation_thread_db_td_eventbuf_t_eventnum__libc_sendto_fini__libc_send__libgcc_s_resume__pthread_key_delete_thread_db_sizeof_list_t_thread_db_pthread_eventbuf_eventmask_event_bits_thread_db_pthread_key_struct_destr__libc_accept__libc_lseek_thread_db_pthread_key_struct_seq__pthread_debug__pthread_cond_wait__pthread_timedjoin_np__nptl_setxid_error_thread_db_link_map_l_tls_modid__recv__pthread_attr_setstack_thread_db_rtld_global__dl_tls_dtv_slotinfo_list__new_sem_wait__pthread_tpp_change_priority__sem_search_thread_db_pthread_key_data_data__pthread_attr_getinheritsched__find_in_stack_list__sched_fifo_max_prio__sem_mappings_lock_Unwind_GetCFA_thread_db_dtv_slotinfo_map__pthread_condattr_init_Unwind_ForcedUnwind__GI___stack_user__GI___pthread_mutex_lock__GI___pthread_mutexattr_settype__GI___pthread_unregister_cancel_thread_db_pthread_specific__pthread_mutex_cond_lock_thread_db___nptl_last_event__aeabi_ldiv0_thread_db_pthread_tid__pthread_getaffinity_new__GI___pthread_unwind_next__pthread_detach__pthread_kill__pthread_cleanup_pop_restore__pthread_multiple_threads__vfork_ifunc__libc_pread64__pthread_attr_setstackaddr_thread_db_dtv_dtv_thread_db_sizeof_pthread_key_data_level2__sendto_thread_db_pthread_key_data_level2_data__pthread_disable_asynccancel_thread_db_pthread_list_thread_db_pthread_cancelhandling__pthread_attr_getaffinity_new__GI___pthread_setcancelstate__udivsi3__dso_handle__aeabi_unwind_cpp_pr2__libc_close__pthread_setschedparam__aeabi_unwind_cpp_pr0_thread_db_td_thr_events_t_event_bitssystem_alias__pthread_join__GI___pthread_timedjoin_ex__new_sem_init__lll_timedwait_tid__libc_open__pthread_setaffinity_new__pthread_cond_broadcast__pthread_exit__pthread_cond_signal__libc_multiple_threads_ptr__GI___pthread_mutex_trylock__GI___nptl_create_event__sched_fifo_min_prio__pthread_init_static_tls__libc_sigaction__pthread_cancel__pthread_equal__pthread_mutex_cond_lock_adjustpthread_cancel_init_thread_db_pthread_eventbuf_eventmask__pthread_mutex_timedlock__libc_write__pthread_attr_getdetachstate__pthread_cleanup_push_defer_thread_db_dtv_t_counter__GI___pthread_rwlock_rdlock__GI___nanosleep__libc_lseek64_thread_db_pthread_start_routine_thread_db_pthread_key_data_seq_thread_db_sizeof_dtv_slotinfo_list__sem_mappings__libc_msgsnd__pthread_attr_getschedpolicy__pthread_attr_getschedparam__libc_connect__new_sem_destroy__GI___pthread_setspecific__free_tcb__pthread_attr_setinheritsched_thread_db_list_t_prev_thread_db_sizeof_td_eventbuf_t__is_smp_thread_db_pthread_schedpolicy__aeabi_idiv0__libc_recvfrom__GI___pthread_mutex_unlock__libc_do_syscall__pthread_enable_asynccancel__attr_list__waitpid__pthread_attr_setaffinity_new_thread_db_dtv_slotinfo_list_next__pthread_attr_getstacksize__gcc_personality_v0__pthread_current_priority__pthread_cleanup_push_thread_db_pthread_dtvp__pthread_cond_timedwait__pthread_getaffinity_np_Unwind_Resume__new_sem_post__pthread_attr_setschedpolicy_thread_db_sizeof_pthread_key_data__shm_directory_freeres__GI___pthread_rwlock_wrlock__GI___nptl_death_event_DYNAMIC__wait_lookup_done__init_sched_fifo_prio__make_stacks_executable__sendmsg__GI___pthread_mutex_destroy__nptl_deallocate_tsd__libc_sendmsg__GI___pthread_getspecific__aeabi_uidivmod_thread_db_link_map_l_tls_offset__libc_recvmsg__recvfrom__pthread_initialize_minimal_internal__pthread_attr_getstackaddr__libc_sigwait__ftrylockfile__fork_alias__libc_sigsuspend__libc_tcdrain_thread_db_pthread_nextevent__GI___pthread_mutexattr_init__default_pthread_attr_thread_db_sizeof_rtld_global__pthread_attr_getstack__pthread_mutex_unlock_usercnt__new_sem_trywait__lll_lock_wait__libc_wait__TMC_END___GLOBAL_OFFSET_TABLE___default_pthread_attr_lock_thread_db_sizeof_pthread__GI___pthread_cleanup_upto__invoke_dynamic_linker___thread_db___nptl_nthreads__lseek64__pthread_attr_setscope__reclaim_stacks__GI___shm_directory_thread_db_pthread_schedparam_sched_priority__fcntl_alias__libc_pwrite_thread_db_dtv_slotinfo_list_slotinfo__GI___pthread_unwind__static_tls_size__funlockfile__pthread_attr_destroy__flockfile__sigwait_thread_db_sizeof_dtv_slotinfo__nptl_unwind_freeres_thread_db_dtv_t_pointer_val__lll_lock_wait_private__GI___pthread_key_create_thread_db_list_t_next__recvmsg__aeabi_unwind_cpp_pr1__pread__h_errno_locationcalloc@@GLIBC_2.4__tsearch@@GLIBC_PRIVATEraisepthread_rwlockattr_initpthread_attr_setguardsizepthread_cond_broadcast@@GLIBC_2.4pthread_attr_getguardsizepthread_sigqueue__getdelim@@GLIBC_2.4sem_wait@@GLIBC_2.4pthread_mutexattr_setprioceiling__pread64mtx_init__getrlimit@@GLIBC_PRIVATEstrcmp@@GLIBC_2.4__sigaction__cxa_finalize@@GLIBC_2.4__pwrite64sem_post@@GLIBC_2.4pthread_getattr_default_np_ITM_deregisterTMCloneTablepthread_kill_other_threads_np@GLIBC_2.4__fork@GLIBC_2.4__gettimeofday@@GLIBC_2.4pthread_sigmask__libc_dlclose@@GLIBC_PRIVATEfopen@@GLIBC_2.4__libc_allocate_rtsigsystem@GLIBC_2.4pthread_mutexattr_getprotocolpthread_spin_destroypthread_rwlockattr_setkind_npgetuid@@GLIBC_2.4thrd_create_setjmp@@GLIBC_2.4__libc_fatal@@GLIBC_PRIVATEcnd_destroyfree@@GLIBC_2.4mtx_destroy__res_statemsync__stack_chk_guard@@GLIBC_2.4_exit@@GLIBC_2.4memcpy@@GLIBC_2.4__resp@@GLIBC_PRIVATEpthread_setschedprio__mempcpy@@GLIBC_2.4__open__sched_setscheduler@@GLIBC_2.4GLIBC_2.28__pthread_register_cancel_defer__sigtimedwait@@GLIBC_PRIVATE__mmap@@GLIBC_PRIVATEsem_open__pthread_cleanup_routinesiglongjmp@GLIBC_2.4__sched_getparam@@GLIBC_2.4__stack_chk_fail@@GLIBC_2.4pthread_rwlockattr_getkind_np__libc_system@@GLIBC_PRIVATEpthread_cond_init@@GLIBC_2.4pthread_condattr_setpsharedunlink@@GLIBC_2.4realloc@@GLIBC_2.4getrlimit@@GLIBC_2.4__pthread_rwlock_destroypthread_mutex_getprioceiling_IO_flockfile__munmap@@GLIBC_PRIVATEpthread_mutexattr_setprotocolpthread_rwlockattr_setpshared__pointer_chk_guard@@GLIBC_PRIVATE__getpagesize@@GLIBC_2.4__libc_current_sigrtminpthread_cond_destroy@@GLIBC_2.4GLIBC_2.11__pthread_mutexattr_destroy__fxstat64@@GLIBC_2.4pthread_tryjoin_nppthread_setaffinity_np@@GLIBC_2.4__fcntl@GLIBC_2.4cnd_timedwait__libc_fork@@GLIBC_PRIVATEcnd_wait__sched_get_priority_min@@GLIBC_2.4_IO_enable_locks@@GLIBC_PRIVATEpthread_mutexattr_getprioceilingpthread_setconcurrencymtx_trylock__write_nocancel@@GLIBC_PRIVATE_IO_ftrylockfilesched_yield@@GLIBC_2.4tss_getpthread_create@@GLIBC_2.4_dl_deallocate_tls@@GLIBC_PRIVATEsem_getvalue@@GLIBC_2.4__call_tls_dtors@@GLIBC_PRIVATE__default_rt_sa_restorer@@GLIBC_PRIVATEpthread_condattr_setclockpthread_setattr_default_npsem_timedwaitpthread_spin_init__libpthread_freeresmalloc@@GLIBC_2.4__libc_current_sigrtmax__setmntent@@GLIBC_2.4__libc_thread_freeres@@GLIBC_PRIVATE__getmntent_r@@GLIBC_2.4cnd_signalsem_trywait@@GLIBC_2.4pthread_spin_unlock__mprotect@@GLIBC_PRIVATE_rtld_global_ro@@GLIBC_PRIVATE__clock_gettime@@GLIBC_PRIVATEthrd_jointhrd_detachpthread_barrierattr_getpshared__pthread_rwlock_init__libc_fcntl64@@GLIBC_PRIVATE__nanosleep_nocancel@@GLIBC_PRIVATEcall_oncestrlen@@GLIBC_2.4__waitmmap@@GLIBC_2.4strchr@@GLIBC_2.4pthread_mutexattr_getpshared__libc_current_sigrtmax_private@@GLIBC_PRIVATE__tdelete@@GLIBC_PRIVATEpthread_rwlock_timedrdlockGLIBC_2.18thrd_exit__default_sa_restorer@@GLIBC_PRIVATE__libc_dlopen_mode@@GLIBC_PRIVATE__pthread_unregister_cancel_restorepthread_mutexattr_setpsharedpthread_attr_init@@GLIBC_2.4__read_nocancel@@GLIBC_PRIVATE__readpthread_mutexattr_getrobust_dl_make_stack_executable@@GLIBC_PRIVATEpthread_self@GLIBC_2.4pthread_attr_setaffinity_np@@GLIBC_2.4__libc_pthread_init@@GLIBC_PRIVATEsem_init@@GLIBC_2.4memset@@GLIBC_2.4pthread_mutexattr_getrobust_np__ctype_init@@GLIBC_PRIVATE__write__closepthread_barrierattr_destroyprctl@@GLIBC_2.4__pthread_barrier_waitpthread_getattr_nppthread_barrierattr_setpshared_IO_funlockfile__pthread_barrier_init__libc_dlsym@@GLIBC_PRIVATEfclose@@GLIBC_2.4__tfind@@GLIBC_PRIVATEcnd_broadcastpthread_setname_nppthread_yieldpthread_attr_getaffinity_np@@GLIBC_2.4__pthread_get_minstackmunmap@@GLIBC_2.4__open64_nocancel@@GLIBC_PRIVATEmtx_timedlockpthread_spin_lockpthread_cond_timedwait@@GLIBC_2.4__libc_current_sigrtmin_private@@GLIBC_PRIVATEtss_create__libc_vfork@@GLIBC_PRIVATEsched_setparam@@GLIBC_2.4tss_delete__madvise@@GLIBC_PRIVATEpthread_mutexattr_setrobust_nppthread_mutexattr_getkind_np__pause_nocancel@@GLIBC_PRIVATEpthread_spin_trylockpthread_barrierattr_initpthread_mutex_consistentcnd_init__h_errno@@GLIBC_PRIVATEpthread_barrier_destroy__open64__mktemp@@GLIBC_PRIVATE__clone@@GLIBC_2.4sscanf@@GLIBC_2.4sprintf@@GLIBC_2.4pthread_mutexattr_setrobust__pthread_rwlock_trywrlockpthread_getaffinity_np@@GLIBC_2.4GLIBC_2.12pthread_rwlock_timedwrlock__sched_getscheduler@@GLIBC_2.4__twalk@@GLIBC_PRIVATE_dl_allocate_tls@@GLIBC_PRIVATE__lseek__sendfsyncpthread_rwlockattr_destroypthread_mutex_setprioceiling_dl_get_tls_static_info@@GLIBC_PRIVATEpthread_mutex_consistent_nppthread_cond_wait@@GLIBC_2.4__pthread_initialize_minimalsem_close__vfork@GLIBC_2.4__connect__pthread_rwlock_tryrdlock_ITM_registerTMCloneTablepthread_condattr_getpshared__libc_alloca_cutoff@@GLIBC_PRIVATEpthread_getconcurrencytss_set_dl_allocate_tls_init@@GLIBC_PRIVATE__endmntent@@GLIBC_2.4mtx_lock__close_nocancel@@GLIBC_PRIVATEsem_destroy@@GLIBC_2.4_rtld_global@@GLIBC_PRIVATE__libc_allocate_rtsig_private@@GLIBC_PRIVATEpthread_getname_nppthread_mutexattr_setkind_np__libc_longjmp@@GLIBC_PRIVATEpthread_mutexattr_gettypepthread_cond_signal@@GLIBC_2.4abort@@GLIBC_2.4pthread_getcpuclockidsem_unlink__libc_stack_end@@GLIBC_2.4__errno_locationpthread_condattr_getclock__getpid@@GLIBC_2.4__assert_fail@@GLIBC_2.4__statfs@@GLIBC_2.4pthread_rwlockattr_getpsharedmtx_unlock__sched_get_priority_max@@GLIBC_2.4.symtab.strtab.shstrtab.note.gnu.build-id.note.ABI-tag.gnu.hash.dynsym.dynstr.gnu.version.gnu.version_d.gnu.version_r.rel.dyn.rel.plt.init.text.fini.rodata.interp.ARM.extab.ARM.exidx.eh_frame.init_array.fini_array.data.rel.ro.dynamic.got.data.bss.ARM.attributes.gnu.warning.pthread_attr_getstackaddr.gnu.warniFg.pthread_attr_setstackaddr.gnu_debuglinkT$.xx <���o��
- ���N % %_V���o�:�:�c���oP=P=�r���o<><>`�	�>�>�	B�@�@�tCtC
-chris@chris-VMware-Virtual-Platform:~/board_sysroot/usr/lib/arm-linux-gnueabihf$ 
+root@lubancat:~# cp /mnt/nfs/endoscope /tmp/
+root@lubancat:~# kill $(pidof App) 2>/dev/null
+root@lubancat:~# /tmp/endoscope -platform linuxfb 2>&1 | grep "\[pipe\]"
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 4 ms
+[pipe] scaled: 19 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 4 ms
+[pipe] scaled: 19 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 27 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 21 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 4 ms
+[pipe] scaled: 19 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 19 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 1 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 4 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 1 ms
+[pipe] scaled: 26 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 29 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 4 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 2 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 15 ms
+[pipe] scaled: 19 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 7 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 19 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 4 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 34 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 22 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 2 ms
+[pipe] scaled: 36 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 34 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 26 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 16 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 34 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 1 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 11 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 30 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 4 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 9 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 26 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 15 ms
+[pipe] scaled: 34 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 26 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 27 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 7 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 1 ms
+[pipe] scaled: 19 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 10 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 8 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 15 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 4 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 2 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 37 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 30 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 4 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 36 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 36 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 8 ms
+[pipe] scaled: 27 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 12 ms
+[pipe] scaled: 26 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 29 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 12 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 11 ms
+[pipe] scaled: 29 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 16 ms
+[pipe] scaled: 27 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 8 ms
+[pipe] scaled: 19 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 30 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 32 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 10 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 24 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 17 ms
+[pipe] scaled: 30 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 21 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 29 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 57 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 122 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 65 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 62 ms
+[pipe] frameBuffer: 9 ms
+[pipe] scaled: 19 ms
+[pipe] processFrame: 105 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 72 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 85 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 71 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 75 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 55 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 110 ms
+[pipe] frameBuffer: 4 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 73 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 65 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 21 ms
+[pipe] processFrame: 77 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 56 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 65 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 65 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 65 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 66 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 62 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 66 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 68 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 98 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 91 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 19 ms
+[pipe] processFrame: 61 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 69 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 70 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 67 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 105 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 68 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 68 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 67 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 68 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 54 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 20 ms
+[pipe] processFrame: 78 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 18 ms
+[pipe] processFrame: 68 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 83 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 69 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 67 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 72 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 67 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 67 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 73 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 66 ms
+[pipe] frameBuffer: 8 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 81 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 19 ms
+[pipe] processFrame: 90 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 26 ms
+[pipe] processFrame: 67 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 86 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 55 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 74 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 23 ms
+[pipe] processFrame: 68 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 27 ms
+[pipe] processFrame: 69 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 78 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 108 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 31 ms
+[pipe] processFrame: 72 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 26 ms
+[pipe] processFrame: 76 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 26 ms
+[pipe] processFrame: 66 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 78 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 17 ms
+[pipe] processFrame: 67 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 64 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 93 ms
+[pipe] frameBuffer: 4 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 71 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 63 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 67 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 30 ms
+[pipe] processFrame: 59 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 65 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 67 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 84 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 57 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 68 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 67 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 66 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 65 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 67 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 77 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 65 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 60 ms
+[pipe] frameBuffer: 8 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 68 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 65 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 74 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 78 ms
+[pipe] frameBuffer: 10 ms
+[pipe] scaled: 35 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 11 ms
+[pipe] scaled: 26 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 6 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 15 ms
+[pipe] scaled: 30 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 8 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[pipe] scaled: 16 ms
+[pipe] processFrame: 0 ms
+[pipe] frameBuffer: 5 ms
+[p

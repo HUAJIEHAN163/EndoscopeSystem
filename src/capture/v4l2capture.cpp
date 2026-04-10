@@ -14,6 +14,7 @@
 
 // === Qt / OpenCV ===
 #include <QDebug>             // qDebug 调试输出
+#include <QElapsedTimer>      // 性能计时
 #include <opencv2/imgproc.hpp> // cvtColor 颜色空间转换
 
 // =====================================================================
@@ -40,7 +41,7 @@ V4l2Capture::V4l2Capture(const std::string &device, int width, int height,
       m_width(width),               // 期望宽度
       m_height(height),             // 期望高度
       m_fps(fps),                   // 期望帧率
-      m_bufferCount(bufferCount),   // 缓冲区数量（通常 4 个）
+      m_bufferCount(bufferCount),   // 缓冲区数量（请求值，实际分配可能不同）
       m_pixelFormat(V4L2_PIX_FMT_YUYV) {} // 默认像素格式 YUYV
 
 // =====================================================================
@@ -79,7 +80,7 @@ bool V4l2Capture::open() {
     if (!setFrameRate()) return false;      // 4. 设置帧率
     if (!requestBuffers()) return false;    // 5. 申请缓冲区并 mmap 映射
 
-    qDebug() << QString("V4L2 就绪: %1x%2 @ %3fps, %4 buffers")
+    qDebug() << QString("V4L2 就绪: %1x%2 @ %3fps, %4 buffers (实际分配)")
                 .arg(m_width).arg(m_height).arg(m_fps).arg(m_bufferCount);
     return true;
 }
@@ -222,6 +223,23 @@ bool V4l2Capture::requestBuffers() {
         return false;
     }
 
+    // 【问题 #13 验证】检查驱动实际分配的 buffer 数量
+    qWarning() << QString("[Buffer 验证] 请求 %1 个 buffer，驱动实际分配 %2 个")
+                  .arg(m_bufferCount).arg(req.count);
+    
+    if (req.count != (unsigned)m_bufferCount) {
+        qWarning() << QString("[Buffer 警告] 驱动分配的 buffer 数量少于请求数量！")
+                   << "这可能导致 overrun 错误，建议优化处理速度。";
+    }
+    
+    if (req.count < 2) {
+        emit errorOccurred("驱动分配的 buffer 数量不足（< 2）");
+        return false;
+    }
+    
+    // 更新 m_bufferCount 为实际分配的数量
+    m_bufferCount = req.count;
+
     // 2. 逐个查询并映射缓冲区
     m_buffers.resize(req.count);
     for (unsigned i = 0; i < req.count; i++) {
@@ -299,21 +317,20 @@ void V4l2Capture::releaseBuffers() {
 //   驱动填充 buf1 → DQBUF 取出 buf1 → 用户读取 → QBUF 归还 buf1
 //   ...循环往复，保证始终有 buffer 在队列中等待驱动填充
 // =====================================================================
-bool V4l2Capture::grabFrame(void **data, int *size) {
+bool V4l2Capture::grabFrame(void **data, int *size, int *bufIndex) {
     // select：等待设备有数据可读（最多等 2 秒）
-    // 比直接 read 好：不会卡死线程，超时可以检查 m_running 决定是否退出
     fd_set fds;
     FD_ZERO(&fds);
     FD_SET(m_fd, &fds);
 
     struct timeval tv;
-    tv.tv_sec = 2;      // 超时 2 秒
+    tv.tv_sec = 2;
     tv.tv_usec = 0;
 
     int r = select(m_fd + 1, &fds, NULL, NULL, &tv);
-    if (r <= 0) return false;  // 超时或出错
+    if (r <= 0) return false;
 
-    // VIDIOC_DQBUF：从队列中取出一个已填充数据的缓冲区
+    // VIDIOC_DQBUF：取出已填充数据的缓冲区
     struct v4l2_buffer buf;
     memset(&buf, 0, sizeof(buf));
     buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
@@ -321,14 +338,21 @@ bool V4l2Capture::grabFrame(void **data, int *size) {
 
     if (xioctl(m_fd, VIDIOC_DQBUF, &buf) < 0) return false;
 
-    // 通过 mmap 映射的指针直接访问像素数据（零拷贝）
     *data = m_buffers[buf.index].start;
     *size = buf.bytesused;
-
-    // VIDIOC_QBUF：归还缓冲区到队列，让驱动可以再次使用
-    if (xioctl(m_fd, VIDIOC_QBUF, &buf) < 0) return false;
+    *bufIndex = buf.index;  // 记录 buffer 索引，用完数据后再归还
 
     return true;
+}
+
+// 归还缓冲区 — 必须在数据拷贝完成后调用
+bool V4l2Capture::returnBuffer(int bufIndex) {
+    struct v4l2_buffer buf;
+    memset(&buf, 0, sizeof(buf));
+    buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    buf.memory = V4L2_MEMORY_MMAP;
+    buf.index = bufIndex;
+    return xioctl(m_fd, VIDIOC_QBUF, &buf) >= 0;
 }
 
 // =====================================================================
@@ -345,33 +369,59 @@ void V4l2Capture::run() {
     if (!startStreaming()) return;  // 开始视频流
     m_running = true;               // 设置运行标志（atomic，主线程可安全读取）
 
-    while (m_running) {             // 主线程调 stop() 设为 false 时退出
+    // 【问题 #13 性能监控】统计处理时间
+    int frameCount = 0;
+    qint64 totalProcessTime = 0;
+    QElapsedTimer perfTimer;
+
+    while (m_running) {
         void *data = nullptr;
         int size = 0;
+        int bufIndex = -1;
 
-        if (!grabFrame(&data, &size)) {
-            if (m_running)          // 排除正常停止的情况
+        if (!grabFrame(&data, &size, &bufIndex)) {
+            if (m_running)
                 qDebug() << "采集帧超时";
-            continue;               // 超时不退出，继续尝试
+            continue;
         }
 
-        // YUYV → BGR（OpenCV 格式）
-        // CV_8UC2：每个像素 2 字节（YUYV 格式，两个像素共享 UV）
-        // data 指向 mmap 缓冲区，不需要拷贝
+        perfTimer.start();
+
+        // YUYV → BGR，在归还 buffer 之前完成拷贝
         cv::Mat yuyv(m_height, m_width, CV_8UC2, data);
         cv::Mat bgr;
         cv::cvtColor(yuyv, bgr, cv::COLOR_YUV2BGR_YUYV);
 
-        // BGR → RGB → QImage
+        // 数据已拷贝到 bgr，归还 buffer 给驱动
+        returnBuffer(bufIndex);
+
+        // 队列中已有 2 帧未处理时丢弃，避免堆积导致 OOM
+        if (m_pendingFrames.load() >= 2) continue;
+
         cv::Mat rgb;
         cv::cvtColor(bgr, rgb, cv::COLOR_BGR2RGB);
         QImage image(rgb.data, rgb.cols, rgb.rows,
                      rgb.step, QImage::Format_RGB888);
-
-        // image.copy()：深拷贝！
-        // 因为 rgb.data 指向的内存在下一帧会被覆盖
-        // 必须拷贝一份独立的数据，通过信号传给主线程
+        m_pendingFrames.fetch_add(1);
         emit frameReady(image.copy());
+
+        qint64 elapsed = perfTimer.elapsed();
+        totalProcessTime += elapsed;
+        frameCount++;
+
+        // 每 100 帧输出一次统计
+        if (frameCount % 100 == 0) {
+            qreal avgTime = totalProcessTime / (qreal)frameCount;
+            qWarning() << QString("[性能] 已处理 %1 帧，平均耗时 %2 ms/帧")
+                          .arg(frameCount).arg(avgTime, 0, 'f', 1);
+        }
+    }
+
+    // 输出最终统计
+    if (frameCount > 0) {
+        qreal avgTime = totalProcessTime / (qreal)frameCount;
+        qWarning() << QString("[性能总结] 总帧数 %1，平均耗时 %2 ms/帧")
+                      .arg(frameCount).arg(avgTime, 0, 'f', 1);
     }
 
     stopStreaming();  // 循环结束，停止视频流
