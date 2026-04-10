@@ -366,22 +366,29 @@ bool V4l2Capture::returnBuffer(int bufIndex) {
 //   BGR → RGB：QImage 使用 RGB 格式（Qt 显示需要 RGB）
 // =====================================================================
 void V4l2Capture::run() {
-    if (!startStreaming()) return;  // 开始视频流
-    m_running = true;               // 设置运行标志（atomic，主线程可安全读取）
+    if (!startStreaming()) return;
+    m_running = true;
 
-    // 【问题 #13 性能监控】统计处理时间
     int frameCount = 0;
     qint64 totalProcessTime = 0;
     QElapsedTimer perfTimer;
 
-    while (m_running) {
+    // m_running 控制帧处理，m_quit 控制线程退出
+    while (!m_quit) {
+        // 暂停时不处理帧，但仍然 grabFrame + returnBuffer 保持 V4L2 流活跃
         void *data = nullptr;
         int size = 0;
         int bufIndex = -1;
 
         if (!grabFrame(&data, &size, &bufIndex)) {
-            if (m_running)
+            if (!m_quit)
                 qDebug() << "采集帧超时";
+            continue;
+        }
+
+        // 暂停时只归还 buffer，不处理
+        if (!m_running) {
+            returnBuffer(bufIndex);
             continue;
         }
 
@@ -424,7 +431,7 @@ void V4l2Capture::run() {
                       .arg(frameCount).arg(avgTime, 0, 'f', 1);
     }
 
-    stopStreaming();  // 循环结束，停止视频流
+    stopStreaming();
 }
 
 // =====================================================================

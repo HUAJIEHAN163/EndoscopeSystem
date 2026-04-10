@@ -56,13 +56,15 @@ public:
 
     // ========== 普通方法（基类提供默认实现）==========
 
-    // 停止采集：将 m_running 设为 false
-    // 子类的 run() 循环检查 m_running，发现为 false 就退出循环
-    // m_running 是 atomic<bool>，保证跨线程写入立刻可见
-    void stop() { m_running = false; }
+    // 暂停采集：线程保持运行但不处理帧
+    void pause() { m_running = false; }
 
-    // 查询是否正在运行
-    // const 表示这个方法不修改任何成员变量
+    // 恢复采集
+    void resume() { m_running = true; }
+
+    // 停止线程：线程完全退出
+    void stop() { m_quit = true; m_running = false; }
+
     bool isRunning() const { return m_running; }
 
 signals:
@@ -97,6 +99,7 @@ protected:
     //       }
     //   }
     std::atomic<bool> m_running;
+    std::atomic<bool> m_quit{false};
 
 public:
     // 信号队列计数器：限制队列中最多 2 个帧，避免 OOM

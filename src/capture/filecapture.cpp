@@ -36,10 +36,15 @@ void FileCapture::run() {
     m_running = true;
     int delayMs = 1000 / m_fps;
 
-    while (m_running) {
+    while (!m_quit) {
+        // 暂停时不处理帧
+        if (!m_running) {
+            QThread::msleep(50);
+            continue;
+        }
+
         cv::Mat frame;
         if (!m_cap.read(frame)) {
-            // 视频结束，循环播放
             m_cap.set(cv::CAP_PROP_POS_FRAMES, 0);
             if (!m_cap.read(frame)) {
                 emit errorOccurred("读取视频帧失败");

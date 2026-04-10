@@ -771,8 +771,8 @@ void MainWindow::switchToMode(int mode) {
 
     // 离开图像编辑模式时恢复采集
     if (m_currentMode == 2 && mode != 2) {
-        if (m_source && !m_source->isRunning())
-            m_source->start();
+        if (m_source)
+            m_source->resume();
     }
 
     m_currentMode = mode;
@@ -803,9 +803,8 @@ void MainWindow::switchToMode(int mode) {
         break;
     case 2:  // 图像编辑模式
         m_clinicalMode = false;
-        // 暂停采集
-        if (m_source && m_source->isRunning())
-            m_source->stop();
+        if (m_source)
+            m_source->pause();
         m_lblStatus->setText("图像编辑");
         m_lblFps->setText("FPS: --");
         break;

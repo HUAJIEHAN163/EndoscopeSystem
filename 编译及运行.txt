@@ -26,4 +26,3 @@ chmod +x /tmp/endoscope
 kill $(pidof App) 2>/dev/null
 sleep 0.5
 /tmp/endoscope -platform linuxfb
-
