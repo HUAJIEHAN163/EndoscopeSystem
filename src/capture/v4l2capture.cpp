@@ -402,15 +402,23 @@ void V4l2Capture::run() {
         // 数据已拷贝到 bgr，归还 buffer 给驱动
         returnBuffer(bufIndex);
 
-        // 队列中已有 2 帧未处理时丢弃，避免堆积导致 OOM
-        if (m_pendingFrames.load() >= 2) continue;
-
-        cv::Mat rgb;
-        cv::cvtColor(bgr, rgb, cv::COLOR_BGR2RGB);
-        QImage image(rgb.data, rgb.cols, rgb.rows,
-                     rgb.step, QImage::Format_RGB888);
-        m_pendingFrames.fetch_add(1);
-        emit frameReady(image.copy());
+        // 三线程管线：写入采集队列，处理线程会读取
+        if (m_captureQueue) {
+            cv::Mat rgb;
+            cv::cvtColor(bgr, rgb, cv::COLOR_BGR2RGB);
+            QImage image(rgb.data, rgb.cols, rgb.rows,
+                         rgb.step, QImage::Format_RGB888);
+            m_captureQueue->push(image.copy());
+        } else {
+            // 兼容旧模式（信号槽）
+            if (m_pendingFrames.load() >= 2) continue;
+            cv::Mat rgb;
+            cv::cvtColor(bgr, rgb, cv::COLOR_BGR2RGB);
+            QImage image(rgb.data, rgb.cols, rgb.rows,
+                         rgb.step, QImage::Format_RGB888);
+            m_pendingFrames.fetch_add(1);
+            emit frameReady(image.copy());
+        }
 
         qint64 elapsed = perfTimer.elapsed();
         totalProcessTime += elapsed;

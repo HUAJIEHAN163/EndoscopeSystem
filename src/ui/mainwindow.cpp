@@ -82,12 +82,16 @@ MainWindow::MainWindow(QWidget *parent)         //parent = nullptr 表示这个�
 // ===================== 析构函数 =====================
 // 窗口关闭时自动调用，负责释放资源
 MainWindow::~MainWindow() {
+    if (m_processThread) {
+        m_processThread->stop();
+        m_processThread->wait();
+    }
     if (m_source) {
-        m_source->stop();   // 通知采集线程停止
-        m_source->wait();   // 等待线程真正结束，防止野指针
+        m_source->stop();
+        m_source->wait();
     }
     if (m_videoWriter.isOpened())
-        m_videoWriter.release();  // 关闭录像文件，确保数据写完
+        m_videoWriter.release();
 }
 
 // ===================== 界面搭建 =====================
@@ -214,7 +218,23 @@ void MainWindow::setupUi() {
     hwLayout->addWidget(m_chkAutoExposure,     0, 1);
     hwLayout->addWidget(m_chkHFlip,            1, 0);
     hwLayout->addWidget(m_chkVFlip,            1, 1);
-    makeCollapsible(m_hwGroup, false);  // 默认收起
+
+    // 对比度和饱和度滑块
+    QLabel *lblContrast = new QLabel("对比度");
+    m_sliderContrast = new QSlider(Qt::Horizontal);
+    m_sliderContrast->setRange(0, 255);
+    m_sliderContrast->setValue(0);
+    QLabel *lblSaturation = new QLabel("饱和度");
+    m_sliderSaturation = new QSlider(Qt::Horizontal);
+    m_sliderSaturation->setRange(0, 255);
+    m_sliderSaturation->setValue(64);
+
+    hwLayout->addWidget(lblContrast,       2, 0);
+    hwLayout->addWidget(m_sliderContrast,  2, 1);
+    hwLayout->addWidget(lblSaturation,     3, 0);
+    hwLayout->addWidget(m_sliderSaturation,3, 1);
+
+    makeCollapsible(m_hwGroup, false);
     debugLayout->addWidget(m_hwGroup);
 
     // -- 内窥镜算法分组框 --
@@ -457,17 +477,66 @@ void MainWindow::setupVideoSource() {
         }
     }
 
-    // 连接信号槽：视频源每产出一帧 → 调用 onFrameReady 处理
-    // Qt::QueuedConnection 表示跨线程投递（采集线程 → 主线程）
-    connect(m_source, &VideoSource::frameReady,
-            this, &MainWindow::onFrameReady, Qt::QueuedConnection);
+    // 三线程管线初始化
+    m_source->m_captureQueue = &m_captureQueue;
 
-    // 错误信号 → 显示在状态栏（lambda 写法，匿名函数）
+    m_processThread = new ProcessThread(&m_captureQueue, &m_displayQueue, this);
+    m_processThread->displayWidth = m_videoRect.width();
+    m_processThread->displayHeight = m_videoRect.height();
+    m_processThread->undistortMap1 = m_undistortMap1;
+    m_processThread->undistortMap2 = m_undistortMap2;
+
+    // 定时从 displayQueue 取最新帧显示（16ms ≈ 60fps 刷新率）
+    m_displayTimer = new QTimer(this);
+    connect(m_displayTimer, &QTimer::timeout, [this]() {
+        // 同步 UI 参数到处理线程
+        if (m_processThread && !m_clinicalMode) {
+            m_processThread->config.whiteBalance = false;
+            m_processThread->config.clahe = m_chkClahe->isChecked();
+            m_processThread->config.claheClipLimit = m_sliderClaheClip->value() / 10.0;
+            m_processThread->config.undistort = m_chkUndistort->isChecked() && m_undistortReady;
+            m_processThread->config.dehaze = m_chkDehaze->isChecked();
+        } else if (m_processThread && m_clinicalMode) {
+            m_processThread->config = m_procConfig;
+        }
+
+        QImage frame;
+        if (m_displayQueue.latest(frame)) {
+            m_latestRawFrame = frame;  // 保存原始帧用于拍照
+            m_frameCount++;
+
+            // 旋转
+            if (m_rotateAngle != 0) {
+                QTransform transform;
+                transform.rotate(m_rotateAngle);
+                frame = frame.transformed(transform, Qt::FastTransformation);
+                frame = frame.scaled(m_videoRect.size(), Qt::KeepAspectRatio, Qt::FastTransformation);
+            }
+
+            // 录像
+            if (m_recording && m_videoWriter.isOpened()) {
+                cv::Mat mat = ImageConvert::qimageToMat(frame);
+                if (!mat.empty()) {
+                    cv::Mat resized;
+                    cv::resize(mat, resized, cv::Size(m_videoRect.width(), m_videoRect.height()));
+                    m_videoWriter.write(resized);
+                }
+            }
+
+            m_displayImage = frame;
+            update();
+        }
+    });
+    m_displayTimer->start(16);
+
+    // 启动采集线程和处理线程
+    m_source->start();
+    m_processThread->start();
+
+    // 错误信号
     connect(m_source, &VideoSource::errorOccurred, [this](const QString &msg) {
         m_lblStatus->setText("错误: " + msg);
     });
-
-    m_source->start();  // 启动采集线程，开始产出视频帧
 
     // 硬件参数区：只有 V4L2 摄像头时才可用
 #ifdef ENABLE_V4L2
@@ -498,6 +567,12 @@ void MainWindow::setupVideoSource() {
         });
         connect(m_chkVFlip, &QCheckBox::toggled, [v4l2](bool checked) {
             v4l2->setVFlip(checked);
+        });
+        connect(m_sliderContrast, &QSlider::valueChanged, [v4l2](int value) {
+            v4l2->setContrast(value);
+        });
+        connect(m_sliderSaturation, &QSlider::valueChanged, [v4l2](int value) {
+            v4l2->setSaturation(value);
         });
     }
 #endif
@@ -773,6 +848,8 @@ void MainWindow::switchToMode(int mode) {
     if (m_currentMode == 2 && mode != 2) {
         if (m_source)
             m_source->resume();
+            if (m_processThread) m_processThread->resume();
+            if (m_displayTimer) m_displayTimer->start(16);
     }
 
     m_currentMode = mode;
@@ -805,6 +882,8 @@ void MainWindow::switchToMode(int mode) {
         m_clinicalMode = false;
         if (m_source)
             m_source->pause();
+            if (m_processThread) m_processThread->pause();
+            if (m_displayTimer) m_displayTimer->stop();
         m_lblStatus->setText("图像编辑");
         m_lblFps->setText("FPS: --");
         break;

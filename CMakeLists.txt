@@ -28,7 +28,9 @@ set(HEADERS
     src/ui/mainwindow.h
     src/ui/presetmanager.h
     src/processing/imageprocessor.h
+    src/processing/processthread.h
     src/utils/imageconvert.h
+    src/utils/framequeue.h
 )
 
 if(ENABLE_V4L2 AND CMAKE_SYSTEM_NAME STREQUAL "Linux")

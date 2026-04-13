@@ -21,7 +21,9 @@
 
 // === 项目内部头文件 ===
 #include "capture/videosource.h"        // 视频源抽象基类
-#include "processing/imageprocessor.h"  // 图像处理算法集合
+#include "processing/imageprocessor.h"
+#include "processing/processthread.h"
+#include "utils/framequeue.h"
 
 // =====================================================================
 // MainWindow — 主窗口类
@@ -152,6 +154,8 @@ private:
     QCheckBox *m_chkAutoExposure;      // 自动曝光
     QCheckBox *m_chkHFlip;             // 水平翻转
     QCheckBox *m_chkVFlip;             // 垂直翻转
+    QSlider *m_sliderContrast;         // 对比度（0-255）
+    QSlider *m_sliderSaturation;       // 饱和度（0-255）
 
     // --- 调试模式控件：算法开关（复选框）---
     QCheckBox *m_chkClahe;         // CLAHE 增强
@@ -235,6 +239,12 @@ private:
     // 调试模式：每帧从界面控件读取
     // 临床模式：由 onPresetSelected 一次性设置
     ImageProcessor::Config m_procConfig;
+
+    // --- 三线程管线 ---
+    FrameQueue<4> m_captureQueue;    // 采集线程 → 处理线程
+    FrameQueue<4> m_displayQueue;    // 处理线程 → 主线程
+    ProcessThread *m_processThread = nullptr;
+    QTimer *m_displayTimer = nullptr; // 定时从 displayQueue 取帧显示
 };
 
 #endif // MAINWINDOW_H
