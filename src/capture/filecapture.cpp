@@ -52,10 +52,11 @@ void FileCapture::run() {
             }
         }
 
-        QImage image = ImageConvert::matToQImage(frame);
+        // P7.1: VideoCapture 读出的就是 BGR，直接 push
         if (m_captureQueue) {
-            m_captureQueue->push(image);
+            m_captureQueue->push(frame);
         } else {
+            QImage image = ImageConvert::matToQImage(frame);
             if (m_pendingFrames.load() < 2) {
                 m_pendingFrames.fetch_add(1);
                 emit frameReady(image);

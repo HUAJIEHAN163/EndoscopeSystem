@@ -1,8 +1,14 @@
+
+
+本地文件编译
 cd /mnt/hgfs/VM_Share/project/EndoscopeSystem
 bash scripts/build_local.sh
 ./build/endoscope
 
-
+ssh进入开发板：
+ssh debian@192.168.0.43
+su - root
+# 密码：root
 
 重新编译部署：
 第一次编译或 修改 CMakeLists.txt 时先进行cmake，生成makefile：

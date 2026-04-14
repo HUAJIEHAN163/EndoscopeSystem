@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+c3e992eb7f9937280ca1324e8cb45c75 CMakeFiles/endoscope_autogen
+c3e992eb7f9937280ca1324e8cb45c75 CMakeFiles/endoscope_autogen_timestamp_deps
+73eac31d82b363d526352d2c2434e77d endoscope_autogen/timestamp

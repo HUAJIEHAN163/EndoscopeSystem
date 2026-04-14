@@ -2,15 +2,16 @@
 #define PROCESSTHREAD_H
 
 #include <QThread>
-#include <QImage>
+#include <QDebug>
+#include <QElapsedTimer>
 #include <atomic>
+#include <opencv2/imgproc.hpp>
 #include "utils/framequeue.h"
-#include "utils/imageconvert.h"
 #include "processing/imageprocessor.h"
 
 // 图像处理线程
-// 从 captureQueue 取帧 → 执行算法 → 写入 displayQueue
-// 主线程从 displayQueue 取最新帧显示，不再被算法阻塞
+// 从 captureQueue 取 BGR Mat → 执行算法 → resize → 写入 displayQueue
+// 主线程从 displayQueue 取 BGR Mat，转 QImage 显示
 class ProcessThread : public QThread {
     Q_OBJECT
 public:
@@ -40,6 +41,9 @@ public:
 protected:
     void run() override {
         m_running = true;
+        int frameCount = 0;
+        QElapsedTimer totalTimer;
+        totalTimer.start();
 
         while (!m_quit) {
             if (!m_running) {
@@ -47,40 +51,61 @@ protected:
                 continue;
             }
 
-            QImage frame;
+            cv::Mat frame;
             if (!m_captureQueue->pop(frame)) {
-                QThread::msleep(1);  // 队列空，短暂等待
+                QThread::msleep(1);
                 continue;
             }
 
-            // 检查是否有算法启用
+            QElapsedTimer t; t.start();
+
             bool anyEnabled = config.clahe || config.undistort ||
                               config.dehaze || config.sharpen ||
                               config.denoise || config.edgeDetect ||
                               config.threshold;
 
-            QImage result;
+            cv::Mat result;
             if (!anyEnabled) {
-                // 不开算法，直接缩放到显示尺寸
-                result = frame.scaled(displayWidth, displayHeight,
-                                      Qt::KeepAspectRatio, Qt::FastTransformation);
-            } else {
-                // 执行算法处理
-                cv::Mat src = ImageConvert::qimageToMat(frame);
-                if (src.empty()) continue;
-
-                cv::Mat dst;
-                ImageProcessor::process(src, dst, config,
-                                        undistortMap1, undistortMap2);
-
-                // resize 到显示尺寸
-                cv::Mat display;
-                cv::resize(dst, display, cv::Size(displayWidth, displayHeight),
+                // P7.1: 不开算法时直接 cv::resize（全程 BGR，无格式转换）
+                cv::resize(frame, result, cv::Size(displayWidth, displayHeight),
                            0, 0, cv::INTER_LINEAR);
-                result = ImageConvert::matToQImage(display);
+                qint64 resizeTime = t.elapsed();
+
+                frameCount++;
+                if (frameCount % 100 == 0) {
+                    qDebug() << QString("[PROC 无算法] 帧%1 resize:%2ms")
+                                .arg(frameCount).arg(resizeTime);
+                }
+            } else {
+                cv::Mat dst;
+                ImageProcessor::process(frame, dst, config,
+                                        undistortMap1, undistortMap2);
+                qint64 t2 = t.restart();  // 算法处理
+
+                cv::resize(dst, result, cv::Size(displayWidth, displayHeight),
+                           0, 0, cv::INTER_LINEAR);
+                qint64 t3 = t.elapsed();  // resize
+
+                frameCount++;
+                if (frameCount % 50 == 0) {
+                    qDebug() << QString("[PROC 帧%1] 算法:%2ms resize:%3ms 合计:%4ms")
+                                .arg(frameCount)
+                                .arg(t2).arg(t3)
+                                .arg(t2+t3);
+                }
             }
 
-            m_displayQueue->push(result);
+            m_displayQueue->push(std::move(result));  // P16: 移动语义，零拷贝
+
+            // 每 200 帧输出总体统计
+            if (frameCount % 200 == 0) {
+                double elapsed = totalTimer.elapsed() / 1000.0;
+                qDebug() << QString("[PROC 统计] %1帧/%2秒 = %3fps 队列剩余:%4")
+                            .arg(frameCount)
+                            .arg(elapsed, 0, 'f', 1)
+                            .arg(frameCount / elapsed, 0, 'f', 1)
+                            .arg(m_captureQueue->size());
+            }
         }
     }
 

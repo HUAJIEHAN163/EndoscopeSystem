@@ -21,6 +21,7 @@
 #include <QInputDialog>
 #include <QDialog>
 #include <QFile>
+#include <opencv2/imgcodecs.hpp>
 
 // ===================== 构造函数 =====================
 // 程序启动时 main.cpp 中 MainWindow window; 会调用这里
@@ -496,14 +497,27 @@ void MainWindow::setupVideoSource() {
             m_processThread->config.claheClipLimit = m_sliderClaheClip->value() / 10.0;
             m_processThread->config.undistort = m_chkUndistort->isChecked() && m_undistortReady;
             m_processThread->config.dehaze = m_chkDehaze->isChecked();
+            // 通用算法已移至图像编辑页，实时流中固定关闭
+            m_processThread->config.sharpen = false;
+            m_processThread->config.denoise = false;
+            m_processThread->config.edgeDetect = false;
+            m_processThread->config.threshold = false;
         } else if (m_processThread && m_clinicalMode) {
             m_processThread->config = m_procConfig;
         }
 
-        QImage frame;
-        if (m_displayQueue.latest(frame)) {
-            m_latestRawFrame = frame;  // 保存原始帧用于拍照
+        // P7.1: 从 displayQueue 取 BGR Mat，在主线程做唯一一次 BGR→RGB 转换
+        cv::Mat mat;
+        if (m_displayQueue.latest(mat)) {
+            m_latestRawMat = mat;  // 保存原始 BGR 帧用于拍照/录像
             m_frameCount++;
+
+            // BGR → RGB → QImage（整个管线唯一的颜色转换）
+            cv::Mat rgb;
+            cv::cvtColor(mat, rgb, cv::COLOR_BGR2RGB);
+            QImage frame(rgb.data, rgb.cols, rgb.rows, rgb.step,
+                         QImage::Format_RGB888);
+            frame = frame.copy();  // 深拷贝，脱离 rgb 内存
 
             // 旋转
             if (m_rotateAngle != 0) {
@@ -513,14 +527,11 @@ void MainWindow::setupVideoSource() {
                 frame = frame.scaled(m_videoRect.size(), Qt::KeepAspectRatio, Qt::FastTransformation);
             }
 
-            // 录像
+            // 录像（直接用 BGR Mat，避免 QImage→Mat 转换）
             if (m_recording && m_videoWriter.isOpened()) {
-                cv::Mat mat = ImageConvert::qimageToMat(frame);
-                if (!mat.empty()) {
-                    cv::Mat resized;
-                    cv::resize(mat, resized, cv::Size(m_videoRect.width(), m_videoRect.height()));
-                    m_videoWriter.write(resized);
-                }
+                cv::Mat resized;
+                cv::resize(mat, resized, cv::Size(m_videoRect.width(), m_videoRect.height()));
+                m_videoWriter.write(resized);
             }
 
             m_displayImage = frame;
@@ -714,15 +725,16 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
 // 把当前显示的图像保存为 JPEG 文件，文件名用时间戳命名避免重复
 void MainWindow::onCapturePhoto() {
     qDebug() << "[BTN] onCapturePhoto";
-    if (m_displayImage.isNull() && m_latestRawFrame.isNull()) return;
+    if (m_displayImage.isNull() && m_latestRawMat.empty()) return;
     QString filename = QString("%1/captures/%2.jpg")
         .arg(m_savePath)
         .arg(QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss"));
-    // 保存原始全分辨率帧，为离线编辑保留最大处理空间
-    if (!m_latestRawFrame.isNull())
-        m_latestRawFrame.save(filename, "JPEG", 95);
-    else
+    // P7.1: 直接用 BGR Mat 保存，避免 QImage 转换
+    if (!m_latestRawMat.empty()) {
+        cv::imwrite(filename.toStdString(), m_latestRawMat);
+    } else {
         m_displayImage.save(filename, "JPEG", 95);
+    }
     m_lblStatus->setText("拍照: " + filename);
 }
 

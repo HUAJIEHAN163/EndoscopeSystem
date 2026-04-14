@@ -20,6 +20,7 @@ set(SOURCES
     src/ui/presetmanager.cpp
     src/capture/filecapture.cpp
     src/processing/imageprocessor.cpp
+    src/processing/neon_accel.cpp
     src/utils/imageconvert.cpp
 )
 set(HEADERS
@@ -29,6 +30,7 @@ set(HEADERS
     src/ui/presetmanager.h
     src/processing/imageprocessor.h
     src/processing/processthread.h
+    src/processing/neon_accel.h
     src/utils/imageconvert.h
     src/utils/framequeue.h
 )

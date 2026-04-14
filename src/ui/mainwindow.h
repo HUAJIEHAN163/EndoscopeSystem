@@ -18,6 +18,7 @@
 // === 第三方库 ===
 #include <opencv2/videoio.hpp>  // OpenCV 视频写入（录像功能）
 #include <deque>                // 双端队列（帧缓存，用于冻结选最清晰帧）
+#include <opencv2/core.hpp>     // cv::Mat（P7.1 全程 BGR）
 
 // === 项目内部头文件 ===
 #include "capture/videosource.h"        // 视频源抽象基类
@@ -172,8 +173,9 @@ private:
     QSlider *m_sliderThreshold;    // 阈值（待移至图像编辑页）
 
     // --- 拍照用原始帧缓存 ---
-    QImage m_latestRawFrame;       // 最新原始帧（全分辨率，未经软件处理）
-    QString m_savePath;             // 存储路径（开发板: /mnt/nfs，虚拟机: .）
+    cv::Mat m_latestRawMat;            // 最新原始帧 BGR Mat（全分辨率）
+    QImage m_latestRawFrame;           // 最新原始帧（全分辨率，未经软件处理）
+    QString m_savePath;                // 存储路径（开发板: /mnt/nfs，虚拟机: .）
 
     // --- 操作按钮（两种模式共用）---
     QPushButton *m_btnCapture;     // 拍照

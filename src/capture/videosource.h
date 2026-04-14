@@ -5,6 +5,7 @@
 #include <QImage>
 #include <atomic>
 #include "utils/framequeue.h"
+#include <opencv2/core.hpp>
 
 // =====================================================================
 // VideoSource — 视频源抽象基类

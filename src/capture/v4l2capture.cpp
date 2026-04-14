@@ -16,6 +16,7 @@
 #include <QDebug>             // qDebug 调试输出
 #include <QElapsedTimer>      // 性能计时
 #include <opencv2/imgproc.hpp> // cvtColor 颜色空间转换
+#include "processing/neon_accel.h" // P5 NEON 加速
 
 // =====================================================================
 // xioctl — ioctl 的安全封装
@@ -394,21 +395,30 @@ void V4l2Capture::run() {
 
         perfTimer.start();
 
-        // YUYV → BGR，在归还 buffer 之前完成拷贝
+        // YUYV → BGR（OpenCV 已内置 NEON 优化，手写无法超越）
         cv::Mat yuyv(m_height, m_width, CV_8UC2, data);
         cv::Mat bgr;
         cv::cvtColor(yuyv, bgr, cv::COLOR_YUV2BGR_YUYV);
+        qint64 tYuv2Bgr = perfTimer.restart();
 
-        // 数据已拷贝到 bgr，归还 buffer 给驱动
         returnBuffer(bufIndex);
 
-        // 三线程管线：写入采集队列，处理线程会读取
         if (m_captureQueue) {
-            cv::Mat rgb;
-            cv::cvtColor(bgr, rgb, cv::COLOR_BGR2RGB);
-            QImage image(rgb.data, rgb.cols, rgb.rows,
-                         rgb.step, QImage::Format_RGB888);
-            m_captureQueue->push(image.copy());
+            // P16: 移动语义 push，零拷贝（bgr 是 cvtColor 的输出，push 后不再使用）
+            m_captureQueue->push(std::move(bgr));
+            qint64 tPush = perfTimer.elapsed();
+
+            totalProcessTime += tYuv2Bgr + tPush;
+            frameCount++;
+
+            if (frameCount % 100 == 0) {
+                qreal avgTime = totalProcessTime / (qreal)frameCount;
+                qDebug() << QString("[CAP 帧%1] YUYV→BGR:%2ms push:%3ms 平均:%4ms 队列:%5")
+                            .arg(frameCount)
+                            .arg(tYuv2Bgr).arg(tPush)
+                            .arg(avgTime, 0, 'f', 1)
+                            .arg(m_captureQueue->size());
+            }
         } else {
             // 兼容旧模式（信号槽）
             if (m_pendingFrames.load() >= 2) continue;
@@ -418,17 +428,6 @@ void V4l2Capture::run() {
                          rgb.step, QImage::Format_RGB888);
             m_pendingFrames.fetch_add(1);
             emit frameReady(image.copy());
-        }
-
-        qint64 elapsed = perfTimer.elapsed();
-        totalProcessTime += elapsed;
-        frameCount++;
-
-        // 每 100 帧输出一次统计
-        if (frameCount % 100 == 0) {
-            qreal avgTime = totalProcessTime / (qreal)frameCount;
-            qWarning() << QString("[性能] 已处理 %1 帧，平均耗时 %2 ms/帧")
-                          .arg(frameCount).arg(avgTime, 0, 'f', 1);
         }
     }
 

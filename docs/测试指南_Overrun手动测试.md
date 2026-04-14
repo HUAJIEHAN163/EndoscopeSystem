@@ -200,3 +200,5 @@ stm32-dcmi 4c006000.dcmi: errors=50 (overrun=50), buffers=2700
 4. 测试不同算法组合的 overrun 率（白平衡、CLAHE、去雾等）
 
 下一步：继续测试更多算法组合，观察 overrun 率变化规律
+
+> → FPS 问题的完整跟踪见 `16_FPS性能问题总跟踪.md`
