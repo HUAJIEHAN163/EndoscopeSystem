@@ -462,7 +462,10 @@ void MainWindow::setupVideoSource() {
 
     // 降级: 文件模式（V4L2 不可用时走这里）
     if (!m_source) {
+        //打开 config/endoscope.conf 文件,告诉 QSettings 按 INI 格式解析
         QSettings settings("config/endoscope.conf", QSettings::IniFormat);
+        //从配置文件中读取 [file] 组下的 path 键的值
+        //如果不存在就用 "test_data/test.mp4" 作为默认值，转成 QString 赋给 testFile。
         QString testFile = settings.value("file/path", "test_data/test.mp4").toString();
 
         if (QFileInfo(testFile).exists()) {
