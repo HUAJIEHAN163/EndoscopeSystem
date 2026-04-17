@@ -171,6 +171,7 @@ private:
     QSlider *m_sliderClaheClip;    // CLAHE 对比度限制（10~80 → 1.0~8.0）
     QSlider *m_sliderSharpen;      // 锐化强度（待移至图像编辑页）
     QSlider *m_sliderThreshold;    // 阈值（待移至图像编辑页）
+    QSlider *m_sliderDehazeOmega;       // 去雾强度（50-100 → 0.5-1.0）
 
     // --- 拍照用原始帧缓存 ---
     cv::Mat m_latestRawMat;            // 最新原始帧 BGR Mat（全分辨率）

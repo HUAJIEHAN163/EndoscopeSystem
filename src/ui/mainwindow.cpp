@@ -255,7 +255,13 @@ void MainWindow::setupUi() {
     endoLayout->addWidget(m_sliderClaheClip);
 
     endoLayout->addWidget(m_chkUndistort);
+
     endoLayout->addWidget(m_chkDehaze);
+    m_sliderDehazeOmega = new QSlider(Qt::Horizontal);
+    m_sliderDehazeOmega->setRange(50, 100);
+    m_sliderDehazeOmega->setValue(95);
+    endoLayout->addWidget(m_sliderDehazeOmega);
+
     makeCollapsible(endoGroup, true);  // 默认展开
     debugLayout->addWidget(endoGroup);
 
@@ -492,6 +498,7 @@ void MainWindow::setupVideoSource() {
 
     // 定时从 displayQueue 取最新帧显示（16ms ≈ 60fps 刷新率）
     m_displayTimer = new QTimer(this);
+    //信号槽在m_displayTimer->start(16);中被触发，每16ms调用一次lambda函数，lambda函数中从displayQueue获取最新的帧数据，并进行处理和显示。
     connect(m_displayTimer, &QTimer::timeout, [this]() {
         // 同步 UI 参数到处理线程
         if (m_processThread && !m_clinicalMode) {
@@ -500,6 +507,7 @@ void MainWindow::setupVideoSource() {
             m_processThread->config.claheClipLimit = m_sliderClaheClip->value() / 10.0;
             m_processThread->config.undistort = m_chkUndistort->isChecked() && m_undistortReady;
             m_processThread->config.dehaze = m_chkDehaze->isChecked();
+            m_processThread->config.dehazeOmega = m_sliderDehazeOmega->value() / 100.0;
             // 通用算法已移至图像编辑页，实时流中固定关闭
             m_processThread->config.sharpen = false;
             m_processThread->config.denoise = false;
@@ -649,6 +657,7 @@ QImage MainWindow::processFrame(const QImage &input) {
         m_procConfig.claheClipLimit = m_sliderClaheClip->value() / 10.0;
         m_procConfig.undistort = m_chkUndistort->isChecked() && m_undistortReady;
         m_procConfig.dehaze = m_chkDehaze->isChecked();
+        m_procConfig.dehazeOmega = m_sliderDehazeOmega->value() / 100.0;
         // 通用算法已移至图像编辑页，实时流中不启用
         m_procConfig.sharpen = false;
         m_procConfig.denoise = false;
@@ -1072,6 +1081,7 @@ void MainWindow::onExportPreset() {
     cfg.claheClipLimit = m_sliderClaheClip->value() / 10.0;
     cfg.undistort      = m_chkUndistort->isChecked();
     cfg.dehaze         = m_chkDehaze->isChecked();
+    cfg.dehazeOmega    = m_sliderDehazeOmega->value() / 100.0;
     cfg.sharpen        = false;
     cfg.denoise        = false;
     cfg.edgeDetect     = false;
@@ -1095,6 +1105,7 @@ void MainWindow::onExportPreset() {
 void MainWindow::applyConfig(const ImageProcessor::Config &cfg) {
     m_chkClahe->setChecked(cfg.clahe);
     m_sliderClaheClip->setValue(static_cast<int>(cfg.claheClipLimit * 10));
+    m_sliderDehazeOmega->setValue(static_cast<int>(cfg.dehazeOmega * 100));
     m_chkUndistort->setChecked(cfg.undistort && m_undistortReady);
     m_chkDehaze->setChecked(cfg.dehaze);
 }

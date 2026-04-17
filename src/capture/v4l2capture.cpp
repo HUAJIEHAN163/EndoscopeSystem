@@ -67,6 +67,7 @@ bool V4l2Capture::open() {
     // 打开设备文件
     // O_RDWR：可读可写（采集需要读，控制参数需要写）
     // O_NONBLOCK：非阻塞模式（配合 select 使用，避免 read 卡死）
+    //::open 表示调用全局的 open 函数，不是类的成员函数（如果有同名成员函数会优先调用成员函数）
     m_fd = ::open(m_device.c_str(), O_RDWR | O_NONBLOCK);
     if (m_fd < 0) {
         emit errorOccurred(QString("无法打开设备: %1 (%2)")
@@ -373,6 +374,9 @@ void V4l2Capture::run() {
     int frameCount = 0;
     qint64 totalProcessTime = 0;
     QElapsedTimer perfTimer;
+    QElapsedTimer frameIntervalTimer;
+    int intervalCount = 0;
+    frameIntervalTimer.start();  // 开始计时
 
     // m_running 控制帧处理，m_quit 控制线程退出
     while (!m_quit) {
@@ -385,6 +389,18 @@ void V4l2Capture::run() {
             if (!m_quit)
                 qDebug() << "采集帧超时";
             continue;
+        }
+
+        intervalCount++;
+        if (intervalCount % 100 == 0) {
+            qint64 elapsed = frameIntervalTimer.elapsed();
+            double avgInterval = elapsed / 100.0;
+            double fps = 100000.0 / elapsed;
+            qDebug() << QString("[CAP 帧间隔] 100帧耗时:%1ms 平均:%2ms (%3fps)")
+                        .arg(elapsed)
+                        .arg(avgInterval, 0, 'f', 1)
+                        .arg(fps, 0, 'f', 1);
+            frameIntervalTimer.restart();  // 重新计时
         }
 
         // 暂停时只归还 buffer，不处理

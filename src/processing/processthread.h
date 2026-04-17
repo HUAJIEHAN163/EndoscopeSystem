@@ -88,8 +88,19 @@ protected:
 
                 frameCount++;
                 if (frameCount % 50 == 0) {
-                    qDebug() << QString("[PROC 帧%1] 算法:%2ms resize:%3ms 合计:%4ms")
+                    qDebug() << QString("[PROC 帧%1] %2 算法:%3ms resize:%4ms 合计:%5ms")
                                 .arg(frameCount)
+                                .arg([this]()                                    
+                                {   QStringList algs;
+                                    if (config.clahe) algs << "CLAHE";
+                                    if (config.undistort) algs << "Undistort";
+                                    if (config.dehaze) algs << "Dehaze";
+                                    if (config.sharpen) algs << "Sharpen";
+                                    if (config.denoise) algs << "Denoise";
+                                    if (config.edgeDetect) algs << "EdgeDetect";
+                                    if (config.threshold) algs << "Threshold";
+                                    return algs.join("+");
+                                }())
                                 .arg(t2).arg(t3)
                                 .arg(t2+t3);
                 }

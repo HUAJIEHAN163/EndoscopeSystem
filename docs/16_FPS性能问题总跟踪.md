@@ -350,6 +350,7 @@ STM32MP157 的 Cortex-A7 是 ARM 最低端的应用处理器核心（2011 年设
 | 处理线程 QImage::scaled 改 cv::resize | 反而更慢（34-87ms vs 25-55ms） | 多了 QImage↔Mat 转换开销 | 13_6 第十章 |
 | P5 NEON 加速 YUYV→BGR v1 | ~65ms，比 cvtColor 慢 63% | 标量 U/V 展开打断 NEON 流水线 | 13_9 第六章 |
 | P5 NEON 加速 YUYV→BGR v2 | ~57ms，比 cvtColor 慢 43% | OpenCV cvtColor 已内置 NEON 优化，手写无法超越 | 13_9 第六章 |
+| 处理线程 pop 改 latest 跳帧 | FPS 无变化（不开算法 19fps，CLAHE+去雾 14fps） | 单核 CPU 上省下的时间被其他线程分走，且队列积压只有 1-3 帧，跳帧收益有限 | P16 验证 |
 
 ### 6.6 有收益但引入副作用的优化
 
