@@ -1,0 +1,6 @@
+../../Middlewares/Third_Party/OpenAMP/open-amp/lib/include/openamp/rpmsg.h:158:19:rpmsg_send	32	static
+/mnt/hgfs/VM_Share/project/EndoscopeM4/Middlewares/Third_Party/OpenAMP/virtual_driver/virt_uart.c:55:12:VIRT_UART_read_cb	32	static
+/mnt/hgfs/VM_Share/project/EndoscopeM4/Middlewares/Third_Party/OpenAMP/virtual_driver/virt_uart.c:70:25:VIRT_UART_Init	32	static
+/mnt/hgfs/VM_Share/project/EndoscopeM4/Middlewares/Third_Party/OpenAMP/virtual_driver/virt_uart.c:87:25:VIRT_UART_DeInit	16	static
+/mnt/hgfs/VM_Share/project/EndoscopeM4/Middlewares/Third_Party/OpenAMP/virtual_driver/virt_uart.c:94:25:VIRT_UART_RegisterCallback	32	static
+/mnt/hgfs/VM_Share/project/EndoscopeM4/Middlewares/Third_Party/OpenAMP/virtual_driver/virt_uart.c:114:25:VIRT_UART_Transmit	32	static

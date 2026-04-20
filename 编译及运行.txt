@@ -7,7 +7,7 @@ bash scripts/build_local.sh
 
 ssh进入开发板：
 ssh debian@192.168.0.43
-su - root
+su - r
 # 密码：root
 
 重新编译部署：
@@ -32,3 +32,70 @@ chmod +x /tmp/endoscope
 kill $(pidof App) 2>/dev/null
 sleep 0.5
 /tmp/endoscope -platform linuxfb
+
+
+M4流程：
+### 步骤 1：编译（虚拟机）
+
+```bash
+# 方法 A：CubeIDE 图形界面
+# 打开 CubeIDE → 选中 CM4 工程 → Project → Build Project (Ctrl+B)
+
+# 方法 B：命令行 headless 编译
+/opt/st/stm32cubeide_1.19.0/headless-build.sh \
+  -data /tmp/m4_workspace \
+  -import /mnt/hgfs/VM_Share/project/EndoscopeM4/CM4 \
+  -build "EndoscopeM4_CM4/Debug"
+```
+
+编译成功后输出：
+```
+Finished building target: EndoscopeM4_CM4.elf
+   text    data     bss     dec     hex  filename
+  22772      12    1788   24572    5ffc  EndoscopeM4_CM4.elf
+0 errors, 0 warnings.
+```
+
+### 步骤 2：传输到 NFS 共享目录（虚拟机）
+
+```bash
+cp /mnt/hgfs/VM_Share/project/EndoscopeM4/CM4/Debug/EndoscopeM4_CM4.elf /home/chris/nfs_share/
+```
+
+### 步骤 3：复制到 firmware 目录（开发板）
+
+```bash
+umount /mnt/nfs
+mount -t nfs 192.168.0.130:/home/chris/nfs_share /mnt/nfs -o nolock
+cp /mnt/nfs/EndoscopeM4_CM4.elf /lib/firmware/
+```
+
+### 步骤 4：加载并启动 M4（开发板）
+
+```bash
+# 指定固件文件名
+echo EndoscopeM4_CM4.elf > /sys/class/remoteproc/remoteproc0/firmware
+
+# 启动 M4
+echo start > /sys/class/remoteproc/remoteproc0/state
+
+# 确认运行状态
+cat /sys/class/remoteproc/remoteproc0/state
+# 输出: running
+```
+
+### 步骤 5：停止 M4（开发板）
+
+```bash
+echo stop > /sys/class/remoteproc/remoteproc0/state
+
+# 确认已停止
+cat /sys/class/remoteproc/remoteproc0/state
+# 输出: offline
+```
+
+# 关灯
+echo 26 > /sys/class/gpio/export 2>/dev/null
+echo out > /sys/class/gpio/gpio26/direction
+echo 0 > /sys/class/gpio/gpio26/value
+echo 26 > /sys/class/gpio/unexport

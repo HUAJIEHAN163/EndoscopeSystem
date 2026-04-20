@@ -54,6 +54,12 @@
 
 &pinctrl {
 
+	m4_tim2_pwm_pins_mx: m4_tim2_pwm_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('B', 10, RSVD)>; /* TIM2_CH3 */
+		};
+	};
+
 	/* USER CODE BEGIN pinctrl */
 	/* USER CODE END pinctrl */
 };
@@ -65,6 +71,9 @@
 };
 
 &m4_rproc{
+	/*Restriction: "memory-region" property is not managed - please to use User-Section if needed*/
+	mboxes = <&ipcc 2>;
+	mbox-names = "shutdown";
 	status = "okay";
 
 	/* USER CODE BEGIN m4_rproc */
@@ -102,11 +111,41 @@
 	/* USER CODE END dmamux1 */
 };
 
+&ipcc {
+	status = "okay";
+
+	/* USER CODE BEGIN ipcc */
+	/* USER CODE END ipcc */
+};
+
 &m4_dma2 {
 	status = "okay";
 
 	/* USER CODE BEGIN m4_dma2 */
 	/* USER CODE END m4_dma2 */
+};
+
+&m4_i2c1 {
+	status = "okay";
+
+	/* USER CODE BEGIN m4_i2c1 */
+	/* USER CODE END m4_i2c1 */
+};
+
+&m4_timers2 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&m4_tim2_pwm_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN m4_timers2 */
+	/* USER CODE END m4_timers2 */
+};
+
+&m4_timers3 {
+	status = "okay";
+
+	/* USER CODE BEGIN m4_timers3 */
+	/* USER CODE END m4_timers3 */
 };
 
 &mdma1 {
@@ -121,6 +160,20 @@
 
 	/* USER CODE BEGIN rcc */
 	/* USER CODE END rcc */
+};
+
+&rtc {
+	status = "okay";
+
+	/* USER CODE BEGIN rtc */
+	/* USER CODE END rtc */
+};
+
+&tamp {
+	status = "okay";
+
+	/* USER CODE BEGIN tamp */
+	/* USER CODE END tamp */
 };
 
 /* USER CODE BEGIN addons */
