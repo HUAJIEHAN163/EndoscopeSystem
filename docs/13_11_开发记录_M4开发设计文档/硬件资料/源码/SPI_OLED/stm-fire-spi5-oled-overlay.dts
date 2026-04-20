@@ -1,0 +1,34 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR BSD-3-Clause)
+/*
+ * Copyright (C) STMicroelectronics 2018 - All Rights Reserved
+ * Author: Alexandre Torgue <alexandre.torgue@st.com>.
+ */
+
+/dts-v1/;
+/plugin/;
+#include <dt-bindings/pinctrl/stm32-pinfunc.h>
+#include <dt-bindings/input/input.h>
+#include <dt-bindings/mfd/st,stpmic1.h>
+#include <dt-bindings/gpio/gpio.h>
+
+/{
+	fragment@0{
+		target=<&spi5>;
+		__overlay__{
+			#address-cells = <1>;
+			#size-cells = <0>;
+            		pinctrl-names = "default", "sleep";
+            		pinctrl-0 = <&spi5_pins_a>;
+            		pinctrl-1 = <&spi5_sleep_pins_a>;
+			cs-gpios = <&gpiob 6 0>;
+			status = "okay";
+
+			spi_oled@0 {
+				compatible = "fire,spi_oled";
+				spi-max-frequency = <10000000>;
+				d_c_control_pin = <&gpiof 6 0>;
+				reg = <0>;
+			};
+		};
+	};
+};
