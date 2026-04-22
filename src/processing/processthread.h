@@ -42,6 +42,7 @@ protected:
     void run() override {
         m_running = true;
         int frameCount = 0;
+        int dropCount = 0;      // captureQueue 满时丢弃的帧数
         QElapsedTimer totalTimer;
         totalTimer.start();
 
@@ -55,6 +56,15 @@ protected:
             if (!m_captureQueue->pop(frame)) {
                 QThread::msleep(1);
                 continue;
+            }
+
+            // 检查队列积压：如果取出后队列还有 >= 2 帧，说明处理跟不上
+            int queueRemain = m_captureQueue->size();
+            if (queueRemain >= 2) {
+                dropCount++;
+                if (dropCount % 10 == 1)
+                    qWarning() << QString("[PROC 积压] 队列剩余:%1 累计丢帧:%2")
+                                  .arg(queueRemain).arg(dropCount);
             }
 
             QElapsedTimer t; t.start();
@@ -111,11 +121,12 @@ protected:
             // 每 200 帧输出总体统计
             if (frameCount % 200 == 0) {
                 double elapsed = totalTimer.elapsed() / 1000.0;
-                qDebug() << QString("[PROC 统计] %1帧/%2秒 = %3fps 队列剩余:%4")
+                qDebug() << QString("[PROC 统计] %1帧/%2秒 = %3fps 队列剩余:%4 丢帧:%5")
                             .arg(frameCount)
                             .arg(elapsed, 0, 'f', 1)
                             .arg(frameCount / elapsed, 0, 'f', 1)
-                            .arg(m_captureQueue->size());
+                            .arg(m_captureQueue->size())
+                            .arg(dropCount);
             }
         }
     }

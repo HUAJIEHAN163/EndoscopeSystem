@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/endoscope.dir/endoscope_autogen/mocs_compilation.cpp.o.d"
   "CMakeFiles/endoscope.dir/src/capture/filecapture.cpp.o"
   "CMakeFiles/endoscope.dir/src/capture/filecapture.cpp.o.d"
+  "CMakeFiles/endoscope.dir/src/comm/rpmsglistener.cpp.o"
+  "CMakeFiles/endoscope.dir/src/comm/rpmsglistener.cpp.o.d"
   "CMakeFiles/endoscope.dir/src/main.cpp.o"
   "CMakeFiles/endoscope.dir/src/main.cpp.o.d"
   "CMakeFiles/endoscope.dir/src/processing/imageprocessor.cpp.o"

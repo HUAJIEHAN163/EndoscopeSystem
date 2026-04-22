@@ -330,7 +330,13 @@ bool V4l2Capture::grabFrame(void **data, int *size, int *bufIndex) {
     tv.tv_usec = 0;
 
     int r = select(m_fd + 1, &fds, NULL, NULL, &tv);
-    if (r <= 0) return false;
+    if (r <= 0) {
+        if (r == 0)
+            qWarning() << "[CAP] select 超时 (2s)";
+        else
+            qWarning() << "[CAP] select 错误:" << strerror(errno);
+        return false;
+    }
 
     // VIDIOC_DQBUF：取出已填充数据的缓冲区
     struct v4l2_buffer buf;
@@ -338,11 +344,15 @@ bool V4l2Capture::grabFrame(void **data, int *size, int *bufIndex) {
     buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
     buf.memory = V4L2_MEMORY_MMAP;
 
-    if (xioctl(m_fd, VIDIOC_DQBUF, &buf) < 0) return false;
+    if (xioctl(m_fd, VIDIOC_DQBUF, &buf) < 0) {
+        qWarning() << "[CAP] DQBUF 失败:" << strerror(errno);
+        m_dqbufErrors++;
+        return false;
+    }
 
     *data = m_buffers[buf.index].start;
     *size = buf.bytesused;
-    *bufIndex = buf.index;  // 记录 buffer 索引，用完数据后再归还
+    *bufIndex = buf.index;
 
     return true;
 }
@@ -373,23 +383,30 @@ void V4l2Capture::run() {
 
     int frameCount = 0;
     qint64 totalProcessTime = 0;
+    int slowFrames = 0;           // 慢帧计数（单帧 > 50ms）
+    m_dqbufErrors = 0;            // DQBUF 失败计数
+    int invalidFrames = 0;        // 无效帧计数
     QElapsedTimer perfTimer;
     QElapsedTimer frameIntervalTimer;
+    QElapsedTimer grabTimer;      // 单帧全链路计时
     int intervalCount = 0;
-    frameIntervalTimer.start();  // 开始计时
+    frameIntervalTimer.start();
 
     // m_running 控制帧处理，m_quit 控制线程退出
     while (!m_quit) {
-        // 暂停时不处理帧，但仍然 grabFrame + returnBuffer 保持 V4L2 流活跃
         void *data = nullptr;
         int size = 0;
         int bufIndex = -1;
+
+        grabTimer.start();
 
         if (!grabFrame(&data, &size, &bufIndex)) {
             if (!m_quit)
                 qDebug() << "采集帧超时";
             continue;
         }
+
+        qint64 tGrab = grabTimer.elapsed();
 
         intervalCount++;
         if (intervalCount % 100 == 0) {
@@ -400,7 +417,7 @@ void V4l2Capture::run() {
                         .arg(elapsed)
                         .arg(avgInterval, 0, 'f', 1)
                         .arg(fps, 0, 'f', 1);
-            frameIntervalTimer.restart();  // 重新计时
+            frameIntervalTimer.restart();
         }
 
         // 暂停时只归还 buffer，不处理
@@ -411,7 +428,13 @@ void V4l2Capture::run() {
 
         perfTimer.start();
 
-        // YUYV → BGR（OpenCV 已内置 NEON 优化，手写无法超越）
+        // YUYV → BGR
+        if (!data || size < m_width * m_height * 2) {
+            qWarning() << "[CAP] 无效帧数据, size=" << size;
+            invalidFrames++;
+            returnBuffer(bufIndex);
+            continue;
+        }
         cv::Mat yuyv(m_height, m_width, CV_8UC2, data);
         cv::Mat bgr;
         cv::cvtColor(yuyv, bgr, cv::COLOR_YUV2BGR_YUYV);
@@ -420,20 +443,29 @@ void V4l2Capture::run() {
         returnBuffer(bufIndex);
 
         if (m_captureQueue) {
-            // P16: 移动语义 push，零拷贝（bgr 是 cvtColor 的输出，push 后不再使用）
             m_captureQueue->push(std::move(bgr));
             qint64 tPush = perfTimer.elapsed();
+            qint64 tTotal = tGrab + tYuv2Bgr + tPush;
 
             totalProcessTime += tYuv2Bgr + tPush;
             frameCount++;
 
+            // 慢帧检测：单帧全链路 > 50ms 时立即输出
+            if (tTotal > 50) {
+                slowFrames++;
+                qWarning() << QString("[CAP 慢帧#%1] grab:%2ms cvt:%3ms push:%4ms 合计:%5ms 队列:%6")
+                              .arg(frameCount).arg(tGrab).arg(tYuv2Bgr)
+                              .arg(tPush).arg(tTotal).arg(m_captureQueue->size());
+            }
+
             if (frameCount % 100 == 0) {
                 qreal avgTime = totalProcessTime / (qreal)frameCount;
-                qDebug() << QString("[CAP 帧%1] YUYV→BGR:%2ms push:%3ms 平均:%4ms 队列:%5")
+                qDebug() << QString("[CAP 帧%1] YUYV→BGR:%2ms push:%3ms 平均:%4ms 队列:%5 慢帧:%6 DQBUF错误:%7")
                             .arg(frameCount)
                             .arg(tYuv2Bgr).arg(tPush)
                             .arg(avgTime, 0, 'f', 1)
-                            .arg(m_captureQueue->size());
+                            .arg(m_captureQueue->size())
+                            .arg(slowFrames).arg(m_dqbufErrors);
             }
         } else {
             // 兼容旧模式（信号槽）
@@ -447,12 +479,11 @@ void V4l2Capture::run() {
         }
     }
 
-    // 输出最终统计
-    if (frameCount > 0) {
-        qreal avgTime = totalProcessTime / (qreal)frameCount;
-        qWarning() << QString("[性能总结] 总帧数 %1，平均耗时 %2 ms/帧")
-                      .arg(frameCount).arg(avgTime, 0, 'f', 1);
-    }
+    // 退出时输出完整统计
+    qWarning() << QString("[CAP 统计] 总帧数:%1 慢帧:%2 DQBUF错误:%3 无效帧:%4 平均:%5ms/帧")
+                  .arg(frameCount).arg(slowFrames)
+                  .arg(m_dqbufErrors).arg(invalidFrames)
+                  .arg(frameCount > 0 ? totalProcessTime / (qreal)frameCount : 0, 0, 'f', 1);
 
     stopStreaming();
 }

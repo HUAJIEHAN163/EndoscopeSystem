@@ -139,6 +139,7 @@ private:
     int m_bufferCount;                 // 实际分配的缓冲区数量（可能少于请求值）
     uint32_t m_pixelFormat;            // 实际使用的像素格式（如 V4L2_PIX_FMT_YUYV）
     std::vector<FrameBuffer> m_buffers; // mmap 缓冲区数组
+    int m_dqbufErrors = 0;              // DQBUF 失败计数（overrun 诊断）
 };
 
 #endif // ENABLE_V4L2

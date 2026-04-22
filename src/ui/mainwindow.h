@@ -25,6 +25,7 @@
 #include "processing/imageprocessor.h"
 #include "processing/processthread.h"
 #include "utils/framequeue.h"
+#include "comm/rpmsglistener.h"
 
 // =====================================================================
 // MainWindow — 主窗口类
@@ -248,6 +249,12 @@ private:
     FrameQueue<4> m_displayQueue;    // 处理线程 → 主线程
     ProcessThread *m_processThread = nullptr;
     QTimer *m_displayTimer = nullptr; // 定时从 displayQueue 取帧显示
+
+    // --- M4 通信 ---
+    RpmsgListener *m_rpmsgListener = nullptr;
+    QLabel *m_lblTemp;          // 温度/湿度显示
+    QSlider *m_sliderLedBright; // LED 补光灯亮度
+    QLabel *m_lblLedValue;      // 亮度数值显示
 };
 
 #endif // MAINWINDOW_H

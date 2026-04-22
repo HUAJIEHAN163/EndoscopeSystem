@@ -1,6 +1,7 @@
 /mnt/hgfs/VM_Share/project/EndoscopeSystem/build_local/endoscope_autogen/YPKJ5OE7LN/moc_mainwindow.cpp: /mnt/hgfs/VM_Share/project/EndoscopeSystem/src/ui/mainwindow.h \
   /mnt/hgfs/VM_Share/project/EndoscopeSystem/build_local/endoscope_autogen/moc_predefs.h \
   /mnt/hgfs/VM_Share/project/EndoscopeSystem/src/capture/videosource.h \
+  /mnt/hgfs/VM_Share/project/EndoscopeSystem/src/comm/rpmsglistener.h \
   /mnt/hgfs/VM_Share/project/EndoscopeSystem/src/processing/imageprocessor.h \
   /mnt/hgfs/VM_Share/project/EndoscopeSystem/src/processing/processthread.h \
   /mnt/hgfs/VM_Share/project/EndoscopeSystem/src/utils/framequeue.h \
@@ -400,6 +401,7 @@
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QObject \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QScopedPointer \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QThread \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractitemmodel.h \

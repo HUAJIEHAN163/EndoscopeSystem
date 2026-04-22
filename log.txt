@@ -1,995 +1,3557 @@
-[ 4222.008846] [dhd] sdioh_buffer_tofrom_bus: RX FAILED 166049df, addr=0x08000, pkt_len=128, ERR=-84
-[ 4222.016304] [dhd] dhdsdio_readframes: read 128 data bytes failed: -35
-[ 4222.022914] [dhd] dhdsdio_rxfail: abort command, terminate frame
-^C[ 4375.390265] stm32-dcmi 4c006000.dcmi: Some errors found while streaming: errors=1795 (overrun=1798), buffers=18615
-
-root@lubancat:~# cp /mnt/nfs/endoscope /tmp/
-root@lubancat:~# kill $(pidof App) 2>/dev/null
-root@lubancat:~# /tmp/endoscope -platform linuxfb 2>&1 | grep "\[pipe\]"
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 4 ms
-[pipe] scaled: 19 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 4 ms
-[pipe] scaled: 19 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 27 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 21 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 4 ms
-[pipe] scaled: 19 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 19 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 1 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 4 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 1 ms
-[pipe] scaled: 26 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 29 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 4 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 2 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 15 ms
-[pipe] scaled: 19 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 7 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 19 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 4 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 34 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 22 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 2 ms
-[pipe] scaled: 36 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 34 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 26 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 16 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 34 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 1 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 11 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 30 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 4 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 9 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 26 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 15 ms
-[pipe] scaled: 34 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 26 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 27 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 7 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 1 ms
-[pipe] scaled: 19 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 10 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 8 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 15 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 4 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 2 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 37 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 30 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 4 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 36 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 36 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 8 ms
-[pipe] scaled: 27 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 12 ms
-[pipe] scaled: 26 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 29 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 12 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 11 ms
-[pipe] scaled: 29 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 16 ms
-[pipe] scaled: 27 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 8 ms
-[pipe] scaled: 19 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 30 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 32 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 10 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 24 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 17 ms
-[pipe] scaled: 30 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 21 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 29 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 57 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 122 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 65 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 62 ms
-[pipe] frameBuffer: 9 ms
-[pipe] scaled: 19 ms
-[pipe] processFrame: 105 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 72 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 85 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 71 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 75 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 55 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 110 ms
-[pipe] frameBuffer: 4 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 73 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 65 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 21 ms
-[pipe] processFrame: 77 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 56 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 65 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 65 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 65 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 66 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 62 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 66 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 68 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 98 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 91 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 19 ms
-[pipe] processFrame: 61 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 69 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 70 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 67 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 105 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 68 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 68 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 67 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 68 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 54 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 20 ms
-[pipe] processFrame: 78 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 18 ms
-[pipe] processFrame: 68 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 83 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 69 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 67 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 72 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 67 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 67 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 73 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 66 ms
-[pipe] frameBuffer: 8 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 81 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 19 ms
-[pipe] processFrame: 90 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 26 ms
-[pipe] processFrame: 67 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 86 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 55 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 74 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 23 ms
-[pipe] processFrame: 68 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 27 ms
-[pipe] processFrame: 69 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 78 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 108 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 31 ms
-[pipe] processFrame: 72 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 26 ms
-[pipe] processFrame: 76 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 26 ms
-[pipe] processFrame: 66 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 78 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 17 ms
-[pipe] processFrame: 67 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 64 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 93 ms
-[pipe] frameBuffer: 4 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 71 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 63 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 67 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 30 ms
-[pipe] processFrame: 59 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 65 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 67 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 84 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 57 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 68 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 67 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 66 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 65 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 67 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 77 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 65 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 60 ms
-[pipe] frameBuffer: 8 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 68 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 65 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 74 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 78 ms
-[pipe] frameBuffer: 10 ms
-[pipe] scaled: 35 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 11 ms
-[pipe] scaled: 26 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 6 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 15 ms
-[pipe] scaled: 30 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 8 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[pipe] scaled: 16 ms
-[pipe] processFrame: 0 ms
-[pipe] frameBuffer: 5 ms
-[p
+[PROC 积压] 队列剩余:2 累计丢帧:81"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:91"
+"[CAP 慢帧#248] grab:26ms cvt:55ms push:0ms 合计:81ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:101"
+"[CAP 慢帧#274] grab:8ms cvt:45ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#275] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:111"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 无算法] 帧200 resize:55ms"
+"[PROC 统计] 200帧/10.1秒 = 19.7fps 队列剩余:3 丢帧:114"
+"[CAP 慢帧#296] grab:7ms cvt:52ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#298] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3385ms 平均:33.9ms (29.5fps)"
+"[CAP 帧300] YUYV→BGR:33ms push:0ms 平均:32.2ms 队列:1 慢帧:30 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:121"
+"[CAP 慢帧#319] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:131"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[CAP 慢帧#350] grab:9ms cvt:46ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#351] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:141"
+"[CAP 慢帧#366] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#369] grab:9ms cvt:46ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:151"
+"[CAP 帧间隔] 100帧耗时:3423ms 平均:34.2ms (29.2fps)"
+"[CAP 帧400] YUYV→BGR:28ms push:0ms 平均:32.3ms 队列:3 慢帧:35 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[CAP 慢帧#410] grab:10ms cvt:43ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#411] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#413] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#414] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[PROC 无算法] 帧300 resize:53ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:161"
+"[CAP 慢帧#431] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[CAP 慢帧#433] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#435] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:171"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[CAP 慢帧#469] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:2"
+"[CAP 慢帧#470] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:181"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[CAP 慢帧#497] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3465ms 平均:34.6ms (28.9fps)"
+"[CAP 帧500] YUYV→BGR:26ms push:0ms 平均:32.4ms 队列:3 慢帧:45 DQBUF错误:0"
+"[CAP 慢帧#501] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#502] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#505] grab:0ms cvt:50ms push:5ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+"[PROC 积压] 队列剩余:2 累计丢帧:191"
+[RPMsg RX] "H551"
+"[CAP 慢帧#530] grab:8ms cvt:52ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#532] grab:0ms cvt:40ms push:14ms 合计:54ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:201"
+"[PROC 无算法] 帧400 resize:37ms"
+"[PROC 统计] 400帧/19.5秒 = 20.6fps 队列剩余:2 丢帧:202"
+"[CAP 慢帧#556] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#557] grab:0ms cvt:69ms push:0ms 合计:69ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:211"
+"[CAP 慢帧#592] grab:8ms cvt:46ms push:0ms 合计:54ms 队列:3"
+"[CAP 慢帧#594] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:221"
+"[CAP 慢帧#595] grab:0ms cvt:40ms push:11ms 合计:51ms 队列:2"
+"[CAP 慢帧#598] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3632ms 平均:36.3ms (27.5fps)"
+"[CAP 帧600] YUYV→BGR:27ms push:0ms 平均:32.7ms 队列:3 慢帧:56 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#608] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#610] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[CAP 慢帧#611] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 慢帧#621] grab:0ms cvt:80ms push:1ms 合计:81ms 队列:1"
+"[CAP 慢帧#622] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#634] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 慢帧#635] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:231"
+"[CAP 慢帧#648] grab:15ms cvt:45ms push:10ms 合计:70ms 队列:1"
+"[CAP 慢帧#658] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:3"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[CAP 慢帧#659] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#661] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:241"
+"[PROC 无算法] 帧500 resize:30ms"
+"[CAP 慢帧#684] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#686] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:251"
+"[CAP 帧间隔] 100帧耗时:3601ms 平均:36.0ms (27.8fps)"
+"[CAP 帧700] YUYV→BGR:48ms push:0ms 平均:33.0ms 队列:2 慢帧:69 DQBUF错误:0"
+"[CAP 慢帧#710] grab:7ms cvt:50ms push:0ms 合计:57ms 队列:3"
+"[CAP 慢帧#711] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#714] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:261"
+"[PROC 积压] 队列剩余:2 累计丢帧:271"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:281"
+"[CAP 慢帧#757] grab:11ms cvt:58ms push:1ms 合计:70ms 队列:2"
+"[CAP 慢帧#758] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#759] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#783] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:291"
+"[CAP 帧间隔] 100帧耗时:3550ms 平均:35.5ms (28.2fps)"
+"[CAP 帧800] YUYV→BGR:32ms push:0ms 平均:33.0ms 队列:3 慢帧:76 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[PROC 无算法] 帧600 resize:30ms"
+"[PROC 统计] 600帧/28.6秒 = 21.0fps 队列剩余:2 丢帧:297"
+"[CAP 慢帧#818] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:301"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#839] grab:10ms cvt:41ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#840] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+"[CAP 慢帧#842] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:311"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:321"
+"[CAP 慢帧#882] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#883] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 慢帧#884] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:331"
+"[CAP 慢帧#897] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#899] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3471ms 平均:34.7ms (28.8fps)"
+"[CAP 帧900] YUYV→BGR:25ms push:0ms 平均:32.9ms 队列:1 慢帧:85 DQBUF错误:0"
+"[CAP 慢帧#908] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#909] grab:0ms cvt:51ms push:1ms 合计:52ms 队列:0"
+"[CAP 慢帧#916] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:3"
+"[CAP 慢帧#917] grab:0ms cvt:75ms push:0ms 合计:75ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#919] grab:0ms cvt:55ms push:2ms 合计:57ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:341"
+"[PROC 无算法] 帧700 resize:60ms"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#949] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:351"
+"[CAP 慢帧#962] grab:4ms cvt:52ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#964] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#965] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#967] grab:0ms cvt:54ms push:17ms 合计:71ms 队列:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#980] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#992] grab:11ms cvt:45ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#994] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#995] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3580ms 平均:35.8ms (27.9fps)"
+"[CAP 帧1000] YUYV→BGR:35ms push:0ms 平均:33.1ms 队列:3 慢帧:99 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:361"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:371"
+"[CAP 慢帧#1023] grab:8ms cvt:45ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#1025] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1043] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:3"
+"[CAP 慢帧#1045] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:381"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:391"
+"[PROC 无算法] 帧800 resize:37ms"
+"[PROC 统计] 800帧/38.1秒 = 21.0fps 队列剩余:2 丢帧:397"
+"[CAP 慢帧#1083] grab:9ms cvt:46ms push:8ms 合计:63ms 队列:2"
+"[CAP 慢帧#1085] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:401"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 帧间隔] 100帧耗时:3334ms 平均:33.3ms (30.0fps)"
+"[CAP 慢帧#1100] grab:8ms cvt:44ms push:0ms 合计:52ms 队列:2"
+"[CAP 帧1100] YUYV→BGR:44ms push:0ms 平均:32.9ms 队列:2 慢帧:106 DQBUF错误:0"
+"[CAP 慢帧#1108] grab:10ms cvt:46ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#1109] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#1111] grab:0ms cvt:57ms push:1ms 合计:58ms 队列:1"
+"[CAP 慢帧#1112] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:411"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1130] grab:13ms cvt:43ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#1132] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#1133] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#1146] grab:6ms cvt:46ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#1149] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#1150] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1162] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:421"
+"[CAP 慢帧#1179] grab:5ms cvt:47ms push:0ms 合计:52ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1195] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+"[CAP 慢帧#1196] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3599ms 平均:36.0ms (27.8fps)"
+"[CAP 帧1200] YUYV→BGR:33ms push:0ms 平均:33.0ms 队列:2 慢帧:120 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:431"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 无算法] 帧900 resize:29ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:441"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:451"
+"[CAP 慢帧#1255] grab:12ms cvt:47ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#1256] grab:0ms cvt:50ms push:1ms 合计:51ms 队列:2"
+"[CAP 慢帧#1257] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[CAP 慢帧#1258] grab:0ms cvt:47ms push:5ms 合计:52ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:461"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1274] grab:3ms cvt:66ms push:0ms 合计:69ms 队列:1"
+"[CAP 慢帧#1292] grab:3ms cvt:56ms push:0ms 合计:59ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3441ms 平均:34.4ms (29.1fps)"
+"[CAP 帧1300] YUYV→BGR:28ms push:0ms 平均:33.0ms 队列:3 慢帧:126 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:471"
+"[CAP 慢帧#1311] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:481"
+"[CAP 慢帧#1331] grab:6ms cvt:36ms push:20ms 合计:62ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1334] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 慢帧#1335] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 慢帧#1347] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#1348] grab:0ms cvt:46ms push:9ms 合计:55ms 队列:1"
+"[PROC 无算法] 帧1000 resize:59ms"
+"[PROC 统计] 1000帧/47.5秒 = 21.0fps 队列剩余:2 丢帧:488"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:491"
+"[CAP 慢帧#1372] grab:10ms cvt:56ms push:0ms 合计:66ms 队列:2"
+"[CAP 慢帧#1375] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#1379] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:501"
+"[CAP 慢帧#1396] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:1"
+"[CAP 慢帧#1397] grab:0ms cvt:56ms push:1ms 合计:57ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3609ms 平均:36.1ms (27.7fps)"
+"[CAP 帧1400] YUYV→BGR:19ms push:0ms 平均:33.1ms 队列:2 慢帧:137 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1418] grab:11ms cvt:45ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#1420] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:511"
+"[CAP 慢帧#1443] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[CAP 慢帧#1445] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:521"
+"[CAP 慢帧#1470] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#1471] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#1472] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:531"
+"[PROC 无算法] 帧1100 resize:57ms"
+"[CAP 慢帧#1499] grab:10ms cvt:50ms push:0ms 合计:60ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3350ms 平均:33.5ms (29.9fps)"
+"[CAP 慢帧#1500] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 帧1500] YUYV→BGR:58ms push:0ms 平均:32.9ms 队列:1 慢帧:146 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:541"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:551"
+"[CAP 慢帧#1548] grab:14ms cvt:67ms push:1ms 合计:82ms 队列:1"
+"[CAP 慢帧#1549] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 慢帧#1560] grab:14ms cvt:75ms push:0ms 合计:89ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:561"
+"[CAP 慢帧#1575] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:571"
+"[CAP 慢帧#1595] grab:10ms cvt:47ms push:0ms 合计:57ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 帧间隔] 100帧耗时:3386ms 平均:33.9ms (29.5fps)"
+"[CAP 帧1600] YUYV→BGR:26ms push:0ms 平均:32.8ms 队列:3 慢帧:151 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:581"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:591"
+"[CAP 慢帧#1629] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:2"
+"[PROC 无算法] 帧1200 resize:33ms"
+"[PROC 统计] 1200帧/57.1秒 = 21.0fps 队列剩余:2 丢帧:593"
+"[CAP 慢帧#1634] grab:8ms cvt:51ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#1635] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 慢帧#1639] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:2"
+"[CAP 慢帧#1640] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:601"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1670] grab:10ms cvt:57ms push:0ms 合计:67ms 队列:1"
+"[CAP 慢帧#1671] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[CAP 慢帧#1673] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 慢帧#1674] grab:20ms cvt:31ms push:0ms 合计:51ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:611"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 帧间隔] 100帧耗时:3504ms 平均:35.0ms (28.5fps)"
+"[CAP 帧1700] YUYV→BGR:25ms push:0ms 平均:32.8ms 队列:3 慢帧:160 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:621"
+"[CAP 慢帧#1706] grab:10ms cvt:55ms push:0ms 合计:65ms 队列:2"
+"[CAP 慢帧#1708] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#1710] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:631"
+"[CAP 慢帧#1740] grab:8ms cvt:45ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#1741] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1743] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[CAP 慢帧#1749] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#1750] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 慢帧#1752] grab:0ms cvt:50ms push:10ms 合计:60ms 队列:1"
+"[PROC 无算法] 帧1300 resize:30ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:641"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1775] grab:8ms cvt:52ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#1776] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 慢帧#1778] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#1796] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+"[CAP 慢帧#1797] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 帧间隔] 100帧耗时:3587ms 平均:35.9ms (27.9fps)"
+"[CAP 帧1800] YUYV→BGR:23ms push:0ms 平均:32.9ms 队列:2 慢帧:174 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:651"
+"[CAP 慢帧#1818] grab:7ms cvt:56ms push:0ms 合计:63ms 队列:1"
+"[CAP 慢帧#1819] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:661"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1831] grab:0ms cvt:66ms push:10ms 合计:76ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:671"
+"[CAP 慢帧#1857] grab:10ms cvt:58ms push:0ms 合计:68ms 队列:2"
+"[CAP 慢帧#1858] grab:0ms cvt:72ms push:0ms 合计:72ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1860] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[CAP 慢帧#1884] grab:10ms cvt:46ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#1885] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+"[CAP 慢帧#1886] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:681"
+"[CAP 慢帧#1896] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:2"
+"[PROC 无算法] 帧1400 resize:34ms"
+"[PROC 统计] 1400帧/66.5秒 = 21.1fps 队列剩余:2 丢帧:682"
+"[CAP 慢帧#1898] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3519ms 平均:35.2ms (28.4fps)"
+"[CAP 帧1900] YUYV→BGR:41ms push:0ms 平均:32.9ms 队列:1 慢帧:185 DQBUF错误:0"
+"[CAP 慢帧#1906] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#1907] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+"[CAP 慢帧#1909] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#1933] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:691"
+"[CAP 慢帧#1941] grab:28ms cvt:54ms push:1ms 合计:83ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#1947] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+"[CAP 慢帧#1948] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:701"
+"[CAP 慢帧#1969] grab:12ms cvt:42ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#1970] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#1971] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[CAP 慢帧#1979] grab:10ms cvt:59ms push:0ms 合计:69ms 队列:2"
+"[CAP 慢帧#1990] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#1991] grab:0ms cvt:67ms push:1ms 合计:68ms 队列:1"
+"[CAP 慢帧#1992] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3605ms 平均:36.0ms (27.7fps)"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[CAP 帧2000] YUYV→BGR:28ms push:0ms 平均:32.9ms 队列:3 慢帧:199 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:711"
+"[CAP 慢帧#2015] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#2017] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#2019] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[PROC 无算法] 帧1500 resize:59ms"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2036] grab:12ms cvt:34ms push:10ms 合计:56ms 队列:3"
+"[CAP 慢帧#2037] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#2038] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:721"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:731"
+"[CAP 慢帧#2066] grab:7ms cvt:55ms push:0ms 合计:62ms 队列:2"
+"[CAP 慢帧#2083] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 帧间隔] 100帧耗时:3427ms 平均:34.3ms (29.2fps)"
+"[CAP 帧2100] YUYV→BGR:35ms push:0ms 平均:32.9ms 队列:3 慢帧:207 DQBUF错误:0"
+"[CAP 慢帧#2103] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:741"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2128] grab:0ms cvt:99ms push:1ms 合计:100ms 队列:1"
+"[CAP 慢帧#2129] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 慢帧#2130] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:751"
+"[CAP 慢帧#2140] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:761"
+"[CAP 慢帧#2160] grab:7ms cvt:65ms push:0ms 合计:72ms 队列:1"
+"[PROC 无算法] 帧1600 resize:30ms"
+"[PROC 统计] 1600帧/75.8秒 = 21.1fps 队列剩余:1 丢帧:763"
+"[CAP 慢帧#2161] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:771"
+"[CAP 慢帧#2186] grab:10ms cvt:42ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#2187] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#2188] grab:0ms cvt:67ms push:0ms 合计:67ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3443ms 平均:34.4ms (29.0fps)"
+"[CAP 帧2200] YUYV→BGR:26ms push:0ms 平均:32.9ms 队列:3 慢帧:217 DQBUF错误:0"
+"[CAP 慢帧#2205] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2207] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:781"
+"[CAP 慢帧#2228] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#2229] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:791"
+"[CAP 慢帧#2248] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#2257] grab:15ms cvt:55ms push:0ms 合计:70ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:801"
+"[CAP 慢帧#2283] grab:9ms cvt:46ms push:0ms 合计:55ms 队列:3"
+"[CAP 慢帧#2284] grab:0ms cvt:46ms push:10ms 合计:56ms 队列:2"
+"[CAP 慢帧#2285] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 帧间隔] 100帧耗时:3435ms 平均:34.4ms (29.1fps)"
+"[PROC 积压] 队列剩余:2 累计丢帧:811"
+"[CAP 帧2300] YUYV→BGR:35ms push:0ms 平均:32.9ms 队列:3 慢帧:226 DQBUF错误:0"
+"[PROC 无算法] 帧1700 resize:58ms"
+"[CAP 慢帧#2314] grab:6ms cvt:50ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#2316] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:821"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2327] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#2345] grab:15ms cvt:44ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#2346] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#2348] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2355] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:831"
+"[CAP 慢帧#2374] grab:0ms cvt:50ms push:1ms 合计:51ms 队列:3"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:841"
+"[CAP 慢帧#2394] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#2395] grab:0ms cvt:56ms push:5ms 合计:61ms 队列:0"
+"[CAP 帧间隔] 100帧耗时:3476ms 平均:34.8ms (28.8fps)"
+"[CAP 帧2400] YUYV→BGR:28ms push:0ms 平均:32.9ms 队列:3 慢帧:236 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:851"
+"[CAP 慢帧#2420] grab:22ms cvt:44ms push:0ms 合计:66ms 队列:2"
+"[CAP 慢帧#2422] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#2423] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[PROC 无算法] 帧1800 resize:29ms"
+"[PROC 统计] 1800帧/85.4秒 = 21.1fps 队列剩余:2 丢帧:858"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:861"
+"[CAP 慢帧#2461] grab:8ms cvt:52ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#2462] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#2464] grab:0ms cvt:52ms push:4ms 合计:56ms 队列:1"
+"[CAP 慢帧#2470] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#2471] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:871"
+"[CAP 慢帧#2495] grab:0ms cvt:50ms push:10ms 合计:60ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3484ms 平均:34.8ms (28.7fps)"
+"[CAP 帧2500] YUYV→BGR:44ms push:0ms 平均:32.9ms 队列:2 慢帧:245 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:881"
+"[CAP 慢帧#2514] grab:5ms cvt:76ms push:0ms 合计:81ms 队列:2"
+"[CAP 慢帧#2516] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 慢帧#2524] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#2525] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+"[CAP 慢帧#2526] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:891"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2562] grab:10ms cvt:79ms push:0ms 合计:89ms 队列:1"
+"[PROC 无算法] 帧1900 resize:56ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:901"
+"[CAP 慢帧#2577] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2591] grab:2ms cvt:51ms push:0ms 合计:53ms 队列:3"
+"[CAP 慢帧#2592] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:911"
+"[CAP 慢帧#2594] grab:0ms cvt:56ms push:2ms 合计:58ms 队列:2"
+"[CAP 慢帧#2595] grab:0ms cvt:68ms push:0ms 合计:68ms 队列:1"
+"[CAP 慢帧#2597] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3577ms 平均:35.8ms (28.0fps)"
+"[CAP 帧2600] YUYV→BGR:26ms push:0ms 平均:32.9ms 队列:2 慢帧:257 DQBUF错误:0"
+"[CAP 慢帧#2603] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#2604] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:921"
+"[CAP 慢帧#2627] grab:19ms cvt:45ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#2628] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#2629] grab:0ms cvt:46ms push:10ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2649] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#2651] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#2652] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:931"
+"[CAP 慢帧#2669] grab:10ms cvt:45ms push:10ms 合计:65ms 队列:2"
+"[CAP 慢帧#2671] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:941"
+"[CAP 慢帧#2692] grab:8ms cvt:46ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#2695] grab:0ms cvt:57ms push:1ms 合计:58ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3496ms 平均:35.0ms (28.6fps)"
+"[CAP 帧2700] YUYV→BGR:28ms push:0ms 平均:32.9ms 队列:2 慢帧:269 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 无算法] 帧2000 resize:29ms"
+"[PROC 统计] 2000帧/94.9秒 = 21.1fps 队列剩余:2 丢帧:945"
+"[CAP 慢帧#2708] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:951"
+"[CAP 慢帧#2728] grab:15ms cvt:45ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#2730] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2734] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:961"
+"[CAP 慢帧#2759] grab:12ms cvt:43ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#2760] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#2761] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2763] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 慢帧#2781] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[CAP 慢帧#2783] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:2"
+"[CAP 慢帧#2785] grab:0ms cvt:67ms push:0ms 合计:67ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:971"
+"[CAP 帧间隔] 100帧耗时:3578ms 平均:35.8ms (27.9fps)"
+"[CAP 帧2800] YUYV→BGR:22ms push:0ms 平均:33.0ms 队列:3 慢帧:280 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:981"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2820] grab:9ms cvt:47ms push:0ms 合计:56ms 队列:3"
+"[CAP 慢帧#2822] grab:10ms cvt:55ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#2836] grab:5ms cvt:51ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#2837] grab:0ms cvt:46ms push:8ms 合计:54ms 队列:2"
+"[PROC 无算法] 帧2100 resize:40ms"
+"[CAP 慢帧#2839] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:991"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2848] grab:0ms cvt:51ms push:1ms 合计:52ms 队列:2"
+"[CAP 慢帧#2861] grab:4ms cvt:74ms push:0ms 合计:78ms 队列:1"
+"[CAP 慢帧#2862] grab:0ms cvt:64ms push:1ms 合计:65ms 队列:1"
+"[CAP 慢帧#2863] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1001"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2878] grab:8ms cvt:46ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#2879] grab:0ms cvt:53ms push:10ms 合计:63ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1011"
+"[CAP 帧间隔] 100帧耗时:3491ms 平均:34.9ms (28.6fps)"
+"[CAP 帧2900] YUYV→BGR:26ms push:0ms 平均:32.9ms 队列:3 慢帧:291 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:1021"
+"[CAP 慢帧#2918] grab:6ms cvt:45ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#2919] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#2920] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:1031"
+"[CAP 慢帧#2943] grab:0ms cvt:68ms push:0ms 合计:68ms 队列:2"
+"[CAP 慢帧#2953] grab:0ms cvt:50ms push:2ms 合计:52ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:1041"
+"[CAP 慢帧#2966] grab:9ms cvt:46ms push:0ms 合计:55ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#2967] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 慢帧#2968] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[PROC 无算法] 帧2200 resize:68ms"
+"[PROC 统计] 2200帧/104.3秒 = 21.1fps 队列剩余:3 丢帧:1045"
+"[CAP 慢帧#2980] grab:10ms cvt:34ms push:20ms 合计:64ms 队列:2"
+"[CAP 慢帧#2983] grab:0ms cvt:67ms push:0ms 合计:67ms 队列:1"
+"[CAP 慢帧#2990] grab:8ms cvt:54ms push:1ms 合计:63ms 队列:2"
+"[CAP 慢帧#2991] grab:0ms cvt:60ms push:1ms 合计:61ms 队列:1"
+"[CAP 慢帧#2992] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 帧间隔] 100帧耗时:3468ms 平均:34.7ms (28.8fps)"
+"[CAP 帧3000] YUYV→BGR:23ms push:0ms 平均:32.9ms 队列:3 慢帧:304 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:1051"
+"[CAP 慢帧#3018] grab:20ms cvt:44ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#3023] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#3024] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#3025] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1061"
+"[CAP 慢帧#3050] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:1071"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:1081"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#3089] grab:19ms cvt:45ms push:0ms 合计:64ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1091"
+"[CAP 慢帧#3097] grab:0ms cvt:51ms push:13ms 合计:64ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3413ms 平均:34.1ms (29.3fps)"
+"[CAP 慢帧#3100] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 帧3100] YUYV→BGR:56ms push:0ms 平均:32.9ms 队列:1 慢帧:312 DQBUF错误:0"
+"[CAP 慢帧#3104] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[PROC 无算法] 帧2300 resize:55ms"
+"[CAP 慢帧#3114] grab:8ms cvt:45ms push:0ms 合计:53ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#3115] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#3116] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:0"
+"[CAP 慢帧#3119] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1101"
+"[CAP 慢帧#3138] grab:5ms cvt:49ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#3139] grab:0ms cvt:44ms push:10ms 合计:54ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#3142] grab:0ms cvt:50ms push:5ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1111"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#3181] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#3182] grab:0ms cvt:45ms push:11ms 合计:56ms 队列:1"
+"[CAP 慢帧#3192] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#3193] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[CAP 慢帧#3194] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#3195] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 帧间隔] 100帧耗时:3586ms 平均:35.9ms (27.9fps)"
+"[CAP 帧3200] YUYV→BGR:15ms push:0ms 平均:33.0ms 队列:3 慢帧:326 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:1121"
+"[CAP 慢帧#3223] grab:14ms cvt:45ms push:0ms 合计:59ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:1131"
+"[PROC 无算法] 帧2400 resize:49ms"
+"[PROC 统计] 2400帧/113.4秒 = 21.2fps 队列剩余:3 丢帧:1131"
+"[CAP 慢帧#3251] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:1141"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H552"
+"[CAP 慢帧#3277] grab:7ms cvt:50ms push:0ms 合计:57ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:1151"
+"[CAP 慢帧#3293] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#3299] grab:0ms cvt:72ms push:1ms 合计:73ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3424ms 平均:34.2ms (29.2fps)"
+"[CAP 慢帧#3300] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[CAP 帧3300] YUYV→BGR:66ms push:0ms 平均:33.0ms 队列:1 慢帧:332 DQBUF错误:0"
+"[CAP 慢帧#3301] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 慢帧#3305] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 慢帧#3306] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#3316] grab:1ms cvt:68ms push:10ms 合计:79ms 队列:1"
+"[CAP 慢帧#3321] grab:0ms cvt:59ms push:1ms 合计:60ms 队列:1"
+"[CAP 慢帧#3323] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1161"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#3348] grab:7ms cvt:44ms push:0ms 合计:51ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:1171"
+"[CAP 慢帧#3362] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#3364] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#3365] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#3366] grab:0ms cvt:53ms push:1ms 合计:54ms 队列:1"
+"[CAP 慢帧#3367] grab:0ms cvt:46ms push:5ms 合计:51ms 队列:1"
+"[PROC 无算法] 帧2500 resize:43ms"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#3377] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1181"
+"[CAP 帧间隔] 100帧耗时:3584ms 平均:35.8ms (27.9fps)"
+"[CAP 帧3400] YUYV→BGR:38ms push:0ms 平均:33.0ms 队列:3 慢帧:345 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#3411] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#3412] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 慢帧#3413] grab:10ms cvt:46ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#3414] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1191"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#3431] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:1201"
+"[CAP 慢帧#3451] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:1211"
+"[CAP 慢帧#3470] grab:7ms cvt:51ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#3471] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 慢帧#3473] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1221"
+"[CAP 慢帧#3490] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#3491] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#3492] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#3494] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3534ms 平均:35.3ms (28.3fps)"
+"[CAP 帧3500] YUYV→BGR:25ms push:0ms 平均:33.0ms 队列:3 慢帧:358 DQBUF错误:0"
+"[CAP 慢帧#3502] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:3"
+"[PROC 无算法] 帧2600 resize:37ms"
+"[PROC 统计] 2600帧/122.7秒 = 21.2fps 队列剩余:3 丢帧:1224"
+"[CAP 慢帧#3503] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#3505] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#3507] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#3511] grab:0ms cvt:46ms push:10ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1231"
+"[CAP 慢帧#3536] grab:14ms cvt:58ms push:0ms 合计:72ms 队列:1"
+"[CAP 慢帧#3538] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#3552] grab:18ms cvt:45ms push:0ms 合计:63ms 队列:2"
+"[CAP 慢帧#3553] grab:16ms cvt:49ms push:0ms 合计:65ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1241"
+"[CAP 慢帧#3565] grab:9ms cvt:50ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#3567] grab:7ms cvt:48ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1251"
+"[CAP 慢帧#3598] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#3599] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3487ms 平均:34.9ms (28.7fps)"
+"[CAP 帧3600] YUYV→BGR:47ms push:0ms 平均:33.0ms 队列:1 慢帧:371 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1261"
+"[CAP 慢帧#3609] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:1271"
+"[CAP 慢帧#3631] grab:10ms cvt:58ms push:0ms 合计:68ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#3639] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:2"
+"[PROC 无算法] 帧2700 resize:29ms"
+"[CAP 慢帧#3640] grab:0ms cvt:60ms push:2ms 合计:62ms 队列:1"
+"[CAP 慢帧#3654] grab:0ms cvt:74ms push:0ms 合计:74ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1281"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1291"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#3698] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3402ms 平均:34.0ms (29.4fps)"
+"[CAP 帧3700] YUYV→BGR:27ms push:0ms 平均:33.0ms 队列:3 慢帧:377 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:1301"
+"[CAP 慢帧#3715] grab:17ms cvt:42ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#3716] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 慢帧#3717] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1311"
+"[CAP 慢帧#3733] grab:19ms cvt:41ms push:4ms 合计:64ms 队列:2"
+"[CAP 慢帧#3734] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#3736] grab:0ms cvt:56ms push:1ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#3758] grab:10ms cvt:45ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#3760] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#3761] grab:0ms cvt:56ms push:1ms 合计:57ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1321"
+"[CAP 慢帧#3772] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[PROC 无算法] 帧2800 resize:55ms"
+"[PROC 统计] 2800帧/132.4秒 = 21.1fps 队列剩余:3 丢帧:1328"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1331"
+"[CAP 慢帧#3792] grab:8ms cvt:51ms push:0ms 合计:59ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3424ms 平均:34.2ms (29.2fps)"
+"[CAP 帧3800] YUYV→BGR:28ms push:0ms 平均:32.9ms 队列:3 慢帧:388 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:1341"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1351"
+"[CAP 慢帧#3828] grab:19ms cvt:32ms push:1ms 合计:52ms 队列:3"
+"[CAP 慢帧#3831] grab:6ms cvt:48ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#3833] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1361"
+"[CAP 慢帧#3861] grab:18ms cvt:46ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#3862] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+"[CAP 慢帧#3864] grab:0ms cvt:46ms push:5ms 合计:51ms 队列:1"
+"[CAP 慢帧#3875] grab:9ms cvt:66ms push:0ms 合计:75ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H553"
+"[CAP 慢帧#3877] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1371"
+"[CAP 慢帧#3899] grab:0ms cvt:67ms push:0ms 合计:67ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3406ms 平均:34.1ms (29.4fps)"
+"[CAP 帧3900] YUYV→BGR:48ms push:0ms 平均:32.9ms 队列:1 慢帧:397 DQBUF错误:0"
+"[CAP 慢帧#3901] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1381"
+"[CAP 慢帧#3914] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#3915] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#3916] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#3918] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#3919] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[PROC 无算法] 帧2900 resize:57ms"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#3933] grab:0ms cvt:52ms push:10ms 合计:62ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1391"
+"[CAP 慢帧#3949] grab:10ms cvt:46ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#3950] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#3951] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#3952] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#3970] grab:4ms cvt:47ms push:0ms 合计:51ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:1401"
+"[CAP 慢帧#3971] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#3972] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#3995] grab:13ms cvt:46ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#3997] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3670ms 平均:36.7ms (27.2fps)"
+"[CAP 帧4000] YUYV→BGR:44ms push:0ms 平均:32.9ms 队列:0 慢帧:413 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:1411"
+"[CAP 慢帧#4016] grab:7ms cvt:58ms push:0ms 合计:65ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#4018] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1421"
+"[CAP 慢帧#4043] grab:9ms cvt:52ms push:0ms 合计:61ms 队列:2"
+"[CAP 慢帧#4045] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#4046] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+"[CAP 慢帧#4052] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[PROC 无算法] 帧3000 resize:35ms"
+"[PROC 统计] 3000帧/142.2秒 = 21.1fps 队列剩余:3 丢帧:1430"
+"[PROC 积压] 队列剩余:2 累计丢帧:1431"
+"[CAP 慢帧#4060] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:3"
+"[CAP 慢帧#4062] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#4063] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#4065] grab:0ms cvt:49ms push:5ms 合计:54ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1441"
+"[CAP 慢帧#4093] grab:9ms cvt:65ms push:0ms 合计:74ms 队列:1"
+"[CAP 慢帧#4094] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3566ms 平均:35.7ms (28.0fps)"
+"[CAP 帧4100] YUYV→BGR:35ms push:0ms 平均:32.9ms 队列:3 慢帧:425 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1451"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H554"
+"[PROC 积压] 队列剩余:2 累计丢帧:1461"
+"[CAP 慢帧#4139] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:3"
+"[CAP 慢帧#4142] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#4143] grab:0ms cvt:45ms push:11ms 合计:56ms 队列:1"
+"[CAP 慢帧#4159] grab:7ms cvt:76ms push:0ms 合计:83ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H554"
+"[CAP 慢帧#4160] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1471"
+"[PROC 无算法] 帧3100 resize:49ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:1481"
+"[CAP 慢帧#4186] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#4187] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#4188] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#4189] grab:0ms cvt:46ms push:10ms 合计:56ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3594ms 平均:35.9ms (27.8fps)"
+"[CAP 帧4200] YUYV→BGR:26ms push:0ms 平均:33.0ms 队列:3 慢帧:434 DQBUF错误:0"
+"[CAP 慢帧#4205] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#4206] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+"[CAP 慢帧#4208] grab:0ms cvt:52ms push:3ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#4218] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[CAP 慢帧#4228] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#4229] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1491"
+"[CAP 慢帧#4238] grab:20ms cvt:55ms push:0ms 合计:75ms 队列:1"
+"[CAP 慢帧#4239] grab:6ms cvt:47ms push:0ms 合计:53ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[PROC 积压] 队列剩余:2 累计丢帧:1501"
+"[CAP 慢帧#4268] grab:10ms cvt:46ms push:0ms 合计:56ms 队列:3"
+"[CAP 慢帧#4272] grab:13ms cvt:52ms push:0ms 合计:65ms 队列:2"
+"[CAP 慢帧#4273] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H554"
+"[CAP 慢帧#4275] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1511"
+"[CAP 帧间隔] 100帧耗时:3510ms 平均:35.1ms (28.5fps)"
+"[CAP 帧4300] YUYV→BGR:23ms push:0ms 平均:33.0ms 队列:3 慢帧:446 DQBUF错误:0"
+"[CAP 慢帧#4302] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H554"
+"[CAP 慢帧#4304] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 无算法] 帧3200 resize:30ms"
+"[PROC 统计] 3200帧/151.2秒 = 21.2fps 队列剩余:2 丢帧:1518"
+"[PROC 积压] 队列剩余:2 累计丢帧:1521"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[PROC 积压] 队列剩余:2 累计丢帧:1531"
+"[CAP 慢帧#4354] grab:9ms cvt:51ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#4356] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1541"
+"[CAP 慢帧#4364] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:3"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H554"
+"[CAP 慢帧#4377] grab:17ms cvt:45ms push:0ms 合计:62ms 队列:2"
+"[CAP 慢帧#4379] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1551"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H553"
+"[CAP 帧间隔] 100帧耗时:3323ms 平均:33.2ms (30.1fps)"
+"[CAP 帧4400] YUYV→BGR:35ms push:0ms 平均:32.9ms 队列:3 慢帧:453 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:1561"
+"[CAP 慢帧#4416] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H553"
+"[CAP 慢帧#4431] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#4438] grab:0ms cvt:56ms push:1ms 合计:57ms 队列:2"
+"[CAP 慢帧#4441] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 慢帧#4442] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1571"
+"[PROC 无算法] 帧3300 resize:57ms"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H553"
+"[CAP 慢帧#4462] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:1581"
+"[PROC 积压] 队列剩余:2 累计丢帧:1591"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#4497] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#4498] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3454ms 平均:34.5ms (29.0fps)"
+"[CAP 帧4500] YUYV→BGR:32ms push:0ms 平均:33.0ms 队列:2 慢帧:461 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:1601"
+"[CAP 慢帧#4512] grab:6ms cvt:45ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#4513] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1611"
+"[CAP 慢帧#4538] grab:1ms cvt:50ms push:0ms 合计:51ms 队列:3"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H553"
+"[CAP 慢帧#4548] grab:0ms cvt:43ms push:11ms 合计:54ms 队列:2"
+"[CAP 慢帧#4550] grab:0ms cvt:41ms push:10ms 合计:51ms 队列:2"
+"[CAP 慢帧#4552] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 慢帧#4553] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1621"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1631"
+"[CAP 慢帧#4587] grab:12ms cvt:52ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#4588] grab:0ms cvt:69ms push:0ms 合计:69ms 队列:1"
+"[PROC 无算法] 帧3400 resize:51ms"
+"[PROC 统计] 3400帧/160.8秒 = 21.1fps 队列剩余:3 丢帧:1637"
+"[CAP 帧间隔] 100帧耗时:3355ms 平均:33.5ms (29.8fps)"
+"[CAP 帧4600] YUYV→BGR:25ms push:0ms 平均:32.9ms 队列:3 慢帧:470 DQBUF错误:0"
+"[CAP 慢帧#4602] grab:8ms cvt:65ms push:0ms 合计:73ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1641"
+"[CAP 慢帧#4623] grab:8ms cvt:46ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#4625] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+"[CAP 慢帧#4627] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1651"
+"[CAP 慢帧#4653] grab:8ms cvt:53ms push:0ms 合计:61ms 队列:1"
+"[CAP 慢帧#4660] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#4662] grab:0ms cvt:52ms push:10ms 合计:62ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:1661"
+"[CAP 慢帧#4683] grab:10ms cvt:56ms push:0ms 合计:66ms 队列:2"
+"[CAP 慢帧#4685] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#4687] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 帧间隔] 100帧耗时:3523ms 平均:35.2ms (28.4fps)"
+"[PROC 积压] 队列剩余:2 累计丢帧:1671"
+"[CAP 帧4700] YUYV→BGR:27ms push:0ms 平均:32.9ms 队列:3 慢帧:480 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:1681"
+"[CAP 慢帧#4718] grab:21ms cvt:45ms push:0ms 合计:66ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#4732] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:2"
+"[PROC 无算法] 帧3500 resize:39ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:1691"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[PROC 积压] 队列剩余:2 累计丢帧:1701"
+"[CAP 慢帧#4769] grab:9ms cvt:51ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#4770] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[CAP 慢帧#4772] grab:0ms cvt:56ms push:1ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[PROC 积压] 队列剩余:2 累计丢帧:1711"
+"[CAP 慢帧#4798] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3461ms 平均:34.6ms (28.9fps)"
+"[CAP 帧4800] YUYV→BGR:46ms push:0ms 平均:32.9ms 队列:1 慢帧:486 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[PROC 积压] 队列剩余:2 累计丢帧:1721"
+"[CAP 慢帧#4824] grab:8ms cvt:46ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#4825] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1731"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H555"
+"[CAP 慢帧#4855] grab:13ms cvt:42ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#4856] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#4858] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1741"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H555"
+"[CAP 慢帧#4878] grab:20ms cvt:53ms push:0ms 合计:73ms 队列:2"
+"[PROC 无算法] 帧3600 resize:29ms"
+"[PROC 统计] 3600帧/170.5秒 = 21.1fps 队列剩余:2 丢帧:1747"
+"[CAP 慢帧#4881] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 慢帧#4896] grab:7ms cvt:45ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#4897] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#4898] grab:0ms cvt:73ms push:0ms 合计:73ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3468ms 平均:34.7ms (28.8fps)"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H555"
+"[CAP 帧4900] YUYV→BGR:33ms push:0ms 平均:32.9ms 队列:1 慢帧:496 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:1751"
+"[CAP 慢帧#4910] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:1761"
+"[CAP 慢帧#4924] grab:6ms cvt:45ms push:0ms 合计:51ms 队列:3"
+"[CAP 慢帧#4925] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:2"
+"[CAP 慢帧#4927] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H555"
+"[CAP 慢帧#4937] grab:14ms cvt:69ms push:0ms 合计:83ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1771"
+"[CAP 慢帧#4952] grab:8ms cvt:69ms push:0ms 合计:77ms 队列:1"
+"[CAP 慢帧#4954] grab:0ms cvt:51ms push:1ms 合计:52ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H555"
+"[PROC 积压] 队列剩余:2 累计丢帧:1781"
+"[CAP 慢帧#4976] grab:11ms cvt:42ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#4977] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#4978] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 慢帧#4979] grab:0ms cvt:50ms push:1ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H555"
+"[CAP 帧间隔] 100帧耗时:3392ms 平均:33.9ms (29.5fps)"
+"[CAP 帧5000] YUYV→BGR:23ms push:0ms 平均:32.9ms 队列:3 慢帧:507 DQBUF错误:0"
+"[CAP 慢帧#5003] grab:7ms cvt:52ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#5005] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 慢帧#5006] grab:0ms cvt:52ms push:5ms 合计:57ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1791"
+"[PROC 无算法] 帧3700 resize:60ms"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H555"
+"[CAP 慢帧#5020] grab:0ms cvt:69ms push:0ms 合计:69ms 队列:2"
+"[CAP 慢帧#5021] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#5022] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1801"
+"[CAP 慢帧#5037] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#5039] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H555"
+"[PROC 积压] 队列剩余:2 累计丢帧:1811"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H555"
+"[CAP 慢帧#5076] grab:0ms cvt:68ms push:0ms 合计:68ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3574ms 平均:35.7ms (28.0fps)"
+"[CAP 帧5100] YUYV→BGR:29ms push:0ms 平均:32.9ms 队列:3 慢帧:516 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:1821"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H555"
+"[CAP 慢帧#5114] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:1831"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H555"
+"[PROC 积压] 队列剩余:2 累计丢帧:1841"
+"[CAP 慢帧#5141] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#5142] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[PROC 无算法] 帧3800 resize:39ms"
+"[PROC 统计] 3800帧/180.0秒 = 21.1fps 队列剩余:1 丢帧:1844"
+"[CAP 慢帧#5152] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#5154] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[PROC 积压] 队列剩余:2 累计丢帧:1851"
+"[CAP 慢帧#5177] grab:15ms cvt:45ms push:0ms 合计:60ms 队列:3"
+"[CAP 慢帧#5178] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[PROC 积压] 队列剩余:2 累计丢帧:1861"
+"[CAP 帧间隔] 100帧耗时:3418ms 平均:34.2ms (29.3fps)"
+"[CAP 帧5200] YUYV→BGR:35ms push:0ms 平均:32.9ms 队列:3 慢帧:523 DQBUF错误:0"
+"[CAP 慢帧#5206] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#5213] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:1871"
+"[CAP 慢帧#5215] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#5216] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+"[CAP 慢帧#5217] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#5231] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:1881"
+"[CAP 慢帧#5248] grab:7ms cvt:48ms push:0ms 合计:55ms 队列:3"
+"[CAP 慢帧#5253] grab:12ms cvt:45ms push:0ms 合计:57ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#5254] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+"[CAP 慢帧#5255] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1891"
+"[CAP 慢帧#5266] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#5268] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#5283] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#5284] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 无算法] 帧3900 resize:63ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:1901"
+"[CAP 慢帧#5297] grab:8ms cvt:51ms push:0ms 合计:59ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3526ms 平均:35.3ms (28.4fps)"
+"[CAP 帧5300] YUYV→BGR:23ms push:0ms 平均:32.9ms 队列:2 慢帧:538 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[PROC 积压] 队列剩余:2 累计丢帧:1911"
+"[CAP 慢帧#5313] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:2"
+"[CAP 慢帧#5314] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#5322] grab:0ms cvt:55ms push:1ms 合计:56ms 队列:3"
+"[CAP 慢帧#5327] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:1921"
+"[CAP 慢帧#5329] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#5338] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[PROC 积压] 队列剩余:2 累计丢帧:1931"
+"[CAP 慢帧#5369] grab:10ms cvt:41ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#5370] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+"[CAP 慢帧#5371] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[PROC 积压] 队列剩余:2 累计丢帧:1941"
+"[CAP 帧间隔] 100帧耗时:3594ms 平均:35.9ms (27.8fps)"
+"[CAP 帧5400] YUYV→BGR:24ms push:0ms 平均:32.9ms 队列:3 慢帧:547 DQBUF错误:0"
+"[CAP 慢帧#5406] grab:5ms cvt:50ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#5407] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+"[CAP 慢帧#5408] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 慢帧#5414] grab:9ms cvt:43ms push:0ms 合计:52ms 队列:2"
+"[PROC 无算法] 帧4000 resize:59ms"
+"[PROC 统计] 4000帧/189.5秒 = 21.1fps 队列剩余:3 丢帧:1948"
+"[PROC 积压] 队列剩余:2 累计丢帧:1951"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H554"
+"[CAP 慢帧#5438] grab:12ms cvt:76ms push:0ms 合计:88ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1961"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#5455] grab:6ms cvt:36ms push:11ms 合计:53ms 队列:2"
+"[CAP 慢帧#5457] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#5458] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:1971"
+"[CAP 慢帧#5476] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:3"
+"[CAP 慢帧#5477] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#5479] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#5496] grab:8ms cvt:41ms push:10ms 合计:59ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3525ms 平均:35.3ms (28.4fps)"
+"[CAP 帧5500] YUYV→BGR:27ms push:0ms 平均:32.9ms 队列:3 慢帧:559 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:1981"
+"[CAP 慢帧#5509] grab:0ms cvt:45ms push:8ms 合计:53ms 队列:3"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#5511] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:2"
+"[CAP 慢帧#5513] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#5514] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#5515] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 慢帧#5516] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[CAP 慢帧#5529] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:1991"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#5538] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 慢帧#5549] grab:14ms cvt:44ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#5550] grab:0ms cvt:55ms push:10ms 合计:65ms 队列:1"
+"[PROC 无算法] 帧4100 resize:40ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:2001"
+"[CAP 慢帧#5564] grab:4ms cvt:70ms push:0ms 合计:74ms 队列:2"
+"[CAP 慢帧#5565] grab:0ms cvt:55ms push:1ms 合计:56ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#5566] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:1"
+"[CAP 慢帧#5568] grab:0ms cvt:54ms push:1ms 合计:55ms 队列:1"
+"[CAP 慢帧#5575] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2011"
+"[CAP 慢帧#5594] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#5595] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#5596] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3702ms 平均:37.0ms (27.0fps)"
+"[CAP 帧5600] YUYV→BGR:42ms push:0ms 平均:32.9ms 队列:1 慢帧:577 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:2021"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H554"
+"[CAP 慢帧#5630] grab:10ms cvt:54ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#5632] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#5635] grab:0ms cvt:47ms push:11ms 合计:58ms 队列:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:2031"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[CAP 慢帧#5656] grab:12ms cvt:54ms push:0ms 合计:66ms 队列:2"
+"[CAP 慢帧#5658] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+"[CAP 慢帧#5659] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#5666] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+"[CAP 慢帧#5668] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H553"
+"[PROC 无算法] 帧4200 resize:63ms"
+"[PROC 统计] 4200帧/199.0秒 = 21.1fps 队列剩余:3 丢帧:2034"
+"[PROC 积压] 队列剩余:2 累计丢帧:2041"
+"[CAP 慢帧#5697] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#5698] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3604ms 平均:36.0ms (27.7fps)"
+"[CAP 慢帧#5700] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[CAP 帧5700] YUYV→BGR:66ms push:0ms 平均:33.0ms 队列:1 慢帧:588 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[PROC 积压] 队列剩余:2 累计丢帧:2051"
+"[CAP 慢帧#5737] grab:7ms cvt:53ms push:0ms 合计:60ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#5743] grab:12ms cvt:60ms push:0ms 合计:72ms 队列:2"
+"[CAP 慢帧#5744] grab:0ms cvt:69ms push:0ms 合计:69ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2061"
+"[CAP 慢帧#5763] grab:10ms cvt:53ms push:0ms 合计:63ms 队列:2"
+"[CAP 慢帧#5765] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#5767] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#5779] grab:9ms cvt:45ms push:8ms 合计:62ms 队列:2"
+"[CAP 慢帧#5781] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2071"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 帧间隔] 100帧耗时:3417ms 平均:34.2ms (29.3fps)"
+"[CAP 帧5800] YUYV→BGR:34ms push:0ms 平均:32.9ms 队列:3 慢帧:596 DQBUF错误:0"
+"[CAP 慢帧#5807] grab:8ms cvt:45ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#5809] grab:0ms cvt:52ms push:11ms 合计:63ms 队列:1"
+"[PROC 无算法] 帧4300 resize:62ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:2081"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H553"
+"[CAP 慢帧#5831] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 慢帧#5832] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2091"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#5864] grab:10ms cvt:71ms push:0ms 合计:81ms 队列:1"
+"[CAP 慢帧#5865] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2101"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#5883] grab:14ms cvt:72ms push:0ms 合计:86ms 队列:1"
+"[CAP 慢帧#5884] grab:0ms cvt:56ms push:1ms 合计:57ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3549ms 平均:35.5ms (28.2fps)"
+"[CAP 帧5900] YUYV→BGR:28ms push:0ms 平均:33.0ms 队列:3 慢帧:604 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:2111"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[CAP 慢帧#5916] grab:21ms cvt:36ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#5917] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#5918] grab:0ms cvt:55ms push:1ms 合计:56ms 队列:1"
+"[CAP 慢帧#5927] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2121"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[CAP 慢帧#5944] grab:9ms cvt:43ms push:0ms 合计:52ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2131"
+"[CAP 慢帧#5951] grab:0ms cvt:67ms push:0ms 合计:67ms 队列:2"
+"[CAP 慢帧#5952] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[PROC 无算法] 帧4400 resize:29ms"
+"[PROC 统计] 4400帧/208.4秒 = 21.1fps 队列剩余:0 丢帧:2132"
+"[CAP 慢帧#5957] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 慢帧#5965] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:2141"
+"[CAP 慢帧#5982] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#5983] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#5984] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:1"
+"[CAP 慢帧#5991] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#5993] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[CAP 帧间隔] 100帧耗时:3530ms 平均:35.3ms (28.3fps)"
+"[CAP 帧6000] YUYV→BGR:35ms push:0ms 平均:33.0ms 队列:3 慢帧:618 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:2151"
+"[CAP 慢帧#6013] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#6026] grab:7ms cvt:45ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#6027] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H552"
+"[CAP 慢帧#6028] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2161"
+"[CAP 慢帧#6049] grab:8ms cvt:51ms push:0ms 合计:59ms 队列:1"
+"[CAP 慢帧#6055] grab:19ms cvt:39ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#6056] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+"[CAP 慢帧#6057] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H552"
+"[PROC 积压] 队列剩余:2 累计丢帧:2171"
+"[CAP 慢帧#6081] grab:7ms cvt:46ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#6082] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#6083] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+"[CAP 慢帧#6085] grab:0ms cvt:50ms push:1ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[PROC 无算法] 帧4500 resize:56ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:2181"
+"[CAP 帧间隔] 100帧耗时:3415ms 平均:34.1ms (29.3fps)"
+"[CAP 帧6100] YUYV→BGR:28ms push:0ms 平均:32.9ms 队列:3 慢帧:630 DQBUF错误:0"
+"[CAP 慢帧#6106] grab:9ms cvt:46ms push:0ms 合计:55ms 队列:3"
+"[CAP 慢帧#6109] grab:2ms cvt:66ms push:11ms 合计:79ms 队列:2"
+"[CAP 慢帧#6110] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#6111] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:2191"
+"[CAP 慢帧#6126] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#6128] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:2201"
+"[PROC 积压] 队列剩余:2 累计丢帧:2211"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[CAP 慢帧#6178] grab:2ms cvt:55ms push:0ms 合计:57ms 队列:3"
+"[CAP 慢帧#6179] grab:0ms cvt:72ms push:0ms 合计:72ms 队列:2"
+"[CAP 慢帧#6180] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#6181] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[CAP 慢帧#6182] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3498ms 平均:35.0ms (28.6fps)"
+"[CAP 帧6200] YUYV→BGR:29ms push:0ms 平均:33.0ms 队列:3 慢帧:641 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:2221"
+"[CAP 慢帧#6204] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[CAP 慢帧#6206] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#6207] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[CAP 慢帧#6208] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 慢帧#6209] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 慢帧#6218] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[PROC 无算法] 帧4600 resize:59ms"
+"[PROC 统计] 4600帧/217.9秒 = 21.1fps 队列剩余:3 丢帧:2226"
+"[PROC 积压] 队列剩余:2 累计丢帧:2231"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[CAP 慢帧#6237] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#6244] grab:0ms cvt:51ms push:1ms 合计:52ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:2241"
+"[PROC 积压] 队列剩余:2 累计丢帧:2251"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[CAP 慢帧#6272] grab:10ms cvt:65ms push:0ms 合计:75ms 队列:1"
+"[CAP 慢帧#6273] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:2261"
+"[CAP 帧间隔] 100帧耗时:3489ms 平均:34.9ms (28.7fps)"
+"[CAP 帧6300] YUYV→BGR:22ms push:0ms 平均:33.0ms 队列:3 慢帧:651 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:2271"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#6331] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 慢帧#6332] grab:0ms cvt:51ms push:10ms 合计:61ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2281"
+"[PROC 无算法] 帧4700 resize:49ms"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#6355] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2291"
+"[CAP 慢帧#6368] grab:6ms cvt:45ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#6369] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#6380] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#6381] grab:0ms cvt:54ms push:4ms 合计:58ms 队列:1"
+"[CAP 慢帧#6382] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[CAP 慢帧#6386] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3545ms 平均:35.5ms (28.2fps)"
+"[PROC 积压] 队列剩余:2 累计丢帧:2301"
+"[CAP 帧6400] YUYV→BGR:26ms push:0ms 平均:33.0ms 队列:3 慢帧:660 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#6410] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2311"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:2321"
+"[CAP 慢帧#6443] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:3"
+"[CAP 慢帧#6444] grab:0ms cvt:46ms push:10ms 合计:56ms 队列:2"
+"[CAP 慢帧#6445] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[CAP 慢帧#6446] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#6463] grab:8ms cvt:44ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#6464] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#6466] grab:0ms cvt:61ms push:1ms 合计:62ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#6472] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:2"
+"[CAP 慢帧#6474] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+"[PROC 无算法] 帧4800 resize:60ms"
+"[PROC 统计] 4800帧/226.8秒 = 21.2fps 队列剩余:2 丢帧:2327"
+"[PROC 积压] 队列剩余:2 累计丢帧:2331"
+"[CAP 慢帧#6484] grab:0ms cvt:65ms push:2ms 合计:67ms 队列:2"
+"[CAP 慢帧#6489] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#6494] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#6496] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3638ms 平均:36.4ms (27.5fps)"
+"[CAP 帧6500] YUYV→BGR:26ms push:0ms 平均:33.0ms 队列:2 慢帧:674 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:2341"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:2351"
+"[CAP 慢帧#6546] grab:19ms cvt:37ms push:0ms 合计:56ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:2361"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#6564] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#6565] grab:0ms cvt:45ms push:7ms 合计:52ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2371"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:2381"
+"[CAP 帧间隔] 100帧耗时:3298ms 平均:33.0ms (30.3fps)"
+"[CAP 慢帧#6600] grab:8ms cvt:70ms push:0ms 合计:78ms 队列:1"
+"[CAP 帧6600] YUYV→BGR:70ms push:0ms 平均:33.0ms 队列:1 慢帧:678 DQBUF错误:0"
+"[PROC 无算法] 帧4900 resize:29ms"
+"[CAP 慢帧#6611] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#6612] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 慢帧#6613] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2391"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:2401"
+"[CAP 慢帧#6658] grab:7ms cvt:31ms push:20ms 合计:58ms 队列:2"
+"[CAP 慢帧#6660] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 慢帧#6661] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2411"
+"[CAP 慢帧#6681] grab:7ms cvt:52ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#6683] grab:0ms cvt:56ms push:1ms 合计:57ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3555ms 平均:35.5ms (28.1fps)"
+"[PROC 积压] 队列剩余:2 累计丢帧:2421"
+"[CAP 帧6700] YUYV→BGR:19ms push:0ms 平均:33.0ms 队列:3 慢帧:686 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#6702] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#6703] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#6705] grab:0ms cvt:50ms push:5ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2431"
+"[CAP 慢帧#6722] grab:7ms cvt:46ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#6723] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#6724] grab:0ms cvt:69ms push:0ms 合计:69ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 无算法] 帧5000 resize:70ms"
+"[PROC 统计] 5000帧/236.2秒 = 21.2fps 队列剩余:3 丢帧:2439"
+"[CAP 慢帧#6747] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:2441"
+"[CAP 慢帧#6749] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#6750] grab:0ms cvt:57ms push:4ms 合计:61ms 队列:1"
+"[CAP 慢帧#6754] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#6768] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#6769] grab:0ms cvt:45ms push:11ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2451"
+"[CAP 慢帧#6797] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3714ms 平均:37.1ms (26.9fps)"
+"[CAP 帧6800] YUYV→BGR:40ms push:0ms 平均:33.0ms 队列:1 慢帧:699 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2461"
+"[CAP 慢帧#6836] grab:7ms cvt:51ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#6838] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#6839] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#6841] grab:0ms cvt:51ms push:1ms 合计:52ms 队列:1"
+"[CAP 慢帧#6857] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#6858] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:1"
+"[CAP 慢帧#6860] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2471"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 无算法] 帧5100 resize:34ms"
+"[CAP 慢帧#6873] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2481"
+"[CAP 帧间隔] 100帧耗时:3438ms 平均:34.4ms (29.1fps)"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 帧6900] YUYV→BGR:35ms push:0ms 平均:33.0ms 队列:3 慢帧:707 DQBUF错误:0"
+"[CAP 慢帧#6903] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#6908] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2491"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#6930] grab:16ms cvt:65ms push:0ms 合计:81ms 队列:1"
+"[CAP 慢帧#6931] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+"[CAP 慢帧#6942] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#6946] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2501"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#6966] grab:6ms cvt:46ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#6967] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#6968] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[CAP 慢帧#6979] grab:9ms cvt:46ms push:0ms 合计:55ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2511"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#6990] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:2"
+"[CAP 慢帧#6992] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:0"
+"[CAP 慢帧#6998] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#6999] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3528ms 平均:35.3ms (28.3fps)"
+"[CAP 帧7000] YUYV→BGR:45ms push:0ms 平均:33.0ms 队列:1 慢帧:721 DQBUF错误:0"
+"[PROC 无算法] 帧5200 resize:29ms"
+"[PROC 统计] 5200帧/245.5秒 = 21.2fps 队列剩余:3 丢帧:2518"
+"[CAP 慢帧#7007] grab:11ms cvt:41ms push:0ms 合计:52ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:2521"
+[ 1934.424056] [dhd] sdioh_buffer_tofrom_bus: RX FAILED 03dbcdaa, addr=0x08000, pkt_len=32, ERR=-84
+[ 1934.431421] [dhd] dhdsdio_readframes: RXHEADER FAILED: -35
+[ 1934.437044] [dhd] dhdsdio_rxfail: abort command, terminate frame, send NAK
+"[CAP 慢帧#7013] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:3"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7022] grab:0ms cvt:46ms push:5ms 合计:51ms 队列:2"
+"[CAP 慢帧#7023] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[ 1934.834008] [dhd] sdioh_buffer_tofrom_bus: RX FAILED 03dbcdaa, addr=0x08000, pkt_len=32, ERR=-84
+[ 1934.841371] [dhd] dhdsdio_readframes: RXHEADER FAILED: -35
+[ 1934.846991] [dhd] dhdsdio_rxfail: abort command, terminate frame, send NAK
+"[CAP 慢帧#7026] grab:0ms cvt:58ms push:1ms 合计:59ms 队列:1"
+"[CAP 慢帧#7040] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#7041] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2531"
+"[CAP 慢帧#7062] grab:0ms cvt:48ms push:16ms 合计:64ms 队列:2"
+"[CAP 慢帧#7063] grab:0ms cvt:68ms push:0ms 合计:68ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2541"
+"[CAP 慢帧#7082] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#7097] grab:3ms cvt:58ms push:4ms 合计:65ms 队列:2"
+"[CAP 慢帧#7098] grab:0ms cvt:52ms push:22ms 合计:74ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3585ms 平均:35.9ms (27.9fps)"
+"[CAP 帧7100] YUYV→BGR:48ms push:0ms 平均:33.1ms 队列:1 慢帧:733 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7101] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2551"
+"[PROC 积压] 队列剩余:2 累计丢帧:2561"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7133] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:3"
+"[PROC 无算法] 帧5300 resize:29ms"
+"[CAP 慢帧#7135] grab:0ms cvt:50ms push:10ms 合计:60ms 队列:2"
+"[CAP 慢帧#7139] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2571"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7166] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:2581"
+"[CAP 慢帧#7172] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:3"
+"[CAP 慢帧#7173] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:2"
+"[CAP 慢帧#7175] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7190] grab:14ms cvt:49ms push:0ms 合计:63ms 队列:2"
+"[CAP 慢帧#7192] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3527ms 平均:35.3ms (28.4fps)"
+"[CAP 帧7200] YUYV→BGR:29ms push:0ms 平均:33.1ms 队列:3 慢帧:743 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:2591"
+"[CAP 慢帧#7212] grab:5ms cvt:47ms push:0ms 合计:52ms 队列:3"
+"[CAP 慢帧#7214] grab:0ms cvt:39ms push:19ms 合计:58ms 队列:3"
+"[CAP 慢帧#7215] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7216] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2601"
+"[PROC 积压] 队列剩余:2 累计丢帧:2611"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7249] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#7251] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 无算法] 帧5400 resize:53ms"
+"[PROC 统计] 5400帧/254.7秒 = 21.2fps 队列剩余:3 丢帧:2617"
+"[PROC 积压] 队列剩余:2 累计丢帧:2621"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7283] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#7292] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#7293] grab:0ms cvt:36ms push:20ms 合计:56ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3452ms 平均:34.5ms (29.0fps)"
+"[CAP 帧7300] YUYV→BGR:26ms push:0ms 平均:33.1ms 队列:3 慢帧:752 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:2631"
+"[CAP 慢帧#7303] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7306] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:2641"
+"[CAP 慢帧#7324] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2651"
+"[CAP 慢帧#7336] grab:6ms cvt:56ms push:0ms 合计:62ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7337] grab:0ms cvt:63ms push:1ms 合计:64ms 队列:1"
+"[CAP 慢帧#7343] grab:3ms cvt:50ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#7345] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#7346] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#7358] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#7359] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:2"
+"[CAP 慢帧#7361] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2661"
+"[CAP 慢帧#7381] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:2"
+"[CAP 慢帧#7383] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#7384] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 无算法] 帧5500 resize:29ms"
+"[CAP 慢帧#7391] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#7393] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2671"
+"[CAP 帧间隔] 100帧耗时:3587ms 平均:35.9ms (27.9fps)"
+"[CAP 帧7400] YUYV→BGR:34ms push:0ms 平均:33.1ms 队列:3 慢帧:768 DQBUF错误:0"
+"[CAP 慢帧#7408] grab:14ms cvt:56ms push:0ms 合计:70ms 队列:1"
+"[CAP 慢帧#7409] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2681"
+"[CAP 慢帧#7424] grab:13ms cvt:62ms push:0ms 合计:75ms 队列:2"
+"[CAP 慢帧#7425] grab:0ms cvt:67ms push:0ms 合计:67ms 队列:1"
+"[CAP 慢帧#7443] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7452] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 慢帧#7453] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#7461] grab:11ms cvt:48ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#7464] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2691"
+"[CAP 慢帧#7476] grab:5ms cvt:46ms push:0ms 合计:51ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7478] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+"[CAP 慢帧#7497] grab:5ms cvt:55ms push:4ms 合计:64ms 队列:2"
+"[CAP 慢帧#7498] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3584ms 平均:35.8ms (27.9fps)"
+"[CAP 帧7500] YUYV→BGR:20ms push:0ms 平均:33.1ms 队列:2 慢帧:781 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2701"
+"[CAP 慢帧#7518] grab:12ms cvt:46ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#7519] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[CAP 慢帧#7520] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 无算法] 帧5600 resize:65ms"
+"[PROC 统计] 5600帧/263.8秒 = 21.2fps 队列剩余:3 丢帧:2705"
+"[CAP 慢帧#7528] grab:6ms cvt:45ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#7529] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#7532] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 慢帧#7533] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2711"
+"[CAP 慢帧#7550] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#7559] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2721"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7572] grab:10ms cvt:55ms push:0ms 合计:65ms 队列:2"
+"[CAP 慢帧#7574] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#7575] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2731"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 帧间隔] 100帧耗时:3482ms 平均:34.8ms (28.7fps)"
+"[CAP 慢帧#7600] grab:12ms cvt:50ms push:0ms 合计:62ms 队列:2"
+"[CAP 帧7600] YUYV→BGR:50ms push:0ms 平均:33.1ms 队列:2 慢帧:794 DQBUF错误:0"
+"[CAP 慢帧#7601] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#7612] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#7613] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#7614] grab:0ms cvt:45ms push:11ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2741"
+"[CAP 慢帧#7628] grab:9ms cvt:50ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#7633] grab:8ms cvt:36ms push:20ms 合计:64ms 队列:1"
+"[CAP 慢帧#7635] grab:0ms cvt:75ms push:0ms 合计:75ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2751"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 无算法] 帧5700 resize:30ms"
+"[CAP 慢帧#7654] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2761"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7679] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#7680] grab:0ms cvt:45ms push:11ms 合计:56ms 队列:2"
+"[CAP 慢帧#7682] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#7685] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2771"
+"[CAP 帧间隔] 100帧耗时:3607ms 平均:36.1ms (27.7fps)"
+"[CAP 帧7700] YUYV→BGR:23ms push:0ms 平均:33.1ms 队列:2 慢帧:806 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7709] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:3"
+"[CAP 慢帧#7710] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2781"
+"[CAP 慢帧#7719] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2791"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7746] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#7751] grab:5ms cvt:52ms push:0ms 合计:57ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2801"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2811"
+"[CAP 慢帧#7772] grab:6ms cvt:45ms push:0ms 合计:51ms 队列:3"
+"[CAP 慢帧#7773] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:2"
+"[CAP 慢帧#7775] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#7776] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 无算法] 帧5800 resize:42ms"
+"[PROC 统计] 5800帧/273.1秒 = 21.2fps 队列剩余:2 丢帧:2816"
+"[CAP 慢帧#7787] grab:9ms cvt:55ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#7788] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#7789] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7798] grab:11ms cvt:46ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#7799] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3455ms 平均:34.5ms (28.9fps)"
+"[CAP 帧7800] YUYV→BGR:22ms push:0ms 平均:33.1ms 队列:3 慢帧:820 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:2821"
+"[CAP 慢帧#7808] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#7809] grab:0ms cvt:66ms push:1ms 合计:67ms 队列:1"
+"[CAP 慢帧#7810] grab:0ms cvt:55ms push:1ms 合计:56ms 队列:1"
+"[CAP 慢帧#7822] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:3"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7825] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:2831"
+"[CAP 慢帧#7839] grab:6ms cvt:46ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#7841] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#7843] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7860] grab:12ms cvt:46ms push:10ms 合计:68ms 队列:2"
+"[CAP 慢帧#7862] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2841"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7882] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#7883] grab:0ms cvt:52ms push:5ms 合计:57ms 队列:2"
+"[CAP 慢帧#7884] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#7898] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3643ms 平均:36.4ms (27.4fps)"
+"[CAP 帧7900] YUYV→BGR:46ms push:0ms 平均:33.1ms 队列:1 慢帧:834 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2851"
+"[PROC 无算法] 帧5900 resize:44ms"
+"[CAP 慢帧#7923] grab:19ms cvt:40ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#7924] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+"[CAP 慢帧#7926] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2861"
+"[CAP 慢帧#7949] grab:12ms cvt:46ms push:9ms 合计:67ms 队列:2"
+"[CAP 慢帧#7951] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#7952] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#7968] grab:19ms cvt:46ms push:0ms 合计:65ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2871"
+"[CAP 慢帧#7979] grab:8ms cvt:33ms push:20ms 合计:61ms 队列:2"
+"[CAP 慢帧#7981] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 慢帧#7983] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#7993] grab:0ms cvt:77ms push:0ms 合计:77ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 帧间隔] 100帧耗时:3554ms 平均:35.5ms (28.1fps)"
+"[CAP 帧8000] YUYV→BGR:27ms push:0ms 平均:33.1ms 队列:3 慢帧:845 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:2881"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#8027] grab:19ms cvt:46ms push:1ms 合计:66ms 队列:2"
+"[CAP 慢帧#8028] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2891"
+"[CAP 慢帧#8039] grab:8ms cvt:45ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#8041] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#8048] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#8049] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 无算法] 帧6000 resize:29ms"
+"[PROC 统计] 6000帧/282.5秒 = 21.2fps 队列剩余:1 丢帧:2892"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#8059] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:2"
+"[CAP 慢帧#8064] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:2901"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2911"
+"[CAP 慢帧#8090] grab:15ms cvt:49ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#8099] grab:10ms cvt:43ms push:0ms 合计:53ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3428ms 平均:34.3ms (29.2fps)"
+"[CAP 慢帧#8100] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+"[CAP 帧8100] YUYV→BGR:53ms push:0ms 平均:33.1ms 队列:2 慢帧:856 DQBUF错误:0"
+"[CAP 慢帧#8101] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2921"
+"[CAP 慢帧#8129] grab:5ms cvt:61ms push:0ms 合计:66ms 队列:1"
+"[CAP 慢帧#8131] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:2931"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#8160] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:2941"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#8174] grab:14ms cvt:45ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#8175] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#8176] grab:0ms cvt:45ms push:8ms 合计:53ms 队列:1"
+"[CAP 慢帧#8184] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:3"
+"[CAP 慢帧#8185] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:1"
+"[CAP 慢帧#8186] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 慢帧#8187] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[PROC 无算法] 帧6100 resize:59ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:2951"
+"[CAP 帧间隔] 100帧耗时:3495ms 平均:35.0ms (28.6fps)"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 帧8200] YUYV→BGR:34ms push:0ms 平均:33.1ms 队列:3 慢帧:867 DQBUF错误:0"
+"[CAP 慢帧#8202] grab:0ms cvt:75ms push:0ms 合计:75ms 队列:2"
+"[CAP 慢帧#8204] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+"[CAP 慢帧#8205] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 慢帧#8212] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#8213] grab:0ms cvt:95ms push:0ms 合计:95ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2961"
+"[CAP 慢帧#8241] grab:15ms cvt:38ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#8242] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[CAP 慢帧#8243] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 慢帧#8245] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:2971"
+"[CAP 慢帧#8268] grab:6ms cvt:45ms push:0ms 合计:51ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:2981"
+"[CAP 慢帧#8271] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#8272] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[CAP 慢帧#8282] grab:2ms cvt:46ms push:7ms 合计:55ms 队列:3"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#8284] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#8286] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#8287] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3643ms 平均:36.4ms (27.4fps)"
+"[CAP 帧8300] YUYV→BGR:25ms push:0ms 平均:33.1ms 队列:3 慢帧:883 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:2991"
+"[CAP 慢帧#8309] grab:20ms cvt:46ms push:0ms 合计:66ms 队列:2"
+"[CAP 慢帧#8310] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#8311] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#8313] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#8314] grab:0ms cvt:50ms push:1ms 合计:51ms 队列:1"
+"[PROC 无算法] 帧6200 resize:39ms"
+"[PROC 统计] 6200帧/292.2秒 = 21.2fps 队列剩余:2 丢帧:2995"
+"[PROC 积压] 队列剩余:2 累计丢帧:3001"
+"[CAP 慢帧#8337] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:2"
+"[CAP 慢帧#8338] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#8339] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3011"
+"[CAP 慢帧#8368] grab:10ms cvt:45ms push:0ms 合计:55ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#8369] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[CAP 慢帧#8370] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#8383] grab:0ms cvt:72ms push:2ms 合计:74ms 队列:1"
+"[CAP 慢帧#8384] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3021"
+"[CAP 慢帧#8394] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 帧间隔] 100帧耗时:3606ms 平均:36.1ms (27.7fps)"
+"[CAP 帧8400] YUYV→BGR:26ms push:0ms 平均:33.1ms 队列:3 慢帧:897 DQBUF错误:0"
+"[CAP 慢帧#8408] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#8410] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 慢帧#8411] grab:0ms cvt:51ms push:2ms 合计:53ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:3031"
+"[CAP 慢帧#8435] grab:22ms cvt:36ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#8436] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#8439] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#8440] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 无算法] 帧6300 resize:19ms"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H549"
+"[CAP 慢帧#8454] grab:21ms cvt:66ms push:0ms 合计:87ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3041"
+"[CAP 慢帧#8472] grab:10ms cvt:45ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#8473] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#8474] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 慢帧#8484] grab:11ms cvt:45ms push:0ms 合计:56ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:3051"
+"[CAP 帧间隔] 100帧耗时:3502ms 平均:35.0ms (28.6fps)"
+"[CAP 慢帧#8500] grab:0ms cvt:55ms push:10ms 合计:65ms 队列:2"
+"[CAP 帧8500] YUYV→BGR:55ms push:10ms 平均:33.1ms 队列:2 慢帧:910 DQBUF错误:0"
+"[CAP 慢帧#8502] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3061"
+"[CAP 慢帧#8525] grab:10ms cvt:54ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#8526] grab:0ms cvt:44ms push:10ms 合计:54ms 队列:1"
+"[CAP 慢帧#8528] grab:0ms cvt:67ms push:0ms 合计:67ms 队列:1"
+"[CAP 慢帧#8534] grab:0ms cvt:41ms push:10ms 合计:51ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3071"
+"[CAP 慢帧#8565] grab:9ms cvt:46ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#8566] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+"[CAP 慢帧#8568] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3081"
+"[CAP 慢帧#8580] grab:0ms cvt:67ms push:0ms 合计:67ms 队列:3"
+"[CAP 慢帧#8581] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:2"
+"[PROC 无算法] 帧6400 resize:30ms"
+"[PROC 统计] 6400帧/301.4秒 = 21.2fps 队列剩余:0 丢帧:3083"
+"[CAP 慢帧#8582] grab:0ms cvt:72ms push:0ms 合计:72ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 帧间隔] 100帧耗时:3616ms 平均:36.2ms (27.7fps)"
+"[CAP 帧8600] YUYV→BGR:23ms push:0ms 平均:33.1ms 队列:3 慢帧:921 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:3091"
+"[CAP 慢帧#8612] grab:9ms cvt:44ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#8613] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#8614] grab:0ms cvt:50ms push:11ms 合计:61ms 队列:1"
+"[CAP 慢帧#8616] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#8619] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 慢帧#8620] grab:0ms cvt:50ms push:1ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3101"
+"[CAP 慢帧#8643] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[CAP 慢帧#8654] grab:19ms cvt:45ms push:0ms 合计:64ms 队列:3"
+"[CAP 慢帧#8655] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 慢帧#8657] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#8658] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#8659] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3111"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 慢帧#8698] grab:8ms cvt:45ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#8699] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3503ms 平均:35.0ms (28.5fps)"
+"[CAP 帧8700] YUYV→BGR:45ms push:3ms 平均:33.1ms 队列:1 慢帧:935 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:3121"
+"[CAP 慢帧#8708] grab:3ms cvt:48ms push:0ms 合计:51ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[PROC 无算法] 帧6500 resize:33ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:3131"
+"[CAP 慢帧#8731] grab:14ms cvt:58ms push:0ms 合计:72ms 队列:1"
+"[CAP 慢帧#8732] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:0"
+"[CAP 慢帧#8737] grab:0ms cvt:50ms push:1ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H550"
+"[CAP 慢帧#8752] grab:8ms cvt:47ms push:0ms 合计:55ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:3141"
+"[CAP 慢帧#8757] grab:7ms cvt:62ms push:0ms 合计:69ms 队列:2"
+"[CAP 慢帧#8759] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[CAP 慢帧#8773] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H550"
+"[CAP 慢帧#8774] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 慢帧#8778] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3151"
+"[CAP 帧间隔] 100帧耗时:3458ms 平均:34.6ms (28.9fps)"
+"[CAP 帧8800] YUYV→BGR:23ms push:0ms 平均:33.1ms 队列:3 慢帧:945 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H550"
+"[CAP 慢帧#8804] grab:10ms cvt:42ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#8805] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#8806] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3161"
+"[CAP 慢帧#8830] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:3"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#8837] grab:3ms cvt:53ms push:0ms 合计:56ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:3171"
+"[CAP 慢帧#8840] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#8843] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 慢帧#8857] grab:14ms cvt:56ms push:2ms 合计:72ms 队列:1"
+"[PROC 无算法] 帧6600 resize:29ms"
+"[PROC 统计] 6600帧/311.1秒 = 21.2fps 队列剩余:0 丢帧:3177"
+"[CAP 慢帧#8858] grab:0ms cvt:50ms push:1ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3181"
+"[CAP 慢帧#8873] grab:8ms cvt:45ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#8874] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#8889] grab:17ms cvt:54ms push:0ms 合计:71ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H551"
+"[CAP 慢帧#8891] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3191"
+"[CAP 帧间隔] 100帧耗时:3478ms 平均:34.8ms (28.8fps)"
+"[CAP 帧8900] YUYV→BGR:45ms push:0ms 平均:33.1ms 队列:3 慢帧:958 DQBUF错误:0"
+"[CAP 慢帧#8901] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:3"
+"[CAP 慢帧#8902] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#8904] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3201"
+"[CAP 慢帧#8931] grab:3ms cvt:55ms push:0ms 合计:58ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3211"
+"[CAP 慢帧#8952] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#8954] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#8956] grab:0ms cvt:55ms push:1ms 合计:56ms 队列:1"
+"[CAP 慢帧#8957] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#8965] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#8973] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3221"
+"[CAP 慢帧#8989] grab:21ms cvt:36ms push:0ms 合计:57ms 队列:2"
+"[PROC 无算法] 帧6700 resize:30ms"
+"[CAP 慢帧#8991] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#8998] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:3"
+"[CAP 慢帧#8999] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3630ms 平均:36.3ms (27.5fps)"
+"[CAP 帧9000] YUYV→BGR:40ms push:0ms 平均:33.1ms 队列:2 慢帧:972 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T243"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9003] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3231"
+"[CAP 慢帧#9023] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:3241"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9033] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#9041] grab:5ms cvt:49ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#9043] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#9062] grab:10ms cvt:56ms push:0ms 合计:66ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9063] grab:0ms cvt:68ms push:3ms 合计:71ms 队列:1"
+"[CAP 慢帧#9064] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3251"
+"[CAP 慢帧#9077] grab:7ms cvt:50ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#9078] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 慢帧#9088] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+"[CAP 慢帧#9089] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 帧间隔] 100帧耗时:3543ms 平均:35.4ms (28.2fps)"
+"[CAP 帧9100] YUYV→BGR:34ms push:0ms 平均:33.1ms 队列:3 慢帧:984 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:3261"
+"[PROC 无算法] 帧6800 resize:64ms"
+"[PROC 统计] 6800帧/320.3秒 = 21.2fps 队列剩余:3 丢帧:3265"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9124] grab:11ms cvt:42ms push:0ms 合计:53ms 队列:3"
+"[CAP 慢帧#9125] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:3271"
+"[CAP 慢帧#9130] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#9132] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#9133] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3281"
+"[CAP 慢帧#9163] grab:0ms cvt:61ms push:3ms 合计:64ms 队列:2"
+"[CAP 慢帧#9176] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3291"
+"[CAP 帧间隔] 100帧耗时:3380ms 平均:33.8ms (29.6fps)"
+"[CAP 帧9200] YUYV→BGR:47ms push:0ms 平均:33.1ms 队列:3 慢帧:991 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:3301"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9213] grab:19ms cvt:45ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#9214] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3311"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9244] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[PROC 无算法] 帧6900 resize:29ms"
+"[CAP 慢帧#9259] grab:10ms cvt:48ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#9260] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:3321"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9282] grab:10ms cvt:50ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#9284] grab:0ms cvt:45ms push:11ms 合计:56ms 队列:1"
+"[CAP 慢帧#9286] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3331"
+"[CAP 帧间隔] 100帧耗时:3444ms 平均:34.4ms (29.0fps)"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 帧9300] YUYV→BGR:28ms push:0ms 平均:33.1ms 队列:3 慢帧:999 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:3341"
+"[CAP 慢帧#9322] grab:7ms cvt:52ms push:0ms 合计:59ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9332] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3351"
+"[CAP 慢帧#9343] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#9344] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3361"
+"[PROC 积压] 队列剩余:2 累计丢帧:3371"
+"[CAP 慢帧#9390] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 帧间隔] 100帧耗时:3319ms 平均:33.2ms (30.1fps)"
+"[CAP 帧9400] YUYV→BGR:29ms push:0ms 平均:33.1ms 队列:3 慢帧:1004 DQBUF错误:0"
+"[PROC 无算法] 帧7000 resize:59ms"
+"[PROC 统计] 7000帧/329.9秒 = 21.2fps 队列剩余:3 丢帧:3375"
+"[CAP 慢帧#9404] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#9406] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3381"
+"[CAP 慢帧#9422] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9423] grab:0ms cvt:56ms push:10ms 合计:66ms 队列:1"
+"[CAP 慢帧#9424] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3391"
+"[CAP 慢帧#9447] grab:10ms cvt:42ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#9448] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:2"
+"[CAP 慢帧#9449] grab:0ms cvt:71ms push:2ms 合计:73ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9463] grab:0ms cvt:59ms push:2ms 合计:61ms 队列:2"
+"[CAP 慢帧#9473] grab:10ms cvt:48ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#9474] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3401"
+"[CAP 慢帧#9482] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:2"
+"[CAP 慢帧#9483] grab:0ms cvt:49ms push:4ms 合计:53ms 队列:1"
+"[CAP 慢帧#9493] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#9495] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3551ms 平均:35.5ms (28.2fps)"
+"[CAP 帧9500] YUYV→BGR:18ms push:0ms 平均:33.1ms 队列:3 慢帧:1019 DQBUF错误:0"
+"[CAP 慢帧#9504] grab:10ms cvt:67ms push:0ms 合计:77ms 队列:1"
+"[CAP 慢帧#9505] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3411"
+"[CAP 慢帧#9530] grab:10ms cvt:66ms push:0ms 合计:76ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 无算法] 帧7100 resize:66ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:3421"
+"[CAP 慢帧#9550] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[CAP 慢帧#9554] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3431"
+"[CAP 慢帧#9573] grab:8ms cvt:44ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#9574] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#9575] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 慢帧#9576] grab:0ms cvt:50ms push:2ms 合计:52ms 队列:1"
+"[CAP 慢帧#9594] grab:8ms cvt:46ms push:0ms 合计:54ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9596] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#9598] grab:0ms cvt:46ms push:7ms 合计:53ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3520ms 平均:35.2ms (28.4fps)"
+"[CAP 帧9600] YUYV→BGR:35ms push:1ms 平均:33.1ms 队列:1 慢帧:1031 DQBUF错误:0"
+"[CAP 慢帧#9601] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+"[CAP 慢帧#9602] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3441"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9624] grab:0ms cvt:70ms push:0ms 合计:70ms 队列:1"
+"[CAP 慢帧#9625] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[CAP 慢帧#9626] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3451"
+"[CAP 慢帧#9653] grab:8ms cvt:45ms push:0ms 合计:53ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9655] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#9656] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#9657] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3461"
+"[PROC 无算法] 帧7200 resize:60ms"
+"[PROC 统计] 7200帧/339.5秒 = 21.2fps 队列剩余:3 丢帧:3467"
+"[CAP 慢帧#9681] grab:9ms cvt:43ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#9682] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3471"
+"[CAP 帧间隔] 100帧耗时:3392ms 平均:33.9ms (29.5fps)"
+"[CAP 帧9700] YUYV→BGR:27ms push:0ms 平均:33.1ms 队列:3 慢帧:1042 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:3481"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9715] grab:15ms cvt:51ms push:1ms 合计:67ms 队列:2"
+"[CAP 慢帧#9716] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3491"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 慢帧#9746] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#9747] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#9748] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 慢帧#9769] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#9770] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3501"
+"[CAP 慢帧#9778] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#9779] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[CAP 帧间隔] 100帧耗时:3594ms 平均:35.9ms (27.8fps)"
+"[CAP 帧9800] YUYV→BGR:20ms push:0ms 平均:33.1ms 队列:3 慢帧:1051 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:3511"
+"[CAP 慢帧#9807] grab:8ms cvt:47ms push:0ms 合计:55ms 队列:2"
+"[PROC 无算法] 帧7300 resize:59ms"
+"[CAP 慢帧#9814] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#9823] grab:10ms cvt:55ms push:0ms 合计:65ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3521"
+"[PROC 积压] 队列剩余:2 累计丢帧:3531"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3541"
+"[CAP 慢帧#9870] grab:6ms cvt:52ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#9872] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H551"
+"[PROC 积压] 队列剩余:2 累计丢帧:3551"
+"[CAP 帧间隔] 100帧耗时:3400ms 平均:34.0ms (29.4fps)"
+"[CAP 帧9900] YUYV→BGR:25ms push:0ms 平均:33.1ms 队列:2 慢帧:1056 DQBUF错误:0"
+"[CAP 慢帧#9916] grab:8ms cvt:54ms push:0ms 合计:62ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3561"
+"[CAP 慢帧#9926] grab:11ms cvt:45ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#9928] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#9929] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#9940] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:3571"
+"[PROC 无算法] 帧7400 resize:59ms"
+"[PROC 统计] 7400帧/348.9秒 = 21.2fps 队列剩余:3 丢帧:3571"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 慢帧#9954] grab:11ms cvt:40ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#9955] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#9956] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#9957] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3581"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 慢帧#9979] grab:10ms cvt:51ms push:0ms 合计:61ms 队列:2"
+"[CAP 慢帧#9981] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#9990] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#9991] grab:0ms cvt:46ms push:10ms 合计:56ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3424ms 平均:34.2ms (29.2fps)"
+"[CAP 帧10000] YUYV→BGR:26ms push:0ms 平均:33.1ms 队列:3 慢帧:1069 DQBUF错误:0"
+"[CAP 慢帧#10001] grab:5ms cvt:52ms push:2ms 合计:59ms 队列:2"
+"[CAP 慢帧#10002] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3591"
+"[CAP 慢帧#10036] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:3"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10037] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#10039] grab:0ms cvt:60ms push:10ms 合计:70ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3601"
+"[CAP 慢帧#10062] grab:7ms cvt:44ms push:0ms 合计:51ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:3611"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10070] grab:6ms cvt:45ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#10073] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 无算法] 帧7500 resize:29ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:3621"
+"[CAP 慢帧#10092] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#10093] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10095] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3602ms 平均:36.0ms (27.8fps)"
+"[CAP 帧10100] YUYV→BGR:23ms push:0ms 平均:33.1ms 队列:3 慢帧:1080 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:3631"
+"[CAP 慢帧#10120] grab:3ms cvt:53ms push:0ms 合计:56ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10132] grab:11ms cvt:46ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#10133] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#10134] grab:0ms cvt:72ms push:0ms 合计:72ms 队列:1"
+"[CAP 慢帧#10135] grab:0ms cvt:55ms push:1ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3641"
+"[CAP 慢帧#10148] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10154] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:3651"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10185] grab:13ms cvt:48ms push:0ms 合计:61ms 队列:2"
+"[CAP 慢帧#10186] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#10196] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#10198] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3497ms 平均:35.0ms (28.6fps)"
+"[CAP 慢帧#10200] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 帧10200] YUYV→BGR:55ms push:0ms 平均:33.1ms 队列:1 慢帧:1092 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 无算法] 帧7600 resize:29ms"
+"[PROC 统计] 7600帧/358.3秒 = 21.2fps 队列剩余:2 丢帧:3660"
+"[CAP 慢帧#10217] grab:0ms cvt:39ms push:20ms 合计:59ms 队列:2"
+"[CAP 慢帧#10218] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3661"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3671"
+"[CAP 慢帧#10248] grab:9ms cvt:46ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#10249] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 慢帧#10258] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3681"
+"[CAP 慢帧#10280] grab:9ms cvt:62ms push:0ms 合计:71ms 队列:3"
+"[CAP 慢帧#10284] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3691"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 帧间隔] 100帧耗时:3453ms 平均:34.5ms (29.0fps)"
+"[CAP 帧10300] YUYV→BGR:30ms push:0ms 平均:33.1ms 队列:3 慢帧:1099 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:3701"
+"[CAP 慢帧#10326] grab:11ms cvt:42ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#10327] grab:0ms cvt:50ms push:7ms 合计:57ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10338] grab:2ms cvt:49ms push:0ms 合计:51ms 队列:2"
+"[PROC 无算法] 帧7700 resize:29ms"
+"[PROC 积压] 队列剩余:2 累计丢帧:3711"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10364] grab:4ms cvt:79ms push:0ms 合计:83ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3721"
+"[CAP 慢帧#10384] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#10385] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10393] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:3"
+"[CAP 帧间隔] 100帧耗时:3413ms 平均:34.1ms (29.3fps)"
+"[CAP 帧10400] YUYV→BGR:34ms push:0ms 平均:33.1ms 队列:3 慢帧:1106 DQBUF错误:0"
+"[CAP 慢帧#10401] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#10402] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+"[CAP 慢帧#10403] grab:0ms cvt:59ms push:0ms 合计:59ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3731"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10423] grab:7ms cvt:49ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#10425] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3741"
+"[CAP 慢帧#10436] grab:13ms cvt:55ms push:0ms 合计:68ms 队列:1"
+"[CAP 慢帧#10438] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T244"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10449] grab:0ms cvt:65ms push:20ms 合计:85ms 队列:1"
+"[CAP 慢帧#10456] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#10458] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 慢帧#10469] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:3751"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10483] grab:0ms cvt:53ms push:21ms 合计:74ms 队列:1"
+"[PROC 无算法] 帧7800 resize:49ms"
+"[PROC 统计] 7800帧/367.8秒 = 21.2fps 队列剩余:1 丢帧:3755"
+"[PROC 积压] 队列剩余:2 累计丢帧:3761"
+"[CAP 帧间隔] 100帧耗时:3524ms 平均:35.2ms (28.4fps)"
+"[CAP 帧10500] YUYV→BGR:28ms push:0ms 平均:33.1ms 队列:3 慢帧:1118 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10508] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#10509] grab:0ms cvt:59ms push:1ms 合计:60ms 队列:1"
+"[CAP 慢帧#10518] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:3771"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10535] grab:12ms cvt:43ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#10536] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#10537] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#10548] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:3781"
+"[CAP 慢帧#10562] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3791"
+"[CAP 慢帧#10593] grab:5ms cvt:56ms push:0ms 合计:61ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10595] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3449ms 平均:34.5ms (29.0fps)"
+"[CAP 帧10600] YUYV→BGR:38ms push:0ms 平均:33.1ms 队列:3 慢帧:1128 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:3801"
+"[CAP 慢帧#10609] grab:19ms cvt:50ms push:0ms 合计:69ms 队列:2"
+"[CAP 慢帧#10610] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 无算法] 帧7900 resize:22ms"
+"[CAP 慢帧#10626] grab:0ms cvt:85ms push:0ms 合计:85ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3811"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3821"
+"[CAP 慢帧#10663] grab:8ms cvt:45ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#10665] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+"[CAP 慢帧#10666] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3831"
+"[CAP 慢帧#10688] grab:7ms cvt:52ms push:0ms 合计:59ms 队列:3"
+"[CAP 慢帧#10689] grab:8ms cvt:85ms push:0ms 合计:93ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3506ms 平均:35.1ms (28.5fps)"
+"[CAP 帧10700] YUYV→BGR:48ms push:0ms 平均:33.1ms 队列:2 慢帧:1136 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10716] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+"[CAP 慢帧#10717] grab:0ms cvt:56ms push:1ms 合计:57ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3841"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10743] grab:12ms cvt:41ms push:0ms 合计:53ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:3851"
+"[CAP 慢帧#10757] grab:11ms cvt:61ms push:0ms 合计:72ms 队列:2"
+"[PROC 无算法] 帧8000 resize:59ms"
+"[PROC 统计] 8000帧/377.3秒 = 21.2fps 队列剩余:3 丢帧:3857"
+"[PROC 积压] 队列剩余:2 累计丢帧:3861"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3871"
+"[CAP 慢帧#10793] grab:8ms cvt:46ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#10795] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3386ms 平均:33.9ms (29.5fps)"
+"[CAP 帧10800] YUYV→BGR:23ms push:0ms 平均:33.1ms 队列:3 慢帧:1142 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10808] grab:12ms cvt:41ms push:0ms 合计:53ms 队列:3"
+"[CAP 慢帧#10809] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:2"
+"[CAP 慢帧#10811] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#10812] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3881"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10834] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3891"
+"[CAP 慢帧#10855] grab:7ms cvt:45ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#10857] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#10858] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10859] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 慢帧#10860] grab:0ms cvt:51ms push:2ms 合计:53ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3901"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10891] grab:4ms cvt:50ms push:0ms 合计:54ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3469ms 平均:34.7ms (28.8fps)"
+"[CAP 帧10900] YUYV→BGR:35ms push:0ms 平均:33.0ms 队列:3 慢帧:1153 DQBUF错误:0"
+"[PROC 无算法] 帧8100 resize:48ms"
+"[CAP 慢帧#10905] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#10907] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:3911"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[CAP 慢帧#10917] grab:0ms cvt:55ms push:1ms 合计:56ms 队列:2"
+"[CAP 慢帧#10918] grab:0ms cvt:72ms push:0ms 合计:72ms 队列:1"
+"[CAP 慢帧#10927] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3921"
+"[CAP 慢帧#10953] grab:2ms cvt:56ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#10958] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#10959] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3931"
+"[PROC 积压] 队列剩余:2 累计丢帧:3941"
+"[CAP 帧间隔] 100帧耗时:3529ms 平均:35.3ms (28.3fps)"
+"[CAP 帧11000] YUYV→BGR:36ms push:0ms 平均:33.1ms 队列:3 慢帧:1161 DQBUF错误:0"
+"[CAP 慢帧#11004] grab:4ms cvt:52ms push:0ms 合计:56ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3951"
+"[CAP 慢帧#11016] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:2"
+"[CAP 慢帧#11017] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#11029] grab:21ms cvt:35ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#11030] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[PROC 无算法] 帧8200 resize:61ms"
+"[PROC 统计] 8200帧/386.7秒 = 21.2fps 队列剩余:3 丢帧:3957"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3961"
+"[CAP 慢帧#11046] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#11048] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#11065] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3971"
+"[CAP 慢帧#11086] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#11088] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3981"
+"[CAP 帧间隔] 100帧耗时:3426ms 平均:34.3ms (29.2fps)"
+"[CAP 慢帧#11100] grab:0ms cvt:69ms push:0ms 合计:69ms 队列:1"
+"[CAP 帧11100] YUYV→BGR:69ms push:0ms 平均:33.1ms 队列:1 慢帧:1172 DQBUF错误:0"
+"[CAP 慢帧#11122] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[CAP 慢帧#11123] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:3991"
+"[CAP 慢帧#11145] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:2"
+"[CAP 慢帧#11146] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:4001"
+"[PROC 无算法] 帧8300 resize:30ms"
+"[CAP 慢帧#11167] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[CAP 慢帧#11168] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:4011"
+"[CAP 慢帧#11198] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#11199] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3546ms 平均:35.5ms (28.2fps)"
+"[CAP 帧11200] YUYV→BGR:41ms push:0ms 平均:33.1ms 队列:1 慢帧:1180 DQBUF错误:0"
+"[CAP 慢帧#11201] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H550"
+"[PROC 积压] 队列剩余:2 累计丢帧:4021"
+"[CAP 慢帧#11224] grab:16ms cvt:55ms push:0ms 合计:71ms 队列:1"
+"[CAP 慢帧#11226] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#11236] grab:13ms cvt:63ms push:0ms 合计:76ms 队列:1"
+"[CAP 慢帧#11237] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#11238] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4031"
+"[CAP 慢帧#11257] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:3"
+"[CAP 慢帧#11262] grab:5ms cvt:52ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#11264] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#11265] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#11274] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#11280] grab:7ms cvt:45ms push:0ms 合计:52ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:4041"
+"[CAP 慢帧#11284] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[PROC 无算法] 帧8400 resize:60ms"
+"[PROC 统计] 8400帧/395.9秒 = 21.2fps 队列剩余:3 丢帧:4046"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 帧间隔] 100帧耗时:3473ms 平均:34.7ms (28.8fps)"
+"[CAP 帧11300] YUYV→BGR:29ms push:0ms 平均:33.0ms 队列:3 慢帧:1193 DQBUF错误:0"
+"[CAP 慢帧#11304] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#11306] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#11307] grab:0ms cvt:54ms push:4ms 合计:58ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4051"
+"[CAP 慢帧#11322] grab:11ms cvt:46ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#11323] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#11324] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#11325] grab:0ms cvt:46ms push:7ms 合计:53ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:4061"
+"[CAP 慢帧#11350] grab:11ms cvt:45ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#11353] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:4071"
+"[CAP 慢帧#11377] grab:5ms cvt:46ms push:0ms 合计:51ms 队列:3"
+"[CAP 慢帧#11381] grab:2ms cvt:76ms push:0ms 合计:78ms 队列:1"
+"[CAP 慢帧#11382] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[PROC 积压] 队列剩余:2 累计丢帧:4081"
+"[CAP 慢帧#11394] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3469ms 平均:34.7ms (28.8fps)"
+"[CAP 帧11400] YUYV→BGR:22ms push:0ms 平均:33.0ms 队列:3 慢帧:1206 DQBUF错误:0"
+"[CAP 慢帧#11403] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 慢帧#11413] grab:18ms cvt:45ms push:0ms 合计:63ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H549"
+"[CAP 慢帧#11415] grab:0ms cvt:41ms push:15ms 合计:56ms 队列:1"
+"[CAP 慢帧#11417] grab:0ms cvt:46ms push:5ms 合计:51ms 队列:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:4091"
+"[CAP 慢帧#11432] grab:11ms cvt:56ms push:0ms 合计:67ms 队列:3"
+"[PROC 无算法] 帧8500 resize:39ms"
+"[CAP 慢帧#11433] grab:0ms cvt:68ms push:0ms 合计:68ms 队列:2"
+"[CAP 慢帧#11434] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H548"
+"[CAP 慢帧#11441] grab:0ms cvt:57ms push:2ms 合计:59ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4101"
+"[CAP 慢帧#11459] grab:5ms cvt:47ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#11468] grab:16ms cvt:35ms push:0ms 合计:51ms 队列:3"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H548"
+"[PROC 积压] 队列剩余:2 累计丢帧:4111"
+"[CAP 慢帧#11481] grab:20ms cvt:47ms push:0ms 合计:67ms 队列:1"
+"[CAP 慢帧#11497] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3573ms 平均:35.7ms (28.0fps)"
+"[CAP 帧11500] YUYV→BGR:34ms push:0ms 平均:33.0ms 队列:3 慢帧:1218 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H548"
+"[PROC 积压] 队列剩余:2 累计丢帧:4121"
+"[CAP 慢帧#11516] grab:4ms cvt:43ms push:9ms 合计:56ms 队列:2"
+"[CAP 慢帧#11518] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[CAP 慢帧#11519] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H548"
+"[PROC 积压] 队列剩余:2 累计丢帧:4131"
+"[CAP 慢帧#11536] grab:9ms cvt:47ms push:0ms 合计:56ms 队列:3"
+"[CAP 慢帧#11537] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:3"
+"[CAP 慢帧#11538] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:4141"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H548"
+"[PROC 积压] 队列剩余:2 累计丢帧:4151"
+"[PROC 无算法] 帧8600 resize:45ms"
+"[PROC 统计] 8600帧/405.5秒 = 21.2fps 队列剩余:3 丢帧:4151"
+"[CAP 慢帧#11574] grab:12ms cvt:45ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#11576] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H548"
+"[CAP 帧间隔] 100帧耗时:3388ms 平均:33.9ms (29.5fps)"
+"[CAP 帧11600] YUYV→BGR:25ms push:0ms 平均:33.0ms 队列:3 慢帧:1226 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:4161"
+"[PROC 积压] 队列剩余:2 累计丢帧:4171"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H548"
+"[CAP 慢帧#11621] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:2"
+"[CAP 慢帧#11622] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#11644] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[CAP 慢帧#11645] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H548"
+"[CAP 慢帧#11655] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#11658] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4181"
+"[CAP 慢帧#11671] grab:22ms cvt:37ms push:0ms 合计:59ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H548"
+"[PROC 积压] 队列剩余:2 累计丢帧:4191"
+"[CAP 慢帧#11693] grab:0ms cvt:75ms push:0ms 合计:75ms 队列:1"
+"[PROC 无算法] 帧8700 resize:19ms"
+"[CAP 帧间隔] 100帧耗时:3576ms 平均:35.8ms (28.0fps)"
+"[CAP 帧11700] YUYV→BGR:19ms push:0ms 平均:33.0ms 队列:3 慢帧:1234 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H548"
+"[CAP 慢帧#11712] grab:13ms cvt:43ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#11714] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+"[CAP 慢帧#11715] grab:0ms cvt:46ms push:11ms 合计:57ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4201"
+"[CAP 慢帧#11734] grab:6ms cvt:45ms push:0ms 合计:51ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H548"
+"[CAP 慢帧#11736] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4211"
+"[CAP 慢帧#11757] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#11758] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[CAP 慢帧#11759] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H548"
+"[CAP 慢帧#11776] grab:8ms cvt:46ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#11777] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:1"
+"[CAP 慢帧#11779] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4221"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H548"
+"[CAP 慢帧#11792] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:3"
+"[CAP 慢帧#11793] grab:0ms cvt:61ms push:0ms 合计:61ms 队列:2"
+"[CAP 慢帧#11794] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#11795] grab:0ms cvt:45ms push:6ms 合计:51ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3688ms 平均:36.9ms (27.1fps)"
+"[CAP 帧11800] YUYV→BGR:21ms push:0ms 平均:33.0ms 队列:1 慢帧:1249 DQBUF错误:0"
+"[CAP 慢帧#11806] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#11807] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#11808] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H548"
+"[PROC 积压] 队列剩余:2 累计丢帧:4231"
+"[PROC 无算法] 帧8800 resize:50ms"
+"[PROC 统计] 8800帧/414.6秒 = 21.2fps 队列剩余:3 丢帧:4233"
+"[CAP 慢帧#11831] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:4241"
+"[CAP 慢帧#11845] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H548"
+"[CAP 慢帧#11856] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:4251"
+"[CAP 慢帧#11871] grab:19ms cvt:45ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#11872] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H548"
+"[CAP 慢帧#11887] grab:9ms cvt:47ms push:0ms 合计:56ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:4261"
+"[CAP 慢帧#11890] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#11891] grab:0ms cvt:55ms push:1ms 合计:56ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3424ms 平均:34.2ms (29.2fps)"
+"[CAP 帧11900] YUYV→BGR:26ms push:0ms 平均:33.0ms 队列:3 慢帧:1260 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H548"
+"[CAP 慢帧#11909] grab:4ms cvt:52ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#11910] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4271"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H547"
+"[CAP 慢帧#11941] grab:20ms cvt:45ms push:0ms 合计:65ms 队列:2"
+"[CAP 慢帧#11942] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4281"
+"[CAP 慢帧#11953] grab:6ms cvt:64ms push:0ms 合计:70ms 队列:1"
+"[PROC 无算法] 帧8900 resize:20ms"
+"[CAP 慢帧#11960] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+"[CAP 慢帧#11961] grab:0ms cvt:40ms push:11ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H547"
+"[PROC 积压] 队列剩余:2 累计丢帧:4291"
+"[CAP 慢帧#11991] grab:5ms cvt:53ms push:3ms 合计:61ms 队列:3"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H548"
+"[CAP 帧间隔] 100帧耗时:3396ms 平均:34.0ms (29.4fps)"
+"[CAP 帧12000] YUYV→BGR:23ms push:0ms 平均:33.0ms 队列:3 慢帧:1268 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:4301"
+"[PROC 积压] 队列剩余:2 累计丢帧:4311"
+"[CAP 慢帧#12023] grab:10ms cvt:46ms push:0ms 合计:56ms 队列:2"
+"[CAP 慢帧#12024] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12026] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#12028] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4321"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12056] grab:14ms cvt:43ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#12057] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#12072] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#12080] grab:12ms cvt:47ms push:0ms 合计:59ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12082] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4331"
+"[PROC 无算法] 帧9000 resize:77ms"
+"[PROC 统计] 9000帧/423.9秒 = 21.2fps 队列剩余:3 丢帧:4331"
+"[CAP 帧间隔] 100帧耗时:3523ms 平均:35.2ms (28.4fps)"
+"[CAP 帧12100] YUYV→BGR:42ms push:0ms 平均:33.0ms 队列:3 慢帧:1277 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:4341"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[PROC 积压] 队列剩余:2 累计丢帧:4351"
+"[CAP 慢帧#12140] grab:19ms cvt:45ms push:0ms 合计:64ms 队列:2"
+"[CAP 慢帧#12141] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12159] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#12160] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#12161] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4361"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12189] grab:12ms cvt:45ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#12190] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4371"
+"[CAP 慢帧#12198] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#12199] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3407ms 平均:34.1ms (29.4fps)"
+"[CAP 慢帧#12200] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 帧12200] YUYV→BGR:56ms push:0ms 平均:33.0ms 队列:0 慢帧:1287 DQBUF错误:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12213] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#12214] grab:0ms cvt:45ms push:11ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4381"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[PROC 无算法] 帧9100 resize:69ms"
+"[CAP 慢帧#12248] grab:16ms cvt:56ms push:0ms 合计:72ms 队列:1"
+"[CAP 慢帧#12250] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4391"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12271] grab:0ms cvt:45ms push:10ms 合计:55ms 队列:2"
+"[CAP 慢帧#12273] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4401"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12296] grab:8ms cvt:46ms push:0ms 合计:54ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3424ms 平均:34.2ms (29.2fps)"
+"[CAP 帧12300] YUYV→BGR:33ms push:0ms 平均:33.0ms 队列:3 慢帧:1294 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:4411"
+"[CAP 慢帧#12316] grab:12ms cvt:65ms push:0ms 合计:77ms 队列:0"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12322] grab:10ms cvt:44ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#12323] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[CAP 慢帧#12324] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4421"
+"[CAP 慢帧#12350] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12351] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[PROC 无算法] 帧9200 resize:34ms"
+"[PROC 统计] 9200帧/433.3秒 = 21.2fps 队列剩余:2 丢帧:4430"
+"[CAP 慢帧#12371] grab:5ms cvt:52ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#12372] grab:0ms cvt:68ms push:0ms 合计:68ms 队列:1"
+"[CAP 慢帧#12373] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4431"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12389] grab:10ms cvt:45ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#12390] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#12391] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3523ms 平均:35.2ms (28.4fps)"
+"[CAP 帧12400] YUYV→BGR:29ms push:0ms 平均:33.0ms 队列:3 慢帧:1306 DQBUF错误:0"
+"[CAP 慢帧#12402] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 慢帧#12404] grab:0ms cvt:72ms push:0ms 合计:72ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12407] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4441"
+"[CAP 慢帧#12415] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[PROC 积压] 队列剩余:2 累计丢帧:4451"
+"[CAP 慢帧#12439] grab:9ms cvt:33ms push:21ms 合计:63ms 队列:2"
+"[CAP 慢帧#12441] grab:0ms cvt:45ms push:11ms 合计:56ms 队列:1"
+"[CAP 慢帧#12443] grab:0ms cvt:54ms push:0ms 合计:54ms 队列:1"
+"[CAP 慢帧#12458] grab:8ms cvt:45ms push:0ms 合计:53ms 队列:2"
+"[CAP 慢帧#12460] grab:0ms cvt:63ms push:0ms 合计:63ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[CAP 慢帧#12463] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4461"
+"[CAP 慢帧#12480] grab:10ms cvt:45ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#12482] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H547"
+"[CAP 帧间隔] 100帧耗时:3600ms 平均:36.0ms (27.8fps)"
+"[PROC 无算法] 帧9300 resize:39ms"
+"[CAP 慢帧#12500] grab:9ms cvt:45ms push:0ms 合计:54ms 队列:2"
+"[CAP 帧12500] YUYV→BGR:45ms push:0ms 平均:33.0ms 队列:2 慢帧:1319 DQBUF错误:0"
+"[CAP 慢帧#12501] grab:0ms cvt:62ms push:0ms 合计:62ms 队列:1"
+"[CAP 慢帧#12503] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 慢帧#12505] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4471"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H546"
+"[CAP 慢帧#12531] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4481"
+"[CAP 慢帧#12551] grab:8ms cvt:44ms push:0ms 合计:52ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H546"
+"[CAP 慢帧#12552] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#12554] grab:0ms cvt:66ms push:0ms 合计:66ms 队列:1"
+"[CAP 慢帧#12560] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:0"
+"[CAP 慢帧#12577] grab:6ms cvt:50ms push:0ms 合计:56ms 队列:2"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H546"
+"[CAP 慢帧#12578] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4491"
+"[CAP 慢帧#12599] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3626ms 平均:36.3ms (27.6fps)"
+"[CAP 慢帧#12600] grab:0ms cvt:44ms push:8ms 合计:52ms 队列:1"
+"[CAP 帧12600] YUYV→BGR:44ms push:8ms 平均:33.0ms 队列:1 慢帧:1331 DQBUF错误:0"
+"[CAP 慢帧#12602] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[CAP 慢帧#12603] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H546"
+"[CAP 慢帧#12604] grab:0ms cvt:64ms push:0ms 合计:64ms 队列:1"
+"[CAP 慢帧#12613] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#12614] grab:0ms cvt:41ms push:10ms 合计:51ms 队列:1"
+"[CAP 慢帧#12616] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+"[PROC 无算法] 帧9400 resize:29ms"
+"[PROC 统计] 9400帧/442.6秒 = 21.2fps 队列剩余:2 丢帧:4500"
+"[PROC 积压] 队列剩余:2 累计丢帧:4501"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H546"
+"[PROC 积压] 队列剩余:2 累计丢帧:4511"
+"[CAP 慢帧#12655] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#12657] grab:0ms cvt:57ms push:0ms 合计:57ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H546"
+"[PROC 积压] 队列剩余:2 累计丢帧:4521"
+"[CAP 慢帧#12678] grab:0ms cvt:65ms push:0ms 合计:65ms 队列:1"
+"[CAP 慢帧#12679] grab:0ms cvt:60ms push:0ms 合计:60ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T245"
+[RPMsg RX] "H546"
+"[PROC 积压] 队列剩余:2 累计丢帧:4531"
+"[CAP 慢帧#12699] grab:12ms cvt:41ms push:0ms 合计:53ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3541ms 平均:35.4ms (28.2fps)"
+"[CAP 慢帧#12700] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 帧12700] YUYV→BGR:51ms push:0ms 平均:33.0ms 队列:2 慢帧:1343 DQBUF错误:0"
+"[CAP 慢帧#12707] grab:0ms cvt:69ms push:0ms 合计:69ms 队列:1"
+"[CAP 慢帧#12708] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[PROC 积压] 队列剩余:2 累计丢帧:4541"
+"[CAP 慢帧#12741] grab:7ms cvt:53ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#12743] grab:0ms cvt:69ms push:1ms 合计:70ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4551"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[CAP 慢帧#12758] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:2"
+"[CAP 慢帧#12760] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 无算法] 帧9500 resize:30ms"
+"[CAP 慢帧#12761] grab:0ms cvt:52ms push:1ms 合计:53ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4561"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[CAP 慢帧#12786] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:2"
+"[CAP 慢帧#12790] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#12796] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:2"
+"[CAP 帧间隔] 100帧耗时:3569ms 平均:35.7ms (28.0fps)"
+"[CAP 帧12800] YUYV→BGR:26ms push:0ms 平均:33.0ms 队列:3 慢帧:1353 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:4571"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[CAP 慢帧#12820] grab:17ms cvt:41ms push:10ms 合计:68ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4581"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[CAP 慢帧#12846] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[CAP 慢帧#12847] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4591"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[PROC 积压] 队列剩余:2 累计丢帧:4601"
+"[CAP 慢帧#12881] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:3"
+"[CAP 慢帧#12889] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:4611"
+"[PROC 无算法] 帧9600 resize:54ms"
+"[PROC 统计] 9600帧/452.0秒 = 21.2fps 队列剩余:3 丢帧:4612"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[CAP 帧间隔] 100帧耗时:3381ms 平均:33.8ms (29.6fps)"
+"[CAP 帧12900] YUYV→BGR:28ms push:0ms 平均:33.0ms 队列:3 慢帧:1358 DQBUF错误:0"
+"[CAP 慢帧#12909] grab:16ms cvt:34ms push:13ms 合计:63ms 队列:2"
+"[CAP 慢帧#12910] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#12911] grab:0ms cvt:49ms push:7ms 合计:56ms 队列:1"
+"[CAP 慢帧#12915] grab:0ms cvt:53ms push:0ms 合计:53ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4621"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[PROC 积压] 队列剩余:2 累计丢帧:4631"
+"[CAP 慢帧#12946] grab:12ms cvt:45ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#12947] grab:0ms cvt:56ms push:0ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[CAP 慢帧#12964] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4641"
+"[CAP 慢帧#12980] grab:10ms cvt:65ms push:1ms 合计:76ms 队列:1"
+"[CAP 慢帧#12982] grab:0ms cvt:51ms push:0ms 合计:51ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[CAP 帧间隔] 100帧耗时:3419ms 平均:34.2ms (29.2fps)"
+"[CAP 帧13000] YUYV→BGR:25ms push:0ms 平均:33.0ms 队列:2 慢帧:1367 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:4651"
+"[CAP 慢帧#13009] grab:0ms cvt:55ms push:1ms 合计:56ms 队列:1"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[CAP 慢帧#13018] grab:0ms cvt:58ms push:0ms 合计:58ms 队列:1"
+"[PROC 积压] 队列剩余:2 累计丢帧:4661"
+"[PROC 无算法] 帧9700 resize:30ms"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[PROC 积压] 队列剩余:2 累计丢帧:4671"
+"[CAP 慢帧#13055] grab:0ms cvt:52ms push:0ms 合计:52ms 队列:2"
+"[CAP 慢帧#13067] grab:12ms cvt:45ms push:0ms 合计:57ms 队列:2"
+"[CAP 慢帧#13068] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:1"
+"[CAP 慢帧#13077] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:3"
+"[PROC 积压] 队列剩余:2 累计丢帧:4681"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[CAP 慢帧#13096] grab:15ms cvt:45ms push:0ms 合计:60ms 队列:2"
+"[CAP 慢帧#13097] grab:0ms cvt:55ms push:0ms 合计:55ms 队列:2"
+"[CAP 慢帧#13099] grab:0ms cvt:64ms push:1ms 合计:65ms 队列:1"
+"[CAP 帧间隔] 100帧耗时:3420ms 平均:34.2ms (29.2fps)"
+"[CAP 帧13100] YUYV→BGR:25ms push:0ms 平均:33.0ms 队列:1 慢帧:1376 DQBUF错误:0"
+"[PROC 积压] 队列剩余:2 累计丢帧:4691"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[RPMsg RX] "H545"
+"[CAP 慢帧#13119] grab:22ms cvt:36ms push:0ms 合计:58ms 队列:2"
+"[PROC 积压] 队列剩余:2 累计丢帧:4701"
+[RPMsg] read 10 bytes
+[RPMsg RX] "T246"
+[ 2149.005432] stm32-dcmi 4c006000.dcmi: Some errors found while streaming: errors=678 (overrun=681), buffers=13141
+Segmentation fault
+root@lubancat:~#

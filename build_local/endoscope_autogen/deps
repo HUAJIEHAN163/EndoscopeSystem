@@ -6,6 +6,8 @@ endoscope_autogen/timestamp: \
 	/mnt/hgfs/VM_Share/project/EndoscopeSystem/src/capture/filecapture.cpp \
 	/mnt/hgfs/VM_Share/project/EndoscopeSystem/src/capture/filecapture.h \
 	/mnt/hgfs/VM_Share/project/EndoscopeSystem/src/capture/videosource.h \
+	/mnt/hgfs/VM_Share/project/EndoscopeSystem/src/comm/rpmsglistener.cpp \
+	/mnt/hgfs/VM_Share/project/EndoscopeSystem/src/comm/rpmsglistener.h \
 	/mnt/hgfs/VM_Share/project/EndoscopeSystem/src/main.cpp \
 	/mnt/hgfs/VM_Share/project/EndoscopeSystem/src/processing/imageprocessor.cpp \
 	/mnt/hgfs/VM_Share/project/EndoscopeSystem/src/processing/imageprocessor.h \
@@ -415,6 +417,7 @@ endoscope_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/QObject \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/QScopedPointer \
+	/usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/QThread \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractitemmodel.h \

@@ -248,6 +248,30 @@ src/capture/filecapture.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/endoscope.dir/build.make CMakeFiles/endoscope.dir/src/capture/filecapture.cpp.s
 .PHONY : src/capture/filecapture.cpp.s
 
+src/comm/rpmsglistener.o: src/comm/rpmsglistener.cpp.o
+.PHONY : src/comm/rpmsglistener.o
+
+# target to build an object file
+src/comm/rpmsglistener.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/endoscope.dir/build.make CMakeFiles/endoscope.dir/src/comm/rpmsglistener.cpp.o
+.PHONY : src/comm/rpmsglistener.cpp.o
+
+src/comm/rpmsglistener.i: src/comm/rpmsglistener.cpp.i
+.PHONY : src/comm/rpmsglistener.i
+
+# target to preprocess a source file
+src/comm/rpmsglistener.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/endoscope.dir/build.make CMakeFiles/endoscope.dir/src/comm/rpmsglistener.cpp.i
+.PHONY : src/comm/rpmsglistener.cpp.i
+
+src/comm/rpmsglistener.s: src/comm/rpmsglistener.cpp.s
+.PHONY : src/comm/rpmsglistener.s
+
+# target to generate assembly for a file
+src/comm/rpmsglistener.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/endoscope.dir/build.make CMakeFiles/endoscope.dir/src/comm/rpmsglistener.cpp.s
+.PHONY : src/comm/rpmsglistener.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -413,6 +437,9 @@ help:
 	@echo "... src/capture/filecapture.o"
 	@echo "... src/capture/filecapture.i"
 	@echo "... src/capture/filecapture.s"
+	@echo "... src/comm/rpmsglistener.o"
+	@echo "... src/comm/rpmsglistener.i"
+	@echo "... src/comm/rpmsglistener.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

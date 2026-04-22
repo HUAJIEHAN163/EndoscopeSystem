@@ -22,6 +22,7 @@ set(SOURCES
     src/processing/imageprocessor.cpp
     src/processing/neon_accel.cpp
     src/utils/imageconvert.cpp
+    src/comm/rpmsglistener.cpp
 )
 set(HEADERS
     src/capture/videosource.h
@@ -33,6 +34,7 @@ set(HEADERS
     src/processing/neon_accel.h
     src/utils/imageconvert.h
     src/utils/framequeue.h
+    src/comm/rpmsglistener.h
 )
 
 if(ENABLE_V4L2 AND CMAKE_SYSTEM_NAME STREQUAL "Linux")

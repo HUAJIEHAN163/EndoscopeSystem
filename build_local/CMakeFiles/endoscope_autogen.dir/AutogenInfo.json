@@ -90,6 +90,12 @@
 			null
 		],
 		[
+			"/mnt/hgfs/VM_Share/project/EndoscopeSystem/src/comm/rpmsglistener.h",
+			"Mu",
+			"UMQREU6WVX/moc_rpmsglistener.cpp",
+			null
+		],
+		[
 			"/mnt/hgfs/VM_Share/project/EndoscopeSystem/src/processing/imageprocessor.h",
 			"Mu",
 			"5QWKTM5RRA/moc_imageprocessor.cpp",
@@ -187,6 +193,11 @@
 	[
 		[
 			"/mnt/hgfs/VM_Share/project/EndoscopeSystem/src/capture/filecapture.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/mnt/hgfs/VM_Share/project/EndoscopeSystem/src/comm/rpmsglistener.cpp",
 			"Mu",
 			null
 		],
