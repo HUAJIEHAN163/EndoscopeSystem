@@ -1,0 +1,9 @@
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c:138:8:pvPortMalloc	16
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c:307:6:vPortFree	6
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c:360:8:xPortGetFreeHeapSize	1
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c:366:8:xPortGetMinimumEverFreeHeapSize	1
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c:372:6:vPortInitialiseBlocks	1
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c:378:8:pvPortCalloc	5
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c:397:13:prvHeapInit	2
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c:442:13:prvInsertBlockIntoFreeList	6
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c:505:6:vPortGetHeapStats	5

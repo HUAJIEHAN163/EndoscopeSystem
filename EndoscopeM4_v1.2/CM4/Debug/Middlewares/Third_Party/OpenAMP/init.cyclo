@@ -1,0 +1,3 @@
+../../Middlewares/Third_Party/OpenAMP/libmetal/lib/include/metal/list.h:41:20:metal_list_init	1
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/OpenAMP/libmetal/lib/init.c:10:5:metal_init	2
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/OpenAMP/libmetal/lib/init.c:30:6:metal_finish	1

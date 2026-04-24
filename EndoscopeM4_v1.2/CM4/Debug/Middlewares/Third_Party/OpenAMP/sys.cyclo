@@ -1,0 +1,8 @@
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/OpenAMP/libmetal/lib/system/freertos/template/sys.c:17:6:sys_irq_restore_enable	1
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/OpenAMP/libmetal/lib/system/freertos/template/sys.c:22:14:sys_irq_save_disable	1
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/OpenAMP/libmetal/lib/system/freertos/template/sys.c:30:6:sys_irq_enable	1
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/OpenAMP/libmetal/lib/system/freertos/template/sys.c:37:6:sys_irq_disable	1
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/OpenAMP/libmetal/lib/system/freertos/template/sys.c:44:6:metal_machine_cache_flush	1
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/OpenAMP/libmetal/lib/system/freertos/template/sys.c:52:6:metal_machine_cache_invalidate	1
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/OpenAMP/libmetal/lib/system/freertos/template/sys.c:60:6:metal_generic_default_poll	1
+/mnt/hgfs/VM_Share/project/EndoscopeM4_v1.2/Middlewares/Third_Party/OpenAMP/libmetal/lib/system/freertos/template/sys.c:65:7:metal_machine_io_mem_map	1

@@ -1,5 +1,14 @@
 # GPIO 接口映射
+##
+官方文档：FDCAN1_TX → PA12 / PB9 / PD1 / PH13
+                         ↓
+pinmux-pins：PA12 → can 设备占用
+                         ↓
+野火资料：J1 pin 11 = FDCAN1_TX → 对应设备就是 can
+                         ↓
+结论：J1 pin 11 = PA12 ✅
 
+##
 ## J1 扩展口（DIP 26P_2P54 双排）
 
 | Pin | 功能标注 | GPIO | AF | A7 侧占用 | 本项目用途 | 状态 |
@@ -8,9 +17,9 @@
 | 2 | GND | - | - | - | | |
 | 3 | USART1_CTS | ? | | 未确认 | | ⬜ |
 | 4 | USART1_RTS | ? | | 未确认 | | ⬜ |
-| 5 | USART1_TX | ? | | 未确认 | 预留（原设计 A7-M4 UART，已改用 RPMsg） | ⬜ |
+| 5 | USART1_TX | ? | | 未确认（PB6 验证不是 pin 5） | 预留 | ⬜ |
 | 6 | USART1_RX | ? | | 未确认 | 预留 | ⬜ |
-| 7 | USART3_TX | **PB10** | AF7 | UNCLAIMED | **LED 补光灯（软件 PWM）** | ✅ 使用中 |
+| 7 | USART3_TX | **PB10** | AF7 | UNCLAIMED | **LED 补光灯（高频软件 PWM 500Hz）** | ✅ 使用中 |
 | 8 | USART3_RX | **PB11** | AF7 | ethernet 占用 | 不可用 | ❌ |
 | 9 | GND | - | - | - | | |
 | 10 | GND | - | - | - | | |
@@ -69,8 +78,8 @@
 | GPIO | 编号 | 物理位置 | 可用复用功能 |
 |---|---|---|---|
 | PA0 | 0 | KEY 接口 WAKE UP | GPIO, TIM2_CH1, TIM5_CH1 |
-| PB6 | 22 | J1 附近（SPI OLED 示例用作 CS） | GPIO, I2C1_SCL, TIM4_CH1, UART5_TX |
-| PB10 | 26 | **J1 pin 7** | GPIO（当前 LED 软件 PWM）, I2C2_SCL, TIM2_CH3 |
+| PB6 | 22 | 未确认（不是 J1 pin 5） | GPIO, I2C1_SCL, TIM4_CH1, UART5_TX |
+| PB10 | 26 | **J1 pin 7** | GPIO（当前 LED 高频软件 PWM）, I2C2_SCL, TIM2_CH3 |
 | PB12 | 28 | 未确认 | GPIO, I2C2_SMBA |
 | PH0 | 112 | 未确认 | GPIO |
 | PH1 | 113 | 未确认 | GPIO |
@@ -98,20 +107,21 @@
 
 ### TIM2 与 LCD 背光冲突（问题 #22）
 
-LCD 背光由 **TIM2_CH1 (PA15)** 的 PWM 控制。M4 初始化 TIM2（用于 CH3 PB10 LED PWM）时重新配置了 TIM2 全局参数（PSC/ARR），破坏了 LCD 背光 PWM。
+LCD 背光由 **TIM2_CH1 (PA15)** 的 PWM 控制。M4 不能使用 TIM2 的任何通道（会破坏 LCD 背光）。
 
-**解决方案**：M4 不使用 TIM2，LED 改用 TIM3 中断中的软件 PWM。
+**解决方案**：M4 不使用 TIM2，LED 改用 PB10 高频软件 PWM（TIM3 中断 50μs，500Hz）。详见问题 #22。
 
 ### I2C1 与触摸屏冲突（问题 #24）
 
 触摸屏（Goodix）和 J1 扩展口的 I2C1 共享 PF14/PF15。M4 初始化 I2C1 会破坏触摸屏通信。
 
-**解决方案**：待确认 J1 pin 15/16 的 GPIO 映射（可能是另一组 I2C1 引脚），或使用软件 I2C 在空闲 GPIO 上通信。
+**解决方案**：禁用硬件 I2C1，改用软件 I2C（GPIO 模拟）在 PA11/PA12 上读取 SHT30。详见问题 #24。
 
 ### 待确认引脚（需联系野火）
 
 - J1 pin 3/4 (USART1_CTS/RTS) 的 GPIO
-- J1 pin 5/6 (USART1_TX/RX) 的 GPIO
-- J1 pin 11/12 (FDCAN1_TX/RX) 的 GPIO
-- **J1 pin 15/16 (I2C1_SCL/SDA 第二组) 的 GPIO** ← 最重要，可能解决温度传感器问题
+- ~~J1 pin 5/6 (USART1_TX/RX) 的 GPIO~~ → 已确认 pin 5 = PB6
+- J1 pin 6 (USART1_RX) 的 GPIO
+- ~~J1 pin 11/12 (FDCAN1_TX/RX) 的 GPIO~~ → 已确认 pin 11 = PA12, pin 12 = PA11
+- **J1 pin 15/16 (I2C1_SCL/SDA 第二组) 的 GPIO** ← 待确认
 - J2 各引脚的 GPIO

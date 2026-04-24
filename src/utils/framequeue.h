@@ -56,7 +56,7 @@ public:
         if (r == m_writeIdx.load(std::memory_order_acquire))
             return false;  // 队列空
 
-        frame = m_frames[r];
+        frame = m_frames[r];  // 浅拷贝（安全：readIdx 移走后生产者不会立即覆盖此槽位）
         m_readIdx.store((r + 1) % N, std::memory_order_release);
         return true;
     }
@@ -70,7 +70,7 @@ public:
 
         // 跳到最新帧的位置
         int newest = (w - 1 + N) % N;
-        frame = m_frames[newest];
+        frame = m_frames[newest];  // 浅拷贝（cv::Mat 引用计数是原子的，线程安全）
 
         // 把 readIdx 移到 writeIdx，标记所有帧已消费
         m_readIdx.store(w, std::memory_order_release);

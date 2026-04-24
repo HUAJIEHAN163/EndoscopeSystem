@@ -10,7 +10,7 @@ ssh debian@192.168.0.43
 su - root
 # 密码：root
 
-重新编译部署：
+A7重新编译部署：
 第一次编译或 修改 CMakeLists.txt 时先进行cmake，生成makefile：
 cd /home/chris/build_arm
 cmake /mnt/hgfs/VM_Share/project/EndoscopeSystem \
@@ -68,6 +68,8 @@ cp /mnt/hgfs/VM_Share/project/EndoscopeM4/CM4/Debug/EndoscopeM4_CM4.elf /home/ch
 umount /mnt/nfs
 mount -t nfs 192.168.0.130:/home/chris/nfs_share /mnt/nfs -o nolock
 cp /mnt/nfs/EndoscopeM4_CM4.elf /lib/firmware/
+或者
+cp /mnt/nfs/EndoscopeM4_v1.2_CM4.elf /lib/firmware/
 ```
 
 ### 步骤 4：加载并启动 M4（开发板）
@@ -75,10 +77,13 @@ cp /mnt/nfs/EndoscopeM4_CM4.elf /lib/firmware/
 ```bash
 # 指定固件文件名
 echo EndoscopeM4_CM4.elf > /sys/class/remoteproc/remoteproc0/firmware
+或者
+echo EndoscopeM4_v1.2_CM4.elf > /sys/class/remoteproc/remoteproc0/firmware
 
 # 启动 M4
 echo start > /sys/class/remoteproc/remoteproc0/state
-
+或者
+echo start > /sys/class/remoteproc/remoteproc0/state
 # 确认运行状态
 cat /sys/class/remoteproc/remoteproc0/state
 # 输出: running
@@ -99,6 +104,19 @@ echo 26 > /sys/class/gpio/export 2>/dev/null
 echo out > /sys/class/gpio/gpio26/direction
 echo 0 > /sys/class/gpio/gpio26/value
 echo 26 > /sys/class/gpio/unexport
+
+M4+A7流程：
+mount -t nfs 192.168.0.130:/home/chris/nfs_share /mnt/nfs -o nolock
+cp /mnt/nfs/EndoscopeM4_v1.2_CM4.elf /lib/firmware/
+cp /mnt/nfs/endoscope /tmp/endoscope
+chmod +x /tmp/endoscope
+echo EndoscopeM4_v1.2_CM4.elf > /sys/class/remoteproc/remoteproc0/firmware
+echo start > /sys/class/remoteproc/remoteproc0/state
+sleep 3
+kill $(pidof App) 2>/dev/null
+sleep 0.5
+/tmp/endoscope -platform linuxfb 2>&1 | tee /tmp/endoscope.log
+
 
 修改 1：CM4/OPENAMP/openamp_conf.h
 
