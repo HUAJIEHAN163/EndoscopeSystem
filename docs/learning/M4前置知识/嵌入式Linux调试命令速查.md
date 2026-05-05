@@ -12,6 +12,15 @@
 cat /sys/kernel/debug/pinctrl/soc:pin-controller@50002000/pinmux-pins
 ```
 
+命令各部分含义：
+```
+cat                     # 读取文件内容
+/sys/kernel/debug       # Linux 内核调试文件系统（debugfs）
+pinctrl                 # 引脚控制子系统（Pin Control）
+soc:pin-controller@50002000  # 芯片引脚控制器的硬件地址（设备树定义）
+pinmux-pins             # 内核导出的**引脚复用状态文件**
+```
+
 输出示例：
 ```
 pin 9 (PA9): device 58007000.sdmmc function analog group PA9    # 被 SDMMC 占用
@@ -35,20 +44,32 @@ cat /sys/kernel/debug/pinctrl/soc:pin-controller@50002000/pinmux-pins | grep "i2
 
 ```bash
 # 导出 GPIO（PB6 = 编号 22）
+# 作用：向内核申请使用 22 号 GPIO 引脚
+# 执行后，系统会自动生成目录：/sys/class/gpio/gpio22/
 echo 22 > /sys/class/gpio/export
 
-# 设置方向
+# 设置方向：输出模式（用来控制灯、继电器等）
+# out = 输出模式
+# 输出：你可以主动控制引脚是高电平（1）还是低电平（0）
 echo out > /sys/class/gpio/gpio22/direction
-
 # 拉高/拉低
+# 1 = 引脚输出高电压# 高电平（3.3V）
+# 0 = 引脚输出低电压# 低电平（0V）
+# 这就是控制硬件开关的本质
 echo 1 > /sys/class/gpio/gpio22/value
 echo 0 > /sys/class/gpio/gpio22/value
 
-# 读取输入
+# 读取输入：设置输入模式（用来读取按键、传感器信号）
+# in = 输入模式
+# 输入：你不能控制它，只能读取外部电压是高还是低
 echo in > /sys/class/gpio/gpio22/direction
+# 读取结果：1 = 外部是高电平 0 = 外部是低电平
 cat /sys/class/gpio/gpio22/value
 
-# 释放
+# 释放GPIO（用完归还内核）
+# 作用：释放引脚
+# 释放后，gpio22 目录会自动消失
+# 好习惯：用完一定要释放
 echo 22 > /sys/class/gpio/unexport
 ```
 
@@ -77,7 +98,7 @@ cat /sys/kernel/debug/gpio
 # 查找特定节点
 find /sys/firmware/devicetree -name "*key*" -o -name "*button*" 2>/dev/null
 
-# 读取节点属性（注意：值可能包含 \0，需要 tr 转换）
+# 读取节点属性（注意：值可能包含 \0，需要 tr 转换，将'\0' 转换位'\n'，空字符转换为换行符）
 cat /sys/firmware/devicetree/base/gpio-keys/status 2>/dev/null | tr '\0' '\n'
 
 # 查看节点标签
@@ -139,10 +160,10 @@ cat /proc/interrupts | grep -i "Key\|gpio\|rpmsg\|dcmi"
 # 指定固件
 echo EndoscopeM4_v1.2_CM4.elf > /sys/class/remoteproc/remoteproc0/firmware
 
-# 启动
+# 启动：让小核复位、加载固件、开始运行
 echo start > /sys/class/remoteproc/remoteproc0/state
 
-# 查看状态
+# 查看状态：running → 小核正在跑 offline → 小核没启动 / 停止了
 cat /sys/class/remoteproc/remoteproc0/state    # running / offline
 
 # 停止（注意：stop 后 RPMsg 通道损坏，必须重启开发板）
@@ -152,6 +173,7 @@ echo stop > /sys/class/remoteproc/remoteproc0/state
 ### 4.2 查看 M4 启动日志
 
 ```bash
+# dmesg：查看 Linux 内核运行日志
 dmesg | grep -E "remoteproc|rpmsg|virtio|m4"
 ```
 
@@ -184,7 +206,7 @@ ls /sys/bus/rpmsg/devices/
 ### 5.2 手动收发数据
 
 ```bash
-# 发送数据给 M4
+# 发送数据给 M4（L50 = 你和 M4 约定的亮度指令）
 echo "L50" > /dev/ttyRPMSG0
 
 # 接收 M4 数据（Ctrl+C 退出）
@@ -300,24 +322,51 @@ ping 192.168.0.130
 ### 9.1 查看 ELF 信息
 
 ```bash
-# 查看 section 信息（在虚拟机上执行）
+# 查看 section 信息（在虚拟机上执行），作用是看固件里有哪些代码段、数据段，放在哪里？
+# .text 代码放哪，.data 数据放哪，.bss 变量放哪，.resource_table（重要！双核通信必须有）
+# 固件大小对不对，段地址是否正常，有没有 resource_table（没有就无法和 Linux 通信）
 arm-none-eabi-objdump -h firmware.elf
 
-# 查看 segment 信息
+# 查看 segment 信息，
+# 看固件怎么被加载到 M4 内存里
+# 显示：代码加载地址，数据加载地址，运行时内存布局
+# 你用它来查：固件会不会加载到错误地址，会不会超出 M4 内存空间，remoteproc 能不能正确加载固件
 arm-none-eabi-readelf -l firmware.elf
 
 # 查看符号表
+# 检查 M4 固件里有没有双核通信功能
+# 会显示：rpmsg 相关函数，virt_uart 收发函数，通道初始化函数
 arm-none-eabi-nm firmware.elf | grep -i "rpmsg\|virt_uart"
 
 # 查看 resource table
+# 作用：查看双核通信 “身份证”，这是 Linux 和 M4 通信的必须段
+# 里面包含：通信通道号，共享内存地址，vring 地址，设备信息
+# 如果没有这个段：remoteproc 无法启动 → rpmsg 无法通信 → 你发 L50 没用
 arm-none-eabi-objdump -s -j .resource_table firmware.elf
 ```
-
 **用途**：对比可工作的 ELF 和有问题的 ELF，排查 RPMsg 通道建立失败等问题。
-
 ---
 
-## 十、调试技巧总结
+## 十、日志输出
+### 
+```bash
+# 运行内窥镜程序，并把日志保存到文件
+#/tmp/endoscope       # 你的内窥镜程序
+#-platform linuxfb    # 用屏幕直接显示（不使用桌面）
+#platform：Qt 程序的「渲染平台 / 显示后端」
+#linuxfb：全称 Linux Framebuffer，Linux 原生帧缓冲区
+#2>&1                 # 把错误信息也一起输出
+#> /tmp/endoscope.log # 把日志写入文件
+#| tee                 # 管道 + 同时显示+保存
+/tmp/endoscope -platform linuxfb 2>&1 | tee /tmp/endoscope.log
+
+# 屏幕不显示
+/tmp/endoscope -platform linuxfb > /tmp/endoscope.log 2>&1
+```
+**用途**：对比可工作的 ELF 和有问题的 ELF，排查 RPMsg 通道建立失败等问题。
+---
+
+## 十一、调试技巧总结
 
 ### 10.1 引脚确认方法
 
