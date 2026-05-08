@@ -66,8 +66,8 @@ include CMakeFiles/endoscope_autogen_timestamp_deps.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/endoscope_autogen_timestamp_deps.dir/progress.make
 
-CMakeFiles/endoscope_autogen_timestamp_deps: /usr/lib/qt5/bin/moc
 CMakeFiles/endoscope_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.13
+CMakeFiles/endoscope_autogen_timestamp_deps: /usr/lib/qt5/bin/moc
 CMakeFiles/endoscope_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.13
 CMakeFiles/endoscope_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.13
 CMakeFiles/endoscope_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.4.6.0

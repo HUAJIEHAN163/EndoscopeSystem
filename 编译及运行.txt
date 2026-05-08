@@ -128,3 +128,6 @@ sleep 0.5
 
 找到 #define RPMSG_SERVICE_NAME  "rpmsg-tty"
 改为 #define RPMSG_SERVICE_NAME  "rpmsg-tty-channel"
+
+
+cd /mnt/hgfs/VM_Share/project/EndoscopeSystem && ./test_text_sharpen 2>&1 | head -20

@@ -201,8 +201,14 @@ private:
     QPushButton *m_btnSelectImage;    // 图像选择
     QPushButton *m_btnSaveEdit;       // 保存
     QPushButton *m_btnDeleteImage;    // 删除
-    QCheckBox *m_chkEditSharpen;      // 锐化
-    QSlider *m_sliderEditSharpen;     // 锐化强度
+    QCheckBox *m_chkEditSharpen;      // USM 锐化
+    QSlider *m_sliderEditSharpen;     // USM 锐化强度
+    QLabel *m_lblEditSharpen;         // USM 锐化强度数值显示
+    QCheckBox *m_chkEditAdaptiveSharpen;      // 自适应锐化
+    QSlider *m_sliderEditAdaptiveSharpen;     // 自适应锐化强度
+    QLabel *m_lblEditAdaptiveAmount;          // 自适应锐化强度数值显示
+    QSlider *m_sliderEditAdaptiveThreshold;   // 自适应锐化边缘阈值
+    QLabel *m_lblEditAdaptiveThreshold;       // 自适应锐化边缘阈值数值显示
     QCheckBox *m_chkEditDenoise;      // 降噪
     QCheckBox *m_chkEditEdge;         // 边缘检测
     QCheckBox *m_chkEditThreshold;    // 阈值分割

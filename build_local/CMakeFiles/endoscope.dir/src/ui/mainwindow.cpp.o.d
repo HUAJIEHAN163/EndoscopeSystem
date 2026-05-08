@@ -502,6 +502,9 @@ CMakeFiles/endoscope.dir/src/ui/mainwindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qmap.h \
  /mnt/hgfs/VM_Share/project/EndoscopeSystem/src/capture/filecapture.h \
  /mnt/hgfs/VM_Share/project/EndoscopeSystem/src/utils/imageconvert.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/QFile \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/QPainter \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qpainter.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextoption.h \
@@ -520,7 +523,6 @@ CMakeFiles/endoscope.dir/src/ui/mainwindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qvector2d.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtouchdevice.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QDir \
@@ -540,6 +542,4 @@ CMakeFiles/endoscope.dir/src/ui/mainwindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextformat.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
- /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/QFile \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h

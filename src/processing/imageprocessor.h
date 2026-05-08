@@ -66,6 +66,13 @@ public:
         bool sharpen = false;
         double sharpenAmount = 1.5;  // 锐化强度（0.5-3.0），越大边缘越锐利但噪声越明显
 
+        // 自适应锐化（Adaptive Sharpen）
+        // 原理：使用 Laplacian 掩码只锐化边缘区域，避免平坦区域噪声放大
+        // 与 USM 锐化互斥：两者只能启用一个
+        bool adaptiveSharpen = false;
+        double adaptiveSharpenAmount = 1.5;    // 锐化强度（0.5-3.0）
+        int adaptiveSharpenThreshold = 10;     // 边缘阈值（0-50），越大越只锐化强边缘
+
         // 双边滤波降噪
         // 在空间域和像素值域同时加权，平滑噪声但保留边缘
         // 计算量大，内部先缩小 0.5x 再处理再放大
@@ -188,6 +195,29 @@ public:
     //   amount — 锐化强度，默认 1.5，UI 滑块范围 0.5-3.0
     static void applySharpen(const cv::Mat &src, cv::Mat &dst,
                              double sigma = 3.0, double amount = 1.5);
+
+    // applyAdaptiveSharpen — 自适应锐化（Adaptive Sharpen）
+    //
+    // 原理：使用 Laplacian 边缘掩码，只对边缘区域进行锐化，避免平坦区域噪声放大
+    //   1. 计算 Laplacian 边缘强度图（灰度）
+    //   2. 阈值化并归一化为 0-255 掩码
+    //   3. 计算 USM 锐化结果
+    //   4. 根据掩码混合原图和锐化图：result = src + (usm - src) × (mask / 255)
+    //
+    // 优势：相比 USM 锐化，只增强边缘区域，平坦区域保持原样，噪声更少
+    //
+    // 性能：320×240 预估 10-12ms（纯 OpenCV 实现）
+    //   - Laplacian: 2-3ms
+    //   - minMaxLoc: 0.5-1ms
+    //   - GaussianBlur: 4-5ms
+    //   - 混合: 2-3ms
+    //
+    // 参数：
+    //   amount    — 锐化强度，默认 1.5，UI 滑块范围 0.5-3.0
+    //   threshold — 边缘阈值，默认 10，UI 滑块范围 0-50
+    //               越大越只锐化强边缘，越小越多区域被锐化
+    static void applyAdaptiveSharpen(const cv::Mat &src, cv::Mat &dst,
+                                     double amount = 1.5, int threshold = 10);
 
     // applyDenoise — 双边滤波降噪
     //

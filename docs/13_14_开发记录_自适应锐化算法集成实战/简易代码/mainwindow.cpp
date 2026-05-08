@@ -8,6 +8,19 @@
 #include "capture/v4l2capture.h"
 #endif
 
+// =====================================================================
+// 自适应锐化算法版本控制（与imageprocessor.h保持一致）
+// =====================================================================
+// 定义以下宏来选择使用的自适应锐化算法版本：
+// 1. ADAPTIVE_SHARPEN_SIMPLE - 简易版本（学习用，已验证可行性）
+// 2. ADAPTIVE_SHARPEN_OPTIMIZED - 性能优化版本（待实现）
+// 3. 不定义任何宏 - 禁用自适应锐化功能
+//
+// 当前阶段：简易版本已完成验证，准备开发性能优化版本
+// =====================================================================
+#define ADAPTIVE_SHARPEN_SIMPLE      // 简易版本（当前启用）
+// #define ADAPTIVE_SHARPEN_OPTIMIZED   // 性能优化版本（待实现）
+
 #include <QPainter>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -364,25 +377,14 @@ void MainWindow::setupUi() {
     QVBoxLayout *editAlgoLayout = new QVBoxLayout(editGroup);
     editAlgoLayout->setSpacing(2);
 
-    // USM 锐化
     m_chkEditSharpen = new QCheckBox("USM锐化");
     m_sliderEditSharpen = new QSlider(Qt::Horizontal);
     m_sliderEditSharpen->setRange(5, 30);
     m_sliderEditSharpen->setValue(15);
-    m_lblEditSharpen = new QLabel("强度: 1.5");
-    
-    // 自适应锐化
-    m_chkEditAdaptiveSharpen = new QCheckBox("自适应锐化");
-    m_sliderEditAdaptiveSharpen = new QSlider(Qt::Horizontal);
-    m_sliderEditAdaptiveSharpen->setRange(5, 30);
-    m_sliderEditAdaptiveSharpen->setValue(15);
-    m_lblEditAdaptiveAmount = new QLabel("强度: 1.5");
-    m_sliderEditAdaptiveThreshold = new QSlider(Qt::Horizontal);
-    m_sliderEditAdaptiveThreshold->setRange(0, 50);
-    m_sliderEditAdaptiveThreshold->setValue(10);
-    m_lblEditAdaptiveThreshold = new QLabel("边缘阈值: 10");
-    
-    // 其他算法
+    m_chkAdaptiveSimple = new QCheckBox("简易自适应锐化");
+    m_sliderAdaptiveSimple = new QSlider(Qt::Horizontal);
+    m_sliderAdaptiveSimple->setRange(5, 30);  // 0.5-3.0
+    m_sliderAdaptiveSimple->setValue(15);     // 默认1.5
     m_chkEditDenoise = new QCheckBox("降噪");
     m_chkEditEdge = new QCheckBox("边缘检测");
     m_chkEditThreshold = new QCheckBox("阈值分割");
@@ -391,13 +393,9 @@ void MainWindow::setupUi() {
     m_sliderEditThreshold->setValue(128);
 
     editAlgoLayout->addWidget(m_chkEditSharpen);
-    editAlgoLayout->addWidget(m_lblEditSharpen);
     editAlgoLayout->addWidget(m_sliderEditSharpen);
-    editAlgoLayout->addWidget(m_chkEditAdaptiveSharpen);
-    editAlgoLayout->addWidget(m_lblEditAdaptiveAmount);
-    editAlgoLayout->addWidget(m_sliderEditAdaptiveSharpen);
-    editAlgoLayout->addWidget(m_lblEditAdaptiveThreshold);
-    editAlgoLayout->addWidget(m_sliderEditAdaptiveThreshold);
+    editAlgoLayout->addWidget(m_chkAdaptiveSimple);
+    editAlgoLayout->addWidget(m_sliderAdaptiveSimple);
     editAlgoLayout->addWidget(m_chkEditDenoise);
     editAlgoLayout->addWidget(m_chkEditEdge);
     editAlgoLayout->addWidget(m_chkEditThreshold);
@@ -407,38 +405,26 @@ void MainWindow::setupUi() {
     // 参数变化时实时预览
     connect(m_chkEditSharpen, &QCheckBox::toggled, this, &MainWindow::onEditParamChanged);
     connect(m_sliderEditSharpen, &QSlider::valueChanged, this, &MainWindow::onEditParamChanged);
-    connect(m_chkEditAdaptiveSharpen, &QCheckBox::toggled, this, &MainWindow::onEditParamChanged);
-    connect(m_sliderEditAdaptiveSharpen, &QSlider::valueChanged, this, &MainWindow::onEditParamChanged);
-    connect(m_sliderEditAdaptiveThreshold, &QSlider::valueChanged, this, &MainWindow::onEditParamChanged);
-    
-    // 实时更新label显示数值
-    connect(m_sliderEditSharpen, &QSlider::valueChanged, [this](int val) {
-        m_lblEditSharpen->setText(QString("强度: %1").arg(val / 10.0, 0, 'f', 1));
-    });
-    connect(m_sliderEditAdaptiveSharpen, &QSlider::valueChanged, [this](int val) {
-        m_lblEditAdaptiveAmount->setText(QString("强度: %1").arg(val / 10.0, 0, 'f', 1));
-    });
-    connect(m_sliderEditAdaptiveThreshold, &QSlider::valueChanged, [this](int val) {
-        m_lblEditAdaptiveThreshold->setText(QString("边缘阈值: %1").arg(val));
-    });
+    connect(m_chkAdaptiveSimple, &QCheckBox::toggled, this, &MainWindow::onEditParamChanged);
+    connect(m_sliderAdaptiveSimple, &QSlider::valueChanged, this, &MainWindow::onEditParamChanged);
     connect(m_chkEditDenoise, &QCheckBox::toggled, this, &MainWindow::onEditParamChanged);
     connect(m_chkEditEdge, &QCheckBox::toggled, this, &MainWindow::onEditParamChanged);
     connect(m_chkEditThreshold, &QCheckBox::toggled, this, &MainWindow::onEditParamChanged);
     connect(m_sliderEditThreshold, &QSlider::valueChanged, this, &MainWindow::onEditParamChanged);
-    
-    // USM 锐化和自适应锐化互斥逻辑
-    connect(m_chkEditSharpen, &QCheckBox::toggled, [this](bool checked) {
-        if (checked && m_chkEditAdaptiveSharpen->isChecked()) {
-            m_chkEditAdaptiveSharpen->setChecked(false);
-        }
-        m_sliderEditSharpen->setEnabled(checked);
-    });
-    connect(m_chkEditAdaptiveSharpen, &QCheckBox::toggled, [this](bool checked) {
-        if (checked && m_chkEditSharpen->isChecked()) {
+
+    // 自适应锐化和USM锐化互斥逻辑
+    connect(m_chkAdaptiveSimple, &QCheckBox::toggled, [this](bool checked) {
+        if (checked) {
             m_chkEditSharpen->setChecked(false);
         }
-        m_sliderEditAdaptiveSharpen->setEnabled(checked);
-        m_sliderEditAdaptiveThreshold->setEnabled(checked);
+        onEditParamChanged();  // 立即更新预览
+    });
+    
+    connect(m_chkEditSharpen, &QCheckBox::toggled, [this](bool checked) {
+        if (checked) {
+            m_chkAdaptiveSimple->setChecked(false);
+        }
+        onEditParamChanged();  // 立即更新预览
     });
 
     // 保存和删除按钮
@@ -1132,18 +1118,29 @@ void MainWindow::onEditParamChanged() {
     if (src.empty()) return;
 
     ImageProcessor::Config cfg;
-    cfg.sharpen = m_chkEditSharpen->isChecked();
-    cfg.sharpenAmount = m_sliderEditSharpen->value() / 10.0;
-    cfg.adaptiveSharpen = m_chkEditAdaptiveSharpen->isChecked();
-    cfg.adaptiveSharpenAmount = m_sliderEditAdaptiveSharpen->value() / 10.0;
-    cfg.adaptiveSharpenThreshold = m_sliderEditAdaptiveThreshold->value();
+    
+    // 互斥逻辑：自适应锐化和USM锐化只能选一个
+    if (m_chkAdaptiveSimple->isChecked()) {
+        cfg.sharpenAdaptive = true;
+        cfg.sharpen = false;  // 确保USM不启用
+        cfg.sharpenAmount = m_sliderAdaptiveSimple->value() / 10.0;
+    } else if (m_chkEditSharpen->isChecked()) {
+        cfg.sharpen = true;
+        cfg.sharpenAdaptive = false;  // 确保自适应不启用
+        cfg.sharpenAmount = m_sliderEditSharpen->value() / 10.0;
+    } else {
+        cfg.sharpen = false;
+        cfg.sharpenAdaptive = false;
+        cfg.sharpenAmount = 0.0;
+    }
+  
     cfg.denoise = m_chkEditDenoise->isChecked();
     cfg.edgeDetect = m_chkEditEdge->isChecked();
     cfg.threshold = m_chkEditThreshold->isChecked();
     cfg.thresholdValue = m_sliderEditThreshold->value();
 
     // 检查是否有任何算法启用
-    bool anyEnabled = cfg.sharpen || cfg.adaptiveSharpen ||
+    bool anyEnabled = cfg.sharpen || cfg.sharpenAdaptive || 
                       cfg.denoise || cfg.edgeDetect || cfg.threshold;
     
     if (!anyEnabled) {
@@ -1174,15 +1171,29 @@ void MainWindow::onSaveEditedImage() {
     // 对原图应用处理并保存
     cv::Mat src = ImageConvert::qimageToMat(m_editSourceImage);
     ImageProcessor::Config cfg;
-    cfg.sharpen = m_chkEditSharpen->isChecked();
+    
+    // 互斥逻辑：自适应锐化和USM锐化只能选一个
+    if (m_chkAdaptiveSimple->isChecked()) {
+        cfg.sharpenAdaptive = true;
+        cfg.sharpen = false;  // 确保USM不启用
+        cfg.sharpenAmount = m_sliderAdaptiveSimple->value() / 10.0;
+    } else if (m_chkEditSharpen->isChecked()) {
+        cfg.sharpen = true;
+        cfg.sharpenAdaptive = false;  // 确保自适应不启用
         cfg.sharpenAmount = m_sliderEditSharpen->value() / 10.0;
+    } else {
+        cfg.sharpen = false;
+        cfg.sharpenAdaptive = false;
+        cfg.sharpenAmount = 0.0;
+    }
+    
     cfg.denoise = m_chkEditDenoise->isChecked();
     cfg.edgeDetect = m_chkEditEdge->isChecked();
     cfg.threshold = m_chkEditThreshold->isChecked();
     cfg.thresholdValue = m_sliderEditThreshold->value();
 
     // 检查是否有任何算法启用
-    bool anyEnabled = cfg.sharpen || 
+    bool anyEnabled = cfg.sharpen || cfg.sharpenAdaptive || 
                       cfg.denoise || cfg.edgeDetect || cfg.threshold;
     
     cv::Mat dst;
@@ -1242,6 +1253,7 @@ void MainWindow::onExportPreset() {
     cfg.dehaze         = m_chkDehaze->isChecked();
     cfg.dehazeOmega    = m_sliderDehazeOmega->value() / 100.0;
     cfg.sharpen        = false;
+    cfg.sharpenAdaptive = false;    
     cfg.denoise        = false;
     cfg.edgeDetect     = false;
     cfg.threshold      = false;

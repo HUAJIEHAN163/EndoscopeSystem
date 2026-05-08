@@ -21,8 +21,11 @@ void ImageProcessor::process(const cv::Mat &src, cv::Mat &dst,
     if (cfg.dehaze)
         applyDehaze(work, work, cfg.dehazeOmega, cfg.dehazeRadius);
 
+    // USM 锐化和自适应锐化互斥
     if (cfg.sharpen)
         applySharpen(work, work, 3.0, cfg.sharpenAmount);
+    else if (cfg.adaptiveSharpen)
+        applyAdaptiveSharpen(work, work, cfg.adaptiveSharpenAmount, cfg.adaptiveSharpenThreshold);
 
     if (cfg.denoise)
         applyDenoise(work, work, cfg.denoiseD);
@@ -134,8 +137,75 @@ void ImageProcessor::applyWhiteBalance(const cv::Mat &src, cv::Mat &dst) {
 void ImageProcessor::applySharpen(const cv::Mat &src, cv::Mat &dst,
                                   double sigma, double amount) {
     cv::Mat blurred;
-    cv::GaussianBlur(src, blurred, cv::Size(3, 3), 0);
+    // 限制sigma最大为1.0，避免过大光晕（测试显示sigma=3.0会产生ksize=19的巨大光晕）
+    double limitedSigma = std::min(sigma, 1.0);
+    int ksize = std::max(3, static_cast<int>(limitedSigma * 3) * 2 + 1);
+    cv::GaussianBlur(src, blurred, cv::Size(ksize, ksize), limitedSigma);
     cv::addWeighted(src, 1.0 + amount, blurred, -amount, 0, dst);
+}
+
+// 自适应锐化（Adaptive Sharpen）
+// 使用 Laplacian 边缘掩码，只对边缘区域进行锐化
+void ImageProcessor::applyAdaptiveSharpen(const cv::Mat &src, cv::Mat &dst,
+                                          double amount, int threshold) {
+    // 1. 转换为灰度图计算边缘强度
+    cv::Mat gray;
+    cv::cvtColor(src, gray, cv::COLOR_BGR2GRAY);
+    
+    // 2. 计算 Laplacian 边缘强度（使用绝对值）
+    cv::Mat laplacian;
+    cv::Laplacian(gray, laplacian, CV_16S, 3);  // 使用 3×3 核
+    cv::convertScaleAbs(laplacian, laplacian);  // 转换为 CV_8U 并取绝对值
+    
+    // 3. 归一化边缘强度到 0-255
+    double minVal, maxVal;
+    cv::minMaxLoc(laplacian, &minVal, &maxVal);
+    cv::Mat edgeMask;
+    if (maxVal > 0) {
+        laplacian.convertTo(edgeMask, CV_32F, 255.0 / maxVal);
+    } else {
+        edgeMask = cv::Mat::zeros(laplacian.size(), CV_32F);
+    }
+    
+    // 4. 应用阈值：只保留强度 > threshold 的边缘
+    // threshold 范围 0-50，映射到归一化后的 0-255 范围
+    float thresholdNorm = threshold * 255.0f / 50.0f;
+    edgeMask = cv::max(edgeMask - thresholdNorm, 0.0f);
+    
+    // 重新归一化到 0-1 范围作为混合权重
+    cv::minMaxLoc(edgeMask, &minVal, &maxVal);
+    if (maxVal > 0) {
+        edgeMask /= maxVal;
+    }
+    
+    // 5. 计算 USM 锐化结果
+    // USM 公式：sharpened = src + amount × (src - blurred)
+    cv::Mat blurred, unsharpMask, sharpened;
+    // 使用小sigma（0.8）减少光晕，自适应掩码会进一步抑制高对比度区域
+    cv::GaussianBlur(src, blurred, cv::Size(3, 3), 0.8);
+    cv::subtract(src, blurred, unsharpMask);  // 提取高频细节
+    cv::addWeighted(src, 1.0, unsharpMask, amount, 0, sharpened);  // 叠加回原图
+    
+    // 6. 根据边缘掩码混合原图和锐化图
+    // result = src + (sharpened - src) × edgeMask
+    src.convertTo(dst, CV_32FC3);
+    sharpened.convertTo(sharpened, CV_32FC3);
+    
+    // 将单通道掩码扩展为三通道
+    std::vector<cv::Mat> maskChannels(3);
+    maskChannels[0] = edgeMask;
+    maskChannels[1] = edgeMask;
+    maskChannels[2] = edgeMask;
+    cv::Mat mask3ch;
+    cv::merge(maskChannels, mask3ch);
+    
+    // 混合：dst = dst + (sharpened - dst) × mask3ch
+    cv::Mat diff = sharpened - dst;
+    diff = diff.mul(mask3ch);
+    dst = dst + diff;
+    
+    // 转换回 CV_8UC3
+    dst.convertTo(dst, CV_8UC3);
 }
 
 // 降噪：缩小后做双边滤波再放大，速度提升约 4 倍
